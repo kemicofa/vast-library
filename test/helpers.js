@@ -29,6 +29,11 @@ function runFixture(toCompare, version, fixtureName) {
   assertEqual(toCompare, expectedResponse);
 }
 
+function getFixtureContent(version, fixtureName) {
+  const fixtureFile = path.join(__dirname, version, 'fixtures', fixtureName + '.xml');
+  return fs.readFileSync(path.join(fixtureFile), 'utf8');;
+}
+
 function generateMinimalVast() {
   const vast = createVast.v2()
     .attachAd({id: 'identifier'})
@@ -52,5 +57,6 @@ function generateMinimalVast() {
 
 module.exports = {
   runFixture,
+  getFixtureContent,
   generateMinimalVast
 };

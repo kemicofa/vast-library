@@ -7,7 +7,7 @@ memwatch.on('leak', function (info) {
   process.exit(42);
 });
 
-const { generateMinimalVast } = require('./helpers');
+const { generateMinimalVast } = require('../helpers');
 
 for (let i = 0; i < 20000; i++) {
   const vast = generateMinimalVast();

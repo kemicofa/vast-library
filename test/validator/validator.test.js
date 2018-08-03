@@ -6,8 +6,8 @@ const sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 const sinon = require('sinon');
 
-const VastElement = require('../lib/vast-element');
-const validateNext = require('../lib/validate-node');
+const VastElement = require('../../lib/vast-element');
+const validateNext = require('../../lib/validate-node');
 
 const testOptions = {
   throwOnError: true,

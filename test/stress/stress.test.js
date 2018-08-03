@@ -1,5 +1,5 @@
 
-const { generateMinimalVast } = require('./helpers');
+const { generateMinimalVast } = require('../helpers');
 
 describe('Stress test', () => {
   // it('poc', () => {

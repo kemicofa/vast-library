@@ -9,11 +9,11 @@
 
 # vast-builder
 
-<img src="./ressources/iab-logo.png" alt="IAB Logo" />
+<img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
 
 An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4
 
-<img src="./ressources/vast-demo.gif" alt="app demo" />
+<img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/vast-demo.gif?raw=true" alt="app demo" />
 
 Main features are :
 

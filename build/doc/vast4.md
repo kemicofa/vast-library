@@ -999,7 +999,7 @@ _all herited from [VastElement](#VastElement)_ and :
 // Add a "Tracking" child to current "TrackingEvents". Return "TrackingEvents" to stay on same current level.
 addTracking(content: string, attributes: {
   offset: string /* required */, 
-  event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress"|"offset") /* required */
+  event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress") /* required */
 }): TrackingEvents
 ```
 
@@ -1009,7 +1009,7 @@ addTracking(content: string, attributes: {
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
 attachTracking(content: string, attributes: {
   offset: string /* required */, 
-  event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress"|"offset") /* required */
+  event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress") /* required */
 }): Tracking
 ```
 
@@ -1976,7 +1976,7 @@ _all herited from [VastElement](#VastElement)_ and :
 // Add a "Tracking" child to current "TrackingEvents". Return "TrackingEvents" to stay on same current level.
 addTracking(content: string, attributes: {
   offset: string /* required */, 
-  event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress"|"offset") /* required */
+  event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress") /* required */
 }): TrackingEvents
 ```
 
@@ -1986,7 +1986,7 @@ addTracking(content: string, attributes: {
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
 attachTracking(content: string, attributes: {
   offset: string /* required */, 
-  event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress"|"offset") /* required */
+  event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress") /* required */
 }): Tracking
 ```
 

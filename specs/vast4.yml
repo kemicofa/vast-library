@@ -147,7 +147,6 @@ VAST:
                     - acceptInvitationLinear
                     - timeSpentViewing
                     - progress
-                    - offset # TODO required only for progress
             Icons:
               Icon:
                 alo: true
@@ -313,7 +312,6 @@ VAST:
                       - acceptInvitationLinear
                       - timeSpentViewing
                       - progress
-                      - offset # TODO required only for progress
             VideoClicks:
               ClickTracking:
                 attrs: [id]

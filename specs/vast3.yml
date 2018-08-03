@@ -95,6 +95,7 @@ VAST:
             TrackingEvents:
               Tracking:
                 attrs:
+                  - offset # TODO required only for progress
                   - event:
                     # linear
                     - creativeView
@@ -116,7 +117,6 @@ VAST:
                     - closeLinear
                     - skip
                     - progress
-                    - offset # TODO required only for progress
             VideoClicks:
               ClickThrough:
                 attrs: [id]
@@ -209,6 +209,7 @@ VAST:
             TrackingEvents:
               Tracking:
                 attrs:
+                  - offset # TODO required only for progress
                   - event:
                     # non linear
                     - creativeView
@@ -229,7 +230,6 @@ VAST:
                     - acceptInvitation
                     - close
                     - progress
-                    - offset # TODO required only for progress
       Extensions:
         Extension:
           required: true
@@ -257,6 +257,7 @@ VAST:
             TrackingEvents:
               Tracking:
                 attrs:
+                  - offset # TODO required only for progress
                   - event:
                     # linear
                     - creativeView
@@ -278,7 +279,6 @@ VAST:
                     - closeLinear
                     - skip
                     - progress
-                    - offset # TODO required only for progress
             VideoClicks:
               ClickTracking:
                 attrs: [id]
@@ -359,6 +359,7 @@ VAST:
             TrackingEvents:
               Tracking:
                 attrs:
+                  - offset # TODO required only for progress
                   - event:
                     # non linear
                     - creativeView
@@ -379,7 +380,6 @@ VAST:
                     - acceptInvitation
                     - close
                     - progress
-                    - offset # TODO required only for progress
       Extensions:
         Extension:
           required: true

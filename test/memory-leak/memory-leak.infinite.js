@@ -1,5 +1,5 @@
 
-const memwatch = require('memwatch-next');
+const memwatch = require('@airbnb/node-memwatch');
 
 memwatch.on('leak', function (info) {
   console.err('memory leak detected');

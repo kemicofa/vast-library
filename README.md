@@ -51,20 +51,25 @@ yarn add vast-builder
 ### Validate existing VAST
 
 ```js
-const createVast = require('vast-builder');
+const { validate } = require('vast-builder');
 
-// vast1 is deprecated and not supported
-const bool = createVast.validate(
+// simply pass the vast string to validate
+const bool = validate(
   `<VAST version="x">
     <Ad>
       // ....
     </Ad>
   </VAST>`,
-  /*, options */
-  );
+  options
+);
 ```
 
-### Create empty VAST
+| Option                | Default | Description |
+|:----------------------|:--------|:------------|
+| `logWarn`             | `false`  | Validation warning and error will be printed to stderr. |
+| `throwOnError`        | `false` | Validation errors will now throw an exception. |
+
+### Create new VAST
 
 ```js
 const createVast = require('vast-builder');

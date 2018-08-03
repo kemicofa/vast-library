@@ -9,7 +9,7 @@
 
 # vast-builder
 
-<img src="https://vignette.wikia.nocookie.net/logopedia/images/c/c5/IAB_logo_2008.svg" alt="IAB Logo" style="width:100px;"/>
+<img src="./ressources/iab-logo.png" alt="IAB Logo" />
 
 An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4
 
@@ -30,7 +30,7 @@ Why is it the best ? :
 - extermly fast, without any native dependancy
 - full JSdoc for functionnal intellisense autocomplete (including params)
 
-with only **one** stand alone dependancie.
+with only **one** stand alone dependance.
 
 All APIs are directly generated on top of standard IAB specifications documents : https://www.iab.com/vast/
 

@@ -1,13 +1,12 @@
+const memwatch = require("@airbnb/node-memwatch");
 
-const memwatch = require('@airbnb/node-memwatch');
-
-memwatch.on('leak', function (info) {
-  console.err('memory leak detected');
+memwatch.on("leak", function(info) {
+  console.err("memory leak detected");
   throw new Error(info);
   process.exit(42);
 });
 
-const { generateMinimalVast } = require('../helpers');
+const { generateMinimalVast } = require("../helpers");
 
 for (let i = 0; i < 20000; i++) {
   const vast = generateMinimalVast();

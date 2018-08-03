@@ -1,8 +1,8 @@
-
-const fs = require('fs-extra');
+const fs = require("fs-extra");
 
 const baseContentTemplate = (version, content, validator) => {
-  return '' +
+  return (
+    "" +
     `// @flow
 // this file is generated, dont edit it
 
@@ -25,12 +25,14 @@ module.exports = {
   apiv${version},
   validator
 };
-`;
+`
+  );
 };
 
 const classTemplate = (className, jsdoc, methods, isFirst) => {
-  const isFirstContent = (isFirst) ? ' || this' : '';
-  return '' +
+  const isFirstContent = isFirst ? " || this" : "";
+  return (
+    "" +
     `class ${className} extends VastElement {
   ${jsdoc}
   constructor(n, p, ...args) {
@@ -40,72 +42,91 @@ const classTemplate = (className, jsdoc, methods, isFirst) => {
   and() { return this.parent${isFirstContent}; }
   back() { return this.and().and(); }
 }
-`;
-}
+`
+  );
+};
 
 const attachMethodTemplate = (methodName, jsdoc, args, childClass, infos) => {
-  const comma = args ? ',' : '';
-  return '' +
+  const comma = args ? "," : "";
+  return (
+    "" +
     `${jsdoc}
   attach${methodName}(${args}) {
     const newElem = new ${childClass}('${methodName}', this, ${infos} /*: Infos*/${comma} ${args});
     this.childs.push(newElem);
     return newElem;
-  }`;
+  }`
+  );
 };
 
 const addMethodTemplate = (methodName, jsdoc, args) => {
-  return '' +
+  return (
+    "" +
     `${jsdoc}
   add${methodName}(${args}) {
     return this.attach${methodName}(${args}).and();
-  }`;
+  }`
+  );
 };
 
 const getSimpleApiMethodDoc = (allContent, openCode) => {
   return `
-${openCode ? '\`\`\`js\n' : ''}${allContent}
+${openCode ? "```js\n" : ""}${allContent}
 \`\`\`\n`;
 };
 
-const getApiMethodDoc = (comments, methodName, parameters, returnValue, returnValueRealName, lastLvlElement) => {
+const getApiMethodDoc = (
+  comments,
+  methodName,
+  parameters,
+  returnValue,
+  returnValueRealName,
+  lastLvlElement
+) => {
   let output = `
 \`\`\`js
 // ${comments}
-${methodName}(${parameters.join(', ')}): ${returnValue}
+${methodName}(${parameters.join(", ")}): ${returnValue}
 \`\`\``;
   output += `\n\n↘ _go to [${returnValue}](#${returnValueRealName})_`;
-  output += methodName.startsWith('add') ? ' _(current class)_' : '';
-  output += lastLvlElement ? ' _(last level element)_' : '';
-  return output + '\n';
+  output += methodName.startsWith("add") ? " _(current class)_" : "";
+  output += lastLvlElement ? " _(last level element)_" : "";
+  return output + "\n";
 };
 
-const getJsDocLine = (type, name, props = 'param') => {
+const getJsDocLine = (type, name, props = "param") => {
   return `
-   * @${props} {${getType(type)}} ${name}`
+   * @${props} {${getType(type)}} ${name}`;
 };
 
-const getJsDoc = (vastversion, returnType, isRequired, hasContent, hasAttrs, attrs) => {
-  let jsdoc = '';
+const getJsDoc = (
+  vastversion,
+  returnType,
+  isRequired,
+  hasContent,
+  hasAttrs,
+  attrs
+) => {
+  let jsdoc = "";
   if (returnType || isRequired || hasContent || hasAttrs) {
-    jsdoc = '\n  /** ';
-    jsdoc += isRequired ? `@description required in Vast ${vastversion}` : '';
-    jsdoc += hasContent ? getJsDocLine('string', 'content') : '';
-    jsdoc += hasAttrs ? getJsDocLine(attrs, 'attributes') : '';
-    jsdoc += returnType ? getJsDocLine(returnType, '', 'returns') : '';
-    jsdoc += '\n   */';
+    jsdoc = "\n  /** ";
+    jsdoc += isRequired ? `@description required in Vast ${vastversion}` : "";
+    jsdoc += hasContent ? getJsDocLine("string", "content") : "";
+    jsdoc += hasAttrs ? getJsDocLine(attrs, "attributes") : "";
+    jsdoc += returnType ? getJsDocLine(returnType, "", "returns") : "";
+    jsdoc += "\n   */";
   }
   return jsdoc;
-}
+};
 
-const getClassDoc = (parentClass) => {
+const getClassDoc = parentClass => {
   return `/**
    * @param {string} n
    * @param {${parentClass}} p
    */`;
-}
+};
 
-const extractFirst = (obj) => {
+const extractFirst = obj => {
   let content, name;
   for (let e in obj) {
     name = e;
@@ -116,60 +137,59 @@ const extractFirst = (obj) => {
 };
 
 const getArgsTemplate = (hasContent, hasAttrs) => {
-  let args = '';
+  let args = "";
   if (hasContent) {
-    args = 'content';
+    args = "content";
     if (hasAttrs) {
-      args += ', attributes';
+      args += ", attributes";
     }
   } else if (hasAttrs) {
-    args = 'attributes';
+    args = "attributes";
   }
   return args;
-}
+};
 
 const getArgsDocTemplate = (hasContent, hasAttrs, attrs) => {
   const apiParameters = [];
   if (hasContent) {
-    apiParameters.push('content: string')
+    apiParameters.push("content: string");
   }
   if (hasAttrs) {
-    apiParameters.push('attributes: ' + getType(attrs, true, true))
+    apiParameters.push("attributes: " + getType(attrs, true, true));
   }
   return apiParameters;
-}
-
+};
 
 // build a clean type for attrs
 const getType = (type, withRequired = false, newLineForAttributes = false) => {
-  const nl = newLineForAttributes ? '\n' : '';
-  const sp = newLineForAttributes ? '  ' : '';
-  const req = withRequired ? ' /* required */' : '';
+  const nl = newLineForAttributes ? "\n" : "";
+  const sp = newLineForAttributes ? "  " : "";
+  const req = withRequired ? " /* required */" : "";
   switch (typeof type) {
-    case 'object':
-      let output = '{' + nl;
+    case "object":
+      let output = "{" + nl;
       let isFirst = true;
       for (const key in type) {
         if (isFirst) {
           isFirst = false;
         } else {
-          output += ', ' + nl;
+          output += ", " + nl;
         }
         const el = type[key];
-        if (typeof el === 'object') {
+        if (typeof el === "object") {
           const object = extractFirst(el);
           output += sp + object.name;
           if (Array.isArray(object.content) && object.content.length > 0) {
             output += ':("' + object.content.join('"|"') + '")';
           } else {
-            output += ': string';
+            output += ": string";
           }
         } else {
-          output += sp + el + ': string';
+          output += sp + el + ": string";
         }
         output += req;
       }
-      output += nl + '}';
+      output += nl + "}";
       return output;
       // return '{' + String(type).replace(/,/g, ': string, ') + ': string}';
       break;
@@ -178,34 +198,30 @@ const getType = (type, withRequired = false, newLineForAttributes = false) => {
       return type;
       break;
   }
-}
+};
 
 // parse VastElement file to complete method in documentation
-const asyncGetVastElementDoc = (callback) => {
+const asyncGetVastElementDoc = callback => {
   const methods = [];
-  const lineReader = require('readline').createInterface({
-    input: fs.createReadStream('./lib/vast-element.js')
+  const lineReader = require("readline").createInterface({
+    input: fs.createReadStream("./lib/vast-element.js")
   });
   let commentsOpen = false;
-  lineReader.on('line', function (line) {
+  lineReader.on("line", function(line) {
     if (/\/\/\*/.test(line)) {
-      const methodDoc = line.replace('//*', '').trim();
-      methods.push(
-        getSimpleApiMethodDoc(methodDoc, !commentsOpen)
-      );
+      const methodDoc = line.replace("//*", "").trim();
+      methods.push(getSimpleApiMethodDoc(methodDoc, !commentsOpen));
       commentsOpen = false;
     }
     if (/\/\/>/.test(line)) {
-      methods.push(
-        '\n```js\n' + line.replace('>', '').trim()
-      );
+      methods.push("\n```js\n" + line.replace(">", "").trim());
       commentsOpen = true;
     }
   });
-  lineReader.on('close', function (line) {
+  lineReader.on("close", function(line) {
     callback(methods);
   });
-}
+};
 
 const getApiDocumentationTemplate = (vastVersion, doc) => {
   let outputDoc = `# VAST${vastVersion} API Documentation`;
@@ -217,41 +233,47 @@ const getApiDocumentationTemplate = (vastVersion, doc) => {
     if (e.extends) {
       outputDoc += ` _extends_ ${e.extends}`;
     }
-    ['only', 'required', 'uniq', 'alo'].forEach((elem) => {
+    ["only", "required", "uniq", "alo"].forEach(elem => {
       if (e[elem]) {
         outputDoc += `\n\n`;
         switch (elem) {
-          case 'only':
-            outputDoc += `This child once is the only one allowed at this level below ${e.parentName}`;
+          case "only":
+            outputDoc += `This child once is the only one allowed at this level below ${
+              e.parentName
+            }`;
             break;
-          case 'required':
+          case "required":
             outputDoc += `This child is required below ${e.parentName}`;
             break;
-          case 'uniq':
-            outputDoc += `An uniq one of this child or others at same level are required below ${e.parentName}`;
+          case "uniq":
+            outputDoc += `An uniq one of this child or others at same level are required below ${
+              e.parentName
+            }`;
             break;
-          case 'alo':
-            outputDoc += `At last one of this child and/or others are required below ${e.parentName}`;
+          case "alo":
+            outputDoc += `At last one of this child and/or others are required below ${
+              e.parentName
+            }`;
             break;
         }
         outputDoc += ` in VAST${vastVersion} spec`;
       }
     });
-    outputDoc += '\n\n';
+    outputDoc += "\n\n";
     if (e.parentName) {
       outputDoc += `child of [${e.parentName}](#${e.realParentName}) ↗\n\n`;
     }
     if (e.methods.length) {
-      outputDoc += '### methods\n\n';
-      if (e.name !== 'VastElement') {
-        outputDoc += '_all herited from [VastElement](#VastElement)_ and : \n';
+      outputDoc += "### methods\n\n";
+      if (e.name !== "VastElement") {
+        outputDoc += "_all herited from [VastElement](#VastElement)_ and : \n";
       }
       for (let i = 0; i < e.methods.length; i++) {
         const methodCode = e.methods[i];
         outputDoc += methodCode;
       }
     } else {
-      outputDoc += '_no specific methods see [VastElement](#VastElement)_';
+      outputDoc += "_no specific methods see [VastElement](#VastElement)_";
     }
   }
   return outputDoc;
@@ -269,6 +291,5 @@ module.exports = {
   getArgsTemplate,
   getArgsDocTemplate,
   asyncGetVastElementDoc,
-  getApiDocumentationTemplate,
+  getApiDocumentationTemplate
 };
-

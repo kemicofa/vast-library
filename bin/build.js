@@ -1,6 +1,3 @@
-
-
-
 // TODO : faster version removing intellisense class ? or cheat the class tooling to intellisense one but exec others
 
 // TODO : voir pour ajouter les /* types */ pour typescript
@@ -10,30 +7,31 @@
 // TODO manage type (url/string ...)
 // TODO : babel tooling ?
 
-
 let vastVersion = process.argv[2];
 
 if (!vastVersion) {
-  throw 'this batch needs an arg with the vast version number';
+  throw "this batch needs an arg with the vast version number";
 }
 
-console.log('=======================');
-console.log('=== build version', vastVersion, '===');
-console.log('=======================');
+console.log("=======================");
+console.log("=== build version", vastVersion, "===");
+console.log("=======================");
 
-const fs = require('fs-extra');
+const fs = require("fs-extra");
 
 let datas;
 try {
-  const yaml = require('js-yaml');
-  datas = yaml.safeLoad(fs.readFileSync(`./specs/vast${vastVersion}.yml`, 'utf8'));
+  const yaml = require("js-yaml");
+  datas = yaml.safeLoad(
+    fs.readFileSync(`./specs/vast${vastVersion}.yml`, "utf8")
+  );
 } catch (error) {
-  console.log('=> unable to load specs', error);
+  console.log("=> unable to load specs", error);
   process.exit(1);
 }
 
-fs.mkdirsSync('./build/api');
-fs.mkdirsSync('./build/doc');
+fs.mkdirsSync("./build/api");
+fs.mkdirsSync("./build/doc");
 
 // remove configs from data
 const filteredDatas = {
@@ -52,26 +50,28 @@ const {
   getArgsTemplate,
   getArgsDocTemplate,
   asyncGetVastElementDoc,
-  getApiDocumentationTemplate,
-} = require('./templates');
+  getApiDocumentationTemplate
+} = require("./templates");
 
-const isValidKeyWord = (key) => {
-  return [
-    'attrs',
-    'only',
-    'required',
-    'uniq',
-    'alo',
-    // 'type', // maybe later for type validation
-    'follow',
-  ].indexOf(key) === -1;
-}
+const isValidKeyWord = key => {
+  return (
+    [
+      "attrs",
+      "only",
+      "required",
+      "uniq",
+      "alo",
+      // 'type', // maybe later for type validation
+      "follow"
+    ].indexOf(key) === -1
+  );
+};
 
 const allClassList = [];
 const apiDocumentation = {
   VastElement: {
-    name: 'VastElement',
-    realName: 'VastElement',
+    name: "VastElement",
+    realName: "VastElement",
     methods: [] // are completed dynamicly in end of this build
   }
 };
@@ -79,23 +79,29 @@ const apiDocumentation = {
 // adjust to vast api number, just to intellisense beeing clean
 let j = vastVersion;
 
-const generateApiAndDoc = (isFirst, currentName, dataObject, overrideName = '', parentName = '') => {
+const generateApiAndDoc = (
+  isFirst,
+  currentName,
+  dataObject,
+  overrideName = "",
+  parentName = ""
+) => {
   // prevent to hit reserved word like Error
   const currentUsedName = overrideName ? overrideName : currentName;
 
-  const currentDocName = currentUsedName.split('_')[0];
-  const parentDocName = parentName.split('_')[0];
+  const currentDocName = currentUsedName.split("_")[0];
+  const parentDocName = parentName.split("_")[0];
 
   apiDocumentation[currentUsedName] = {
     name: currentDocName,
     realName: currentUsedName,
     parentName: parentDocName,
     realParentName: parentName,
-    extends: 'VastElement',
-    methods: [],
+    extends: "VastElement",
+    methods: []
   };
 
-  ['only', 'required', 'uniq', 'alo'].forEach((elem) => {
+  ["only", "required", "uniq", "alo"].forEach(elem => {
     if (dataObject && dataObject[elem] && dataObject[elem] === true) {
       apiDocumentation[currentUsedName][elem] = true;
     }
@@ -103,22 +109,27 @@ const generateApiAndDoc = (isFirst, currentName, dataObject, overrideName = '', 
 
   const methodsList = [];
   for (const childName in dataObject) {
-    if (!isValidKeyWord(childName)) { continue };
+    if (!isValidKeyWord(childName)) {
+      continue;
+    }
     // allow unicity of class names
-    let usedChildName = childName + '_' + j++ ;
+    let usedChildName = childName + "_" + j++;
     const child = dataObject[childName];
 
     // manage print content
     const infos = {};
-    const hasContent = child === null || Object.keys(child).filter(isValidKeyWord).length === 0;
-    const hasAttrs = child && child.attrs && child.attrs.length > 0 || false;
-    const isRequired = child && child.required || false;
-    const hasChild = child && Object.keys(child).filter(isValidKeyWord).length !== 0 || false;
-    const currentAttrs = child && child.attrs || {};
+    const hasContent =
+      child === null || Object.keys(child).filter(isValidKeyWord).length === 0;
+    const hasAttrs = (child && child.attrs && child.attrs.length > 0) || false;
+    const isRequired = (child && child.required) || false;
+    const hasChild =
+      (child && Object.keys(child).filter(isValidKeyWord).length !== 0) ||
+      false;
+    const currentAttrs = (child && child.attrs) || {};
 
     if (hasAttrs) {
       infos.attrs = child.attrs.reduce((prev, next) => {
-        if (typeof next === 'object') {
+        if (typeof next === "object") {
           prev.push(extractFirst(next).name);
         } else {
           prev.push(next);
@@ -166,39 +177,45 @@ const generateApiAndDoc = (isFirst, currentName, dataObject, overrideName = '', 
       apiDocumentation[currentUsedName].methods.push(
         getApiMethodDoc(
           `Add a "${childName}" child to current "${currentDocName}". Return "${currentDocName}" to stay on same current level.`,
-          'add' + childName,
+          "add" + childName,
           docArguments,
           currentDocName,
           currentUsedName,
           false
         )
-      )
+      );
     }
     apiDocumentation[currentUsedName].methods.push(
       getApiMethodDoc(
         `Attach a "${childName}" child to current "${currentDocName}". Return "${childName}" to move on child level.`,
-        'attach' + childName,
+        "attach" + childName,
         docArguments,
         childName,
         usedChildName,
         !hasChild
       )
-    )
-    generateApiAndDoc(false, childName, dataObject[childName], usedChildName, currentUsedName);
+    );
+    generateApiAndDoc(
+      false,
+      childName,
+      dataObject[childName],
+      usedChildName,
+      currentUsedName
+    );
   }
   allClassList.push(
     classTemplate(
       currentUsedName,
       getClassDoc(parentName || currentName),
-      methodsList.join(''),
+      methodsList.join(""),
       isFirst
     )
   );
-}
+};
 
 generateApiAndDoc(true, `apiv${vastVersion}`, filteredDatas);
 
-const generateValidator = (dataObject) => {
+const generateValidator = dataObject => {
   const validator = {};
 
   const validatorType = {
@@ -212,26 +229,32 @@ const generateValidator = (dataObject) => {
   for (const childName in dataObject) {
     if (!isValidKeyWord(childName)) {
       // managed required attributes
-      if (childName === 'attrs') {
+      if (childName === "attrs") {
         for (let i = 0; i < dataObject[childName].length; i++) {
           const attr = dataObject[childName][i];
-          if (typeof attr === 'object') {
+          if (typeof attr === "object") {
             const object = extractFirst(attr);
             validatorType.attrsRequired[object.name] = object.content;
           }
         }
       }
       continue;
-    };
+    }
     const childDataObject = dataObject[childName];
     if (childDataObject) {
-      ['only', 'required', 'uniq', 'alo'].forEach((elem) => {
+      ["only", "required", "uniq", "alo"].forEach(elem => {
         if (childDataObject[elem]) {
           validatorType[elem][childName] = generateValidator(childDataObject);
         }
       });
     }
-    if (!childDataObject || !childDataObject.only && !childDataObject.required && !childDataObject.uniq && !childDataObject.alo) {
+    if (
+      !childDataObject ||
+      (!childDataObject.only &&
+        !childDataObject.required &&
+        !childDataObject.uniq &&
+        !childDataObject.alo)
+    ) {
       validatorType.follow[childName] = generateValidator(childDataObject);
     }
   }
@@ -250,17 +273,16 @@ const validator = generateValidator(filteredDatas);
 // writing API
 fs.writeFileSync(
   `./build/api/vast${vastVersion}.js`,
-  baseContentTemplate(vastVersion, allClassList.join(''), validator)
+  baseContentTemplate(vastVersion, allClassList.join(""), validator)
 );
 
-asyncGetVastElementDoc((methods) => {
-  apiDocumentation['VastElement'].methods = methods;
+asyncGetVastElementDoc(methods => {
+  apiDocumentation["VastElement"].methods = methods;
 
   // writing documentation
   fs.writeFileSync(
     `./build/doc/vast${vastVersion}.md`,
     getApiDocumentationTemplate(vastVersion, apiDocumentation)
   );
-  console.log(' => build ok');
+  console.log(" => build ok");
 });
-

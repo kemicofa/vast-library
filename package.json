@@ -47,7 +47,14 @@
     "build-v3": "node ./bin/build.js 3",
     "build-v4": "node ./bin/build.js 4",
     "clean-fixtures": "rm -rf ./test/**/fixtures/*.xml",
-    "clean": "rm -rf ./build"
+    "clean": "rm -rf ./build",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "jest": {
     "collectCoverageFrom": [
@@ -64,6 +71,8 @@
     "fs-extra": "^5.0.0",
     "jest": "^22.2.2",
     "js-yaml": "^3.10.0",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.14.0",
     "sinon": "^4.3.0",
     "sinon-chai": "^2.14.0"
   }

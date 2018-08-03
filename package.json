@@ -26,10 +26,10 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "open ./coverage/lcov-report/index.html",
-    "build": "open ./coverage/lcov-report/index.html",
+    "build": "yarn build-api",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "build-api": "npm run clean && npm run build-v2 && npm run build-v3 && npm run build-v4",
+    "build-api": "yarn clean && yarn build-v2 && yarn build-v3 && npm run build-v4",
     "build-v2": "node ./bin/build.js 2",
     "build-v3": "node ./bin/build.js 3",
     "build-v4": "node ./bin/build.js 4",

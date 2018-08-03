@@ -116,6 +116,7 @@ VAST:
                     - closeLinear
                     - skip
                     - progress
+                    - offset # TODO required only for progress
             VideoClicks:
               ClickThrough:
                 attrs: [id]
@@ -228,6 +229,7 @@ VAST:
                     - acceptInvitation
                     - close
                     - progress
+                    - offset # TODO required only for progress
       Extensions:
         Extension:
           required: true
@@ -276,6 +278,7 @@ VAST:
                     - closeLinear
                     - skip
                     - progress
+                    - offset # TODO required only for progress
             VideoClicks:
               ClickTracking:
                 attrs: [id]
@@ -376,6 +379,7 @@ VAST:
                     - acceptInvitation
                     - close
                     - progress
+                    - offset # TODO required only for progress
       Extensions:
         Extension:
           required: true

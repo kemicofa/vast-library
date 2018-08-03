@@ -9,28 +9,36 @@
 
 # vast-builder
 
-This library offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4
+<img src="https://vignette.wikia.nocookie.net/logopedia/images/c/c5/IAB_logo_2008.svg" alt="IAB Logo" style="width:100px;"/>
 
-![IAB Logo](https://vignette.wikia.nocookie.net/logopedia/images/c/c5/IAB_logo_2008.svg/revision/latest?cb=20110130174537 "IAB Logo")
+An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4
 
+<img src="./ressources/vast-demo.gif" alt="app demo" />
 
 Main features are :
 
-- standard Vast xml generation
-- Vast validation based on specifications
+- validate a VAST from string input
+- awesome API to create 100% iab valid VAST 2, 3 & 4
+- validate created VAST
+
+Why is it the best ? :
+
+- made by developers for developers
+- fully maintained
+- 100% test coverage, including stress test and memory leak test [see](https://codecov.io/github/DavidBabel/vast-builder/)
+- build directly on top of the documentation [see](https://github.com/DavidBabel/vast-builder/tree/master/specs)
+- extermly fast, without any native dependancy
 - full JSdoc for functionnal intellisense autocomplete (including params)
 
 with only **one** stand alone dependancie.
 
 All APIs are directly generated on top of standard IAB specifications documents : https://www.iab.com/vast/
 
-**Donations:** If you like this package, want it to be maintened and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.
-
 ## Getting started
 
 ### Install
 
-For now, it requires node 8 or above. (will babelize it later)
+It requires node 8 or above.
 
 ```bash
 # with npm
@@ -38,6 +46,22 @@ npm i vast-builder --save
 
 # with yarn
 yarn add vast-builder
+```
+
+### Validate existing VAST
+
+```js
+const createVast = require('vast-builder');
+
+// vast1 is deprecated and not supported
+const bool = createVast.validate(
+  `<VAST version="x">
+    <Ad>
+      // ....
+    </Ad>
+  </VAST>`,
+  /*, options */
+  );
 ```
 
 ### Create empty VAST
@@ -296,11 +320,13 @@ You can clone this project to compare performance between this package and a nat
 
 Actual mesured speed test for 50000 generated VAST is :
 
-- this package: 30s
+- this package: 28s
 - vast-xml package: 29s
 
-but we have a much better api
+and we have a much better api ;)
 
 ## License
 
 MIT. Copyright (c) David Babel.
+
+**Donations:** If you like this package, want it to be maintened and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.

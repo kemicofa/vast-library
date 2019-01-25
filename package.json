@@ -27,6 +27,10 @@
     "api"
   ],
   "author": "David Babel",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/DavidBabel/vast-builder"
+  },
   "license": "MIT",
   "thanks": "https://www.paypal.me/devilhunter/4",
   "dependencies": {

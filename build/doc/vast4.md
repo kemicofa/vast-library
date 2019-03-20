@@ -140,7 +140,7 @@ attachWrapper(attributes: {
 }): Wrapper
 ```
 
-↘ _go to [Wrapper](#Wrapper_72)_
+↘ _go to [Wrapper](#Wrapper_75)_
 
 <a id="InLine_7" name="InLine_7"></a>
 ## Class InLine _extends_ VastElement
@@ -678,7 +678,7 @@ attachCompanionAds(attributes: {
 }): CompanionAds
 ```
 
-↘ _go to [CompanionAds](#CompanionAds_61)_
+↘ _go to [CompanionAds](#CompanionAds_64)_
 
 <a id="UniversalAdId_30" name="UniversalAdId_30"></a>
 ## Class UniversalAdId _extends_ VastElement
@@ -1221,7 +1221,17 @@ _all herited from [VastElement](#VastElement)_ and :
 
 ```js
 // Attach a "NonLinear" child to current "NonLinearAds". Return "NonLinear" to move on child level.
-attachNonLinear(): NonLinear
+attachNonLinear(attributes: {
+  id: string /* required */, 
+  width: string /* required */, 
+  height: string /* required */, 
+  expandedWidth: string /* required */, 
+  expandedHeight: string /* required */, 
+  scalable: string /* required */, 
+  maintainAspectRatio: string /* required */, 
+  minSuggestedDuration: string /* required */, 
+  apiFramework: string /* required */
+}): NonLinear
 ```
 
 ↘ _go to [NonLinear](#NonLinear_56)_
@@ -1231,7 +1241,7 @@ attachNonLinear(): NonLinear
 attachTrackingEvents(): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_59)_
+↘ _go to [TrackingEvents](#TrackingEvents_62)_
 
 <a id="NonLinear_56" name="NonLinear_56"></a>
 ## Class NonLinear _extends_ VastElement
@@ -1241,6 +1251,52 @@ child of [NonLinearAds](#NonLinearAds_55) ↗
 ### methods
 
 _all herited from [VastElement](#VastElement)_ and : 
+
+```js
+// Add a "StaticResource" child to current "NonLinear". Return "NonLinear" to stay on same current level.
+addStaticResource(content: string, attributes: {
+  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
+}): NonLinear
+```
+
+↘ _go to [NonLinear](#NonLinear_56)_ _(current class)_
+
+```js
+// Attach a "StaticResource" child to current "NonLinear". Return "StaticResource" to move on child level.
+attachStaticResource(content: string, attributes: {
+  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
+}): StaticResource
+```
+
+↘ _go to [StaticResource](#StaticResource_57)_ _(last level element)_
+
+```js
+// Add a "IFrameResource" child to current "NonLinear". Return "NonLinear" to stay on same current level.
+addIFrameResource(content: string): NonLinear
+```
+
+↘ _go to [NonLinear](#NonLinear_56)_ _(current class)_
+
+```js
+// Attach a "IFrameResource" child to current "NonLinear". Return "IFrameResource" to move on child level.
+attachIFrameResource(content: string): IFrameResource
+```
+
+↘ _go to [IFrameResource](#IFrameResource_58)_ _(last level element)_
+
+```js
+// Add a "HTMLResource" child to current "NonLinear". Return "NonLinear" to stay on same current level.
+addHTMLResource(content: string): NonLinear
+```
+
+↘ _go to [NonLinear](#NonLinear_56)_ _(current class)_
+
+```js
+// Attach a "HTMLResource" child to current "NonLinear". Return "HTMLResource" to move on child level.
+attachHTMLResource(content: string): HTMLResource
+```
+
+↘ _go to [HTMLResource](#HTMLResource_59)_ _(last level element)_
 
 ```js
 // Add a "NonLinearClickThrough" child to current "NonLinear". Return "NonLinear" to stay on same current level.
@@ -1254,7 +1310,7 @@ addNonLinearClickThrough(content: string): NonLinear
 attachNonLinearClickThrough(content: string): NonLinearClickThrough
 ```
 
-↘ _go to [NonLinearClickThrough](#NonLinearClickThrough_57)_ _(last level element)_
+↘ _go to [NonLinearClickThrough](#NonLinearClickThrough_60)_ _(last level element)_
 
 ```js
 // Add a "NonLinearClickTracking" child to current "NonLinear". Return "NonLinear" to stay on same current level.
@@ -1268,21 +1324,45 @@ addNonLinearClickTracking(content: string): NonLinear
 attachNonLinearClickTracking(content: string): NonLinearClickTracking
 ```
 
-↘ _go to [NonLinearClickTracking](#NonLinearClickTracking_58)_ _(last level element)_
+↘ _go to [NonLinearClickTracking](#NonLinearClickTracking_61)_ _(last level element)_
 
-<a id="NonLinearClickThrough_57" name="NonLinearClickThrough_57"></a>
+<a id="StaticResource_57" name="StaticResource_57"></a>
+## Class StaticResource _extends_ VastElement
+
+At last one of this child and/or others are required below NonLinear in VAST4 spec
+
+child of [NonLinear](#NonLinear_56) ↗
+
+_no specific methods see [VastElement](#VastElement)_
+<a id="IFrameResource_58" name="IFrameResource_58"></a>
+## Class IFrameResource _extends_ VastElement
+
+At last one of this child and/or others are required below NonLinear in VAST4 spec
+
+child of [NonLinear](#NonLinear_56) ↗
+
+_no specific methods see [VastElement](#VastElement)_
+<a id="HTMLResource_59" name="HTMLResource_59"></a>
+## Class HTMLResource _extends_ VastElement
+
+At last one of this child and/or others are required below NonLinear in VAST4 spec
+
+child of [NonLinear](#NonLinear_56) ↗
+
+_no specific methods see [VastElement](#VastElement)_
+<a id="NonLinearClickThrough_60" name="NonLinearClickThrough_60"></a>
 ## Class NonLinearClickThrough _extends_ VastElement
 
 child of [NonLinear](#NonLinear_56) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="NonLinearClickTracking_58" name="NonLinearClickTracking_58"></a>
+<a id="NonLinearClickTracking_61" name="NonLinearClickTracking_61"></a>
 ## Class NonLinearClickTracking _extends_ VastElement
 
 child of [NonLinear](#NonLinear_56) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="TrackingEvents_59" name="TrackingEvents_59"></a>
+<a id="TrackingEvents_62" name="TrackingEvents_62"></a>
 ## Class TrackingEvents _extends_ VastElement
 
 child of [NonLinearAds](#NonLinearAds_55) ↗
@@ -1298,7 +1378,7 @@ addTracking(content: string, attributes: {
 }): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_59)_ _(current class)_
+↘ _go to [TrackingEvents](#TrackingEvents_62)_ _(current class)_
 
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
@@ -1307,15 +1387,15 @@ attachTracking(content: string, attributes: {
 }): Tracking
 ```
 
-↘ _go to [Tracking](#Tracking_60)_ _(last level element)_
+↘ _go to [Tracking](#Tracking_63)_ _(last level element)_
 
-<a id="Tracking_60" name="Tracking_60"></a>
+<a id="Tracking_63" name="Tracking_63"></a>
 ## Class Tracking _extends_ VastElement
 
-child of [TrackingEvents](#TrackingEvents_59) ↗
+child of [TrackingEvents](#TrackingEvents_62) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="CompanionAds_61" name="CompanionAds_61"></a>
+<a id="CompanionAds_64" name="CompanionAds_64"></a>
 ## Class CompanionAds _extends_ VastElement
 
 An uniq one of this child or others at same level are required below Creative in VAST4 spec
@@ -1342,12 +1422,12 @@ attachCompanion(attributes: {
 }): Companion
 ```
 
-↘ _go to [Companion](#Companion_62)_
+↘ _go to [Companion](#Companion_65)_
 
-<a id="Companion_62" name="Companion_62"></a>
+<a id="Companion_65" name="Companion_65"></a>
 ## Class Companion _extends_ VastElement
 
-child of [CompanionAds](#CompanionAds_61) ↗
+child of [CompanionAds](#CompanionAds_64) ↗
 
 ### methods
 
@@ -1360,7 +1440,7 @@ addStaticResource(content: string, attributes: {
 }): Companion
 ```
 
-↘ _go to [Companion](#Companion_62)_ _(current class)_
+↘ _go to [Companion](#Companion_65)_ _(current class)_
 
 ```js
 // Attach a "StaticResource" child to current "Companion". Return "StaticResource" to move on child level.
@@ -1369,35 +1449,35 @@ attachStaticResource(content: string, attributes: {
 }): StaticResource
 ```
 
-↘ _go to [StaticResource](#StaticResource_63)_ _(last level element)_
+↘ _go to [StaticResource](#StaticResource_66)_ _(last level element)_
 
 ```js
 // Add a "IFrameResource" child to current "Companion". Return "Companion" to stay on same current level.
 addIFrameResource(content: string): Companion
 ```
 
-↘ _go to [Companion](#Companion_62)_ _(current class)_
+↘ _go to [Companion](#Companion_65)_ _(current class)_
 
 ```js
 // Attach a "IFrameResource" child to current "Companion". Return "IFrameResource" to move on child level.
 attachIFrameResource(content: string): IFrameResource
 ```
 
-↘ _go to [IFrameResource](#IFrameResource_64)_ _(last level element)_
+↘ _go to [IFrameResource](#IFrameResource_67)_ _(last level element)_
 
 ```js
 // Add a "HTMLResource" child to current "Companion". Return "Companion" to stay on same current level.
 addHTMLResource(content: string): Companion
 ```
 
-↘ _go to [Companion](#Companion_62)_ _(current class)_
+↘ _go to [Companion](#Companion_65)_ _(current class)_
 
 ```js
 // Attach a "HTMLResource" child to current "Companion". Return "HTMLResource" to move on child level.
 attachHTMLResource(content: string): HTMLResource
 ```
 
-↘ _go to [HTMLResource](#HTMLResource_65)_ _(last level element)_
+↘ _go to [HTMLResource](#HTMLResource_68)_ _(last level element)_
 
 ```js
 // Add a "AdParameters" child to current "Companion". Return "Companion" to stay on same current level.
@@ -1406,7 +1486,7 @@ addAdParameters(content: string, attributes: {
 }): Companion
 ```
 
-↘ _go to [Companion](#Companion_62)_ _(current class)_
+↘ _go to [Companion](#Companion_65)_ _(current class)_
 
 ```js
 // Attach a "AdParameters" child to current "Companion". Return "AdParameters" to move on child level.
@@ -1415,35 +1495,35 @@ attachAdParameters(content: string, attributes: {
 }): AdParameters
 ```
 
-↘ _go to [AdParameters](#AdParameters_66)_ _(last level element)_
+↘ _go to [AdParameters](#AdParameters_69)_ _(last level element)_
 
 ```js
 // Add a "AltText" child to current "Companion". Return "Companion" to stay on same current level.
 addAltText(content: string): Companion
 ```
 
-↘ _go to [Companion](#Companion_62)_ _(current class)_
+↘ _go to [Companion](#Companion_65)_ _(current class)_
 
 ```js
 // Attach a "AltText" child to current "Companion". Return "AltText" to move on child level.
 attachAltText(content: string): AltText
 ```
 
-↘ _go to [AltText](#AltText_67)_ _(last level element)_
+↘ _go to [AltText](#AltText_70)_ _(last level element)_
 
 ```js
 // Add a "CompanionClickThrough" child to current "Companion". Return "Companion" to stay on same current level.
 addCompanionClickThrough(content: string): Companion
 ```
 
-↘ _go to [Companion](#Companion_62)_ _(current class)_
+↘ _go to [Companion](#Companion_65)_ _(current class)_
 
 ```js
 // Attach a "CompanionClickThrough" child to current "Companion". Return "CompanionClickThrough" to move on child level.
 attachCompanionClickThrough(content: string): CompanionClickThrough
 ```
 
-↘ _go to [CompanionClickThrough](#CompanionClickThrough_68)_ _(last level element)_
+↘ _go to [CompanionClickThrough](#CompanionClickThrough_71)_ _(last level element)_
 
 ```js
 // Add a "CompanionClickTracking" child to current "Companion". Return "Companion" to stay on same current level.
@@ -1452,7 +1532,7 @@ addCompanionClickTracking(content: string, attributes: {
 }): Companion
 ```
 
-↘ _go to [Companion](#Companion_62)_ _(current class)_
+↘ _go to [Companion](#Companion_65)_ _(current class)_
 
 ```js
 // Attach a "CompanionClickTracking" child to current "Companion". Return "CompanionClickTracking" to move on child level.
@@ -1461,67 +1541,67 @@ attachCompanionClickTracking(content: string, attributes: {
 }): CompanionClickTracking
 ```
 
-↘ _go to [CompanionClickTracking](#CompanionClickTracking_69)_ _(last level element)_
+↘ _go to [CompanionClickTracking](#CompanionClickTracking_72)_ _(last level element)_
 
 ```js
 // Attach a "TrackingEvents" child to current "Companion". Return "TrackingEvents" to move on child level.
 attachTrackingEvents(): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_70)_
+↘ _go to [TrackingEvents](#TrackingEvents_73)_
 
-<a id="StaticResource_63" name="StaticResource_63"></a>
+<a id="StaticResource_66" name="StaticResource_66"></a>
 ## Class StaticResource _extends_ VastElement
 
 At last one of this child and/or others are required below Companion in VAST4 spec
 
-child of [Companion](#Companion_62) ↗
+child of [Companion](#Companion_65) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="IFrameResource_64" name="IFrameResource_64"></a>
+<a id="IFrameResource_67" name="IFrameResource_67"></a>
 ## Class IFrameResource _extends_ VastElement
 
 At last one of this child and/or others are required below Companion in VAST4 spec
 
-child of [Companion](#Companion_62) ↗
+child of [Companion](#Companion_65) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="HTMLResource_65" name="HTMLResource_65"></a>
+<a id="HTMLResource_68" name="HTMLResource_68"></a>
 ## Class HTMLResource _extends_ VastElement
 
 At last one of this child and/or others are required below Companion in VAST4 spec
 
-child of [Companion](#Companion_62) ↗
+child of [Companion](#Companion_65) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="AdParameters_66" name="AdParameters_66"></a>
+<a id="AdParameters_69" name="AdParameters_69"></a>
 ## Class AdParameters _extends_ VastElement
 
-child of [Companion](#Companion_62) ↗
+child of [Companion](#Companion_65) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="AltText_67" name="AltText_67"></a>
+<a id="AltText_70" name="AltText_70"></a>
 ## Class AltText _extends_ VastElement
 
-child of [Companion](#Companion_62) ↗
+child of [Companion](#Companion_65) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="CompanionClickThrough_68" name="CompanionClickThrough_68"></a>
+<a id="CompanionClickThrough_71" name="CompanionClickThrough_71"></a>
 ## Class CompanionClickThrough _extends_ VastElement
 
-child of [Companion](#Companion_62) ↗
+child of [Companion](#Companion_65) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="CompanionClickTracking_69" name="CompanionClickTracking_69"></a>
+<a id="CompanionClickTracking_72" name="CompanionClickTracking_72"></a>
 ## Class CompanionClickTracking _extends_ VastElement
 
-child of [Companion](#Companion_62) ↗
+child of [Companion](#Companion_65) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="TrackingEvents_70" name="TrackingEvents_70"></a>
+<a id="TrackingEvents_73" name="TrackingEvents_73"></a>
 ## Class TrackingEvents _extends_ VastElement
 
-child of [Companion](#Companion_62) ↗
+child of [Companion](#Companion_65) ↗
 
 ### methods
 
@@ -1534,7 +1614,7 @@ addTracking(content: string, attributes: {
 }): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_70)_ _(current class)_
+↘ _go to [TrackingEvents](#TrackingEvents_73)_ _(current class)_
 
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
@@ -1543,15 +1623,15 @@ attachTracking(content: string, attributes: {
 }): Tracking
 ```
 
-↘ _go to [Tracking](#Tracking_71)_ _(last level element)_
+↘ _go to [Tracking](#Tracking_74)_ _(last level element)_
 
-<a id="Tracking_71" name="Tracking_71"></a>
+<a id="Tracking_74" name="Tracking_74"></a>
 ## Class Tracking _extends_ VastElement
 
-child of [TrackingEvents](#TrackingEvents_70) ↗
+child of [TrackingEvents](#TrackingEvents_73) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="Wrapper_72" name="Wrapper_72"></a>
+<a id="Wrapper_75" name="Wrapper_75"></a>
 ## Class Wrapper _extends_ VastElement
 
 An uniq one of this child or others at same level are required below Ad in VAST4 spec
@@ -1569,7 +1649,7 @@ addImpression(content: string, attributes: {
 }): Wrapper
 ```
 
-↘ _go to [Wrapper](#Wrapper_72)_ _(current class)_
+↘ _go to [Wrapper](#Wrapper_75)_ _(current class)_
 
 ```js
 // Attach a "Impression" child to current "Wrapper". Return "Impression" to move on child level.
@@ -1578,21 +1658,21 @@ attachImpression(content: string, attributes: {
 }): Impression
 ```
 
-↘ _go to [Impression](#Impression_73)_ _(last level element)_
+↘ _go to [Impression](#Impression_76)_ _(last level element)_
 
 ```js
 // Add a "VASTAdTagURI" child to current "Wrapper". Return "Wrapper" to stay on same current level.
 addVASTAdTagURI(content: string): Wrapper
 ```
 
-↘ _go to [Wrapper](#Wrapper_72)_ _(current class)_
+↘ _go to [Wrapper](#Wrapper_75)_ _(current class)_
 
 ```js
 // Attach a "VASTAdTagURI" child to current "Wrapper". Return "VASTAdTagURI" to move on child level.
 attachVASTAdTagURI(content: string): VASTAdTagURI
 ```
 
-↘ _go to [VASTAdTagURI](#VASTAdTagURI_74)_ _(last level element)_
+↘ _go to [VASTAdTagURI](#VASTAdTagURI_77)_ _(last level element)_
 
 ```js
 // Add a "AdSystem" child to current "Wrapper". Return "Wrapper" to stay on same current level.
@@ -1601,7 +1681,7 @@ addAdSystem(content: string, attributes: {
 }): Wrapper
 ```
 
-↘ _go to [Wrapper](#Wrapper_72)_ _(current class)_
+↘ _go to [Wrapper](#Wrapper_75)_ _(current class)_
 
 ```js
 // Attach a "AdSystem" child to current "Wrapper". Return "AdSystem" to move on child level.
@@ -1610,7 +1690,7 @@ attachAdSystem(content: string, attributes: {
 }): AdSystem
 ```
 
-↘ _go to [AdSystem](#AdSystem_75)_ _(last level element)_
+↘ _go to [AdSystem](#AdSystem_78)_ _(last level element)_
 
 ```js
 // Add a "Pricing" child to current "Wrapper". Return "Wrapper" to stay on same current level.
@@ -1620,7 +1700,7 @@ addPricing(content: string, attributes: {
 }): Wrapper
 ```
 
-↘ _go to [Wrapper](#Wrapper_72)_ _(current class)_
+↘ _go to [Wrapper](#Wrapper_75)_ _(current class)_
 
 ```js
 // Attach a "Pricing" child to current "Wrapper". Return "Pricing" to move on child level.
@@ -1630,21 +1710,21 @@ attachPricing(content: string, attributes: {
 }): Pricing
 ```
 
-↘ _go to [Pricing](#Pricing_76)_ _(last level element)_
+↘ _go to [Pricing](#Pricing_79)_ _(last level element)_
 
 ```js
 // Add a "Error" child to current "Wrapper". Return "Wrapper" to stay on same current level.
 addError(content: string): Wrapper
 ```
 
-↘ _go to [Wrapper](#Wrapper_72)_ _(current class)_
+↘ _go to [Wrapper](#Wrapper_75)_ _(current class)_
 
 ```js
 // Attach a "Error" child to current "Wrapper". Return "Error" to move on child level.
 attachError(content: string): Error
 ```
 
-↘ _go to [Error](#Error_77)_ _(last level element)_
+↘ _go to [Error](#Error_80)_ _(last level element)_
 
 ```js
 // Attach a "ViewableImpression" child to current "Wrapper". Return "ViewableImpression" to move on child level.
@@ -1653,69 +1733,69 @@ attachViewableImpression(attributes: {
 }): ViewableImpression
 ```
 
-↘ _go to [ViewableImpression](#ViewableImpression_78)_
+↘ _go to [ViewableImpression](#ViewableImpression_81)_
 
 ```js
 // Attach a "AdVerifications" child to current "Wrapper". Return "AdVerifications" to move on child level.
 attachAdVerifications(): AdVerifications
 ```
 
-↘ _go to [AdVerifications](#AdVerifications_82)_
+↘ _go to [AdVerifications](#AdVerifications_85)_
 
 ```js
 // Attach a "Extensions" child to current "Wrapper". Return "Extensions" to move on child level.
 attachExtensions(): Extensions
 ```
 
-↘ _go to [Extensions](#Extensions_85)_
+↘ _go to [Extensions](#Extensions_88)_
 
 ```js
 // Attach a "Creatives" child to current "Wrapper". Return "Creatives" to move on child level.
 attachCreatives(): Creatives
 ```
 
-↘ _go to [Creatives](#Creatives_87)_
+↘ _go to [Creatives](#Creatives_90)_
 
-<a id="Impression_73" name="Impression_73"></a>
+<a id="Impression_76" name="Impression_76"></a>
 ## Class Impression _extends_ VastElement
 
 At last one of this child and/or others are required below Wrapper in VAST4 spec
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="VASTAdTagURI_74" name="VASTAdTagURI_74"></a>
+<a id="VASTAdTagURI_77" name="VASTAdTagURI_77"></a>
 ## Class VASTAdTagURI _extends_ VastElement
 
 This child is required below Wrapper in VAST4 spec
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="AdSystem_75" name="AdSystem_75"></a>
+<a id="AdSystem_78" name="AdSystem_78"></a>
 ## Class AdSystem _extends_ VastElement
 
 This child is required below Wrapper in VAST4 spec
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="Pricing_76" name="Pricing_76"></a>
+<a id="Pricing_79" name="Pricing_79"></a>
 ## Class Pricing _extends_ VastElement
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="Error_77" name="Error_77"></a>
+<a id="Error_80" name="Error_80"></a>
 ## Class Error _extends_ VastElement
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="ViewableImpression_78" name="ViewableImpression_78"></a>
+<a id="ViewableImpression_81" name="ViewableImpression_81"></a>
 ## Class ViewableImpression _extends_ VastElement
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 ### methods
 
@@ -1726,65 +1806,65 @@ _all herited from [VastElement](#VastElement)_ and :
 addViewable(content: string): ViewableImpression
 ```
 
-↘ _go to [ViewableImpression](#ViewableImpression_78)_ _(current class)_
+↘ _go to [ViewableImpression](#ViewableImpression_81)_ _(current class)_
 
 ```js
 // Attach a "Viewable" child to current "ViewableImpression". Return "Viewable" to move on child level.
 attachViewable(content: string): Viewable
 ```
 
-↘ _go to [Viewable](#Viewable_79)_ _(last level element)_
+↘ _go to [Viewable](#Viewable_82)_ _(last level element)_
 
 ```js
 // Add a "NotViewable" child to current "ViewableImpression". Return "ViewableImpression" to stay on same current level.
 addNotViewable(content: string): ViewableImpression
 ```
 
-↘ _go to [ViewableImpression](#ViewableImpression_78)_ _(current class)_
+↘ _go to [ViewableImpression](#ViewableImpression_81)_ _(current class)_
 
 ```js
 // Attach a "NotViewable" child to current "ViewableImpression". Return "NotViewable" to move on child level.
 attachNotViewable(content: string): NotViewable
 ```
 
-↘ _go to [NotViewable](#NotViewable_80)_ _(last level element)_
+↘ _go to [NotViewable](#NotViewable_83)_ _(last level element)_
 
 ```js
 // Add a "ViewUndetermined" child to current "ViewableImpression". Return "ViewableImpression" to stay on same current level.
 addViewUndetermined(content: string): ViewableImpression
 ```
 
-↘ _go to [ViewableImpression](#ViewableImpression_78)_ _(current class)_
+↘ _go to [ViewableImpression](#ViewableImpression_81)_ _(current class)_
 
 ```js
 // Attach a "ViewUndetermined" child to current "ViewableImpression". Return "ViewUndetermined" to move on child level.
 attachViewUndetermined(content: string): ViewUndetermined
 ```
 
-↘ _go to [ViewUndetermined](#ViewUndetermined_81)_ _(last level element)_
+↘ _go to [ViewUndetermined](#ViewUndetermined_84)_ _(last level element)_
 
-<a id="Viewable_79" name="Viewable_79"></a>
+<a id="Viewable_82" name="Viewable_82"></a>
 ## Class Viewable _extends_ VastElement
 
-child of [ViewableImpression](#ViewableImpression_78) ↗
+child of [ViewableImpression](#ViewableImpression_81) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="NotViewable_80" name="NotViewable_80"></a>
+<a id="NotViewable_83" name="NotViewable_83"></a>
 ## Class NotViewable _extends_ VastElement
 
-child of [ViewableImpression](#ViewableImpression_78) ↗
+child of [ViewableImpression](#ViewableImpression_81) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="ViewUndetermined_81" name="ViewUndetermined_81"></a>
+<a id="ViewUndetermined_84" name="ViewUndetermined_84"></a>
 ## Class ViewUndetermined _extends_ VastElement
 
-child of [ViewableImpression](#ViewableImpression_78) ↗
+child of [ViewableImpression](#ViewableImpression_81) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="AdVerifications_82" name="AdVerifications_82"></a>
+<a id="AdVerifications_85" name="AdVerifications_85"></a>
 ## Class AdVerifications _extends_ VastElement
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 ### methods
 
@@ -1797,12 +1877,12 @@ attachVerification(attributes: {
 }): Verification
 ```
 
-↘ _go to [Verification](#Verification_83)_
+↘ _go to [Verification](#Verification_86)_
 
-<a id="Verification_83" name="Verification_83"></a>
+<a id="Verification_86" name="Verification_86"></a>
 ## Class Verification _extends_ VastElement
 
-child of [AdVerifications](#AdVerifications_82) ↗
+child of [AdVerifications](#AdVerifications_85) ↗
 
 ### methods
 
@@ -1815,7 +1895,7 @@ addViewableImpression(content: string, attributes: {
 }): Verification
 ```
 
-↘ _go to [Verification](#Verification_83)_ _(current class)_
+↘ _go to [Verification](#Verification_86)_ _(current class)_
 
 ```js
 // Attach a "ViewableImpression" child to current "Verification". Return "ViewableImpression" to move on child level.
@@ -1824,18 +1904,18 @@ attachViewableImpression(content: string, attributes: {
 }): ViewableImpression
 ```
 
-↘ _go to [ViewableImpression](#ViewableImpression_84)_ _(last level element)_
+↘ _go to [ViewableImpression](#ViewableImpression_87)_ _(last level element)_
 
-<a id="ViewableImpression_84" name="ViewableImpression_84"></a>
+<a id="ViewableImpression_87" name="ViewableImpression_87"></a>
 ## Class ViewableImpression _extends_ VastElement
 
-child of [Verification](#Verification_83) ↗
+child of [Verification](#Verification_86) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="Extensions_85" name="Extensions_85"></a>
+<a id="Extensions_88" name="Extensions_88"></a>
 ## Class Extensions _extends_ VastElement
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 ### methods
 
@@ -1848,7 +1928,7 @@ addExtension(content: string, attributes: {
 }): Extensions
 ```
 
-↘ _go to [Extensions](#Extensions_85)_ _(current class)_
+↘ _go to [Extensions](#Extensions_88)_ _(current class)_
 
 ```js
 // Attach a "Extension" child to current "Extensions". Return "Extension" to move on child level.
@@ -1857,18 +1937,18 @@ attachExtension(content: string, attributes: {
 }): Extension
 ```
 
-↘ _go to [Extension](#Extension_86)_ _(last level element)_
+↘ _go to [Extension](#Extension_89)_ _(last level element)_
 
-<a id="Extension_86" name="Extension_86"></a>
+<a id="Extension_89" name="Extension_89"></a>
 ## Class Extension _extends_ VastElement
 
-child of [Extensions](#Extensions_85) ↗
+child of [Extensions](#Extensions_88) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="Creatives_87" name="Creatives_87"></a>
+<a id="Creatives_90" name="Creatives_90"></a>
 ## Class Creatives _extends_ VastElement
 
-child of [Wrapper](#Wrapper_72) ↗
+child of [Wrapper](#Wrapper_75) ↗
 
 ### methods
 
@@ -1883,12 +1963,12 @@ attachCreative(attributes: {
 }): Creative
 ```
 
-↘ _go to [Creative](#Creative_88)_
+↘ _go to [Creative](#Creative_91)_
 
-<a id="Creative_88" name="Creative_88"></a>
+<a id="Creative_91" name="Creative_91"></a>
 ## Class Creative _extends_ VastElement
 
-child of [Creatives](#Creatives_87) ↗
+child of [Creatives](#Creatives_90) ↗
 
 ### methods
 
@@ -1899,14 +1979,14 @@ _all herited from [VastElement](#VastElement)_ and :
 attachLinear(): Linear
 ```
 
-↘ _go to [Linear](#Linear_89)_
+↘ _go to [Linear](#Linear_92)_
 
 ```js
 // Attach a "NonLinearAds" child to current "Creative". Return "NonLinearAds" to move on child level.
 attachNonLinearAds(): NonLinearAds
 ```
 
-↘ _go to [NonLinearAds](#NonLinearAds_105)_
+↘ _go to [NonLinearAds](#NonLinearAds_108)_
 
 ```js
 // Attach a "CompanionAds" child to current "Creative". Return "CompanionAds" to move on child level.
@@ -1915,14 +1995,14 @@ attachCompanionAds(attributes: {
 }): CompanionAds
 ```
 
-↘ _go to [CompanionAds](#CompanionAds_111)_
+↘ _go to [CompanionAds](#CompanionAds_114)_
 
-<a id="Linear_89" name="Linear_89"></a>
+<a id="Linear_92" name="Linear_92"></a>
 ## Class Linear _extends_ VastElement
 
 An uniq one of this child or others at same level are required below Creative in VAST4 spec
 
-child of [Creative](#Creative_88) ↗
+child of [Creative](#Creative_91) ↗
 
 ### methods
 
@@ -1933,40 +2013,40 @@ _all herited from [VastElement](#VastElement)_ and :
 attachTrackingEvents(): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_90)_
+↘ _go to [TrackingEvents](#TrackingEvents_93)_
 
 ```js
 // Attach a "VideoClicks" child to current "Linear". Return "VideoClicks" to move on child level.
 attachVideoClicks(): VideoClicks
 ```
 
-↘ _go to [VideoClicks](#VideoClicks_92)_
+↘ _go to [VideoClicks](#VideoClicks_95)_
 
 ```js
 // Attach a "Icons" child to current "Linear". Return "Icons" to move on child level.
 attachIcons(): Icons
 ```
 
-↘ _go to [Icons](#Icons_95)_
+↘ _go to [Icons](#Icons_98)_
 
 ```js
 // Add a "InteractiveCreativeFile" child to current "Linear". Return "Linear" to stay on same current level.
 addInteractiveCreativeFile(content: string): Linear
 ```
 
-↘ _go to [Linear](#Linear_89)_ _(current class)_
+↘ _go to [Linear](#Linear_92)_ _(current class)_
 
 ```js
 // Attach a "InteractiveCreativeFile" child to current "Linear". Return "InteractiveCreativeFile" to move on child level.
 attachInteractiveCreativeFile(content: string): InteractiveCreativeFile
 ```
 
-↘ _go to [InteractiveCreativeFile](#InteractiveCreativeFile_104)_ _(last level element)_
+↘ _go to [InteractiveCreativeFile](#InteractiveCreativeFile_107)_ _(last level element)_
 
-<a id="TrackingEvents_90" name="TrackingEvents_90"></a>
+<a id="TrackingEvents_93" name="TrackingEvents_93"></a>
 ## Class TrackingEvents _extends_ VastElement
 
-child of [Linear](#Linear_89) ↗
+child of [Linear](#Linear_92) ↗
 
 ### methods
 
@@ -1980,7 +2060,7 @@ addTracking(content: string, attributes: {
 }): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_90)_ _(current class)_
+↘ _go to [TrackingEvents](#TrackingEvents_93)_ _(current class)_
 
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
@@ -1990,18 +2070,18 @@ attachTracking(content: string, attributes: {
 }): Tracking
 ```
 
-↘ _go to [Tracking](#Tracking_91)_ _(last level element)_
+↘ _go to [Tracking](#Tracking_94)_ _(last level element)_
 
-<a id="Tracking_91" name="Tracking_91"></a>
+<a id="Tracking_94" name="Tracking_94"></a>
 ## Class Tracking _extends_ VastElement
 
-child of [TrackingEvents](#TrackingEvents_90) ↗
+child of [TrackingEvents](#TrackingEvents_93) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="VideoClicks_92" name="VideoClicks_92"></a>
+<a id="VideoClicks_95" name="VideoClicks_95"></a>
 ## Class VideoClicks _extends_ VastElement
 
-child of [Linear](#Linear_89) ↗
+child of [Linear](#Linear_92) ↗
 
 ### methods
 
@@ -2014,7 +2094,7 @@ addClickTracking(content: string, attributes: {
 }): VideoClicks
 ```
 
-↘ _go to [VideoClicks](#VideoClicks_92)_ _(current class)_
+↘ _go to [VideoClicks](#VideoClicks_95)_ _(current class)_
 
 ```js
 // Attach a "ClickTracking" child to current "VideoClicks". Return "ClickTracking" to move on child level.
@@ -2023,7 +2103,7 @@ attachClickTracking(content: string, attributes: {
 }): ClickTracking
 ```
 
-↘ _go to [ClickTracking](#ClickTracking_93)_ _(last level element)_
+↘ _go to [ClickTracking](#ClickTracking_96)_ _(last level element)_
 
 ```js
 // Add a "CustomClick" child to current "VideoClicks". Return "VideoClicks" to stay on same current level.
@@ -2032,7 +2112,7 @@ addCustomClick(content: string, attributes: {
 }): VideoClicks
 ```
 
-↘ _go to [VideoClicks](#VideoClicks_92)_ _(current class)_
+↘ _go to [VideoClicks](#VideoClicks_95)_ _(current class)_
 
 ```js
 // Attach a "CustomClick" child to current "VideoClicks". Return "CustomClick" to move on child level.
@@ -2041,24 +2121,24 @@ attachCustomClick(content: string, attributes: {
 }): CustomClick
 ```
 
-↘ _go to [CustomClick](#CustomClick_94)_ _(last level element)_
+↘ _go to [CustomClick](#CustomClick_97)_ _(last level element)_
 
-<a id="ClickTracking_93" name="ClickTracking_93"></a>
+<a id="ClickTracking_96" name="ClickTracking_96"></a>
 ## Class ClickTracking _extends_ VastElement
 
-child of [VideoClicks](#VideoClicks_92) ↗
+child of [VideoClicks](#VideoClicks_95) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="CustomClick_94" name="CustomClick_94"></a>
+<a id="CustomClick_97" name="CustomClick_97"></a>
 ## Class CustomClick _extends_ VastElement
 
-child of [VideoClicks](#VideoClicks_92) ↗
+child of [VideoClicks](#VideoClicks_95) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="Icons_95" name="Icons_95"></a>
+<a id="Icons_98" name="Icons_98"></a>
 ## Class Icons _extends_ VastElement
 
-child of [Linear](#Linear_89) ↗
+child of [Linear](#Linear_92) ↗
 
 ### methods
 
@@ -2079,14 +2159,14 @@ attachIcon(attributes: {
 }): Icon
 ```
 
-↘ _go to [Icon](#Icon_96)_
+↘ _go to [Icon](#Icon_99)_
 
-<a id="Icon_96" name="Icon_96"></a>
+<a id="Icon_99" name="Icon_99"></a>
 ## Class Icon _extends_ VastElement
 
 At last one of this child and/or others are required below Icons in VAST4 spec
 
-child of [Icons](#Icons_95) ↗
+child of [Icons](#Icons_98) ↗
 
 ### methods
 
@@ -2099,7 +2179,7 @@ addStaticResource(content: string, attributes: {
 }): Icon
 ```
 
-↘ _go to [Icon](#Icon_96)_ _(current class)_
+↘ _go to [Icon](#Icon_99)_ _(current class)_
 
 ```js
 // Attach a "StaticResource" child to current "Icon". Return "StaticResource" to move on child level.
@@ -2108,79 +2188,79 @@ attachStaticResource(content: string, attributes: {
 }): StaticResource
 ```
 
-↘ _go to [StaticResource](#StaticResource_97)_ _(last level element)_
+↘ _go to [StaticResource](#StaticResource_100)_ _(last level element)_
 
 ```js
 // Add a "IFrameResource" child to current "Icon". Return "Icon" to stay on same current level.
 addIFrameResource(content: string): Icon
 ```
 
-↘ _go to [Icon](#Icon_96)_ _(current class)_
+↘ _go to [Icon](#Icon_99)_ _(current class)_
 
 ```js
 // Attach a "IFrameResource" child to current "Icon". Return "IFrameResource" to move on child level.
 attachIFrameResource(content: string): IFrameResource
 ```
 
-↘ _go to [IFrameResource](#IFrameResource_98)_ _(last level element)_
+↘ _go to [IFrameResource](#IFrameResource_101)_ _(last level element)_
 
 ```js
 // Add a "HTMLResource" child to current "Icon". Return "Icon" to stay on same current level.
 addHTMLResource(content: string): Icon
 ```
 
-↘ _go to [Icon](#Icon_96)_ _(current class)_
+↘ _go to [Icon](#Icon_99)_ _(current class)_
 
 ```js
 // Attach a "HTMLResource" child to current "Icon". Return "HTMLResource" to move on child level.
 attachHTMLResource(content: string): HTMLResource
 ```
 
-↘ _go to [HTMLResource](#HTMLResource_99)_ _(last level element)_
+↘ _go to [HTMLResource](#HTMLResource_102)_ _(last level element)_
 
 ```js
 // Attach a "IconClicks" child to current "Icon". Return "IconClicks" to move on child level.
 attachIconClicks(): IconClicks
 ```
 
-↘ _go to [IconClicks](#IconClicks_100)_
+↘ _go to [IconClicks](#IconClicks_103)_
 
 ```js
 // Add a "IconViewTracking" child to current "Icon". Return "Icon" to stay on same current level.
 addIconViewTracking(content: string): Icon
 ```
 
-↘ _go to [Icon](#Icon_96)_ _(current class)_
+↘ _go to [Icon](#Icon_99)_ _(current class)_
 
 ```js
 // Attach a "IconViewTracking" child to current "Icon". Return "IconViewTracking" to move on child level.
 attachIconViewTracking(content: string): IconViewTracking
 ```
 
-↘ _go to [IconViewTracking](#IconViewTracking_103)_ _(last level element)_
+↘ _go to [IconViewTracking](#IconViewTracking_106)_ _(last level element)_
 
-<a id="StaticResource_97" name="StaticResource_97"></a>
+<a id="StaticResource_100" name="StaticResource_100"></a>
 ## Class StaticResource _extends_ VastElement
 
-child of [Icon](#Icon_96) ↗
+child of [Icon](#Icon_99) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="IFrameResource_98" name="IFrameResource_98"></a>
+<a id="IFrameResource_101" name="IFrameResource_101"></a>
 ## Class IFrameResource _extends_ VastElement
 
-child of [Icon](#Icon_96) ↗
+child of [Icon](#Icon_99) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="HTMLResource_99" name="HTMLResource_99"></a>
+<a id="HTMLResource_102" name="HTMLResource_102"></a>
 ## Class HTMLResource _extends_ VastElement
 
-child of [Icon](#Icon_96) ↗
+child of [Icon](#Icon_99) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="IconClicks_100" name="IconClicks_100"></a>
+<a id="IconClicks_103" name="IconClicks_103"></a>
 ## Class IconClicks _extends_ VastElement
 
-child of [Icon](#Icon_96) ↗
+child of [Icon](#Icon_99) ↗
 
 ### methods
 
@@ -2191,59 +2271,59 @@ _all herited from [VastElement](#VastElement)_ and :
 addIconClickThrough(content: string): IconClicks
 ```
 
-↘ _go to [IconClicks](#IconClicks_100)_ _(current class)_
+↘ _go to [IconClicks](#IconClicks_103)_ _(current class)_
 
 ```js
 // Attach a "IconClickThrough" child to current "IconClicks". Return "IconClickThrough" to move on child level.
 attachIconClickThrough(content: string): IconClickThrough
 ```
 
-↘ _go to [IconClickThrough](#IconClickThrough_101)_ _(last level element)_
+↘ _go to [IconClickThrough](#IconClickThrough_104)_ _(last level element)_
 
 ```js
 // Add a "IconClickTracking" child to current "IconClicks". Return "IconClicks" to stay on same current level.
 addIconClickTracking(content: string): IconClicks
 ```
 
-↘ _go to [IconClicks](#IconClicks_100)_ _(current class)_
+↘ _go to [IconClicks](#IconClicks_103)_ _(current class)_
 
 ```js
 // Attach a "IconClickTracking" child to current "IconClicks". Return "IconClickTracking" to move on child level.
 attachIconClickTracking(content: string): IconClickTracking
 ```
 
-↘ _go to [IconClickTracking](#IconClickTracking_102)_ _(last level element)_
+↘ _go to [IconClickTracking](#IconClickTracking_105)_ _(last level element)_
 
-<a id="IconClickThrough_101" name="IconClickThrough_101"></a>
+<a id="IconClickThrough_104" name="IconClickThrough_104"></a>
 ## Class IconClickThrough _extends_ VastElement
 
-child of [IconClicks](#IconClicks_100) ↗
+child of [IconClicks](#IconClicks_103) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="IconClickTracking_102" name="IconClickTracking_102"></a>
+<a id="IconClickTracking_105" name="IconClickTracking_105"></a>
 ## Class IconClickTracking _extends_ VastElement
 
-child of [IconClicks](#IconClicks_100) ↗
+child of [IconClicks](#IconClicks_103) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="IconViewTracking_103" name="IconViewTracking_103"></a>
+<a id="IconViewTracking_106" name="IconViewTracking_106"></a>
 ## Class IconViewTracking _extends_ VastElement
 
-child of [Icon](#Icon_96) ↗
+child of [Icon](#Icon_99) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="InteractiveCreativeFile_104" name="InteractiveCreativeFile_104"></a>
+<a id="InteractiveCreativeFile_107" name="InteractiveCreativeFile_107"></a>
 ## Class InteractiveCreativeFile _extends_ VastElement
 
-child of [Linear](#Linear_89) ↗
+child of [Linear](#Linear_92) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="NonLinearAds_105" name="NonLinearAds_105"></a>
+<a id="NonLinearAds_108" name="NonLinearAds_108"></a>
 ## Class NonLinearAds _extends_ VastElement
 
 An uniq one of this child or others at same level are required below Creative in VAST4 spec
 
-child of [Creative](#Creative_88) ↗
+child of [Creative](#Creative_91) ↗
 
 ### methods
 
@@ -2254,19 +2334,19 @@ _all herited from [VastElement](#VastElement)_ and :
 attachNonLinear(): NonLinear
 ```
 
-↘ _go to [NonLinear](#NonLinear_106)_
+↘ _go to [NonLinear](#NonLinear_109)_
 
 ```js
 // Attach a "TrackingEvents" child to current "NonLinearAds". Return "TrackingEvents" to move on child level.
 attachTrackingEvents(): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_109)_
+↘ _go to [TrackingEvents](#TrackingEvents_112)_
 
-<a id="NonLinear_106" name="NonLinear_106"></a>
+<a id="NonLinear_109" name="NonLinear_109"></a>
 ## Class NonLinear _extends_ VastElement
 
-child of [NonLinearAds](#NonLinearAds_105) ↗
+child of [NonLinearAds](#NonLinearAds_108) ↗
 
 ### methods
 
@@ -2277,45 +2357,45 @@ _all herited from [VastElement](#VastElement)_ and :
 addNonLinearClickThrough(content: string): NonLinear
 ```
 
-↘ _go to [NonLinear](#NonLinear_106)_ _(current class)_
+↘ _go to [NonLinear](#NonLinear_109)_ _(current class)_
 
 ```js
 // Attach a "NonLinearClickThrough" child to current "NonLinear". Return "NonLinearClickThrough" to move on child level.
 attachNonLinearClickThrough(content: string): NonLinearClickThrough
 ```
 
-↘ _go to [NonLinearClickThrough](#NonLinearClickThrough_107)_ _(last level element)_
+↘ _go to [NonLinearClickThrough](#NonLinearClickThrough_110)_ _(last level element)_
 
 ```js
 // Add a "NonLinearClickTracking" child to current "NonLinear". Return "NonLinear" to stay on same current level.
 addNonLinearClickTracking(content: string): NonLinear
 ```
 
-↘ _go to [NonLinear](#NonLinear_106)_ _(current class)_
+↘ _go to [NonLinear](#NonLinear_109)_ _(current class)_
 
 ```js
 // Attach a "NonLinearClickTracking" child to current "NonLinear". Return "NonLinearClickTracking" to move on child level.
 attachNonLinearClickTracking(content: string): NonLinearClickTracking
 ```
 
-↘ _go to [NonLinearClickTracking](#NonLinearClickTracking_108)_ _(last level element)_
+↘ _go to [NonLinearClickTracking](#NonLinearClickTracking_111)_ _(last level element)_
 
-<a id="NonLinearClickThrough_107" name="NonLinearClickThrough_107"></a>
+<a id="NonLinearClickThrough_110" name="NonLinearClickThrough_110"></a>
 ## Class NonLinearClickThrough _extends_ VastElement
 
-child of [NonLinear](#NonLinear_106) ↗
+child of [NonLinear](#NonLinear_109) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="NonLinearClickTracking_108" name="NonLinearClickTracking_108"></a>
+<a id="NonLinearClickTracking_111" name="NonLinearClickTracking_111"></a>
 ## Class NonLinearClickTracking _extends_ VastElement
 
-child of [NonLinear](#NonLinear_106) ↗
+child of [NonLinear](#NonLinear_109) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="TrackingEvents_109" name="TrackingEvents_109"></a>
+<a id="TrackingEvents_112" name="TrackingEvents_112"></a>
 ## Class TrackingEvents _extends_ VastElement
 
-child of [NonLinearAds](#NonLinearAds_105) ↗
+child of [NonLinearAds](#NonLinearAds_108) ↗
 
 ### methods
 
@@ -2328,7 +2408,7 @@ addTracking(content: string, attributes: {
 }): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_109)_ _(current class)_
+↘ _go to [TrackingEvents](#TrackingEvents_112)_ _(current class)_
 
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
@@ -2337,20 +2417,20 @@ attachTracking(content: string, attributes: {
 }): Tracking
 ```
 
-↘ _go to [Tracking](#Tracking_110)_ _(last level element)_
+↘ _go to [Tracking](#Tracking_113)_ _(last level element)_
 
-<a id="Tracking_110" name="Tracking_110"></a>
+<a id="Tracking_113" name="Tracking_113"></a>
 ## Class Tracking _extends_ VastElement
 
-child of [TrackingEvents](#TrackingEvents_109) ↗
+child of [TrackingEvents](#TrackingEvents_112) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="CompanionAds_111" name="CompanionAds_111"></a>
+<a id="CompanionAds_114" name="CompanionAds_114"></a>
 ## Class CompanionAds _extends_ VastElement
 
 An uniq one of this child or others at same level are required below Creative in VAST4 spec
 
-child of [Creative](#Creative_88) ↗
+child of [Creative](#Creative_91) ↗
 
 ### methods
 
@@ -2376,12 +2456,12 @@ attachCompanion(attributes: {
 }): Companion
 ```
 
-↘ _go to [Companion](#Companion_112)_
+↘ _go to [Companion](#Companion_115)_
 
-<a id="Companion_112" name="Companion_112"></a>
+<a id="Companion_115" name="Companion_115"></a>
 ## Class Companion _extends_ VastElement
 
-child of [CompanionAds](#CompanionAds_111) ↗
+child of [CompanionAds](#CompanionAds_114) ↗
 
 ### methods
 
@@ -2394,7 +2474,7 @@ addStaticResource(content: string, attributes: {
 }): Companion
 ```
 
-↘ _go to [Companion](#Companion_112)_ _(current class)_
+↘ _go to [Companion](#Companion_115)_ _(current class)_
 
 ```js
 // Attach a "StaticResource" child to current "Companion". Return "StaticResource" to move on child level.
@@ -2403,35 +2483,35 @@ attachStaticResource(content: string, attributes: {
 }): StaticResource
 ```
 
-↘ _go to [StaticResource](#StaticResource_113)_ _(last level element)_
+↘ _go to [StaticResource](#StaticResource_116)_ _(last level element)_
 
 ```js
 // Add a "IFrameResource" child to current "Companion". Return "Companion" to stay on same current level.
 addIFrameResource(content: string): Companion
 ```
 
-↘ _go to [Companion](#Companion_112)_ _(current class)_
+↘ _go to [Companion](#Companion_115)_ _(current class)_
 
 ```js
 // Attach a "IFrameResource" child to current "Companion". Return "IFrameResource" to move on child level.
 attachIFrameResource(content: string): IFrameResource
 ```
 
-↘ _go to [IFrameResource](#IFrameResource_114)_ _(last level element)_
+↘ _go to [IFrameResource](#IFrameResource_117)_ _(last level element)_
 
 ```js
 // Add a "HTMLResource" child to current "Companion". Return "Companion" to stay on same current level.
 addHTMLResource(content: string): Companion
 ```
 
-↘ _go to [Companion](#Companion_112)_ _(current class)_
+↘ _go to [Companion](#Companion_115)_ _(current class)_
 
 ```js
 // Attach a "HTMLResource" child to current "Companion". Return "HTMLResource" to move on child level.
 attachHTMLResource(content: string): HTMLResource
 ```
 
-↘ _go to [HTMLResource](#HTMLResource_115)_ _(last level element)_
+↘ _go to [HTMLResource](#HTMLResource_118)_ _(last level element)_
 
 ```js
 // Add a "AdParameters" child to current "Companion". Return "Companion" to stay on same current level.
@@ -2440,7 +2520,7 @@ addAdParameters(content: string, attributes: {
 }): Companion
 ```
 
-↘ _go to [Companion](#Companion_112)_ _(current class)_
+↘ _go to [Companion](#Companion_115)_ _(current class)_
 
 ```js
 // Attach a "AdParameters" child to current "Companion". Return "AdParameters" to move on child level.
@@ -2449,35 +2529,35 @@ attachAdParameters(content: string, attributes: {
 }): AdParameters
 ```
 
-↘ _go to [AdParameters](#AdParameters_116)_ _(last level element)_
+↘ _go to [AdParameters](#AdParameters_119)_ _(last level element)_
 
 ```js
 // Add a "AltText" child to current "Companion". Return "Companion" to stay on same current level.
 addAltText(content: string): Companion
 ```
 
-↘ _go to [Companion](#Companion_112)_ _(current class)_
+↘ _go to [Companion](#Companion_115)_ _(current class)_
 
 ```js
 // Attach a "AltText" child to current "Companion". Return "AltText" to move on child level.
 attachAltText(content: string): AltText
 ```
 
-↘ _go to [AltText](#AltText_117)_ _(last level element)_
+↘ _go to [AltText](#AltText_120)_ _(last level element)_
 
 ```js
 // Add a "CompanionClickThrough" child to current "Companion". Return "Companion" to stay on same current level.
 addCompanionClickThrough(content: string): Companion
 ```
 
-↘ _go to [Companion](#Companion_112)_ _(current class)_
+↘ _go to [Companion](#Companion_115)_ _(current class)_
 
 ```js
 // Attach a "CompanionClickThrough" child to current "Companion". Return "CompanionClickThrough" to move on child level.
 attachCompanionClickThrough(content: string): CompanionClickThrough
 ```
 
-↘ _go to [CompanionClickThrough](#CompanionClickThrough_118)_ _(last level element)_
+↘ _go to [CompanionClickThrough](#CompanionClickThrough_121)_ _(last level element)_
 
 ```js
 // Add a "CompanionClickTracking" child to current "Companion". Return "Companion" to stay on same current level.
@@ -2486,7 +2566,7 @@ addCompanionClickTracking(content: string, attributes: {
 }): Companion
 ```
 
-↘ _go to [Companion](#Companion_112)_ _(current class)_
+↘ _go to [Companion](#Companion_115)_ _(current class)_
 
 ```js
 // Attach a "CompanionClickTracking" child to current "Companion". Return "CompanionClickTracking" to move on child level.
@@ -2495,61 +2575,61 @@ attachCompanionClickTracking(content: string, attributes: {
 }): CompanionClickTracking
 ```
 
-↘ _go to [CompanionClickTracking](#CompanionClickTracking_119)_ _(last level element)_
+↘ _go to [CompanionClickTracking](#CompanionClickTracking_122)_ _(last level element)_
 
 ```js
 // Attach a "TrackingEvents" child to current "Companion". Return "TrackingEvents" to move on child level.
 attachTrackingEvents(): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_120)_
+↘ _go to [TrackingEvents](#TrackingEvents_123)_
 
-<a id="StaticResource_113" name="StaticResource_113"></a>
+<a id="StaticResource_116" name="StaticResource_116"></a>
 ## Class StaticResource _extends_ VastElement
 
-child of [Companion](#Companion_112) ↗
+child of [Companion](#Companion_115) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="IFrameResource_114" name="IFrameResource_114"></a>
+<a id="IFrameResource_117" name="IFrameResource_117"></a>
 ## Class IFrameResource _extends_ VastElement
 
-child of [Companion](#Companion_112) ↗
+child of [Companion](#Companion_115) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="HTMLResource_115" name="HTMLResource_115"></a>
+<a id="HTMLResource_118" name="HTMLResource_118"></a>
 ## Class HTMLResource _extends_ VastElement
 
-child of [Companion](#Companion_112) ↗
+child of [Companion](#Companion_115) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="AdParameters_116" name="AdParameters_116"></a>
+<a id="AdParameters_119" name="AdParameters_119"></a>
 ## Class AdParameters _extends_ VastElement
 
-child of [Companion](#Companion_112) ↗
+child of [Companion](#Companion_115) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="AltText_117" name="AltText_117"></a>
+<a id="AltText_120" name="AltText_120"></a>
 ## Class AltText _extends_ VastElement
 
-child of [Companion](#Companion_112) ↗
+child of [Companion](#Companion_115) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="CompanionClickThrough_118" name="CompanionClickThrough_118"></a>
+<a id="CompanionClickThrough_121" name="CompanionClickThrough_121"></a>
 ## Class CompanionClickThrough _extends_ VastElement
 
-child of [Companion](#Companion_112) ↗
+child of [Companion](#Companion_115) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="CompanionClickTracking_119" name="CompanionClickTracking_119"></a>
+<a id="CompanionClickTracking_122" name="CompanionClickTracking_122"></a>
 ## Class CompanionClickTracking _extends_ VastElement
 
-child of [Companion](#Companion_112) ↗
+child of [Companion](#Companion_115) ↗
 
 _no specific methods see [VastElement](#VastElement)_
-<a id="TrackingEvents_120" name="TrackingEvents_120"></a>
+<a id="TrackingEvents_123" name="TrackingEvents_123"></a>
 ## Class TrackingEvents _extends_ VastElement
 
-child of [Companion](#Companion_112) ↗
+child of [Companion](#Companion_115) ↗
 
 ### methods
 
@@ -2562,7 +2642,7 @@ addTracking(content: string, attributes: {
 }): TrackingEvents
 ```
 
-↘ _go to [TrackingEvents](#TrackingEvents_120)_ _(current class)_
+↘ _go to [TrackingEvents](#TrackingEvents_123)_ _(current class)_
 
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
@@ -2571,11 +2651,11 @@ attachTracking(content: string, attributes: {
 }): Tracking
 ```
 
-↘ _go to [Tracking](#Tracking_121)_ _(last level element)_
+↘ _go to [Tracking](#Tracking_124)_ _(last level element)_
 
-<a id="Tracking_121" name="Tracking_121"></a>
+<a id="Tracking_124" name="Tracking_124"></a>
 ## Class Tracking _extends_ VastElement
 
-child of [TrackingEvents](#TrackingEvents_120) ↗
+child of [TrackingEvents](#TrackingEvents_123) ↗
 
 _no specific methods see [VastElement](#VastElement)_

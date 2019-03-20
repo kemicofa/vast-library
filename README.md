@@ -334,4 +334,10 @@ and we have a much better api ;)
 
 MIT. Copyright (c) David Babel.
 
+## Contribs
+
+Thanks for your gentle contribs :
+
+- [https://github.com/s1232](Arild) https://github.com/DavidBabel/vast-builder/pull/12
+
 **Donations:** If you like this package, want it to be maintened and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.

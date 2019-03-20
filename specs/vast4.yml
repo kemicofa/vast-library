@@ -175,17 +175,24 @@ VAST:
           NonLinearAds:
             uniq: true # only one of this subitems
             NonLinear:
-              # param removed from v4 ?
-              # attrs:
-              #   - id
-              #   - width:
-              #   - height:
-              #   - expandedWidth
-              #   - expandedHeight
-              #   - scalable
-              #   - maintainAspectRatio
-              #   - minSuggestedDuration
-              #   - apiFramework
+              # param removed from v4 spec, but present in 4.1 of Nov 8th 2019
+              attrs:
+                - id
+                - width:
+                - height:
+                - expandedWidth
+                - expandedHeight
+                - scalable
+                - maintainAspectRatio
+                - minSuggestedDuration
+                - apiFramework
+              StaticResource:
+                alo: true # at least one of this subitems
+                <<: *StaticResource_types
+              IFrameResource:
+                alo: true # at least one of this subitems
+              HTMLResource:
+                alo: true # at least one of this subitems
               NonLinearClickThrough:
               NonLinearClickTracking:
             TrackingEvents:

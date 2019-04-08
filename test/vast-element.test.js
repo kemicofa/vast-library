@@ -142,8 +142,12 @@ describe("VAST Element", () => {
     assert.deepEqual(vast.getJson(), expected);
   });
   it("should return the vast version", () => {
-    vast.dangerouslyAddCustomTag("VAST", { version: 44 });
+    vast.dangerouslyAddCustomTag("VAST", { version: "44" });
     assert.equal(vast.getVastVersion(), 44);
+  });
+  it("should return the vast snake version", () => {
+    vast.dangerouslyAddCustomTag("VAST", { version: "4.4" });
+    assert.equal(vast.getVastSnakeVersion(), "4_4");
   });
   it("should return the vast code", () => {
     vast.dangerouslyAddCustomTag("VAST", "content", { version: 44 });

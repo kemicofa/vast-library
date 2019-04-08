@@ -46,6 +46,11 @@ getVastVersion(): number
 ```
 
 ```js
+// return the current VAST api version in snake case
+getVastSnakeVersion(): string
+```
+
+```js
 // return an array all direct childs with "name"
 getChilds(name: string): Array<VastElement>
 ```

@@ -1,7 +1,7 @@
 {
   "name": "vast-builder",
   "version": "0.0.0",
-  "description": "An intuitive standard IAB Vast XML generation API. Complient with specifications Vast 2.0 / 3.0 / 4.0",
+  "description": "An intuitive standard IAB Vast XML generation API. Complient with specifications Vast 2.0 / 3.0 / 4.0 / 4.1",
   "repository": {
     "type": "github",
     "url": "https://github.com/DavidBabel/vast-builder"
@@ -45,10 +45,11 @@
     "build": "yarn build-api",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "build-api": "yarn clean && yarn build-v2 && yarn build-v3 && yarn build-v4",
-    "build-v2": "node ./bin/build.js 2",
-    "build-v3": "node ./bin/build.js 3",
-    "build-v4": "node ./bin/build.js 4",
+    "build-api": "yarn clean && yarn build-v2 && yarn build-v3 && yarn build-v4 && yarn build-v4_1",
+    "build-v2": "node ./bin/build.js 2_0",
+    "build-v3": "node ./bin/build.js 3_0",
+    "build-v4": "node ./bin/build.js 4_0",
+    "build-v4_1": "node ./bin/build.js 4_1",
     "clean-fixtures": "rm -rf ./test/**/fixtures/*.xml",
     "clean": "rm -rf ./build",
     "precommit": "lint-staged"

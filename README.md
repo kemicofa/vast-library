@@ -18,7 +18,7 @@ An awesome library with great API which offer a complete support for IAB Video A
 Main features are :
 
 - validate a VAST from string input
-- awesome API to create 100% iab valid VAST 2, 3 & 4 (including vast 4.1)
+- awesome API to create 100% iab valid VAST 2, 3, 4 & 4.1
 - validate created VAST
 
 Why is it the best ? :
@@ -75,9 +75,11 @@ const bool = validate(
 const createVast = require('vast-builder');
 
 // vast1 is deprecated and not supported
+// options are optionnals
 const vast2 = createVast.v2(options);
 const vast3 = createVast.v3(options);
 const vast4 = createVast.v4(options);
+const vast4_1 = createVast.v4_1(options);
 ```
 
 ### Sample
@@ -205,9 +207,10 @@ This package does no magic under the hood, the API is very redondant and always 
 
 Full APIs are availables here :
 
-- [APIv2](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast2.md)
-- [APIv3](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast3.md)
-- [APIv4](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast4.md)
+- [APIv2](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast2_0.md)
+- [APIv3](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast3_0.md)
+- [APIv4](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast4_0.md)
+- [APIv4.1](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast4_1.md)
 
 ### Common Node API
 

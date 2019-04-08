@@ -7,11 +7,13 @@
 // TODO manage type (url/string ...)
 // TODO : babel tooling ?
 
-let vastVersion = process.argv[2];
+let vastVersionSnake = process.argv[2];
 
-if (!vastVersion) {
+if (!vastVersionSnake) {
   throw "this batch needs an arg with the vast version number";
 }
+
+let vastVersion = Number(vastVersionSnake.replace("_", "."));
 
 console.log("=======================");
 console.log("=== build version", vastVersion, "===");
@@ -23,7 +25,7 @@ let datas;
 try {
   const yaml = require("js-yaml");
   datas = yaml.safeLoad(
-    fs.readFileSync(`./specs/vast${vastVersion}.yml`, "utf8")
+    fs.readFileSync(`./specs/vast${vastVersionSnake}.yml`, "utf8")
   );
 } catch (error) {
   console.log("=> unable to load specs", error);
@@ -77,7 +79,7 @@ const apiDocumentation = {
 };
 
 // adjust to vast api number, just to intellisense beeing clean
-let j = vastVersion;
+let j = Math.floor(vastVersion);
 
 const generateApiAndDoc = (
   isFirst,
@@ -272,7 +274,7 @@ const validator = generateValidator(filteredDatas);
 
 // writing API
 fs.writeFileSync(
-  `./build/api/vast${vastVersion}.js`,
+  `./build/api/vast${vastVersionSnake}.js`,
   baseContentTemplate(vastVersion, allClassList.join(""), validator)
 );
 
@@ -281,7 +283,7 @@ asyncGetVastElementDoc(methods => {
 
   // writing documentation
   fs.writeFileSync(
-    `./build/doc/vast${vastVersion}.md`,
+    `./build/doc/vast${vastVersionSnake}.md`,
     getApiDocumentationTemplate(vastVersion, apiDocumentation)
   );
   console.log(" => build ok");

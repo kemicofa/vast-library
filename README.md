@@ -11,14 +11,14 @@
 
 <img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
 
-An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4
+An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4 (including 4.1)
 
 <img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/vast-demo.gif?raw=true" alt="app demo" />
 
 Main features are :
 
 - validate a VAST from string input
-- awesome API to create 100% iab valid VAST 2, 3 & 4
+- awesome API to create 100% iab valid VAST 2, 3 & 4 (including vast 4.1)
 - validate created VAST
 
 Why is it the best ? :

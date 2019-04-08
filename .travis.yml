@@ -1,15 +1,16 @@
 language: node_js
 sudo: false
 node_js:
-- 8
-- 9
-- 10
+  - 8
+  - 9
+  - 10
+  - 11
 
 script:
-- npm run test && codecov
+  - npm run test && codecov
 
 before_deploy:
-- npm --no-git-tag-version version `git describe --tags` 2>/dev/null || true
+  - npm --no-git-tag-version version `git describe --tags` 2>/dev/null || true
 
 deploy:
   provider: npm

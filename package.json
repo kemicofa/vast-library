@@ -34,7 +34,7 @@
   "license": "MIT",
   "thanks": "https://www.paypal.me/devilhunter/4",
   "dependencies": {
-    "xml-js": "^1.6.7"
+    "xml-js": "^1.6.11"
   },
   "engines": {
     "node": ">= 8"
@@ -69,14 +69,14 @@
     "@airbnb/node-memwatch": "^1.0.2",
     "@babel/core": "7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
-    "chai": "^4.1.2",
-    "codecov": "latest",
-    "fs-extra": "^5.0.0",
-    "jest": "^22.2.2",
-    "js-yaml": "^3.10.0",
-    "lint-staged": "^7.2.0",
-    "prettier": "^1.14.0",
-    "sinon": "^4.3.0",
-    "sinon-chai": "^2.14.0"
+    "chai": "^4.2.0",
+    "codecov": "^3.3.0",
+    "fs-extra": "^7.0.1",
+    "jest": "^24.7.1",
+    "js-yaml": "^3.13.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "sinon": "^7.3.1",
+    "sinon-chai": "^3.3.0"
   }
 }

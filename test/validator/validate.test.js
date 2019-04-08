@@ -16,6 +16,10 @@ describe('validate', () => {
     const vastRaw = '<valkjdlqksj>dmlsqkd<//dqsd>sd<<sd';
     assert.isFalse(vastLib.validate(vastRaw));
   });
+  it('should manage correctly nullish values inside a vast', () => {
+    const vastRaw = getFixtureContent('v4', 'vast_with_nullish_values');
+    assert.isTrue(vastLib.validate(vastRaw, { throwOnError: true }));
+  });
   it('should reject an incorrect formated VAST with warn', () => {
     const vastRaw = '<valkjdlqksj>dmlsqkd<//dqsd>sd<<sd';
 

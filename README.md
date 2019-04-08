@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/DavidBabel/vast-builder.svg?branch=master)](https://travis-ci.org/DavidBabel/vast-builder)
 [![codecov](https://codecov.io/gh/DavidBabel/vast-builder/branch/master/graph/badge.svg)](https://codecov.io/gh/DavidBabel/vast-builder)
 
-
 [![npm](http://img.shields.io/npm/v/vast-builder.svg)](https://www.npmjs.com/package/vast-builder)
 [![License](https://img.shields.io/npm/l/vast-builder.svg)](LICENSE)
 [![Downloads/month](https://img.shields.io/npm/dm/vast-builder.svg)](http://www.npmtrends.com/vast-builder)
+
 <!-- [![Package Quality](http://npm.packagequality.com/badge/vast-project.png)](http://packagequality.com/#?package=vast-project) -->
 
 # vast-builder
@@ -64,10 +64,10 @@ const bool = validate(
 );
 ```
 
-| Option                | Default | Description |
-|:----------------------|:--------|:------------|
-| `logWarn`             | `false`  | Validation warning and error will be printed to stderr. |
-| `throwOnError`        | `false` | Validation errors will now throw an exception. |
+| Option         | Default | Description                                             |
+| :------------- | :------ | :------------------------------------------------------ |
+| `logWarn`      | `false` | Validation warning and error will be printed to stderr. |
+| `throwOnError` | `false` | Validation errors will now throw an exception.          |
 
 ### Create new VAST
 
@@ -86,7 +86,8 @@ Here is a sample VAST3 Ad :
 
 ```js
 const vast3 = createVast.v3();
-vast3.attachAd()
+vast3
+  .attachAd()
   .attachInLine()
   .addImpression('imp_link')
   .addAdSystem('Society')
@@ -95,7 +96,8 @@ vast3.attachAd()
   .attachCreative()
   .attachLinear()
   .attachTrackingEvents()
-  .attachTracking('content',{event:'start'}).back()
+  .attachTracking('content', { event: 'start' })
+  .back()
   .addDuration('00:30:00')
   .attachMediaFiles()
   .attachMediaFile('my_video', {
@@ -113,7 +115,7 @@ vast3.attachAd()
     xPosition: 'bottom',
     yPosition: 'left'
   })
-  .attachStaticResource('ressource_link', {creativeType:'image/jpeg'})
+  .attachStaticResource('ressource_link', { creativeType: 'image/jpeg' });
 
 const render = vast3.toXml();
 ```
@@ -176,21 +178,23 @@ As XML is a tree, in this API:
 Here is a demo with helping indentation :
 
 ```js
-  vast3.attachAd()                   // Ad
-    .attachInLine()                  //  Inline
-      .addImpression('imp_link')     //  Inline : add = same level
-      .addAdSystem('Society')        //  Inline
-      .attachCreatives()             //   Creatives : attach = lower level
-        .attachCreative()            //    Creative
-          .attachLinear()            //     Linear
-            .attachTrackingEvents()  //      TrackingEvents
-            .addTracking('s',        //       TrackingEvents
-              {event: 'start'}
-            )
-          .and()                     //     Linear : and = upper level
-          .addDuration('00:30:00')   //     Linear
-          .attachMediaFiles()        //      MediaFiles
-  // etc ...
+vast3
+  .attachAd() // Ad
+  .attachInLine() //  Inline
+  .addImpression('imp_link') //  Inline : add = same level
+  .addAdSystem('Society') //  Inline
+  .attachCreatives() //   Creatives : attach = lower level
+  .attachCreative() //    Creative
+  .attachLinear() //     Linear
+  .attachTrackingEvents() //      TrackingEvents
+  .addTracking(
+    's', //       TrackingEvents
+    { event: 'start' }
+  )
+  .and() //     Linear : and = upper level
+  .addDuration('00:30:00') //     Linear
+  .attachMediaFiles(); //      MediaFiles
+// etc ...
 ```
 
 ## API
@@ -233,8 +237,12 @@ VastElement.attachValidTag(content, attributes);
 // dangerouslyAddCustomTag
 // attach or add wathever Tag you need, usefull for <Extensions> childs
 // name is the <Tag> you want, cannot be validated
-const child = VastElement.dangerouslyAttachCustomTag(tagName, content, attributes);
-const self  = VastElement.dangerouslyAddCustomTag(tagName, content, attributes);
+const child = VastElement.dangerouslyAttachCustomTag(
+  tagName,
+  content,
+  attributes
+);
+const self = VastElement.dangerouslyAddCustomTag(tagName, content, attributes);
 
 // and: can be called on every object to return the parent tag
 const father = VastElement.and();
@@ -278,32 +286,32 @@ const xmlVast = VastElement.toXml();
 You can pass options to the `createVast.vX(options)` method.
 Availables options are :
 
-| Option                | Default | Description |
-|:----------------------|:--------|:------------|
-| `cdata`               | `true`  | Force all contents to use `<![CDATA[ ]]></a>` tags. |
-| `logWarn`             | `true`  | Validation warning and error will be printed to stderr. |
-| `throwOnError`        | `false` | Validation errors will now throw an exception. |
-| `validateOnBuild`     | `false` | Run a validation before build, usefull for development environment. |
-| `spaces`              | `2`     | Number of spaces to be used for indenting XML output. Passing characters like `' '` or `'\t'` are also accepted. |
+| Option            | Default | Description                                                                                                      |
+| :---------------- | :------ | :--------------------------------------------------------------------------------------------------------------- |
+| `cdata`           | `true`  | Force all contents to use `<![CDATA[ ]]></a>` tags.                                                              |
+| `logWarn`         | `true`  | Validation warning and error will be printed to stderr.                                                          |
+| `throwOnError`    | `false` | Validation errors will now throw an exception.                                                                   |
+| `validateOnBuild` | `false` | Run a validation before build, usefull for development environment.                                              |
+| `spaces`          | `2`     | Number of spaces to be used for indenting XML output. Passing characters like `' '` or `'\t'` are also accepted. |
 
 Following options are also available and inherited from awesome [xml-js](https://www.npmjs.com/package/xml-js) package :
 
-| Option                | Default | Description |
-|:----------------------|:--------|:------------|
-| `fullTagEmptyElement` | `false` | Whether to produce element without sub-elements as full tag pairs `<a></a>` rather than self closing tag `<a/>`. |
+| Option                | Default | Description                                                                                                                        |
+| :-------------------- | :------ | :--------------------------------------------------------------------------------------------------------------------------------- |
+| `fullTagEmptyElement` | `false` | Whether to produce element without sub-elements as full tag pairs `<a></a>` rather than self closing tag `<a/>`.                   |
 | `indentCdata`         | `false` | Whether to write CData in a new line and indent it. Will generate `<a>\n <![CDATA[foo]]></a>` instead of `<a><![CDATA[foo]]></a>`. |
-| `indentAttributes`    | `false` | Whether to print attributes across multiple lines and indent them (when `spaces` is not `0`). |
-| `ignoreDeclaration`   | `false` | Whether to ignore writing declaration directives of xml. For example, `<?xml?>` will be ignored. |
-| `ignoreInstruction`   | `false` | Whether to ignore writing processing instruction of xml. For example, `<?go there?>` will be ignored. |
-| `ignoreAttributes`    | `false` | Whether to ignore writing attributes of the elements. For example, `x="1"` in `<a x="1"></a>` will be ignored |
-| `ignoreComment`       | `false` | Whether to ignore writing comments of the elements. That is, no `<!--  -->` will be generated. |
-| `ignoreCdata`         | `false` | Whether to ignore writing CData of the elements. That is, no `<![CDATA[ ]]>` will be generated. |
-| `ignoreDoctype`       | `false` | Whether to ignore writing Doctype of the elements. That is, no `<!DOCTYPE >` will be generated. |
-| `ignoreText`          | `false` | Whether to ignore writing texts of the elements. For example, `hi` text in `<a>hi</a>` will be ignored. |
+| `indentAttributes`    | `false` | Whether to print attributes across multiple lines and indent them (when `spaces` is not `0`).                                      |
+| `ignoreDeclaration`   | `false` | Whether to ignore writing declaration directives of xml. For example, `<?xml?>` will be ignored.                                   |
+| `ignoreInstruction`   | `false` | Whether to ignore writing processing instruction of xml. For example, `<?go there?>` will be ignored.                              |
+| `ignoreAttributes`    | `false` | Whether to ignore writing attributes of the elements. For example, `x="1"` in `<a x="1"></a>` will be ignored                      |
+| `ignoreComment`       | `false` | Whether to ignore writing comments of the elements. That is, no `<!-- -->` will be generated.                                      |
+| `ignoreCdata`         | `false` | Whether to ignore writing CData of the elements. That is, no `<![CDATA[ ]]>` will be generated.                                    |
+| `ignoreDoctype`       | `false` | Whether to ignore writing Doctype of the elements. That is, no `<!DOCTYPE >` will be generated.                                    |
+| `ignoreText`          | `false` | Whether to ignore writing texts of the elements. For example, `hi` text in `<a>hi</a>` will be ignored.                            |
 
 ## Contribute
 
-All PR are welcome. This project and it's documentation are automatically generated from specs/*.yml files.
+All PR are welcome. This project and it's documentation are automatically generated from specs/\*.yml files.
 
 This command do all builds :
 
@@ -340,4 +348,6 @@ Thanks for your gentle contribs :
 
 - [Arild](https://github.com/s1232) ( [#12](https://github.com/DavidBabel/vast-builder/pull/12) )
 
-**Donations:** If you like this package, want it to be maintened and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.
+**Donations:**
+
+If you like this package, want it to be maintened and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.

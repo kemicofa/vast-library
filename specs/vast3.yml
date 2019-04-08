@@ -19,13 +19,13 @@ config:
   # use "+attrs:" on an items which use references to add more attrs
   StaticResource_types: &StaticResource_types
     attrs:
-      - creativeType:  # spec ambigous, say creativeType and use type in examples
-        - image/gif
-        - image/jpeg
-        - image/jpg  # not in spec but used in specs examples
-        - image/png
-        - application/x-javascript
-        - application/x-shockwave-flash
+      - creativeType: # spec ambigous, say creativeType and use type in examples
+          - image/gif
+          - image/jpeg
+          - image/jpg # not in spec but used in specs examples
+          - image/png
+          - application/x-javascript
+          - application/x-shockwave-flash
       # - type:  # spec ambigous, say creativeType and use type in examples
       #   - image/gif
       #   - image/jpeg
@@ -52,7 +52,7 @@ VAST:
       Advertiser:
       Pricing:
         attrs:
-          - currency:       # object = needed
+          - currency: # object = needed
           - model: [CPM, CPC, CPE, CPV] # object with accepted values
       Survey:
       Error:
@@ -80,8 +80,8 @@ VAST:
                 attrs:
                   - id
                   - delivery:
-                    - progressive
-                    - streaming
+                      - progressive
+                      - streaming
                   - type:
                   - bitrate
                   - minBitrate
@@ -97,26 +97,26 @@ VAST:
                 attrs:
                   - offset # TODO required only for progress
                   - event:
-                    # linear
-                    - creativeView
-                    - start
-                    - firstQuartile
-                    - midpoint
-                    - thirdQuartile
-                    - complete
-                    - mute
-                    - unmute
-                    - pause
-                    - rewind
-                    - resume
-                    - fullscreen
-                    - exitFullscreen
-                    - expand
-                    - collapse
-                    - acceptInvitationLinear
-                    - closeLinear
-                    - skip
-                    - progress
+                      # linear
+                      - creativeView
+                      - start
+                      - firstQuartile
+                      - midpoint
+                      - thirdQuartile
+                      - complete
+                      - mute
+                      - unmute
+                      - pause
+                      - rewind
+                      - resume
+                      - fullscreen
+                      - exitFullscreen
+                      - expand
+                      - collapse
+                      - acceptInvitationLinear
+                      - closeLinear
+                      - skip
+                      - progress
             VideoClicks:
               ClickThrough:
                 attrs: [id]
@@ -151,7 +151,7 @@ VAST:
           CompanionAds:
             uniq: true # at least one of this subitems
             attrs:
-              - required: [all,any,none] # required here is the param name
+              - required: [all, any, none] # required here is the param name
             Companion:
               attrs:
                 - id
@@ -211,25 +211,25 @@ VAST:
                 attrs:
                   - offset # TODO required only for progress
                   - event:
-                    # non linear
-                    - creativeView
-                    - start # ✝ ? see spec
-                    - firstQuartile # ✝ ? see spec
-                    - midpoint # ✝ ? see spec
-                    - thirdQuartile # ✝ ? see spec
-                    - complete # ✝ ? see spec
-                    - mute # ✝ ? see spec
-                    - unmute # ✝ ? see spec
-                    - pause # ✝ ? see spec
-                    - rewind # ✝ ? see spec
-                    - resume # ✝ ? see spec
-                    - fullscreen
-                    - exitFullscreen
-                    - expand
-                    - collapse
-                    - acceptInvitation
-                    - close
-                    - progress
+                      # non linear
+                      - creativeView
+                      - start # ✝ ? see spec
+                      - firstQuartile # ✝ ? see spec
+                      - midpoint # ✝ ? see spec
+                      - thirdQuartile # ✝ ? see spec
+                      - complete # ✝ ? see spec
+                      - mute # ✝ ? see spec
+                      - unmute # ✝ ? see spec
+                      - pause # ✝ ? see spec
+                      - rewind # ✝ ? see spec
+                      - resume # ✝ ? see spec
+                      - fullscreen
+                      - exitFullscreen
+                      - expand
+                      - collapse
+                      - acceptInvitation
+                      - close
+                      - progress
       Extensions:
         Extension:
           required: true
@@ -253,32 +253,32 @@ VAST:
         Creative:
           attrs: [id, sequence, adID] # warning adId in v4
           Linear:
-            uniq: true   # not required in spec, but nonsense to put a Creative without one
+            uniq: true # not required in spec, but nonsense to put a Creative without one
             TrackingEvents:
               Tracking:
                 attrs:
                   - offset # TODO required only for progress
                   - event:
-                    # linear
-                    - creativeView
-                    - start
-                    - firstQuartile
-                    - midpoint
-                    - thirdQuartile
-                    - complete
-                    - mute
-                    - unmute
-                    - pause
-                    - rewind
-                    - resume
-                    - fullscreen
-                    - exitFullscreen
-                    - expand
-                    - collapse
-                    - acceptInvitationLinear
-                    - closeLinear
-                    - skip
-                    - progress
+                      # linear
+                      - creativeView
+                      - start
+                      - firstQuartile
+                      - midpoint
+                      - thirdQuartile
+                      - complete
+                      - mute
+                      - unmute
+                      - pause
+                      - rewind
+                      - resume
+                      - fullscreen
+                      - exitFullscreen
+                      - expand
+                      - collapse
+                      - acceptInvitationLinear
+                      - closeLinear
+                      - skip
+                      - progress
             VideoClicks:
               ClickTracking:
                 attrs: [id]
@@ -311,7 +311,7 @@ VAST:
           CompanionAds:
             uniq: true # at least one of this subitems
             attrs:
-              - required: [all,any,none] # required here is the param name
+              - required: [all, any, none] # required here is the param name
             Companion:
               attrs:
                 - id
@@ -361,27 +361,26 @@ VAST:
                 attrs:
                   - offset # TODO required only for progress
                   - event:
-                    # non linear
-                    - creativeView
-                    - start # ✝ ? see spec
-                    - firstQuartile # ✝ ? see spec
-                    - midpoint # ✝ ? see spec
-                    - thirdQuartile # ✝ ? see spec
-                    - complete # ✝ ? see spec
-                    - mute # ✝ ? see spec
-                    - unmute # ✝ ? see spec
-                    - pause # ✝ ? see spec
-                    - rewind # ✝ ? see spec
-                    - resume # ✝ ? see spec
-                    - fullscreen
-                    - exitFullscreen
-                    - expand
-                    - collapse
-                    - acceptInvitation
-                    - close
-                    - progress
+                      # non linear
+                      - creativeView
+                      - start # ✝ ? see spec
+                      - firstQuartile # ✝ ? see spec
+                      - midpoint # ✝ ? see spec
+                      - thirdQuartile # ✝ ? see spec
+                      - complete # ✝ ? see spec
+                      - mute # ✝ ? see spec
+                      - unmute # ✝ ? see spec
+                      - pause # ✝ ? see spec
+                      - rewind # ✝ ? see spec
+                      - resume # ✝ ? see spec
+                      - fullscreen
+                      - exitFullscreen
+                      - expand
+                      - collapse
+                      - acceptInvitation
+                      - close
+                      - progress
       Extensions:
         Extension:
           required: true
           attrs: [type]
-

@@ -65,7 +65,7 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "VAST" child to current "apiv4". Return "VAST" to move on child level.
 attachVAST(attributes: {
-  version:("4.0") /* required */
+  version:("4.0"|"4.1") /* required */
 }): VAST
 ```
 

@@ -20,16 +20,16 @@ config:
   StaticResource_types: &StaticResource_types
     attrs:
       - creativeType:
-        - image/gif
-        - image/jpeg
-        - image/jpg  # not in spec but used in specs examples
-        - image/png
-        - application/x-javascript
-        - application/x-shockwave-flash
+          - image/gif
+          - image/jpeg
+          - image/jpg # not in spec but used in specs examples
+          - image/png
+          - application/x-javascript
+          - application/x-shockwave-flash
 VAST:
   only: true
   attrs:
-    - version: ['4.0']
+    - version: ['4.0', '4.1']
   Error:
   Ad:
     alo: true
@@ -51,7 +51,7 @@ VAST:
       Advertiser:
       Pricing:
         attrs:
-          - currency:       # object = needed
+          - currency: # object = needed
           - model: [CPM, CPC, CPE, CPV] # object with accepted values
       Survey:
         attrs: [type]
@@ -103,8 +103,8 @@ VAST:
                 attrs:
                   - id
                   - delivery:
-                    - progressive
-                    - streaming
+                      - progressive
+                      - streaming
                   - type:
                   - bitrate
                   - minBitrate
@@ -128,32 +128,32 @@ VAST:
                 attrs:
                   - offset
                   - event:
-                    # linear & nonlinear
-                    - mute
-                    - unmute
-                    - pause
-                    - resume
-                    - rewind
-                    - skip
-                    - playerExpand
-                    - playerCollapse
-                    - otherAdInteraction # separate but in both in specs
-                    # linear
-                    - start
-                    - firstQuartile
-                    - midpoint
-                    - thirdQuartile
-                    - complete
-                    - acceptInvitationLinear
-                    - timeSpentViewing
-                    - progress
+                      # linear & nonlinear
+                      - mute
+                      - unmute
+                      - pause
+                      - resume
+                      - rewind
+                      - skip
+                      - playerExpand
+                      - playerCollapse
+                      - otherAdInteraction # separate but in both in specs
+                      # linear
+                      - start
+                      - firstQuartile
+                      - midpoint
+                      - thirdQuartile
+                      - complete
+                      - acceptInvitationLinear
+                      - timeSpentViewing
+                      - progress
             Icons:
               Icon:
                 alo: true
                 attrs:
-                  - program   # not required in spec ? was in vast3
-                  - width     # not required in spec ? was in vast3
-                  - height    # not required in spec ? was in vast3
+                  - program # not required in spec ? was in vast3
+                  - width # not required in spec ? was in vast3
+                  - height # not required in spec ? was in vast3
                   - xPosition # not required in spec ? was in vast3
                   - yPosition # not required in spec ? was in vast3
                   - duration
@@ -199,30 +199,30 @@ VAST:
               Tracking:
                 attrs:
                   - event:
-                    # linear & nonlinear
-                    - mute
-                    - unmute
-                    - pause
-                    - resume
-                    - rewind
-                    - skip
-                    - playerExpand
-                    - playerCollapse
-                    - otherAdInteraction # separate but in both in specs
-                    # non linear
-                    - creativeView
-                    - acceptInvitation
-                    - adExpand
-                    - adCollapse
-                    - minimize
-                    - close
-                    - overlayViewDuration
+                      # linear & nonlinear
+                      - mute
+                      - unmute
+                      - pause
+                      - resume
+                      - rewind
+                      - skip
+                      - playerExpand
+                      - playerCollapse
+                      - otherAdInteraction # separate but in both in specs
+                      # non linear
+                      - creativeView
+                      - acceptInvitation
+                      - adExpand
+                      - adCollapse
+                      - minimize
+                      - close
+                      - overlayViewDuration
                     # # compagnon
                     # - creativeView
           CompanionAds:
             uniq: true # only one of this subitems
             attrs:
-              - required: [all,any,none] # required here is the param name
+              - required: [all, any, none] # required here is the param name
             Companion:
               attrs:
                 - id
@@ -249,14 +249,14 @@ VAST:
               CompanionClickThrough:
               CompanionClickTracking:
                 attrs: [id]
-              TrackingEvents:  # strange here, not at the same level as nonlinear TrackingEvents
+              TrackingEvents: # strange here, not at the same level as nonlinear TrackingEvents
                 Tracking:
                   attrs:
                     - event:
-                      # no others ?
-                      # compagnon
-                      - creativeView
-## here it is
+                        # no others ?
+                        # compagnon
+                        - creativeView
+    ## here it is
     Wrapper:
       uniq: true # only one elem of this level
       attrs:
@@ -273,7 +273,7 @@ VAST:
         attrs: [version]
       Pricing:
         attrs:
-          - currency:       # object = needed
+          - currency: # object = needed
           - model: [CPM, CPC, CPE, CPV] # object with accepted values
       Error:
       ViewableImpression:
@@ -294,12 +294,12 @@ VAST:
         Creative:
           attrs: [id, sequence, adId] # warning adId in v4
           Linear:
-            uniq: true   # not required in spec, but nonsense to put a Creative without one
+            uniq: true # not required in spec, but nonsense to put a Creative without one
             TrackingEvents:
               Tracking:
-                  attrs:
-                    - offset
-                    - event:
+                attrs:
+                  - offset
+                  - event:
                       # linear & nonlinear
                       - mute
                       - unmute
@@ -353,7 +353,7 @@ VAST:
           NonLinearAds:
             uniq: true # at least one of this subitems
             NonLinear:
-            # removed attributes in v4 ?
+              # removed attributes in v4 ?
               # attrs:
               #   - id
               #   - width:
@@ -371,28 +371,28 @@ VAST:
               Tracking:
                 attrs:
                   - event:
-                    # linear & nonlinear
-                    - mute
-                    - unmute
-                    - pause
-                    - resume
-                    - rewind
-                    - skip
-                    - playerExpand
-                    - playerCollapse
-                    - otherAdInteraction # separate but in both in specs
-                    # non linear
-                    - creativeView
-                    - acceptInvitation
-                    - adExpand
-                    - adCollapse
-                    - minimize
-                    - close
-                    - overlayViewDuration
+                      # linear & nonlinear
+                      - mute
+                      - unmute
+                      - pause
+                      - resume
+                      - rewind
+                      - skip
+                      - playerExpand
+                      - playerCollapse
+                      - otherAdInteraction # separate but in both in specs
+                      # non linear
+                      - creativeView
+                      - acceptInvitation
+                      - adExpand
+                      - adCollapse
+                      - minimize
+                      - close
+                      - overlayViewDuration
           CompanionAds:
             uniq: true # at least one of this subitems
             attrs:
-              - required: [all,any,none] # required here is the param name
+              - required: [all, any, none] # required here is the param name
             Companion:
               attrs:
                 - id
@@ -426,7 +426,6 @@ VAST:
                 Tracking:
                   attrs:
                     - event:
-                      # no others ?
-                      # compagnon
-                      - creativeView
-
+                        # no others ?
+                        # compagnon
+                        - creativeView

@@ -20,31 +20,31 @@ config:
   Tracking_events: &Tracking_events
     attrs:
       - event:
-        - creativeView
-        - start
-        - midpoint
-        - firstQuartile
-        - thirdQuartile
-        - complete
-        - mute
-        - unmute
-        - pause
-        - rewind
-        - resume
-        - fullscreen
-        - expand
-        - collapse
-        - acceptInvitation
-        - close
+          - creativeView
+          - start
+          - midpoint
+          - firstQuartile
+          - thirdQuartile
+          - complete
+          - mute
+          - unmute
+          - pause
+          - rewind
+          - resume
+          - fullscreen
+          - expand
+          - collapse
+          - acceptInvitation
+          - close
   StaticResource_types: &StaticResource_types
     attrs:
-      - creativeType:  # spec ambigous, say creativeType and use type in examples
-        - image/gif
-        - image/jpeg
-        - image/jpg  # not in spec but used in specs examples
-        - image/png
-        - application/x-javascript
-        - application/x-shockwave-flash
+      - creativeType: # spec ambigous, say creativeType and use type in examples
+          - image/gif
+          - image/jpeg
+          - image/jpg # not in spec but used in specs examples
+          - image/png
+          - application/x-javascript
+          - application/x-shockwave-flash
 VAST:
   only: true
   attrs:
@@ -91,8 +91,8 @@ VAST:
                 attrs:
                   - id
                   - delivery:
-                    - progressive
-                    - streaming
+                      - progressive
+                      - streaming
                   - type:
                   - bitrate
                   - width:
@@ -146,7 +146,7 @@ VAST:
                 alo: true # at least one of this subitems
               HTMLResource:
                 alo: true # at least one of this subitems
-            TrackingEvents:  # this level is stranges
+            TrackingEvents: # this level is stranges
               Tracking:
                 <<: *Tracking_events
             # not sure about indentation for nexts
@@ -172,7 +172,7 @@ VAST:
         Creative:
           attrs: [id, sequence, adID] # warning adId in v4
           Linear:
-            uniq: true   # not required in spec, but nonsense to put a Creative without one
+            uniq: true # not required in spec, but nonsense to put a Creative without one
             TrackingEvents:
               Tracking:
                 <<: *Tracking_events
@@ -227,11 +227,10 @@ VAST:
                 alo: true # at least one of this subitems
               HTMLResource:
                 alo: true # at least one of this subitems
-            TrackingEvents:  # this level is stranges
+            TrackingEvents: # this level is stranges
               Tracking:
                 <<: *Tracking_events
       Extensions:
         Extension:
           required: true
           attrs: [type]
-

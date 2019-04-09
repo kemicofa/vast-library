@@ -7,13 +7,17 @@
 // TODO manage type (url/string ...)
 // TODO : babel tooling ?
 
-let vastVersionSnake = process.argv[2];
+// contain 2_0, 3_0, 4_0 or 4_1
+const vastVersionSnake = process.argv[2];
 
 if (!vastVersionSnake) {
   throw "this batch needs an arg with the vast version number";
 }
 
-let vastVersion = Number(vastVersionSnake.replace("_", "."));
+// contain 2, 3, 4 or 4.1
+const vastVersion = Number(vastVersionSnake.replace("_", "."));
+// contain 2, 3, 4 or 4_1
+const vastVersionString = String(vastVersion).replace(".", "_");
 
 console.log("=======================");
 console.log("=== build version", vastVersion, "===");
@@ -148,7 +152,7 @@ const generateApiAndDoc = (
       attachMethodTemplate(
         childName,
         getJsDoc(
-          vastVersion,
+          vastVersionString,
           usedChildName,
           isRequired,
           hasContent,
@@ -166,7 +170,7 @@ const generateApiAndDoc = (
         addMethodTemplate(
           childName,
           getJsDoc(
-            vastVersion,
+            vastVersionString,
             currentUsedName,
             isRequired,
             hasContent,
@@ -215,7 +219,7 @@ const generateApiAndDoc = (
   );
 };
 
-generateApiAndDoc(true, `apiv${vastVersion}`, filteredDatas);
+generateApiAndDoc(true, `apiv${vastVersionString}`, filteredDatas);
 
 const generateValidator = dataObject => {
   const validator = {};
@@ -275,7 +279,7 @@ const validator = generateValidator(filteredDatas);
 // writing API
 fs.writeFileSync(
   `./build/api/vast${vastVersionSnake}.js`,
-  baseContentTemplate(vastVersion, allClassList.join(""), validator)
+  baseContentTemplate(vastVersionString, allClassList.join(""), validator)
 );
 
 asyncGetVastElementDoc(methods => {
@@ -284,7 +288,7 @@ asyncGetVastElementDoc(methods => {
   // writing documentation
   fs.writeFileSync(
     `./build/doc/vast${vastVersionSnake}.md`,
-    getApiDocumentationTemplate(vastVersion, apiDocumentation)
+    getApiDocumentationTemplate(vastVersionString, apiDocumentation)
   );
   console.log(" => build ok");
 });

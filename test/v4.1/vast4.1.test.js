@@ -9,11 +9,11 @@ const testOptions = {
 
 describe("VAST4", () => {
   it("should generate an empty vast", () => {
-    const vast = createVast.v4();
+    const vast = createVast.v4_1();
     assert(vast.toXml());
   });
   it("should generate a minimal valid VAST", () => {
-    const vast = createVast.v4(testOptions);
+    const vast = createVast.v4_1(testOptions);
     vast
       .attachAd()
       .attachInLine()
@@ -37,10 +37,10 @@ describe("VAST4", () => {
       });
 
     assert.isTrue(vast.validate(), "vast is invalid");
-    runFixture(vast.toXml(), "v4", "minimal_vast");
+    runFixture(vast.toXml(), "v4.1", "minimal_vast");
   });
   it("should throw if missing elements", () => {
-    const vast = createVast.v4(testOptions);
+    const vast = createVast.v4_1(testOptions);
     assert.throws(
       () => vast.validate(),
       /At least one child of "Ad" is needed below "VAST"/

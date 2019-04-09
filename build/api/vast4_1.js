@@ -372,7 +372,7 @@ class Extensions_26 extends VastElement {
     super(n, p, ...args);
     this.parent = p;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @param {{type: string}} attributes
    * @returns {Extension_27} 
@@ -382,7 +382,7 @@ class Extensions_26 extends VastElement {
     this.childs.push(newElem);
     return newElem;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @param {{type: string}} attributes
    * @returns {Extensions_26} 
@@ -947,7 +947,7 @@ class Linear_33 extends VastElement {
     super(n, p, ...args);
     this.parent = p;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @returns {Duration_34} 
    */
@@ -956,7 +956,7 @@ class Linear_33 extends VastElement {
     this.childs.push(newElem);
     return newElem;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @returns {Linear_33} 
    */
@@ -981,7 +981,7 @@ class Linear_33 extends VastElement {
   addAdParameters(content, attributes) {
     return this.attachAdParameters(content, attributes).and();
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @returns {MediaFiles_36} 
    */
   attachMediaFiles() {
@@ -1535,7 +1535,7 @@ class Creative_29 extends VastElement {
     super(n, p, ...args);
     this.parent = p;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @param {{idRegistry: string, idValue: string}} attributes
    * @returns {UniversalAdId_30} 
@@ -1545,7 +1545,7 @@ class Creative_29 extends VastElement {
     this.childs.push(newElem);
     return newElem;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @param {{idRegistry: string, idValue: string}} attributes
    * @returns {Creative_29} 
@@ -1620,7 +1620,7 @@ class InLine_7 extends VastElement {
     super(n, p, ...args);
     this.parent = p;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @param {{version: string}} attributes
    * @returns {AdSystem_8} 
@@ -1630,7 +1630,7 @@ class InLine_7 extends VastElement {
     this.childs.push(newElem);
     return newElem;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @param {{version: string}} attributes
    * @returns {InLine_7} 
@@ -1638,7 +1638,7 @@ class InLine_7 extends VastElement {
   addAdSystem(content, attributes) {
     return this.attachAdSystem(content, attributes).and();
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @returns {AdTitle_9} 
    */
@@ -1647,7 +1647,7 @@ class InLine_7 extends VastElement {
     this.childs.push(newElem);
     return newElem;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @returns {InLine_7} 
    */
@@ -1799,7 +1799,7 @@ class InLine_7 extends VastElement {
     this.childs.push(newElem);
     return newElem;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @returns {Creatives_28} 
    */
   attachCreatives() {
@@ -2980,7 +2980,7 @@ class Wrapper_75 extends VastElement {
   addImpression(content, attributes) {
     return this.attachImpression(content, attributes).and();
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @returns {VASTAdTagURI_77} 
    */
@@ -2989,14 +2989,14 @@ class Wrapper_75 extends VastElement {
     this.childs.push(newElem);
     return newElem;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @returns {Wrapper_75} 
    */
   addVASTAdTagURI(content) {
     return this.attachVASTAdTagURI(content).and();
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @param {{version: string}} attributes
    * @returns {AdSystem_78} 
@@ -3006,7 +3006,7 @@ class Wrapper_75 extends VastElement {
     this.childs.push(newElem);
     return newElem;
   }
-  /** @description required in Vast 4.1
+  /** @description required in Vast 4_1
    * @param {string} content
    * @param {{version: string}} attributes
    * @returns {Wrapper_75} 
@@ -3116,7 +3116,7 @@ class Ad_6 extends VastElement {
 class VAST_4 extends VastElement {
   /**
    * @param {string} n
-   * @param {apiv4.1} p
+   * @param {apiv4_1} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -3150,10 +3150,10 @@ class VAST_4 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class apiv4.1 extends VastElement {
+class apiv4_1 extends VastElement {
   /**
    * @param {string} n
-   * @param {apiv4.1} p
+   * @param {apiv4_1} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -3176,6 +3176,6 @@ class apiv4.1 extends VastElement {
 const validator = {"only":{"VAST":{"alo":{"Ad":{"uniq":{"InLine":{"required":{"AdSystem":{},"AdTitle":{},"Creatives":{"alo":{"Creative":{"required":{"UniversalAdId":{"attrsRequired":{"idRegistry":null,"idValue":null}}},"uniq":{"Linear":{"required":{"Duration":{},"MediaFiles":{"alo":{"MediaFile":{"attrsRequired":{"delivery":["progressive","streaming"],"type":null,"width":null,"height":null}}},"follow":{"Mezzanine":{},"InteractiveCreativeFile":{}}}},"follow":{"AdParameters":{},"VideoClicks":{"follow":{"ClickThrough":{},"ClickTracking":{},"CustomClick":{}}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","start","firstQuartile","midpoint","thirdQuartile","complete","acceptInvitationLinear","timeSpentViewing","progress"]}}}},"Icons":{"alo":{"Icon":{"alo":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{}},"follow":{"IconClicks":{"follow":{"IconClickThrough":{},"IconClickTracking":{}}},"IconViewTracking":{}}}}}}},"NonLinearAds":{"follow":{"NonLinear":{"alo":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{}},"follow":{"NonLinearClickThrough":{},"NonLinearClickTracking":{}},"attrsRequired":{"width":null,"height":null}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","creativeView","acceptInvitation","adExpand","adCollapse","minimize","close","overlayViewDuration"]}}}}}},"CompanionAds":{"follow":{"Companion":{"alo":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{}},"follow":{"AdParameters":{},"AltText":{},"CompanionClickThrough":{},"CompanionClickTracking":{},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["creativeView"]}}}}},"attrsRequired":{"width":null,"height":null}}},"attrsRequired":{"required":["all","any","none"]}}},"follow":{"CreativeExtensions":{"follow":{"CreativeExtension":{}}}}}}}},"alo":{"Impression":{}},"follow":{"Category":{"attrsRequired":{"authority":null}},"Description":{},"Advertiser":{},"Pricing":{"attrsRequired":{"currency":null,"model":["CPM","CPC","CPE","CPV"]}},"Survey":{},"Error":{},"ViewableImpression":{"follow":{"Viewable":{},"NotViewable":{},"ViewUndetermined":{}}},"AdVerifications":{"follow":{"Verification":{"follow":{"JavaScriptResource":{},"FlashResource":{},"ViewableImpression":{}}}}},"Extensions":{"required":{"Extension":{}}}}},"Wrapper":{"required":{"VASTAdTagURI":{},"AdSystem":{}},"alo":{"Impression":{}},"follow":{"Pricing":{"attrsRequired":{"currency":null,"model":["CPM","CPC","CPE","CPV"]}},"Error":{},"ViewableImpression":{"follow":{"Viewable":{},"NotViewable":{},"ViewUndetermined":{}}},"AdVerifications":{"follow":{"Verification":{"follow":{"ViewableImpression":{}}}}},"Extensions":{"follow":{"Extension":{}}},"Creatives":{"follow":{"Creative":{"uniq":{"Linear":{"follow":{"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","start","firstQuartile","midpoint","thirdQuartile","complete","acceptInvitationLinear","timeSpentViewing","progress"]}}}},"VideoClicks":{"follow":{"ClickTracking":{},"CustomClick":{}}},"Icons":{"alo":{"Icon":{"follow":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{},"IconClicks":{"follow":{"IconClickThrough":{},"IconClickTracking":{}}},"IconViewTracking":{}}}}},"InteractiveCreativeFile":{}}},"NonLinearAds":{"follow":{"NonLinear":{"follow":{"NonLinearClickThrough":{},"NonLinearClickTracking":{}}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","creativeView","acceptInvitation","adExpand","adCollapse","minimize","close","overlayViewDuration"]}}}}}},"CompanionAds":{"follow":{"Companion":{"follow":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{},"AdParameters":{},"AltText":{},"CompanionClickThrough":{},"CompanionClickTracking":{},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["creativeView"]}}}}},"attrsRequired":{"width":null,"height":null}}},"attrsRequired":{"required":["all","any","none"]}}}}}}}}}}},"follow":{"Error":{}},"attrsRequired":{"version":["4.1"]}}}};
 
 module.exports = {
-  apiv4.1,
+  apiv4_1,
   validator
 };

@@ -1,4 +1,4 @@
-# VAST4.1 API Documentation
+# VAST4_1 API Documentation
 <a id="VastElement" name="VastElement"></a>
 ## Class VastElement
 
@@ -60,15 +60,15 @@ getChilds(name: string): Array<VastElement>
 validate(): boolean
 ```
 
-<a id="apiv4.1" name="apiv4.1"></a>
-## Class apiv4.1 _extends_ VastElement
+<a id="apiv4_1" name="apiv4_1"></a>
+## Class apiv4 _extends_ VastElement
 
 ### methods
 
 _all herited from [VastElement](#VastElement)_ and : 
 
 ```js
-// Attach a "VAST" child to current "apiv4.1". Return "VAST" to move on child level.
+// Attach a "VAST" child to current "apiv4". Return "VAST" to move on child level.
 attachVAST(attributes: {
   version:("4.1") /* required */
 }): VAST
@@ -79,9 +79,9 @@ attachVAST(attributes: {
 <a id="VAST_4" name="VAST_4"></a>
 ## Class VAST _extends_ VastElement
 
-This child once is the only one allowed at this level below apiv4.1 in VAST4.1 spec
+This child once is the only one allowed at this level below apiv4 in VAST4_1 spec
 
-child of [apiv4.1](#apiv4.1) ↗
+child of [apiv4](#apiv4_1) ↗
 
 ### methods
 
@@ -121,7 +121,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="Ad_6" name="Ad_6"></a>
 ## Class Ad _extends_ VastElement
 
-At last one of this child and/or others are required below VAST in VAST4.1 spec
+At last one of this child and/or others are required below VAST in VAST4_1 spec
 
 child of [VAST](#VAST_4) ↗
 
@@ -150,7 +150,7 @@ attachWrapper(attributes: {
 <a id="InLine_7" name="InLine_7"></a>
 ## Class InLine _extends_ VastElement
 
-An uniq one of this child or others at same level are required below Ad in VAST4.1 spec
+An uniq one of this child or others at same level are required below Ad in VAST4_1 spec
 
 child of [Ad](#Ad_6) ↗
 
@@ -339,7 +339,7 @@ attachCreatives(): Creatives
 <a id="AdSystem_8" name="AdSystem_8"></a>
 ## Class AdSystem _extends_ VastElement
 
-This child is required below InLine in VAST4.1 spec
+This child is required below InLine in VAST4_1 spec
 
 child of [InLine](#InLine_7) ↗
 
@@ -347,7 +347,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="AdTitle_9" name="AdTitle_9"></a>
 ## Class AdTitle _extends_ VastElement
 
-This child is required below InLine in VAST4.1 spec
+This child is required below InLine in VAST4_1 spec
 
 child of [InLine](#InLine_7) ↗
 
@@ -355,7 +355,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="Impression_10" name="Impression_10"></a>
 ## Class Impression _extends_ VastElement
 
-At last one of this child and/or others are required below InLine in VAST4.1 spec
+At last one of this child and/or others are required below InLine in VAST4_1 spec
 
 child of [InLine](#InLine_7) ↗
 
@@ -594,7 +594,7 @@ attachExtension(content: string, attributes: {
 <a id="Extension_27" name="Extension_27"></a>
 ## Class Extension _extends_ VastElement
 
-This child is required below Extensions in VAST4.1 spec
+This child is required below Extensions in VAST4_1 spec
 
 child of [Extensions](#Extensions_26) ↗
 
@@ -602,7 +602,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="Creatives_28" name="Creatives_28"></a>
 ## Class Creatives _extends_ VastElement
 
-This child is required below InLine in VAST4.1 spec
+This child is required below InLine in VAST4_1 spec
 
 child of [InLine](#InLine_7) ↗
 
@@ -625,7 +625,7 @@ attachCreative(attributes: {
 <a id="Creative_29" name="Creative_29"></a>
 ## Class Creative _extends_ VastElement
 
-At last one of this child and/or others are required below Creatives in VAST4.1 spec
+At last one of this child and/or others are required below Creatives in VAST4_1 spec
 
 child of [Creatives](#Creatives_28) ↗
 
@@ -688,7 +688,7 @@ attachCompanionAds(attributes: {
 <a id="UniversalAdId_30" name="UniversalAdId_30"></a>
 ## Class UniversalAdId _extends_ VastElement
 
-This child is required below Creative in VAST4.1 spec
+This child is required below Creative in VAST4_1 spec
 
 child of [Creative](#Creative_29) ↗
 
@@ -729,7 +729,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="Linear_33" name="Linear_33"></a>
 ## Class Linear _extends_ VastElement
 
-An uniq one of this child or others at same level are required below Creative in VAST4.1 spec
+An uniq one of this child or others at same level are required below Creative in VAST4_1 spec
 
 child of [Creative](#Creative_29) ↗
 
@@ -800,7 +800,7 @@ attachIcons(): Icons
 <a id="Duration_34" name="Duration_34"></a>
 ## Class Duration _extends_ VastElement
 
-This child is required below Linear in VAST4.1 spec
+This child is required below Linear in VAST4_1 spec
 
 child of [Linear](#Linear_33) ↗
 
@@ -814,7 +814,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="MediaFiles_36" name="MediaFiles_36"></a>
 ## Class MediaFiles _extends_ VastElement
 
-This child is required below Linear in VAST4.1 spec
+This child is required below Linear in VAST4_1 spec
 
 child of [Linear](#Linear_33) ↗
 
@@ -899,7 +899,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="MediaFile_38" name="MediaFile_38"></a>
 ## Class MediaFile _extends_ VastElement
 
-At last one of this child and/or others are required below MediaFiles in VAST4.1 spec
+At last one of this child and/or others are required below MediaFiles in VAST4_1 spec
 
 child of [MediaFiles](#MediaFiles_36) ↗
 
@@ -1055,7 +1055,7 @@ attachIcon(attributes: {
 <a id="Icon_47" name="Icon_47"></a>
 ## Class Icon _extends_ VastElement
 
-At last one of this child and/or others are required below Icons in VAST4.1 spec
+At last one of this child and/or others are required below Icons in VAST4_1 spec
 
 child of [Icons](#Icons_46) ↗
 
@@ -1133,7 +1133,7 @@ attachIconViewTracking(content: string): IconViewTracking
 <a id="StaticResource_48" name="StaticResource_48"></a>
 ## Class StaticResource _extends_ VastElement
 
-At last one of this child and/or others are required below Icon in VAST4.1 spec
+At last one of this child and/or others are required below Icon in VAST4_1 spec
 
 child of [Icon](#Icon_47) ↗
 
@@ -1141,7 +1141,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="IFrameResource_49" name="IFrameResource_49"></a>
 ## Class IFrameResource _extends_ VastElement
 
-At last one of this child and/or others are required below Icon in VAST4.1 spec
+At last one of this child and/or others are required below Icon in VAST4_1 spec
 
 child of [Icon](#Icon_47) ↗
 
@@ -1149,7 +1149,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="HTMLResource_50" name="HTMLResource_50"></a>
 ## Class HTMLResource _extends_ VastElement
 
-At last one of this child and/or others are required below Icon in VAST4.1 spec
+At last one of this child and/or others are required below Icon in VAST4_1 spec
 
 child of [Icon](#Icon_47) ↗
 
@@ -1216,7 +1216,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="NonLinearAds_55" name="NonLinearAds_55"></a>
 ## Class NonLinearAds _extends_ VastElement
 
-An uniq one of this child or others at same level are required below Creative in VAST4.1 spec
+An uniq one of this child or others at same level are required below Creative in VAST4_1 spec
 
 child of [Creative](#Creative_29) ↗
 
@@ -1334,7 +1334,7 @@ attachNonLinearClickTracking(content: string): NonLinearClickTracking
 <a id="StaticResource_57" name="StaticResource_57"></a>
 ## Class StaticResource _extends_ VastElement
 
-At last one of this child and/or others are required below NonLinear in VAST4.1 spec
+At last one of this child and/or others are required below NonLinear in VAST4_1 spec
 
 child of [NonLinear](#NonLinear_56) ↗
 
@@ -1342,7 +1342,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="IFrameResource_58" name="IFrameResource_58"></a>
 ## Class IFrameResource _extends_ VastElement
 
-At last one of this child and/or others are required below NonLinear in VAST4.1 spec
+At last one of this child and/or others are required below NonLinear in VAST4_1 spec
 
 child of [NonLinear](#NonLinear_56) ↗
 
@@ -1350,7 +1350,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="HTMLResource_59" name="HTMLResource_59"></a>
 ## Class HTMLResource _extends_ VastElement
 
-At last one of this child and/or others are required below NonLinear in VAST4.1 spec
+At last one of this child and/or others are required below NonLinear in VAST4_1 spec
 
 child of [NonLinear](#NonLinear_56) ↗
 
@@ -1403,7 +1403,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="CompanionAds_64" name="CompanionAds_64"></a>
 ## Class CompanionAds _extends_ VastElement
 
-An uniq one of this child or others at same level are required below Creative in VAST4.1 spec
+An uniq one of this child or others at same level are required below Creative in VAST4_1 spec
 
 child of [Creative](#Creative_29) ↗
 
@@ -1558,7 +1558,7 @@ attachTrackingEvents(): TrackingEvents
 <a id="StaticResource_66" name="StaticResource_66"></a>
 ## Class StaticResource _extends_ VastElement
 
-At last one of this child and/or others are required below Companion in VAST4.1 spec
+At last one of this child and/or others are required below Companion in VAST4_1 spec
 
 child of [Companion](#Companion_65) ↗
 
@@ -1566,7 +1566,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="IFrameResource_67" name="IFrameResource_67"></a>
 ## Class IFrameResource _extends_ VastElement
 
-At last one of this child and/or others are required below Companion in VAST4.1 spec
+At last one of this child and/or others are required below Companion in VAST4_1 spec
 
 child of [Companion](#Companion_65) ↗
 
@@ -1574,7 +1574,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="HTMLResource_68" name="HTMLResource_68"></a>
 ## Class HTMLResource _extends_ VastElement
 
-At last one of this child and/or others are required below Companion in VAST4.1 spec
+At last one of this child and/or others are required below Companion in VAST4_1 spec
 
 child of [Companion](#Companion_65) ↗
 
@@ -1639,7 +1639,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="Wrapper_75" name="Wrapper_75"></a>
 ## Class Wrapper _extends_ VastElement
 
-An uniq one of this child or others at same level are required below Ad in VAST4.1 spec
+An uniq one of this child or others at same level are required below Ad in VAST4_1 spec
 
 child of [Ad](#Ad_6) ↗
 
@@ -1764,7 +1764,7 @@ attachCreatives(): Creatives
 <a id="Impression_76" name="Impression_76"></a>
 ## Class Impression _extends_ VastElement
 
-At last one of this child and/or others are required below Wrapper in VAST4.1 spec
+At last one of this child and/or others are required below Wrapper in VAST4_1 spec
 
 child of [Wrapper](#Wrapper_75) ↗
 
@@ -1772,7 +1772,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="VASTAdTagURI_77" name="VASTAdTagURI_77"></a>
 ## Class VASTAdTagURI _extends_ VastElement
 
-This child is required below Wrapper in VAST4.1 spec
+This child is required below Wrapper in VAST4_1 spec
 
 child of [Wrapper](#Wrapper_75) ↗
 
@@ -1780,7 +1780,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="AdSystem_78" name="AdSystem_78"></a>
 ## Class AdSystem _extends_ VastElement
 
-This child is required below Wrapper in VAST4.1 spec
+This child is required below Wrapper in VAST4_1 spec
 
 child of [Wrapper](#Wrapper_75) ↗
 
@@ -2005,7 +2005,7 @@ attachCompanionAds(attributes: {
 <a id="Linear_92" name="Linear_92"></a>
 ## Class Linear _extends_ VastElement
 
-An uniq one of this child or others at same level are required below Creative in VAST4.1 spec
+An uniq one of this child or others at same level are required below Creative in VAST4_1 spec
 
 child of [Creative](#Creative_91) ↗
 
@@ -2169,7 +2169,7 @@ attachIcon(attributes: {
 <a id="Icon_99" name="Icon_99"></a>
 ## Class Icon _extends_ VastElement
 
-At last one of this child and/or others are required below Icons in VAST4.1 spec
+At last one of this child and/or others are required below Icons in VAST4_1 spec
 
 child of [Icons](#Icons_98) ↗
 
@@ -2326,7 +2326,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="NonLinearAds_108" name="NonLinearAds_108"></a>
 ## Class NonLinearAds _extends_ VastElement
 
-An uniq one of this child or others at same level are required below Creative in VAST4.1 spec
+An uniq one of this child or others at same level are required below Creative in VAST4_1 spec
 
 child of [Creative](#Creative_91) ↗
 
@@ -2433,7 +2433,7 @@ _no specific methods see [VastElement](#VastElement)_
 <a id="CompanionAds_114" name="CompanionAds_114"></a>
 ## Class CompanionAds _extends_ VastElement
 
-An uniq one of this child or others at same level are required below Creative in VAST4.1 spec
+An uniq one of this child or others at same level are required below Creative in VAST4_1 spec
 
 child of [Creative](#Creative_91) ↗
 

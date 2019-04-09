@@ -61,8 +61,10 @@
     ]
   },
   "jest": {
-    "collectCoverageFrom": [
-      "lib/*.{js}"
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/test/"
     ]
   },
   "babel": {},

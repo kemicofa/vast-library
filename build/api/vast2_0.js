@@ -1,4 +1,4 @@
-// @flow
+
 // this file is generated, dont edit it
 
 /*::

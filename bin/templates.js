@@ -3,7 +3,7 @@ const fs = require("fs-extra");
 const baseContentTemplate = (version, content, validator) => {
   return (
     "" +
-    `// @flow
+    `
 // this file is generated, dont edit it
 
 /*::

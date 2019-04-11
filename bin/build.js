@@ -5,7 +5,8 @@
 
 // IDEAS :
 // TODO manage type (url/string ...)
-// TODO : babel tooling ?
+// TODO : switch to typescript to manage VastElement<Parent> class
+// TODO : see if renaming VastElement to VE is worth in term of saved size
 
 // contain 2_0, 3_0, 4_0 or 4_1
 const vastVersionSnake = process.argv[2];

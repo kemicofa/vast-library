@@ -1016,7 +1016,7 @@ class Linear_33 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class StaticResource_57 extends VastElement {
+class NonLinearClickThrough_57 extends VastElement {
   /**
    * @param {string} n
    * @param {NonLinear_56} p
@@ -1028,43 +1028,7 @@ class StaticResource_57 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class IFrameResource_58 extends VastElement {
-  /**
-   * @param {string} n
-   * @param {NonLinear_56} p
-   */
-  constructor(n, p, ...args) {
-    super(n, p, ...args);
-    this.parent = p;
-  }
-  and() { return this.parent; }
-  back() { return this.and().and(); }
-}
-class HTMLResource_59 extends VastElement {
-  /**
-   * @param {string} n
-   * @param {NonLinear_56} p
-   */
-  constructor(n, p, ...args) {
-    super(n, p, ...args);
-    this.parent = p;
-  }
-  and() { return this.parent; }
-  back() { return this.and().and(); }
-}
-class NonLinearClickThrough_60 extends VastElement {
-  /**
-   * @param {string} n
-   * @param {NonLinear_56} p
-   */
-  constructor(n, p, ...args) {
-    super(n, p, ...args);
-    this.parent = p;
-  }
-  and() { return this.parent; }
-  back() { return this.and().and(); }
-}
-class NonLinearClickTracking_61 extends VastElement {
+class NonLinearClickTracking_58 extends VastElement {
   /**
    * @param {string} n
    * @param {NonLinear_56} p
@@ -1087,60 +1051,10 @@ class NonLinear_56 extends VastElement {
   }
   /** 
    * @param {string} content
-   * @param {{creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash")}} attributes
-   * @returns {StaticResource_57} 
-   */
-  attachStaticResource(content, attributes) {
-    const newElem = new StaticResource_57('StaticResource', this, {"attrs":["creativeType"]} /*: Infos*/, content, attributes);
-    this.childs.push(newElem);
-    return newElem;
-  }
-  /** 
-   * @param {string} content
-   * @param {{creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash")}} attributes
-   * @returns {NonLinear_56} 
-   */
-  addStaticResource(content, attributes) {
-    return this.attachStaticResource(content, attributes).and();
-  }
-  /** 
-   * @param {string} content
-   * @returns {IFrameResource_58} 
-   */
-  attachIFrameResource(content) {
-    const newElem = new IFrameResource_58('IFrameResource', this, {} /*: Infos*/, content);
-    this.childs.push(newElem);
-    return newElem;
-  }
-  /** 
-   * @param {string} content
-   * @returns {NonLinear_56} 
-   */
-  addIFrameResource(content) {
-    return this.attachIFrameResource(content).and();
-  }
-  /** 
-   * @param {string} content
-   * @returns {HTMLResource_59} 
-   */
-  attachHTMLResource(content) {
-    const newElem = new HTMLResource_59('HTMLResource', this, {} /*: Infos*/, content);
-    this.childs.push(newElem);
-    return newElem;
-  }
-  /** 
-   * @param {string} content
-   * @returns {NonLinear_56} 
-   */
-  addHTMLResource(content) {
-    return this.attachHTMLResource(content).and();
-  }
-  /** 
-   * @param {string} content
-   * @returns {NonLinearClickThrough_60} 
+   * @returns {NonLinearClickThrough_57} 
    */
   attachNonLinearClickThrough(content) {
-    const newElem = new NonLinearClickThrough_60('NonLinearClickThrough', this, {} /*: Infos*/, content);
+    const newElem = new NonLinearClickThrough_57('NonLinearClickThrough', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
@@ -1153,10 +1067,10 @@ class NonLinear_56 extends VastElement {
   }
   /** 
    * @param {string} content
-   * @returns {NonLinearClickTracking_61} 
+   * @returns {NonLinearClickTracking_58} 
    */
   attachNonLinearClickTracking(content) {
-    const newElem = new NonLinearClickTracking_61('NonLinearClickTracking', this, {} /*: Infos*/, content);
+    const newElem = new NonLinearClickTracking_58('NonLinearClickTracking', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
@@ -1170,10 +1084,10 @@ class NonLinear_56 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Tracking_63 extends VastElement {
+class Tracking_60 extends VastElement {
   /**
    * @param {string} n
-   * @param {TrackingEvents_62} p
+   * @param {TrackingEvents_59} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1182,7 +1096,7 @@ class Tracking_63 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class TrackingEvents_62 extends VastElement {
+class TrackingEvents_59 extends VastElement {
   /**
    * @param {string} n
    * @param {NonLinearAds_55} p
@@ -1194,17 +1108,17 @@ class TrackingEvents_62 extends VastElement {
   /** 
    * @param {string} content
    * @param {{event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"creativeView"|"acceptInvitation"|"adExpand"|"adCollapse"|"minimize"|"close"|"overlayViewDuration")}} attributes
-   * @returns {Tracking_63} 
+   * @returns {Tracking_60} 
    */
   attachTracking(content, attributes) {
-    const newElem = new Tracking_63('Tracking', this, {"attrs":["event"]} /*: Infos*/, content, attributes);
+    const newElem = new Tracking_60('Tracking', this, {"attrs":["event"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"creativeView"|"acceptInvitation"|"adExpand"|"adCollapse"|"minimize"|"close"|"overlayViewDuration")}} attributes
-   * @returns {TrackingEvents_62} 
+   * @returns {TrackingEvents_59} 
    */
   addTracking(content, attributes) {
     return this.attachTracking(content, attributes).and();
@@ -1231,20 +1145,20 @@ class NonLinearAds_55 extends VastElement {
     return newElem;
   }
   /** 
-   * @returns {TrackingEvents_62} 
+   * @returns {TrackingEvents_59} 
    */
   attachTrackingEvents() {
-    const newElem = new TrackingEvents_62('TrackingEvents', this, {} /*: Infos*/ );
+    const newElem = new TrackingEvents_59('TrackingEvents', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class StaticResource_66 extends VastElement {
+class StaticResource_63 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_65} p
+   * @param {Companion_62} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1253,10 +1167,10 @@ class StaticResource_66 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class IFrameResource_67 extends VastElement {
+class IFrameResource_64 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_65} p
+   * @param {Companion_62} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1265,10 +1179,10 @@ class IFrameResource_67 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class HTMLResource_68 extends VastElement {
+class HTMLResource_65 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_65} p
+   * @param {Companion_62} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1277,10 +1191,10 @@ class HTMLResource_68 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class AdParameters_69 extends VastElement {
+class AdParameters_66 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_65} p
+   * @param {Companion_62} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1289,10 +1203,10 @@ class AdParameters_69 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class AltText_70 extends VastElement {
+class AltText_67 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_65} p
+   * @param {Companion_62} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1301,10 +1215,10 @@ class AltText_70 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class CompanionClickThrough_71 extends VastElement {
+class CompanionClickThrough_68 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_65} p
+   * @param {Companion_62} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1313,10 +1227,10 @@ class CompanionClickThrough_71 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class CompanionClickTracking_72 extends VastElement {
+class CompanionClickTracking_69 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_65} p
+   * @param {Companion_62} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1325,10 +1239,10 @@ class CompanionClickTracking_72 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Tracking_74 extends VastElement {
+class Tracking_71 extends VastElement {
   /**
    * @param {string} n
-   * @param {TrackingEvents_73} p
+   * @param {TrackingEvents_70} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1337,10 +1251,10 @@ class Tracking_74 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class TrackingEvents_73 extends VastElement {
+class TrackingEvents_70 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_65} p
+   * @param {Companion_62} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1349,17 +1263,17 @@ class TrackingEvents_73 extends VastElement {
   /** 
    * @param {string} content
    * @param {{event:("creativeView")}} attributes
-   * @returns {Tracking_74} 
+   * @returns {Tracking_71} 
    */
   attachTracking(content, attributes) {
-    const newElem = new Tracking_74('Tracking', this, {"attrs":["event"]} /*: Infos*/, content, attributes);
+    const newElem = new Tracking_71('Tracking', this, {"attrs":["event"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{event:("creativeView")}} attributes
-   * @returns {TrackingEvents_73} 
+   * @returns {TrackingEvents_70} 
    */
   addTracking(content, attributes) {
     return this.attachTracking(content, attributes).and();
@@ -1367,10 +1281,10 @@ class TrackingEvents_73 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Companion_65 extends VastElement {
+class Companion_62 extends VastElement {
   /**
    * @param {string} n
-   * @param {CompanionAds_64} p
+   * @param {CompanionAds_61} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1379,49 +1293,49 @@ class Companion_65 extends VastElement {
   /** 
    * @param {string} content
    * @param {{creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash")}} attributes
-   * @returns {StaticResource_66} 
+   * @returns {StaticResource_63} 
    */
   attachStaticResource(content, attributes) {
-    const newElem = new StaticResource_66('StaticResource', this, {"attrs":["creativeType"]} /*: Infos*/, content, attributes);
+    const newElem = new StaticResource_63('StaticResource', this, {"attrs":["creativeType"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash")}} attributes
-   * @returns {Companion_65} 
+   * @returns {Companion_62} 
    */
   addStaticResource(content, attributes) {
     return this.attachStaticResource(content, attributes).and();
   }
   /** 
    * @param {string} content
-   * @returns {IFrameResource_67} 
+   * @returns {IFrameResource_64} 
    */
   attachIFrameResource(content) {
-    const newElem = new IFrameResource_67('IFrameResource', this, {} /*: Infos*/, content);
+    const newElem = new IFrameResource_64('IFrameResource', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Companion_65} 
+   * @returns {Companion_62} 
    */
   addIFrameResource(content) {
     return this.attachIFrameResource(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {HTMLResource_68} 
+   * @returns {HTMLResource_65} 
    */
   attachHTMLResource(content) {
-    const newElem = new HTMLResource_68('HTMLResource', this, {} /*: Infos*/, content);
+    const newElem = new HTMLResource_65('HTMLResource', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Companion_65} 
+   * @returns {Companion_62} 
    */
   addHTMLResource(content) {
     return this.attachHTMLResource(content).and();
@@ -1429,49 +1343,49 @@ class Companion_65 extends VastElement {
   /** 
    * @param {string} content
    * @param {{xmlEncoded: string}} attributes
-   * @returns {AdParameters_69} 
+   * @returns {AdParameters_66} 
    */
   attachAdParameters(content, attributes) {
-    const newElem = new AdParameters_69('AdParameters', this, {"attrs":["xmlEncoded"]} /*: Infos*/, content, attributes);
+    const newElem = new AdParameters_66('AdParameters', this, {"attrs":["xmlEncoded"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{xmlEncoded: string}} attributes
-   * @returns {Companion_65} 
+   * @returns {Companion_62} 
    */
   addAdParameters(content, attributes) {
     return this.attachAdParameters(content, attributes).and();
   }
   /** 
    * @param {string} content
-   * @returns {AltText_70} 
+   * @returns {AltText_67} 
    */
   attachAltText(content) {
-    const newElem = new AltText_70('AltText', this, {} /*: Infos*/, content);
+    const newElem = new AltText_67('AltText', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Companion_65} 
+   * @returns {Companion_62} 
    */
   addAltText(content) {
     return this.attachAltText(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {CompanionClickThrough_71} 
+   * @returns {CompanionClickThrough_68} 
    */
   attachCompanionClickThrough(content) {
-    const newElem = new CompanionClickThrough_71('CompanionClickThrough', this, {} /*: Infos*/, content);
+    const newElem = new CompanionClickThrough_68('CompanionClickThrough', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Companion_65} 
+   * @returns {Companion_62} 
    */
   addCompanionClickThrough(content) {
     return this.attachCompanionClickThrough(content).and();
@@ -1479,33 +1393,33 @@ class Companion_65 extends VastElement {
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {CompanionClickTracking_72} 
+   * @returns {CompanionClickTracking_69} 
    */
   attachCompanionClickTracking(content, attributes) {
-    const newElem = new CompanionClickTracking_72('CompanionClickTracking', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
+    const newElem = new CompanionClickTracking_69('CompanionClickTracking', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {Companion_65} 
+   * @returns {Companion_62} 
    */
   addCompanionClickTracking(content, attributes) {
     return this.attachCompanionClickTracking(content, attributes).and();
   }
   /** 
-   * @returns {TrackingEvents_73} 
+   * @returns {TrackingEvents_70} 
    */
   attachTrackingEvents() {
-    const newElem = new TrackingEvents_73('TrackingEvents', this, {} /*: Infos*/ );
+    const newElem = new TrackingEvents_70('TrackingEvents', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class CompanionAds_64 extends VastElement {
+class CompanionAds_61 extends VastElement {
   /**
    * @param {string} n
    * @param {Creative_29} p
@@ -1516,10 +1430,10 @@ class CompanionAds_64 extends VastElement {
   }
   /** 
    * @param {{id: string, width: string, height: string, assetWidth: string, assetHeight: string, expandedWidth: string, expandedHeight: string, apiFramework: string, adSlotID: string, pxratio: string}} attributes
-   * @returns {Companion_65} 
+   * @returns {Companion_62} 
    */
   attachCompanion(attributes) {
-    const newElem = new Companion_65('Companion', this, {"attrs":["id","width","height","assetWidth","assetHeight","expandedWidth","expandedHeight","apiFramework","adSlotID","pxratio"]} /*: Infos*/, attributes);
+    const newElem = new Companion_62('Companion', this, {"attrs":["id","width","height","assetWidth","assetHeight","expandedWidth","expandedHeight","apiFramework","adSlotID","pxratio"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
@@ -1580,10 +1494,10 @@ class Creative_29 extends VastElement {
   }
   /** 
    * @param {{required:("all"|"any"|"none")}} attributes
-   * @returns {CompanionAds_64} 
+   * @returns {CompanionAds_61} 
    */
   attachCompanionAds(attributes) {
-    const newElem = new CompanionAds_64('CompanionAds', this, {"attrs":["required"]} /*: Infos*/, attributes);
+    const newElem = new CompanionAds_61('CompanionAds', this, {"attrs":["required"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
@@ -1810,10 +1724,10 @@ class InLine_7 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Impression_76 extends VastElement {
+class Impression_73 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1822,10 +1736,10 @@ class Impression_76 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class VASTAdTagURI_77 extends VastElement {
+class VASTAdTagURI_74 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1834,10 +1748,10 @@ class VASTAdTagURI_77 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class AdSystem_78 extends VastElement {
+class AdSystem_75 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1846,10 +1760,10 @@ class AdSystem_78 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Pricing_79 extends VastElement {
+class Pricing_76 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1858,10 +1772,10 @@ class Pricing_79 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Error_80 extends VastElement {
+class Error_77 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1870,10 +1784,10 @@ class Error_80 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Viewable_82 extends VastElement {
+class Viewable_79 extends VastElement {
   /**
    * @param {string} n
-   * @param {ViewableImpression_81} p
+   * @param {ViewableImpression_78} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1882,10 +1796,10 @@ class Viewable_82 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class NotViewable_83 extends VastElement {
+class NotViewable_80 extends VastElement {
   /**
    * @param {string} n
-   * @param {ViewableImpression_81} p
+   * @param {ViewableImpression_78} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1894,10 +1808,10 @@ class NotViewable_83 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class ViewUndetermined_84 extends VastElement {
+class ViewUndetermined_81 extends VastElement {
   /**
    * @param {string} n
-   * @param {ViewableImpression_81} p
+   * @param {ViewableImpression_78} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1906,10 +1820,10 @@ class ViewUndetermined_84 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class ViewableImpression_81 extends VastElement {
+class ViewableImpression_78 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1917,48 +1831,48 @@ class ViewableImpression_81 extends VastElement {
   }
   /** 
    * @param {string} content
-   * @returns {Viewable_82} 
+   * @returns {Viewable_79} 
    */
   attachViewable(content) {
-    const newElem = new Viewable_82('Viewable', this, {} /*: Infos*/, content);
+    const newElem = new Viewable_79('Viewable', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {ViewableImpression_81} 
+   * @returns {ViewableImpression_78} 
    */
   addViewable(content) {
     return this.attachViewable(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {NotViewable_83} 
+   * @returns {NotViewable_80} 
    */
   attachNotViewable(content) {
-    const newElem = new NotViewable_83('NotViewable', this, {} /*: Infos*/, content);
+    const newElem = new NotViewable_80('NotViewable', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {ViewableImpression_81} 
+   * @returns {ViewableImpression_78} 
    */
   addNotViewable(content) {
     return this.attachNotViewable(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {ViewUndetermined_84} 
+   * @returns {ViewUndetermined_81} 
    */
   attachViewUndetermined(content) {
-    const newElem = new ViewUndetermined_84('ViewUndetermined', this, {} /*: Infos*/, content);
+    const newElem = new ViewUndetermined_81('ViewUndetermined', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {ViewableImpression_81} 
+   * @returns {ViewableImpression_78} 
    */
   addViewUndetermined(content) {
     return this.attachViewUndetermined(content).and();
@@ -1966,10 +1880,10 @@ class ViewableImpression_81 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class ViewableImpression_87 extends VastElement {
+class ViewableImpression_84 extends VastElement {
   /**
    * @param {string} n
-   * @param {Verification_86} p
+   * @param {Verification_83} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1978,10 +1892,10 @@ class ViewableImpression_87 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Verification_86 extends VastElement {
+class Verification_83 extends VastElement {
   /**
    * @param {string} n
-   * @param {AdVerifications_85} p
+   * @param {AdVerifications_82} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -1990,17 +1904,17 @@ class Verification_86 extends VastElement {
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {ViewableImpression_87} 
+   * @returns {ViewableImpression_84} 
    */
   attachViewableImpression(content, attributes) {
-    const newElem = new ViewableImpression_87('ViewableImpression', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
+    const newElem = new ViewableImpression_84('ViewableImpression', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {Verification_86} 
+   * @returns {Verification_83} 
    */
   addViewableImpression(content, attributes) {
     return this.attachViewableImpression(content, attributes).and();
@@ -2008,10 +1922,10 @@ class Verification_86 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class AdVerifications_85 extends VastElement {
+class AdVerifications_82 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2019,20 +1933,20 @@ class AdVerifications_85 extends VastElement {
   }
   /** 
    * @param {{vendor: string}} attributes
-   * @returns {Verification_86} 
+   * @returns {Verification_83} 
    */
   attachVerification(attributes) {
-    const newElem = new Verification_86('Verification', this, {"attrs":["vendor"]} /*: Infos*/, attributes);
+    const newElem = new Verification_83('Verification', this, {"attrs":["vendor"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Extension_89 extends VastElement {
+class Extension_86 extends VastElement {
   /**
    * @param {string} n
-   * @param {Extensions_88} p
+   * @param {Extensions_85} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2041,10 +1955,10 @@ class Extension_89 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Extensions_88 extends VastElement {
+class Extensions_85 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2053,17 +1967,17 @@ class Extensions_88 extends VastElement {
   /** 
    * @param {string} content
    * @param {{type: string}} attributes
-   * @returns {Extension_89} 
+   * @returns {Extension_86} 
    */
   attachExtension(content, attributes) {
-    const newElem = new Extension_89('Extension', this, {"attrs":["type"]} /*: Infos*/, content, attributes);
+    const newElem = new Extension_86('Extension', this, {"attrs":["type"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{type: string}} attributes
-   * @returns {Extensions_88} 
+   * @returns {Extensions_85} 
    */
   addExtension(content, attributes) {
     return this.attachExtension(content, attributes).and();
@@ -2071,10 +1985,10 @@ class Extensions_88 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Tracking_94 extends VastElement {
+class Tracking_91 extends VastElement {
   /**
    * @param {string} n
-   * @param {TrackingEvents_93} p
+   * @param {TrackingEvents_90} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2083,10 +1997,10 @@ class Tracking_94 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class TrackingEvents_93 extends VastElement {
+class TrackingEvents_90 extends VastElement {
   /**
    * @param {string} n
-   * @param {Linear_92} p
+   * @param {Linear_89} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2095,17 +2009,17 @@ class TrackingEvents_93 extends VastElement {
   /** 
    * @param {string} content
    * @param {{offset: string, event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress")}} attributes
-   * @returns {Tracking_94} 
+   * @returns {Tracking_91} 
    */
   attachTracking(content, attributes) {
-    const newElem = new Tracking_94('Tracking', this, {"attrs":["offset","event"]} /*: Infos*/, content, attributes);
+    const newElem = new Tracking_91('Tracking', this, {"attrs":["offset","event"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{offset: string, event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"start"|"firstQuartile"|"midpoint"|"thirdQuartile"|"complete"|"acceptInvitationLinear"|"timeSpentViewing"|"progress")}} attributes
-   * @returns {TrackingEvents_93} 
+   * @returns {TrackingEvents_90} 
    */
   addTracking(content, attributes) {
     return this.attachTracking(content, attributes).and();
@@ -2113,10 +2027,10 @@ class TrackingEvents_93 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class ClickTracking_96 extends VastElement {
+class ClickTracking_93 extends VastElement {
   /**
    * @param {string} n
-   * @param {VideoClicks_95} p
+   * @param {VideoClicks_92} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2125,10 +2039,10 @@ class ClickTracking_96 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class CustomClick_97 extends VastElement {
+class CustomClick_94 extends VastElement {
   /**
    * @param {string} n
-   * @param {VideoClicks_95} p
+   * @param {VideoClicks_92} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2137,10 +2051,10 @@ class CustomClick_97 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class VideoClicks_95 extends VastElement {
+class VideoClicks_92 extends VastElement {
   /**
    * @param {string} n
-   * @param {Linear_92} p
+   * @param {Linear_89} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2149,17 +2063,17 @@ class VideoClicks_95 extends VastElement {
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {ClickTracking_96} 
+   * @returns {ClickTracking_93} 
    */
   attachClickTracking(content, attributes) {
-    const newElem = new ClickTracking_96('ClickTracking', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
+    const newElem = new ClickTracking_93('ClickTracking', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {VideoClicks_95} 
+   * @returns {VideoClicks_92} 
    */
   addClickTracking(content, attributes) {
     return this.attachClickTracking(content, attributes).and();
@@ -2167,17 +2081,17 @@ class VideoClicks_95 extends VastElement {
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {CustomClick_97} 
+   * @returns {CustomClick_94} 
    */
   attachCustomClick(content, attributes) {
-    const newElem = new CustomClick_97('CustomClick', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
+    const newElem = new CustomClick_94('CustomClick', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {VideoClicks_95} 
+   * @returns {VideoClicks_92} 
    */
   addCustomClick(content, attributes) {
     return this.attachCustomClick(content, attributes).and();
@@ -2185,10 +2099,10 @@ class VideoClicks_95 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class StaticResource_100 extends VastElement {
+class StaticResource_97 extends VastElement {
   /**
    * @param {string} n
-   * @param {Icon_99} p
+   * @param {Icon_96} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2197,10 +2111,10 @@ class StaticResource_100 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class IFrameResource_101 extends VastElement {
+class IFrameResource_98 extends VastElement {
   /**
    * @param {string} n
-   * @param {Icon_99} p
+   * @param {Icon_96} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2209,10 +2123,10 @@ class IFrameResource_101 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class HTMLResource_102 extends VastElement {
+class HTMLResource_99 extends VastElement {
   /**
    * @param {string} n
-   * @param {Icon_99} p
+   * @param {Icon_96} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2221,10 +2135,10 @@ class HTMLResource_102 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class IconClickThrough_104 extends VastElement {
+class IconClickThrough_101 extends VastElement {
   /**
    * @param {string} n
-   * @param {IconClicks_103} p
+   * @param {IconClicks_100} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2233,10 +2147,10 @@ class IconClickThrough_104 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class IconClickTracking_105 extends VastElement {
+class IconClickTracking_102 extends VastElement {
   /**
    * @param {string} n
-   * @param {IconClicks_103} p
+   * @param {IconClicks_100} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2245,10 +2159,10 @@ class IconClickTracking_105 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class IconClicks_103 extends VastElement {
+class IconClicks_100 extends VastElement {
   /**
    * @param {string} n
-   * @param {Icon_99} p
+   * @param {Icon_96} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2256,32 +2170,32 @@ class IconClicks_103 extends VastElement {
   }
   /** 
    * @param {string} content
-   * @returns {IconClickThrough_104} 
+   * @returns {IconClickThrough_101} 
    */
   attachIconClickThrough(content) {
-    const newElem = new IconClickThrough_104('IconClickThrough', this, {} /*: Infos*/, content);
+    const newElem = new IconClickThrough_101('IconClickThrough', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {IconClicks_103} 
+   * @returns {IconClicks_100} 
    */
   addIconClickThrough(content) {
     return this.attachIconClickThrough(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {IconClickTracking_105} 
+   * @returns {IconClickTracking_102} 
    */
   attachIconClickTracking(content) {
-    const newElem = new IconClickTracking_105('IconClickTracking', this, {} /*: Infos*/, content);
+    const newElem = new IconClickTracking_102('IconClickTracking', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {IconClicks_103} 
+   * @returns {IconClicks_100} 
    */
   addIconClickTracking(content) {
     return this.attachIconClickTracking(content).and();
@@ -2289,10 +2203,10 @@ class IconClicks_103 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class IconViewTracking_106 extends VastElement {
+class IconViewTracking_103 extends VastElement {
   /**
    * @param {string} n
-   * @param {Icon_99} p
+   * @param {Icon_96} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2301,10 +2215,10 @@ class IconViewTracking_106 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Icon_99 extends VastElement {
+class Icon_96 extends VastElement {
   /**
    * @param {string} n
-   * @param {Icons_98} p
+   * @param {Icons_95} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2313,73 +2227,73 @@ class Icon_99 extends VastElement {
   /** 
    * @param {string} content
    * @param {{creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash")}} attributes
-   * @returns {StaticResource_100} 
+   * @returns {StaticResource_97} 
    */
   attachStaticResource(content, attributes) {
-    const newElem = new StaticResource_100('StaticResource', this, {"attrs":["creativeType"]} /*: Infos*/, content, attributes);
+    const newElem = new StaticResource_97('StaticResource', this, {"attrs":["creativeType"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash")}} attributes
-   * @returns {Icon_99} 
+   * @returns {Icon_96} 
    */
   addStaticResource(content, attributes) {
     return this.attachStaticResource(content, attributes).and();
   }
   /** 
    * @param {string} content
-   * @returns {IFrameResource_101} 
+   * @returns {IFrameResource_98} 
    */
   attachIFrameResource(content) {
-    const newElem = new IFrameResource_101('IFrameResource', this, {} /*: Infos*/, content);
+    const newElem = new IFrameResource_98('IFrameResource', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Icon_99} 
+   * @returns {Icon_96} 
    */
   addIFrameResource(content) {
     return this.attachIFrameResource(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {HTMLResource_102} 
+   * @returns {HTMLResource_99} 
    */
   attachHTMLResource(content) {
-    const newElem = new HTMLResource_102('HTMLResource', this, {} /*: Infos*/, content);
+    const newElem = new HTMLResource_99('HTMLResource', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Icon_99} 
+   * @returns {Icon_96} 
    */
   addHTMLResource(content) {
     return this.attachHTMLResource(content).and();
   }
   /** 
-   * @returns {IconClicks_103} 
+   * @returns {IconClicks_100} 
    */
   attachIconClicks() {
-    const newElem = new IconClicks_103('IconClicks', this, {} /*: Infos*/ );
+    const newElem = new IconClicks_100('IconClicks', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {IconViewTracking_106} 
+   * @returns {IconViewTracking_103} 
    */
   attachIconViewTracking(content) {
-    const newElem = new IconViewTracking_106('IconViewTracking', this, {} /*: Infos*/, content);
+    const newElem = new IconViewTracking_103('IconViewTracking', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Icon_99} 
+   * @returns {Icon_96} 
    */
   addIconViewTracking(content) {
     return this.attachIconViewTracking(content).and();
@@ -2387,10 +2301,10 @@ class Icon_99 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Icons_98 extends VastElement {
+class Icons_95 extends VastElement {
   /**
    * @param {string} n
-   * @param {Linear_92} p
+   * @param {Linear_89} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2398,20 +2312,20 @@ class Icons_98 extends VastElement {
   }
   /** 
    * @param {{program: string, width: string, height: string, xPosition: string, yPosition: string, duration: string, offset: string, apiFramework: string, pxratio: string}} attributes
-   * @returns {Icon_99} 
+   * @returns {Icon_96} 
    */
   attachIcon(attributes) {
-    const newElem = new Icon_99('Icon', this, {"attrs":["program","width","height","xPosition","yPosition","duration","offset","apiFramework","pxratio"]} /*: Infos*/, attributes);
+    const newElem = new Icon_96('Icon', this, {"attrs":["program","width","height","xPosition","yPosition","duration","offset","apiFramework","pxratio"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class InteractiveCreativeFile_107 extends VastElement {
+class InteractiveCreativeFile_104 extends VastElement {
   /**
    * @param {string} n
-   * @param {Linear_92} p
+   * @param {Linear_89} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2420,51 +2334,51 @@ class InteractiveCreativeFile_107 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Linear_92 extends VastElement {
+class Linear_89 extends VastElement {
   /**
    * @param {string} n
-   * @param {Creative_91} p
+   * @param {Creative_88} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
     this.parent = p;
   }
   /** 
-   * @returns {TrackingEvents_93} 
+   * @returns {TrackingEvents_90} 
    */
   attachTrackingEvents() {
-    const newElem = new TrackingEvents_93('TrackingEvents', this, {} /*: Infos*/ );
+    const newElem = new TrackingEvents_90('TrackingEvents', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   /** 
-   * @returns {VideoClicks_95} 
+   * @returns {VideoClicks_92} 
    */
   attachVideoClicks() {
-    const newElem = new VideoClicks_95('VideoClicks', this, {} /*: Infos*/ );
+    const newElem = new VideoClicks_92('VideoClicks', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   /** 
-   * @returns {Icons_98} 
+   * @returns {Icons_95} 
    */
   attachIcons() {
-    const newElem = new Icons_98('Icons', this, {} /*: Infos*/ );
+    const newElem = new Icons_95('Icons', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {InteractiveCreativeFile_107} 
+   * @returns {InteractiveCreativeFile_104} 
    */
   attachInteractiveCreativeFile(content) {
-    const newElem = new InteractiveCreativeFile_107('InteractiveCreativeFile', this, {} /*: Infos*/, content);
+    const newElem = new InteractiveCreativeFile_104('InteractiveCreativeFile', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Linear_92} 
+   * @returns {Linear_89} 
    */
   addInteractiveCreativeFile(content) {
     return this.attachInteractiveCreativeFile(content).and();
@@ -2472,10 +2386,10 @@ class Linear_92 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class NonLinearClickThrough_110 extends VastElement {
+class NonLinearClickThrough_107 extends VastElement {
   /**
    * @param {string} n
-   * @param {NonLinear_109} p
+   * @param {NonLinear_106} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2484,10 +2398,10 @@ class NonLinearClickThrough_110 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class NonLinearClickTracking_111 extends VastElement {
+class NonLinearClickTracking_108 extends VastElement {
   /**
    * @param {string} n
-   * @param {NonLinear_109} p
+   * @param {NonLinear_106} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2496,10 +2410,10 @@ class NonLinearClickTracking_111 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class NonLinear_109 extends VastElement {
+class NonLinear_106 extends VastElement {
   /**
    * @param {string} n
-   * @param {NonLinearAds_108} p
+   * @param {NonLinearAds_105} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2507,32 +2421,32 @@ class NonLinear_109 extends VastElement {
   }
   /** 
    * @param {string} content
-   * @returns {NonLinearClickThrough_110} 
+   * @returns {NonLinearClickThrough_107} 
    */
   attachNonLinearClickThrough(content) {
-    const newElem = new NonLinearClickThrough_110('NonLinearClickThrough', this, {} /*: Infos*/, content);
+    const newElem = new NonLinearClickThrough_107('NonLinearClickThrough', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {NonLinear_109} 
+   * @returns {NonLinear_106} 
    */
   addNonLinearClickThrough(content) {
     return this.attachNonLinearClickThrough(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {NonLinearClickTracking_111} 
+   * @returns {NonLinearClickTracking_108} 
    */
   attachNonLinearClickTracking(content) {
-    const newElem = new NonLinearClickTracking_111('NonLinearClickTracking', this, {} /*: Infos*/, content);
+    const newElem = new NonLinearClickTracking_108('NonLinearClickTracking', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {NonLinear_109} 
+   * @returns {NonLinear_106} 
    */
   addNonLinearClickTracking(content) {
     return this.attachNonLinearClickTracking(content).and();
@@ -2540,10 +2454,10 @@ class NonLinear_109 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Tracking_113 extends VastElement {
+class Tracking_110 extends VastElement {
   /**
    * @param {string} n
-   * @param {TrackingEvents_112} p
+   * @param {TrackingEvents_109} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2552,10 +2466,10 @@ class Tracking_113 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class TrackingEvents_112 extends VastElement {
+class TrackingEvents_109 extends VastElement {
   /**
    * @param {string} n
-   * @param {NonLinearAds_108} p
+   * @param {NonLinearAds_105} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2564,17 +2478,17 @@ class TrackingEvents_112 extends VastElement {
   /** 
    * @param {string} content
    * @param {{event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"creativeView"|"acceptInvitation"|"adExpand"|"adCollapse"|"minimize"|"close"|"overlayViewDuration")}} attributes
-   * @returns {Tracking_113} 
+   * @returns {Tracking_110} 
    */
   attachTracking(content, attributes) {
-    const newElem = new Tracking_113('Tracking', this, {"attrs":["event"]} /*: Infos*/, content, attributes);
+    const newElem = new Tracking_110('Tracking', this, {"attrs":["event"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{event:("mute"|"unmute"|"pause"|"resume"|"rewind"|"skip"|"playerExpand"|"playerCollapse"|"otherAdInteraction"|"creativeView"|"acceptInvitation"|"adExpand"|"adCollapse"|"minimize"|"close"|"overlayViewDuration")}} attributes
-   * @returns {TrackingEvents_112} 
+   * @returns {TrackingEvents_109} 
    */
   addTracking(content, attributes) {
     return this.attachTracking(content, attributes).and();
@@ -2582,38 +2496,39 @@ class TrackingEvents_112 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class NonLinearAds_108 extends VastElement {
+class NonLinearAds_105 extends VastElement {
   /**
    * @param {string} n
-   * @param {Creative_91} p
+   * @param {Creative_88} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
     this.parent = p;
   }
   /** 
-   * @returns {NonLinear_109} 
+   * @param {{id: string, width: string, height: string, expandedWidth: string, expandedHeight: string, scalable: string, maintainAspectRatio: string, minSuggestedDuration: string, apiFramework: string}} attributes
+   * @returns {NonLinear_106} 
    */
-  attachNonLinear() {
-    const newElem = new NonLinear_109('NonLinear', this, {} /*: Infos*/ );
+  attachNonLinear(attributes) {
+    const newElem = new NonLinear_106('NonLinear', this, {"attrs":["id","width","height","expandedWidth","expandedHeight","scalable","maintainAspectRatio","minSuggestedDuration","apiFramework"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
-   * @returns {TrackingEvents_112} 
+   * @returns {TrackingEvents_109} 
    */
   attachTrackingEvents() {
-    const newElem = new TrackingEvents_112('TrackingEvents', this, {} /*: Infos*/ );
+    const newElem = new TrackingEvents_109('TrackingEvents', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class StaticResource_116 extends VastElement {
+class StaticResource_113 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_115} p
+   * @param {Companion_112} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2622,10 +2537,10 @@ class StaticResource_116 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class IFrameResource_117 extends VastElement {
+class IFrameResource_114 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_115} p
+   * @param {Companion_112} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2634,10 +2549,10 @@ class IFrameResource_117 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class HTMLResource_118 extends VastElement {
+class HTMLResource_115 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_115} p
+   * @param {Companion_112} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2646,10 +2561,10 @@ class HTMLResource_118 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class AdParameters_119 extends VastElement {
+class AdParameters_116 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_115} p
+   * @param {Companion_112} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2658,10 +2573,10 @@ class AdParameters_119 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class AltText_120 extends VastElement {
+class AltText_117 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_115} p
+   * @param {Companion_112} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2670,10 +2585,10 @@ class AltText_120 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class CompanionClickThrough_121 extends VastElement {
+class CompanionClickThrough_118 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_115} p
+   * @param {Companion_112} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2682,10 +2597,10 @@ class CompanionClickThrough_121 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class CompanionClickTracking_122 extends VastElement {
+class CompanionClickTracking_119 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_115} p
+   * @param {Companion_112} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2694,10 +2609,10 @@ class CompanionClickTracking_122 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Tracking_124 extends VastElement {
+class Tracking_121 extends VastElement {
   /**
    * @param {string} n
-   * @param {TrackingEvents_123} p
+   * @param {TrackingEvents_120} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2706,10 +2621,10 @@ class Tracking_124 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class TrackingEvents_123 extends VastElement {
+class TrackingEvents_120 extends VastElement {
   /**
    * @param {string} n
-   * @param {Companion_115} p
+   * @param {Companion_112} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2718,17 +2633,17 @@ class TrackingEvents_123 extends VastElement {
   /** 
    * @param {string} content
    * @param {{event:("creativeView")}} attributes
-   * @returns {Tracking_124} 
+   * @returns {Tracking_121} 
    */
   attachTracking(content, attributes) {
-    const newElem = new Tracking_124('Tracking', this, {"attrs":["event"]} /*: Infos*/, content, attributes);
+    const newElem = new Tracking_121('Tracking', this, {"attrs":["event"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{event:("creativeView")}} attributes
-   * @returns {TrackingEvents_123} 
+   * @returns {TrackingEvents_120} 
    */
   addTracking(content, attributes) {
     return this.attachTracking(content, attributes).and();
@@ -2736,10 +2651,10 @@ class TrackingEvents_123 extends VastElement {
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Companion_115 extends VastElement {
+class Companion_112 extends VastElement {
   /**
    * @param {string} n
-   * @param {CompanionAds_114} p
+   * @param {CompanionAds_111} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2748,49 +2663,49 @@ class Companion_115 extends VastElement {
   /** 
    * @param {string} content
    * @param {{creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash")}} attributes
-   * @returns {StaticResource_116} 
+   * @returns {StaticResource_113} 
    */
   attachStaticResource(content, attributes) {
-    const newElem = new StaticResource_116('StaticResource', this, {"attrs":["creativeType"]} /*: Infos*/, content, attributes);
+    const newElem = new StaticResource_113('StaticResource', this, {"attrs":["creativeType"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash")}} attributes
-   * @returns {Companion_115} 
+   * @returns {Companion_112} 
    */
   addStaticResource(content, attributes) {
     return this.attachStaticResource(content, attributes).and();
   }
   /** 
    * @param {string} content
-   * @returns {IFrameResource_117} 
+   * @returns {IFrameResource_114} 
    */
   attachIFrameResource(content) {
-    const newElem = new IFrameResource_117('IFrameResource', this, {} /*: Infos*/, content);
+    const newElem = new IFrameResource_114('IFrameResource', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Companion_115} 
+   * @returns {Companion_112} 
    */
   addIFrameResource(content) {
     return this.attachIFrameResource(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {HTMLResource_118} 
+   * @returns {HTMLResource_115} 
    */
   attachHTMLResource(content) {
-    const newElem = new HTMLResource_118('HTMLResource', this, {} /*: Infos*/, content);
+    const newElem = new HTMLResource_115('HTMLResource', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Companion_115} 
+   * @returns {Companion_112} 
    */
   addHTMLResource(content) {
     return this.attachHTMLResource(content).and();
@@ -2798,49 +2713,49 @@ class Companion_115 extends VastElement {
   /** 
    * @param {string} content
    * @param {{xmlEncoded: string}} attributes
-   * @returns {AdParameters_119} 
+   * @returns {AdParameters_116} 
    */
   attachAdParameters(content, attributes) {
-    const newElem = new AdParameters_119('AdParameters', this, {"attrs":["xmlEncoded"]} /*: Infos*/, content, attributes);
+    const newElem = new AdParameters_116('AdParameters', this, {"attrs":["xmlEncoded"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{xmlEncoded: string}} attributes
-   * @returns {Companion_115} 
+   * @returns {Companion_112} 
    */
   addAdParameters(content, attributes) {
     return this.attachAdParameters(content, attributes).and();
   }
   /** 
    * @param {string} content
-   * @returns {AltText_120} 
+   * @returns {AltText_117} 
    */
   attachAltText(content) {
-    const newElem = new AltText_120('AltText', this, {} /*: Infos*/, content);
+    const newElem = new AltText_117('AltText', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Companion_115} 
+   * @returns {Companion_112} 
    */
   addAltText(content) {
     return this.attachAltText(content).and();
   }
   /** 
    * @param {string} content
-   * @returns {CompanionClickThrough_121} 
+   * @returns {CompanionClickThrough_118} 
    */
   attachCompanionClickThrough(content) {
-    const newElem = new CompanionClickThrough_121('CompanionClickThrough', this, {} /*: Infos*/, content);
+    const newElem = new CompanionClickThrough_118('CompanionClickThrough', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Companion_115} 
+   * @returns {Companion_112} 
    */
   addCompanionClickThrough(content) {
     return this.attachCompanionClickThrough(content).and();
@@ -2848,36 +2763,36 @@ class Companion_115 extends VastElement {
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {CompanionClickTracking_122} 
+   * @returns {CompanionClickTracking_119} 
    */
   attachCompanionClickTracking(content, attributes) {
-    const newElem = new CompanionClickTracking_122('CompanionClickTracking', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
+    const newElem = new CompanionClickTracking_119('CompanionClickTracking', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {Companion_115} 
+   * @returns {Companion_112} 
    */
   addCompanionClickTracking(content, attributes) {
     return this.attachCompanionClickTracking(content, attributes).and();
   }
   /** 
-   * @returns {TrackingEvents_123} 
+   * @returns {TrackingEvents_120} 
    */
   attachTrackingEvents() {
-    const newElem = new TrackingEvents_123('TrackingEvents', this, {} /*: Infos*/ );
+    const newElem = new TrackingEvents_120('TrackingEvents', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class CompanionAds_114 extends VastElement {
+class CompanionAds_111 extends VastElement {
   /**
    * @param {string} n
-   * @param {Creative_91} p
+   * @param {Creative_88} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2885,57 +2800,57 @@ class CompanionAds_114 extends VastElement {
   }
   /** 
    * @param {{id: string, width: string, height: string, assetWidth: string, assetHeight: string, expandedWidth: string, expandedHeight: string, apiFramework: string, adSlotID: string, logoTile: string, logoTitle: string, logoArtist: string, logoURL: string, pxratio: string}} attributes
-   * @returns {Companion_115} 
+   * @returns {Companion_112} 
    */
   attachCompanion(attributes) {
-    const newElem = new Companion_115('Companion', this, {"attrs":["id","width","height","assetWidth","assetHeight","expandedWidth","expandedHeight","apiFramework","adSlotID","logoTile","logoTitle","logoArtist","logoURL","pxratio"]} /*: Infos*/, attributes);
+    const newElem = new Companion_112('Companion', this, {"attrs":["id","width","height","assetWidth","assetHeight","expandedWidth","expandedHeight","apiFramework","adSlotID","logoTile","logoTitle","logoArtist","logoURL","pxratio"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Creative_91 extends VastElement {
+class Creative_88 extends VastElement {
   /**
    * @param {string} n
-   * @param {Creatives_90} p
+   * @param {Creatives_87} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
     this.parent = p;
   }
   /** 
-   * @returns {Linear_92} 
+   * @returns {Linear_89} 
    */
   attachLinear() {
-    const newElem = new Linear_92('Linear', this, {} /*: Infos*/ );
+    const newElem = new Linear_89('Linear', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   /** 
-   * @returns {NonLinearAds_108} 
+   * @returns {NonLinearAds_105} 
    */
   attachNonLinearAds() {
-    const newElem = new NonLinearAds_108('NonLinearAds', this, {} /*: Infos*/ );
+    const newElem = new NonLinearAds_105('NonLinearAds', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {{required:("all"|"any"|"none")}} attributes
-   * @returns {CompanionAds_114} 
+   * @returns {CompanionAds_111} 
    */
   attachCompanionAds(attributes) {
-    const newElem = new CompanionAds_114('CompanionAds', this, {"attrs":["required"]} /*: Infos*/, attributes);
+    const newElem = new CompanionAds_111('CompanionAds', this, {"attrs":["required"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Creatives_90 extends VastElement {
+class Creatives_87 extends VastElement {
   /**
    * @param {string} n
-   * @param {Wrapper_75} p
+   * @param {Wrapper_72} p
    */
   constructor(n, p, ...args) {
     super(n, p, ...args);
@@ -2943,17 +2858,17 @@ class Creatives_90 extends VastElement {
   }
   /** 
    * @param {{id: string, sequence: string, adId: string}} attributes
-   * @returns {Creative_91} 
+   * @returns {Creative_88} 
    */
   attachCreative(attributes) {
-    const newElem = new Creative_91('Creative', this, {"attrs":["id","sequence","adId"]} /*: Infos*/, attributes);
+    const newElem = new Creative_88('Creative', this, {"attrs":["id","sequence","adId"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   and() { return this.parent; }
   back() { return this.and().and(); }
 }
-class Wrapper_75 extends VastElement {
+class Wrapper_72 extends VastElement {
   /**
    * @param {string} n
    * @param {Ad_6} p
@@ -2965,33 +2880,33 @@ class Wrapper_75 extends VastElement {
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {Impression_76} 
+   * @returns {Impression_73} 
    */
   attachImpression(content, attributes) {
-    const newElem = new Impression_76('Impression', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
+    const newElem = new Impression_73('Impression', this, {"attrs":["id"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{id: string}} attributes
-   * @returns {Wrapper_75} 
+   * @returns {Wrapper_72} 
    */
   addImpression(content, attributes) {
     return this.attachImpression(content, attributes).and();
   }
   /** @description required in Vast 4
    * @param {string} content
-   * @returns {VASTAdTagURI_77} 
+   * @returns {VASTAdTagURI_74} 
    */
   attachVASTAdTagURI(content) {
-    const newElem = new VASTAdTagURI_77('VASTAdTagURI', this, {} /*: Infos*/, content);
+    const newElem = new VASTAdTagURI_74('VASTAdTagURI', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** @description required in Vast 4
    * @param {string} content
-   * @returns {Wrapper_75} 
+   * @returns {Wrapper_72} 
    */
   addVASTAdTagURI(content) {
     return this.attachVASTAdTagURI(content).and();
@@ -2999,17 +2914,17 @@ class Wrapper_75 extends VastElement {
   /** @description required in Vast 4
    * @param {string} content
    * @param {{version: string}} attributes
-   * @returns {AdSystem_78} 
+   * @returns {AdSystem_75} 
    */
   attachAdSystem(content, attributes) {
-    const newElem = new AdSystem_78('AdSystem', this, {"attrs":["version"]} /*: Infos*/, content, attributes);
+    const newElem = new AdSystem_75('AdSystem', this, {"attrs":["version"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** @description required in Vast 4
    * @param {string} content
    * @param {{version: string}} attributes
-   * @returns {Wrapper_75} 
+   * @returns {Wrapper_72} 
    */
   addAdSystem(content, attributes) {
     return this.attachAdSystem(content, attributes).and();
@@ -3017,67 +2932,67 @@ class Wrapper_75 extends VastElement {
   /** 
    * @param {string} content
    * @param {{currency: string, model:("CPM"|"CPC"|"CPE"|"CPV")}} attributes
-   * @returns {Pricing_79} 
+   * @returns {Pricing_76} 
    */
   attachPricing(content, attributes) {
-    const newElem = new Pricing_79('Pricing', this, {"attrs":["currency","model"]} /*: Infos*/, content, attributes);
+    const newElem = new Pricing_76('Pricing', this, {"attrs":["currency","model"]} /*: Infos*/, content, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
    * @param {{currency: string, model:("CPM"|"CPC"|"CPE"|"CPV")}} attributes
-   * @returns {Wrapper_75} 
+   * @returns {Wrapper_72} 
    */
   addPricing(content, attributes) {
     return this.attachPricing(content, attributes).and();
   }
   /** 
    * @param {string} content
-   * @returns {Error_80} 
+   * @returns {Error_77} 
    */
   attachError(content) {
-    const newElem = new Error_80('Error', this, {} /*: Infos*/, content);
+    const newElem = new Error_77('Error', this, {} /*: Infos*/, content);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
    * @param {string} content
-   * @returns {Wrapper_75} 
+   * @returns {Wrapper_72} 
    */
   addError(content) {
     return this.attachError(content).and();
   }
   /** 
    * @param {{id: string}} attributes
-   * @returns {ViewableImpression_81} 
+   * @returns {ViewableImpression_78} 
    */
   attachViewableImpression(attributes) {
-    const newElem = new ViewableImpression_81('ViewableImpression', this, {"attrs":["id"]} /*: Infos*/, attributes);
+    const newElem = new ViewableImpression_78('ViewableImpression', this, {"attrs":["id"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
   /** 
-   * @returns {AdVerifications_85} 
+   * @returns {AdVerifications_82} 
    */
   attachAdVerifications() {
-    const newElem = new AdVerifications_85('AdVerifications', this, {} /*: Infos*/ );
+    const newElem = new AdVerifications_82('AdVerifications', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   /** 
-   * @returns {Extensions_88} 
+   * @returns {Extensions_85} 
    */
   attachExtensions() {
-    const newElem = new Extensions_88('Extensions', this, {} /*: Infos*/ );
+    const newElem = new Extensions_85('Extensions', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
   /** 
-   * @returns {Creatives_90} 
+   * @returns {Creatives_87} 
    */
   attachCreatives() {
-    const newElem = new Creatives_90('Creatives', this, {} /*: Infos*/ );
+    const newElem = new Creatives_87('Creatives', this, {} /*: Infos*/ );
     this.childs.push(newElem);
     return newElem;
   }
@@ -3103,10 +3018,10 @@ class Ad_6 extends VastElement {
   }
   /** 
    * @param {{followAdditonalWrappers: string, allowMultipleAds: string, fallbackOnNoAd: string}} attributes
-   * @returns {Wrapper_75} 
+   * @returns {Wrapper_72} 
    */
   attachWrapper(attributes) {
-    const newElem = new Wrapper_75('Wrapper', this, {"attrs":["followAdditonalWrappers","allowMultipleAds","fallbackOnNoAd"]} /*: Infos*/, attributes);
+    const newElem = new Wrapper_72('Wrapper', this, {"attrs":["followAdditonalWrappers","allowMultipleAds","fallbackOnNoAd"]} /*: Infos*/, attributes);
     this.childs.push(newElem);
     return newElem;
   }
@@ -3173,7 +3088,7 @@ class apiv4 extends VastElement {
 }
 
 
-const validator = {"only":{"VAST":{"alo":{"Ad":{"uniq":{"InLine":{"required":{"AdSystem":{},"AdTitle":{},"Creatives":{"alo":{"Creative":{"required":{"UniversalAdId":{"attrsRequired":{"idRegistry":null,"idValue":null}}},"uniq":{"Linear":{"required":{"Duration":{},"MediaFiles":{"alo":{"MediaFile":{"attrsRequired":{"delivery":["progressive","streaming"],"type":null,"width":null,"height":null}}},"follow":{"Mezzanine":{},"InteractiveCreativeFile":{}}}},"follow":{"AdParameters":{},"VideoClicks":{"follow":{"ClickThrough":{},"ClickTracking":{},"CustomClick":{}}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","start","firstQuartile","midpoint","thirdQuartile","complete","acceptInvitationLinear","timeSpentViewing","progress"]}}}},"Icons":{"alo":{"Icon":{"alo":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{}},"follow":{"IconClicks":{"follow":{"IconClickThrough":{},"IconClickTracking":{}}},"IconViewTracking":{}}}}}}},"NonLinearAds":{"follow":{"NonLinear":{"alo":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{}},"follow":{"NonLinearClickThrough":{},"NonLinearClickTracking":{}},"attrsRequired":{"width":null,"height":null}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","creativeView","acceptInvitation","adExpand","adCollapse","minimize","close","overlayViewDuration"]}}}}}},"CompanionAds":{"follow":{"Companion":{"alo":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{}},"follow":{"AdParameters":{},"AltText":{},"CompanionClickThrough":{},"CompanionClickTracking":{},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["creativeView"]}}}}},"attrsRequired":{"width":null,"height":null}}},"attrsRequired":{"required":["all","any","none"]}}},"follow":{"CreativeExtensions":{"follow":{"CreativeExtension":{}}}}}}}},"alo":{"Impression":{}},"follow":{"Category":{"attrsRequired":{"authority":null}},"Description":{},"Advertiser":{},"Pricing":{"attrsRequired":{"currency":null,"model":["CPM","CPC","CPE","CPV"]}},"Survey":{},"Error":{},"ViewableImpression":{"follow":{"Viewable":{},"NotViewable":{},"ViewUndetermined":{}}},"AdVerifications":{"follow":{"Verification":{"follow":{"JavaScriptResource":{},"FlashResource":{},"ViewableImpression":{}}}}},"Extensions":{"required":{"Extension":{}}}}},"Wrapper":{"required":{"VASTAdTagURI":{},"AdSystem":{}},"alo":{"Impression":{}},"follow":{"Pricing":{"attrsRequired":{"currency":null,"model":["CPM","CPC","CPE","CPV"]}},"Error":{},"ViewableImpression":{"follow":{"Viewable":{},"NotViewable":{},"ViewUndetermined":{}}},"AdVerifications":{"follow":{"Verification":{"follow":{"ViewableImpression":{}}}}},"Extensions":{"follow":{"Extension":{}}},"Creatives":{"follow":{"Creative":{"uniq":{"Linear":{"follow":{"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","start","firstQuartile","midpoint","thirdQuartile","complete","acceptInvitationLinear","timeSpentViewing","progress"]}}}},"VideoClicks":{"follow":{"ClickTracking":{},"CustomClick":{}}},"Icons":{"alo":{"Icon":{"follow":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{},"IconClicks":{"follow":{"IconClickThrough":{},"IconClickTracking":{}}},"IconViewTracking":{}}}}},"InteractiveCreativeFile":{}}},"NonLinearAds":{"follow":{"NonLinear":{"follow":{"NonLinearClickThrough":{},"NonLinearClickTracking":{}}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","creativeView","acceptInvitation","adExpand","adCollapse","minimize","close","overlayViewDuration"]}}}}}},"CompanionAds":{"follow":{"Companion":{"follow":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{},"AdParameters":{},"AltText":{},"CompanionClickThrough":{},"CompanionClickTracking":{},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["creativeView"]}}}}},"attrsRequired":{"width":null,"height":null}}},"attrsRequired":{"required":["all","any","none"]}}}}}}}}}}},"follow":{"Error":{}},"attrsRequired":{"version":["4.0"]}}}};
+const validator = {"only":{"VAST":{"alo":{"Ad":{"uniq":{"InLine":{"required":{"AdSystem":{},"AdTitle":{},"Creatives":{"alo":{"Creative":{"required":{"UniversalAdId":{"attrsRequired":{"idRegistry":null,"idValue":null}}},"uniq":{"Linear":{"required":{"Duration":{},"MediaFiles":{"alo":{"MediaFile":{"attrsRequired":{"delivery":["progressive","streaming"],"type":null,"width":null,"height":null}}},"follow":{"Mezzanine":{},"InteractiveCreativeFile":{}}}},"follow":{"AdParameters":{},"VideoClicks":{"follow":{"ClickThrough":{},"ClickTracking":{},"CustomClick":{}}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","start","firstQuartile","midpoint","thirdQuartile","complete","acceptInvitationLinear","timeSpentViewing","progress"]}}}},"Icons":{"alo":{"Icon":{"alo":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{}},"follow":{"IconClicks":{"follow":{"IconClickThrough":{},"IconClickTracking":{}}},"IconViewTracking":{}}}}}}},"NonLinearAds":{"follow":{"NonLinear":{"follow":{"NonLinearClickThrough":{},"NonLinearClickTracking":{}},"attrsRequired":{"width":null,"height":null}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","creativeView","acceptInvitation","adExpand","adCollapse","minimize","close","overlayViewDuration"]}}}}}},"CompanionAds":{"follow":{"Companion":{"alo":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{}},"follow":{"AdParameters":{},"AltText":{},"CompanionClickThrough":{},"CompanionClickTracking":{},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["creativeView"]}}}}},"attrsRequired":{"width":null,"height":null}}},"attrsRequired":{"required":["all","any","none"]}}},"follow":{"CreativeExtensions":{"follow":{"CreativeExtension":{}}}}}}}},"alo":{"Impression":{}},"follow":{"Category":{"attrsRequired":{"authority":null}},"Description":{},"Advertiser":{},"Pricing":{"attrsRequired":{"currency":null,"model":["CPM","CPC","CPE","CPV"]}},"Survey":{},"Error":{},"ViewableImpression":{"follow":{"Viewable":{},"NotViewable":{},"ViewUndetermined":{}}},"AdVerifications":{"follow":{"Verification":{"follow":{"JavaScriptResource":{},"FlashResource":{},"ViewableImpression":{}}}}},"Extensions":{"required":{"Extension":{}}}}},"Wrapper":{"required":{"VASTAdTagURI":{},"AdSystem":{}},"alo":{"Impression":{}},"follow":{"Pricing":{"attrsRequired":{"currency":null,"model":["CPM","CPC","CPE","CPV"]}},"Error":{},"ViewableImpression":{"follow":{"Viewable":{},"NotViewable":{},"ViewUndetermined":{}}},"AdVerifications":{"follow":{"Verification":{"follow":{"ViewableImpression":{}}}}},"Extensions":{"follow":{"Extension":{}}},"Creatives":{"follow":{"Creative":{"uniq":{"Linear":{"follow":{"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","start","firstQuartile","midpoint","thirdQuartile","complete","acceptInvitationLinear","timeSpentViewing","progress"]}}}},"VideoClicks":{"follow":{"ClickTracking":{},"CustomClick":{}}},"Icons":{"alo":{"Icon":{"follow":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{},"IconClicks":{"follow":{"IconClickThrough":{},"IconClickTracking":{}}},"IconViewTracking":{}}}}},"InteractiveCreativeFile":{}}},"NonLinearAds":{"follow":{"NonLinear":{"follow":{"NonLinearClickThrough":{},"NonLinearClickTracking":{}},"attrsRequired":{"width":null,"height":null}},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["mute","unmute","pause","resume","rewind","skip","playerExpand","playerCollapse","otherAdInteraction","creativeView","acceptInvitation","adExpand","adCollapse","minimize","close","overlayViewDuration"]}}}}}},"CompanionAds":{"follow":{"Companion":{"follow":{"StaticResource":{"attrsRequired":{"creativeType":["image/gif","image/jpeg","image/jpg","image/png","application/x-javascript","application/x-shockwave-flash"]}},"IFrameResource":{},"HTMLResource":{},"AdParameters":{},"AltText":{},"CompanionClickThrough":{},"CompanionClickTracking":{},"TrackingEvents":{"follow":{"Tracking":{"attrsRequired":{"event":["creativeView"]}}}}},"attrsRequired":{"width":null,"height":null}}},"attrsRequired":{"required":["all","any","none"]}}}}}}}}}}},"follow":{"Error":{}},"attrsRequired":{"version":["4.0"]}}}};
 
 module.exports = {
   apiv4,

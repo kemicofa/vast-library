@@ -34,6 +34,7 @@
   "license": "MIT",
   "thanks": "https://www.paypal.me/devilhunter/4",
   "dependencies": {
+    "mergejson": "^1.1.0",
     "xml-js": "^1.6.11"
   },
   "engines": {

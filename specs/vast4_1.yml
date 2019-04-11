@@ -26,14 +26,67 @@ config:
           - image/png
           - application/x-javascript
           - application/x-shockwave-flash
+  Tracking_events:
+    - Linear: &TrackingEventLinear
+      # linear only
+      - loaded # new in VAST 4.1
+      - start
+      - firstQuartile
+      - midpoint
+      - thirdQuartile
+      - complete
+      - progress
+      - closeLinear
+      - otherAdInteraction
+      # linear & nonlinear
+      - mute
+      - unmute
+      - pause
+      - resume
+      - rewind
+      - skip
+      - playerExpand
+      - playerCollapse
+      - notUsed # new in VAST 4.1
+    - NonLinear: &TrackingEventNonLinear
+      # non linear only
+      - creativeView
+      - acceptInvitation
+      - adExpand
+      - adCollapse
+      - minimize
+      - close
+      - overlayViewDuration
+      - otherAdInteraction
+      # linear & nonlinear
+      - mute
+      - unmute
+      - pause
+      - resume
+      - rewind
+      - skip
+      - playerExpand
+      - playerCollapse
+      - notUsed # new in VAST 4.1
+    - Compagnon: &TrackingEventCompagnon
+      # compagnon only
+      - creativeView
+      # deprecated in VAST 4.1
+      # - acceptInvitationLinear
+      # - timeSpentViewing
+    - Verification: &TrackingEventVerification
+      # Verification only
+      - verificationNotExecuted
+
 VAST:
   only: true
   attrs:
-    - version: ['4.1']
+    - version: ["4.1"]
   Error:
   Ad:
     alo: true
-    attrs: [id, sequence, conditionalAd]
+    # conditionalAd is deprecated in vast 4.1 # adType new in vast 4.1
+    attrs: [id, sequence, conditionalAd, adType]
     InLine:
       uniq: true # only one elem of this level
       AdSystem:
@@ -44,32 +97,52 @@ VAST:
       Impression:
         alo: true
         attrs: [id]
+      AdServingID: # new in vast 4.1
+        required: true
       Category:
         attrs:
           - authority:
       Description:
       Advertiser:
+        attrs:
+          - id # new in vast 4.1
       Pricing:
         attrs:
-          - currency: # object = needed
+          - currency: # object = needed # three-letter ISO-4217 currency symbol
           - model: [CPM, CPC, CPE, CPV] # object with accepted values
       Survey:
         attrs: [type]
       Error:
+      Expires:
       ViewableImpression:
         attrs: [id]
         Viewable:
         NotViewable:
         ViewUndetermined:
       AdVerifications:
-        Verification:
-          attrs: [vendor]
+        Verification: &Verification_from_InLine
+          attrs:
+            - vendor: # new is required in vast 4.1
           JavaScriptResource:
-            attrs: [apiFramework]
-          FlashResource:
-            attrs: [apiFramework]
-          ViewableImpression:
-            attrs: [id]
+            attrs:
+              - apiFramework: # new is required in vast 4.1
+              - browserOptional: # browserOptional new in vast 4.1
+          ExecutableResource: # new in vast 4.1
+            attrs:
+              - apiFramework:
+              - language # spec is not clear, it use language in the final schema
+              - type # but use type in the description
+          TrackingEvents:
+            Tracking:
+              attrs:
+                - offset
+                - event: *TrackingEventVerification
+          VerificationParameters:
+          # deprecated in vast 4.1
+          # FlashResource:
+          #   attrs: [apiFramework]
+          # ViewableImpression:
+          #   attrs: [id]
       Extensions:
         Extension:
           required: true
@@ -83,7 +156,7 @@ VAST:
             required: true
             attrs:
               - idRegistry: # needed but can be "unknown"
-              - idValue: # needed but can be "unknown"
+              - idValue # deprecated in VAST 4.1
           CreativeExtensions: # warning CretiveExtensions in docs
             CreativeExtension:
               attrs: [type]
@@ -97,25 +170,44 @@ VAST:
             MediaFiles:
               required: true
               Mezzanine:
-                # required: true   spec is not clear
-              MediaFile:
-                alo: true
-                attrs:
-                  - id
+                # required: true   spec say required when "ad-stitching"
+                attrs: # new attrs in VAST 4.1
                   - delivery:
                       - progressive
                       - streaming
                   - type:
+                  - width:
+                  - height:
+                  - codec
+                  - id
+                  - fileSize
+                  - mediaType
+              MediaFile:
+                alo: true
+                attrs:
+                  - delivery:
+                      - progressive
+                      - streaming
+                  - type:
+                  - width:
+                  - height:
+                  - codec
+                  - id
                   - bitrate
                   - minBitrate
                   - maxBitrate
-                  - width:
-                  - height:
                   - scalable
                   - mantainAspectRatio
-                  - codec
-                  - apiFramework
+                  - apiFramework # deprecated in VAST 4.1
+                  - fileSize
+                  - mediaType
               InteractiveCreativeFile:
+                attrs: [type, apiFramework, variableDuration] # new attrs in VAST 4.1
+              ClosedCaptionFiles: # new in VAST 4.1
+                ClosedCaptionFile:
+                  attrs:
+                    - type
+                    - language # ISO 631-1 codes
             VideoClicks:
               ClickThrough:
                 attrs: [id]
@@ -127,35 +219,16 @@ VAST:
               Tracking:
                 attrs:
                   - offset
-                  - event:
-                      # linear & nonlinear
-                      - mute
-                      - unmute
-                      - pause
-                      - resume
-                      - rewind
-                      - skip
-                      - playerExpand
-                      - playerCollapse
-                      - otherAdInteraction # separate but in both in specs
-                      # linear
-                      - start
-                      - firstQuartile
-                      - midpoint
-                      - thirdQuartile
-                      - complete
-                      - acceptInvitationLinear
-                      - timeSpentViewing
-                      - progress
-            Icons:
+                  - event: *TrackingEventLinear
+            Icons: &Icons_from_InLine
               Icon:
                 alo: true
                 attrs:
-                  - program # not required in spec ? was in vast3
-                  - width # not required in spec ? was in vast3
-                  - height # not required in spec ? was in vast3
-                  - xPosition # not required in spec ? was in vast3
-                  - yPosition # not required in spec ? was in vast3
+                  - program
+                  - width
+                  - height
+                  - xPosition
+                  - yPosition
                   - duration
                   - offset
                   - apiFramework
@@ -172,7 +245,7 @@ VAST:
                   IconClickTracking:
                     attrs: [id]
                 IconViewTracking:
-          NonLinearAds:
+          NonLinearAds: &NonLinearAds_from_InLine
             uniq: true # only one of this subitems
             NonLinear:
               # param removed from v4 spec, but present in 4.1 of Nov 8th 2019
@@ -184,50 +257,23 @@ VAST:
                 - expandedHeight
                 - scalable
                 - maintainAspectRatio
-                - minSuggestedDuration
                 - apiFramework
-              StaticResource:
-                alo: true # at least one of this subitems
-                <<: *StaticResource_types
-              IFrameResource:
-                alo: true # at least one of this subitems
-              HTMLResource:
-                alo: true # at least one of this subitems
+                - minSuggestedDuration
               NonLinearClickThrough:
               NonLinearClickTracking:
             TrackingEvents:
               Tracking:
                 attrs:
-                  - event:
-                      # linear & nonlinear
-                      - mute
-                      - unmute
-                      - pause
-                      - resume
-                      - rewind
-                      - skip
-                      - playerExpand
-                      - playerCollapse
-                      - otherAdInteraction # separate but in both in specs
-                      # non linear
-                      - creativeView
-                      - acceptInvitation
-                      - adExpand
-                      - adCollapse
-                      - minimize
-                      - close
-                      - overlayViewDuration
-                    # # compagnon
-                    # - creativeView
-          CompanionAds:
+                  - event: *TrackingEventNonLinear
+          CompanionAds: &CompanionAds_from_InLine
             uniq: true # only one of this subitems
             attrs:
               - required: [all, any, none] # required here is the param name
             Companion:
               attrs:
-                - id
                 - width:
                 - height:
+                - id
                 - assetWidth
                 - assetHeight
                 - expandedWidth
@@ -235,6 +281,7 @@ VAST:
                 - apiFramework
                 - adSlotID
                 - pxratio
+                - renderingMode # optionnal but possible values are : [default, end-card, concurrent]
                 # strange, here are some options missing comparing to wrapper
               StaticResource:
                 alo: true # at least one of this subitems
@@ -252,11 +299,7 @@ VAST:
               TrackingEvents: # strange here, not at the same level as nonlinear TrackingEvents
                 Tracking:
                   attrs:
-                    - event:
-                        # no others ?
-                        # compagnon
-                        - creativeView
-    ## here it is
+                    - event: *TrackingEventCompagnon
     Wrapper:
       uniq: true # only one elem of this level
       attrs:
@@ -283,9 +326,10 @@ VAST:
         ViewUndetermined:
       AdVerifications:
         Verification:
-          attrs: [vendor]
-          ViewableImpression:
-            attrs: [id]
+          <<: *Verification_from_InLine
+          BlockedAdCategories:
+            attrs:
+              - authority:
       Extensions:
         Extension:
           # strange, only child extension non required in spec
@@ -299,133 +343,17 @@ VAST:
               Tracking:
                 attrs:
                   - offset
-                  - event:
-                      # linear & nonlinear
-                      - mute
-                      - unmute
-                      - pause
-                      - resume
-                      - rewind
-                      - skip
-                      - playerExpand
-                      - playerCollapse
-                      - otherAdInteraction # separate but in both in specs
-                      # linear
-                      - start
-                      - firstQuartile
-                      - midpoint
-                      - thirdQuartile
-                      - complete
-                      - acceptInvitationLinear
-                      - timeSpentViewing
-                      - progress
+                  - event: *TrackingEventLinear
             VideoClicks:
               ClickTracking:
                 attrs: [id]
               CustomClick:
                 attrs: [id]
             Icons:
-              Icon:
-                alo: true
-                attrs:
-                  - program
-                  - width
-                  - height
-                  - xPosition
-                  - yPosition
-                  - duration
-                  - offset
-                  - apiFramework
-                  - pxratio
-                StaticResource:
-                  # alo: true # not in wrapper ? strange
-                  <<: *StaticResource_types
-                IFrameResource:
-                  # alo: true # at least one of this subitems
-                HTMLResource:
-                  # alo: true # at least one of this subitems
-                IconClicks:
-                  IconClickThrough:
-                  IconClickTracking:
-                    # attrs: [id] # not in specs ?
-                IconViewTracking:
+              <<: *Icons_from_InLine
             InteractiveCreativeFile:
+              attrs: [type, apiFramework, variableDuration]
           NonLinearAds:
-            uniq: true # at least one of this subitems
-            NonLinear:
-              # removed attributes in v4 ?
-              # attrs:
-              #   - id
-              #   - width:
-              #   - height:
-              #   - expandedWidth
-              #   - expandedHeight
-              #   - scalable
-              #   - maintainAspectRatio
-              #   - minSuggestedDuration
-              #   - apiFramework
-              NonLinearClickThrough:
-              NonLinearClickTracking:
-                # attrs: [id] # not in the specs ?
-            TrackingEvents:
-              Tracking:
-                attrs:
-                  - event:
-                      # linear & nonlinear
-                      - mute
-                      - unmute
-                      - pause
-                      - resume
-                      - rewind
-                      - skip
-                      - playerExpand
-                      - playerCollapse
-                      - otherAdInteraction # separate but in both in specs
-                      # non linear
-                      - creativeView
-                      - acceptInvitation
-                      - adExpand
-                      - adCollapse
-                      - minimize
-                      - close
-                      - overlayViewDuration
+            <<: *NonLinearAds_from_InLine
           CompanionAds:
-            uniq: true # at least one of this subitems
-            attrs:
-              - required: [all, any, none] # required here is the param name
-            Companion:
-              attrs:
-                - id
-                - width:
-                - height:
-                - assetWidth
-                - assetHeight
-                - expandedWidth
-                - expandedHeight
-                - apiFramework
-                - adSlotID
-                - logoTile
-                - logoTitle
-                - logoArtist
-                - logoURL
-                - pxratio
-              StaticResource:
-                # alo: true # at least one of this subitems
-                <<: *StaticResource_types
-              IFrameResource:
-                # alo: true # at least one of this subitems
-              HTMLResource:
-                # alo: true # at least one of this subitems
-              AdParameters:
-                attrs: [xmlEncoded]
-              AltText:
-              CompanionClickThrough:
-              CompanionClickTracking:
-                attrs: [id] # not in spec ?
-              TrackingEvents:
-                Tracking:
-                  attrs:
-                    - event:
-                        # no others ?
-                        # compagnon
-                        - creativeView
+            <<: *CompanionAds_from_InLine

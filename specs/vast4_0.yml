@@ -29,7 +29,7 @@ config:
 VAST:
   only: true
   attrs:
-    - version: ['4.0']
+    - version: ["4.0"]
   Error:
   Ad:
     alo: true
@@ -186,13 +186,6 @@ VAST:
                 - maintainAspectRatio
                 - minSuggestedDuration
                 - apiFramework
-              StaticResource:
-                alo: true # at least one of this subitems
-                <<: *StaticResource_types
-              IFrameResource:
-                alo: true # at least one of this subitems
-              HTMLResource:
-                alo: true # at least one of this subitems
               NonLinearClickThrough:
               NonLinearClickTracking:
             TrackingEvents:
@@ -353,17 +346,17 @@ VAST:
           NonLinearAds:
             uniq: true # at least one of this subitems
             NonLinear:
-              # removed attributes in v4 ?
-              # attrs:
-              #   - id
-              #   - width:
-              #   - height:
-              #   - expandedWidth
-              #   - expandedHeight
-              #   - scalable
-              #   - maintainAspectRatio
-              #   - minSuggestedDuration
-              #   - apiFramework
+              # spec removed attributes in v4 ?
+              attrs:
+                - id
+                - width:
+                - height:
+                - expandedWidth
+                - expandedHeight
+                - scalable
+                - maintainAspectRatio
+                - minSuggestedDuration
+                - apiFramework
               NonLinearClickThrough:
               NonLinearClickTracking:
                 # attrs: [id] # not in the specs ?

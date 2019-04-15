@@ -11,11 +11,13 @@
 
 <img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
 
-An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4 (including 4.1)
+An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3, VAST4 and VAST4.1
 
 <img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/vast-demo.gif?raw=true" alt="app demo" />
 
 Main features are :
+
+<!-- TODO add links to features -->
 
 - validate a VAST from string input
 - awesome API to create 100% iab valid VAST 2, 3, 4 & 4.1
@@ -51,7 +53,7 @@ yarn add vast-builder
 ### Validate existing VAST
 
 ```js
-const { validate } = require('vast-builder');
+const { validate } = require("vast-builder");
 
 // simply pass the vast string to validate
 const bool = validate(
@@ -72,7 +74,7 @@ const bool = validate(
 ### Create new VAST
 
 ```js
-const createVast = require('vast-builder');
+const createVast = require("vast-builder");
 
 // vast1 is deprecated and not supported
 // options are optionnals
@@ -91,33 +93,33 @@ const vast3 = createVast.v3();
 vast3
   .attachAd()
   .attachInLine()
-  .addImpression('imp_link')
-  .addAdSystem('Society')
-  .addAdTitle('Title')
+  .addImpression("imp_link")
+  .addAdSystem("Society")
+  .addAdTitle("Title")
   .attachCreatives()
   .attachCreative()
   .attachLinear()
   .attachTrackingEvents()
-  .attachTracking('content', { event: 'start' })
+  .attachTracking("content", { event: "start" })
   .back()
-  .addDuration('00:30:00')
+  .addDuration("00:30:00")
   .attachMediaFiles()
-  .attachMediaFile('my_video', {
-    delivery: 'streaming',
-    type: 'video/mp4',
-    width: '600',
-    height: '400'
+  .attachMediaFile("my_video", {
+    delivery: "streaming",
+    type: "video/mp4",
+    width: "600",
+    height: "400"
   })
   .back()
   .attachIcons()
   .attachIcon({
-    program: 'my_program',
-    width: '50',
-    height: '50',
-    xPosition: 'bottom',
-    yPosition: 'left'
+    program: "my_program",
+    width: "50",
+    height: "50",
+    xPosition: "bottom",
+    yPosition: "left"
   })
-  .attachStaticResource('ressource_link', { creativeType: 'image/jpeg' });
+  .attachStaticResource("ressource_link", { creativeType: "image/jpeg" });
 
 const render = vast3.toXml();
 ```
@@ -161,9 +163,9 @@ You can also use intermediates objects, the result will be exactly the same :
 const vast3 = createVast.v3();
 const Ad = vast3.attachAd();
 const InLine = Ad.attachInLine();
-Inline.addImpression('imp_link');
-Inline.addAdSystem('Society');
-Inline.addAdTitle('Title');
+Inline.addImpression("imp_link");
+Inline.addAdSystem("Society");
+Inline.addAdTitle("Title");
 const Creatives = Inline.attachCreatives();
 // etc ...
 ```
@@ -183,18 +185,18 @@ Here is a demo with helping indentation :
 vast3
   .attachAd() // Ad
   .attachInLine() //  Inline
-  .addImpression('imp_link') //  Inline : add = same level
-  .addAdSystem('Society') //  Inline
+  .addImpression("imp_link") //  Inline : add = same level
+  .addAdSystem("Society") //  Inline
   .attachCreatives() //   Creatives : attach = lower level
   .attachCreative() //    Creative
   .attachLinear() //     Linear
   .attachTrackingEvents() //      TrackingEvents
   .addTracking(
-    's', //       TrackingEvents
-    { event: 'start' }
+    "s", //       TrackingEvents
+    { event: "start" }
   )
   .and() //     Linear : and = upper level
-  .addDuration('00:30:00') //     Linear
+  .addDuration("00:30:00") //     Linear
   .attachMediaFiles(); //      MediaFiles
 // etc ...
 ```

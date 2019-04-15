@@ -6,6 +6,31 @@
 
 
 ```js
+// Get the node name
+getName(): string
+```
+
+```js
+// Get the parent object reference
+getParent(): Object
+```
+
+```js
+// Get filtered attributes (only specs valids one will be returned)
+getContent(): string
+```
+
+```js
+// Get filtered attributes (only specs valids one will be returned)
+getAttrs(): Object
+```
+
+```js
+// Get filtered attributes (only specs valids one will be returned)
+getAttrs(): Object
+```
+
+```js
 // return the parent element
 and(): VastElement
 ```
@@ -31,11 +56,6 @@ dangerouslyAddCustomTag(tagName: string, content: string, attributes: Object): V
 ```
 
 ```js
-// Get filtered attributes (only specs valids one will be returned)
-getAttrs(): Object
-```
-
-```js
 // Return the generated Vast string
 toXml(): string
 ```
@@ -53,6 +73,11 @@ getVastSnakeVersion(): string
 ```js
 // return an array all direct childs with "name"
 getChilds(name: string): Array<VastElement>
+```
+
+```js
+// return an array all childs find at "arrayOfName" path in the hierarchy
+getChilds(arrayOfName: Array<string>): Array<VastElement>
 ```
 
 ```js

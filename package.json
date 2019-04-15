@@ -34,15 +34,21 @@
   "license": "MIT",
   "thanks": "https://www.paypal.me/devilhunter/4",
   "dependencies": {
+    "array-flatten": "^2.1.2",
+    "browser-or-node": "^1.2.1",
+    "global": "^4.3.2",
     "mergejson": "^1.1.0",
-    "xml-js": "^1.6.11"
+    "xml-js": "^1.6.11",
+    "xmlhttprequest-ssl": "^1.5.5"
   },
   "engines": {
     "node": ">= 8"
   },
-  "main": "lib/index.js",
+  "main": "builder.js",
   "scripts": {
     "start": "open ./coverage/lcov-report/index.html",
+    "dev-build": "browserify ./test/mini-server/try.js -o ./test/mini-server/try-bundle.js",
+    "dev-server": "http-server ./test/mini-server -p 1457",
     "build": "yarn build-api",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
@@ -73,9 +79,11 @@
     "@airbnb/node-memwatch": "^1.0.2",
     "@babel/core": "7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
+    "browserify": "^16.2.3",
     "chai": "^4.2.0",
     "codecov": "^3.3.0",
     "fs-extra": "^7.0.1",
+    "http-server": "^0.11.1",
     "jest": "^24.7.1",
     "js-yaml": "^3.13.1",
     "lint-staged": "^8.1.5",

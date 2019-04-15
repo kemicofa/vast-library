@@ -2,45 +2,8 @@
   "name": "vast-builder",
   "version": "0.0.0",
   "description": "An intuitive standard IAB Vast XML generation API. Complient with specifications Vast 2.0 / 3.0 / 4.0 / 4.1",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/DavidBabel/vast-builder"
-  },
-  "keywords": [
-    "ad",
-    "ads",
-    "adtech",
-    "advertisement",
-    "advertising",
-    "vast",
-    "vast2",
-    "vast3",
-    "vast4",
-    "xml",
-    "client",
-    "generate",
-    "generator",
-    "generation",
-    "validate",
-    "validator",
-    "validation",
-    "iab",
-    "video",
-    "wrapper",
-    "standard",
-    "api"
-  ],
   "author": "David Babel",
-  "license": "MIT",
   "thanks": "https://www.paypal.me/devilhunter/4",
-  "dependencies": {
-    "array-flatten": "^2.1.2",
-    "browser-or-node": "^1.2.1",
-    "global": "^4.3.2",
-    "mergejson": "^1.1.0",
-    "xml-js": "^1.6.11",
-    "xmlhttprequest-ssl": "^1.5.5"
-  },
   "engines": {
     "node": ">= 8"
   },
@@ -74,21 +37,60 @@
       "/test/"
     ]
   },
-  "babel": {},
+  "dependencies": {
+    "array-flatten": "^2.1.2",
+    "browser-or-node": "^1.2.1",
+    "global": "^4.3.2",
+    "mergejson": "^1.1.0",
+    "node-fetch": "^2.3.0",
+    "typescript": "^3.4.3",
+    "xml-js": "^1.6.11"
+  },
   "devDependencies": {
     "@airbnb/node-memwatch": "^1.0.2",
-    "@babel/core": "7.0.0-beta.40",
-    "@babel/preset-env": "^7.0.0-beta.40",
     "browserify": "^16.2.3",
     "chai": "^4.2.0",
     "codecov": "^3.3.0",
     "fs-extra": "^7.0.1",
     "http-server": "^0.11.1",
+    "husky": "^1.3.1",
     "jest": "^24.7.1",
     "js-yaml": "^3.13.1",
     "lint-staged": "^8.1.5",
-    "prettier": "^1.16.4",
+    "prettier": "^1.17.0",
     "sinon": "^7.3.1",
-    "sinon-chai": "^3.3.0"
-  }
+    "sinon-chai": "^3.3.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/DavidBabel/vast-builder"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ad",
+    "ads",
+    "adtech",
+    "advertisement",
+    "advertising",
+    "vast",
+    "vast2",
+    "vast3",
+    "vast4",
+    "xml",
+    "client",
+    "generate",
+    "generator",
+    "generation",
+    "validate",
+    "validator",
+    "validation",
+    "iab",
+    "video",
+    "wrapper",
+    "standard",
+    "api"
+  ]
 }

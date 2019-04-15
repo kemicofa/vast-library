@@ -4,7 +4,7 @@ const filterKeyword = e => {
   );
 };
 
-const validateNext = (currentNode, currentValidator) => {
+export function validateNext(currentNode, currentValidator) {
   let returnValue = true;
 
   // allow passing array to validateNext
@@ -200,6 +200,4 @@ const validateNext = (currentNode, currentValidator) => {
   }
 
   return returnValue;
-};
-
-module.exports = validateNext;
+}

@@ -1,25 +1,12 @@
-const convert = require("xml-js");
-// const mergeJson = require("mergejson");
-const VastElement = require("./vast-element");
-const flatten = require("array-flatten");
-const { isBrowser } = require("browser-or-node");
+import convert, { Element } from "xml-js";
+import VastElement from "./vast-element";
+import flatten from "array-flatten";
+import { isBrowser, isNode } from "browser-or-node";
 
-// TODO move this to utils
-function isNull(something) {
-  return typeof something === "undefined" || something === null;
-}
+import { logError } from "./utils/logs";
+import { isNull } from "./utils/index";
 
-if (typeof XMLHttpRequest === "undefined" && global) {
-  global.XMLHttpRequest = require("xmlhttprequest-ssl").XMLHttpRequest;
-}
-
-// TODO make utils of that
-const yellow = "\x1b[33m";
-const red = "\x1b[31m";
-const reset = "\x1b[0m";
-const intro = `${yellow}VAST-BUILDER ${red}ERROR${yellow}:${reset}`;
-
-function buildVast(current, currentTag) {
+function buildVast(current: Element, currentTag: VastElement) {
   /* istanbul ignore next */
   if (current && current.elements) {
     if (
@@ -27,14 +14,15 @@ function buildVast(current, currentTag) {
       (current.elements[0].text || current.elements[0].cdata)
     ) {
       const currentTmp = current.elements[0];
-      const currentText = currentTmp.text || currentTmp.cdata;
+      const currentText = String(currentTmp.text || currentTmp.cdata);
       currentTag.content = currentText;
     } else {
+      let currentChild: VastElement;
       for (let i = 0; i < current.elements.length; i++) {
-        const currentTmp = current.elements[i];
+        const currentTmp: Element = current.elements[i];
         currentChild = currentTag.dangerouslyAttachCustomTag(
           currentTmp.name,
-          currentTmp.attributes
+          String(currentTmp.attributes)
         );
         buildVast(currentTmp, currentChild);
       }
@@ -43,7 +31,18 @@ function buildVast(current, currentTag) {
 }
 
 // TODO move to utils
-function fetchUrl({ url, loadCallback = () => {}, syncInBrowser = false }) {
+
+interface FetchOptions {
+  url: string;
+  loadCallback?: (response: string) => void;
+  syncInBrowser?: boolean;
+}
+
+function fetchUrl({
+  url,
+  loadCallback = () => {},
+  syncInBrowser = false
+}: FetchOptions) {
   if (!url) {
     throw new Error("'url' is undefined");
   }
@@ -99,9 +98,7 @@ function createVastWithBuilder(vastRawCode, options = {}) {
     parsedXml = convert.xml2js(vastRawCode);
   } catch (o_O) {
     if (options.logWarn) {
-      console.error(
-        `${intro} Error during the vast parsing, it seems not valid XML`
-      );
+      logError(`Error during the vast parsing, it seems not valid XML`);
     }
     // TODO throw here ??
   }

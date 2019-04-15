@@ -1,5 +1,7 @@
-const convert = require("xml-js");
-const flatten = require("array-flatten");
+import convert, { ElementCompact } from "xml-js";
+import flatten from "array-flatten";
+import { logError, logWarn } from "./utils/logs";
+import { stripCDATA } from "./utils/index";
 
 const xmlDeclaration = {
   _declaration: {
@@ -10,30 +12,57 @@ const xmlDeclaration = {
   }
 };
 
-module.exports = class VastElement {
-  /**
-   * @param {string} name
-   * @param {VastElement} parent
-   */
+interface AttributeObject {
+  [key: string]: string;
+}
+interface VastElementInfos {
+  attrs: string[] | "all";
+}
+
+export default class VastElement {
+  parent: VastElement;
+  name: string;
+  content: string;
+  attrs: AttributeObject;
+  childs: Array<VastElement>;
+  infos: VastElementInfos;
+  options: BuilderOptions;
+  cdataThisOne: boolean;
+
   constructor(
-    name = "root",
-    parent = null,
-    baseInfos = {},
-    attrsOrContent,
-    attrsIfContent
+    name: string,
+    parent: VastElement,
+    baseInfos: VastElementInfos, // TODO convert baseInfos to baseAttributes
+    content: string,
+    attrs: AttributeObject
+  );
+  constructor(
+    name: string,
+    parent: VastElement,
+    baseInfos: VastElementInfos, // TODO convert baseInfos to baseAttributes
+    attrs: AttributeObject
+  );
+  constructor();
+  constructor(
+    name: string = "root",
+    parent: VastElement = null,
+    baseInfos: VastElementInfos = { attrs: [] },
+    contentOrAttributes?: AttributeObject | string,
+    attributesIfContent?: AttributeObject
   ) {
     this.parent = parent;
     this.name = name;
-    if (typeof attrsOrContent === "string") {
-      this.content = attrsOrContent;
-      this.attrs = attrsIfContent || {};
+    if (typeof contentOrAttributes === "string") {
+      this.content = contentOrAttributes;
+      this.attrs = attributesIfContent || {};
     } else {
       this.content = null;
-      this.attrs = attrsOrContent || {};
+      this.attrs = contentOrAttributes || {};
     }
     this.childs = [];
-    this.infos = {};
-    this.infos.attrs = baseInfos.attrs || [];
+    this.infos = {
+      attrs: baseInfos.attrs || []
+    };
     this.parseOptions((parent && parent.options) || {});
     // TODO, this will crash on parse
     if (this.content && this.content.indexOf("<![CDATA[") !== -1) {
@@ -50,7 +79,7 @@ module.exports = class VastElement {
   //> alias for and()
   //* getParent(): Object
   getParent() {
-    return and();
+    return this.and();
   }
 
   //> Get filtered attributes (only specs valids one will be returned)
@@ -89,7 +118,7 @@ module.exports = class VastElement {
   }
 
   // undocumented
-  parseOptions(options) {
+  parseOptions(options: BuilderOptions) {
     this.options = Object.assign(
       {
         cdata: true,
@@ -103,23 +132,17 @@ module.exports = class VastElement {
   }
 
   // undocumented
-  err(msg) {
+  err(msg: string) {
     this.warn(msg, true);
   }
 
   // undocumented
-  warn(msg, error = false) {
-    const yellow = "\x1b[33m";
-    const red = "\x1b[31m";
-    const reset = "\x1b[0m";
-    const intro = error
-      ? `${yellow}VAST-BUILDER ${red}ERROR${yellow}:${reset}`
-      : `${yellow}VAST-BUILDER WARNING:${reset}`;
+  warn(msg: string, error: boolean = false) {
     if (this.options.logWarn) {
       if (error) {
-        console.error(`${intro} ${msg}`);
+        logError(msg);
       } else {
-        console.warn(`${intro} ${msg}`);
+        logWarn(msg);
       }
     }
     if (error && this.options.throwOnError) {
@@ -128,26 +151,20 @@ module.exports = class VastElement {
   }
   //> return the parent element
   //* and(): VastElement
-  /**
-   * @returns {VastElement}
-   */
-  and() {
+  and(): VastElement {
     /* child will overload this */
     return this.parent || this;
   }
   //> alias for .and().and()
   //* back(): VastElement
-  /**
-   * @returns {VastElement}
-   */
-  back() {
+  back(): VastElement {
     /* child will overload this */
     return this.and().and();
   }
 
   //> turn element content into cdata. return the current element
   //* cdata(): VastElement
-  cdata() {
+  cdata(): VastElement {
     this.cdataThisOne = true;
     this.childs.forEach(c => {
       c.cdata();
@@ -157,45 +174,79 @@ module.exports = class VastElement {
 
   //> Allow adding custom XML Tag, usefull for <Extensions>
   //* dangerouslyAttachCustomTag(tagName: string, content: string, attributes: Object): VastElement
-  /**
-   * @returns {VastElement}
-   */
-  dangerouslyAttachCustomTag(tagName, content, attributes) {
-    const newElem = new VastElement(
-      tagName,
-      this,
-      { attrs: "all" },
-      content,
-      attributes
-    );
+  dangerouslyAttachCustomTag(
+    tagName: string,
+    content: string,
+    attributes?: AttributeObject
+  ): VastElement;
+  dangerouslyAttachCustomTag(
+    tagName: string,
+    attributes: AttributeObject
+  ): VastElement;
+  dangerouslyAttachCustomTag(
+    tagName: string,
+    contentOrAttributes: AttributeObject | string,
+    attributesIfContent?: AttributeObject
+  ): VastElement {
+    let newElem: VastElement;
+    if (typeof contentOrAttributes === "string") {
+      newElem = new VastElement(
+        tagName,
+        this,
+        { attrs: "all" },
+        contentOrAttributes,
+        attributesIfContent
+      );
+    } else {
+      newElem = new VastElement(
+        tagName,
+        this,
+        { attrs: "all" },
+        attributesIfContent
+      );
+    }
     this.childs.push(newElem);
     return newElem;
   }
 
   //> Allow adding custom XML Tag and return his parent, usefull for <Extensions>
   //* dangerouslyAddCustomTag(tagName: string, content: string, attributes: Object): VastElement
-  /**
-   * @returns {VastElement}
-   */
-  dangerouslyAddCustomTag(tagName, content, attributes) {
-    return this.dangerouslyAttachCustomTag(tagName, content, attributes).and();
+  dangerouslyAddCustomTag(
+    tagName: string,
+    content: string,
+    attributes?: AttributeObject
+  ): VastElement;
+  dangerouslyAddCustomTag(
+    tagName: string,
+    attributes: AttributeObject
+  ): VastElement;
+  dangerouslyAddCustomTag(
+    tagName: string,
+    contentOrAttributes: AttributeObject | string,
+    attributesIfContent?: AttributeObject
+  ): VastElement {
+    return this.dangerouslyAttachCustomTag(
+      tagName,
+      contentOrAttributes as string,
+      attributesIfContent
+    ).and();
   }
 
   // undocumented
-  hasAttrs() {
+  hasAttrs(): boolean {
     return Object.keys(this.attrs).length > 0;
   }
 
   // undocumented
   // return a JS object
-  getJson() {
+  getJson(): ElementCompact {
     const childCode = {};
     this.childs.forEach(child => {
       childCode[child.name] = childCode[child.name] || [];
       childCode[child.name].push(child.getJson());
     });
 
-    const result = {};
+    const result: ElementCompact = {};
 
     if (this.hasAttrs()) {
       result._attributes = this.getAttrs();
@@ -214,8 +265,8 @@ module.exports = class VastElement {
   }
 
   // undocumented
-  getRoot() {
-    let parent = this.parent || this;
+  getRoot(): VastElement {
+    let parent: VastElement = this.parent || this;
     while (parent.parent) {
       parent = parent.parent;
     }
@@ -224,10 +275,11 @@ module.exports = class VastElement {
 
   //> Return the generated Vast string
   //* toXml(): string
-  toXml() {
-    if (this.options.validateOnBuild) {
-      this.validate();
-    }
+  toXml(): string {
+    // todo, manage this
+    // if (this.options.validateOnBuild) {
+    //   this.validate();
+    // }
     return convert.js2xml(
       {
         ...xmlDeclaration,
@@ -241,26 +293,26 @@ module.exports = class VastElement {
   }
 
   // undocumented
-  getVersionRaw() {
+  getVersionRaw(): string {
     return this.getRoot().getChilds("VAST")[0].attrs["version"];
   }
 
   //> return the current VAST api version
   //* getVastVersion(): number
-  getVastVersion() {
+  getVastVersion(): number {
     return parseInt(this.getVersionRaw());
   }
 
   //> return the current VAST api version in snake case
   //* getVastSnakeVersion(): string
-  getVastSnakeVersion() {
+  getVastSnakeVersion(): string {
     return this.getVersionRaw().replace(".", "_");
   }
 
   //> return an array all direct childs with "name"
   //* getChilds(name: string): Array<VastElement>
-  getChilds(name) {
-    const childs = [];
+  getChilds(name): Array<VastElement> {
+    const childs: Array<VastElement> = [];
     Object.keys(this.childs).forEach(key => {
       const child = this.childs[key];
       if (child.name === name) {
@@ -272,11 +324,11 @@ module.exports = class VastElement {
 
   //> return an array all childs find at "arrayOfNames" path in the hierarchy
   //* getChilds(arrayOfNames: Array<string>, fromRoot: boolean): Array<VastElement>
-  get(arrayOfNames = [], fromRoot = true) {
+  get(arrayOfNames = [], fromRoot = true): Array<VastElement> {
     if (arrayOfNames.length === 0) {
-      return this;
+      return [this];
     }
-    const findedNodes = [];
+    const findedNodes: any[] = [];
     const node = fromRoot ? this.getRoot() : this;
     Object.keys(node.childs).forEach(key => {
       const child = node.childs[key];
@@ -293,25 +345,7 @@ module.exports = class VastElement {
     return flatten(findedNodes);
   }
 
-  //> return an array all childs find at "arrayOfName" path in the hierarchy
-  //* getChilds(arrayOfName: Array<string>): Array<VastElement>
-  // getFullPath(arrayOfName) {
-  //   if (arrayOfName.length === 0) {
-  //     return this;
-  //   }
-  //   const findedNodes = [];
-  //   const currentName = arrayOfName.shift();
-  //   this.getChilds(currentName).forEach(child => {
-  //     findedNodes.push(child.get(arrayOfName));
-  //   });
-  //   return flatten(findedNodes);
-  // }
-
-  isWrapper() {
+  isWrapper(): boolean {
     return this.get(["Wrapper"]).length > 0;
   }
-
-  // isWrapperOld() {
-  //   return this.getRoot().get(["VAST", "Ad", "Wrapper"]).length > 0;
-  // }
-};
+}

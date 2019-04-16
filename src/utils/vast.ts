@@ -82,7 +82,7 @@ function fetchUrl({
   }
 }
 
-function createVastWithBuilder(vastRawCode, options: ParserOptions = {}) {
+function createVastWithBuilder(vastRawCode, options: VastParserOptions = {}) {
   options = {
     logWarn: false,
     ...options
@@ -100,7 +100,7 @@ function createVastWithBuilder(vastRawCode, options: ParserOptions = {}) {
   return createVastFromJson(parsedXml);
 }
 
-function createVastFromJson(vastJsonCode, options: ParserOptions = {}) {
+function createVastFromJson(vastJsonCode, options: VastParserOptions = {}) {
   options = {
     logWarn: false,
     ...options
@@ -115,9 +115,9 @@ function createVastFromJson(vastJsonCode, options: ParserOptions = {}) {
 }
 
 // TODO spread options in signature
-export function getVastAndWrappers(
+export function downloadVastAndWrappers(
   vastUrl: string,
-  options: ParserOptions = {}
+  options: VastParserOptions = {}
 ) {
   options = {
     logWarn: false,

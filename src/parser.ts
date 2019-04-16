@@ -1,11 +1,25 @@
 import flatten from "array-flatten";
-import { getVastAndWrappers } from "./utils/vast";
+import { isNull } from "./utils/checks";
+import { downloadVastAndWrappers } from "./utils/vast";
 import VastElement from "./vast-element";
 
 export default class VastParser {
   public vasts: Array<VastElement<any>>;
-  constructor(vastUrl: string, optionsOrCallback, optionsIfCallback = {}) {
-    this.vasts = getVastAndWrappers(vastUrl, optionsOrCallback);
+  constructor(vastUrl: string, options: VastParserOptions);
+  constructor(
+    vastUrl: string,
+    callback: () => void,
+    options: VastParserOptions
+  );
+  constructor(
+    vastUrl: string,
+    callbackOrOptions: () => void | VastParserOptions,
+    optionsIfCallback?: VastParserOptions = {}
+  ) {
+    // TODO manage overload
+    if (typeof callbackOrOptions === "function") {
+    }
+    this.vasts = downloadVastAndWrappers(vastUrl, callbackOrOptions);
   }
 
   public getVasts() {
@@ -14,7 +28,10 @@ export default class VastParser {
 
   // > return an array all childs find at "arrayOfName" path in the hierarchy
   // * getChilds(arrayOfName: Array<string>, details: 'content' | string): Array<VastElement>
-  public get(arrayOfName: /**/ string[], details) {
+  public get(
+    arrayOfName: /* PossibleTag[] */ string[],
+    details: "content" | string /* PossibleAttrs[] */
+  ) {
     const vastElements = flatten(this.vasts.map(v => v.get(arrayOfName, true)));
     if (details) {
       return vastElements.map(vastElement => {

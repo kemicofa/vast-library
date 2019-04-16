@@ -9,6 +9,6 @@ interface CommonOptions extends ErrorOptions {
   spaces?: number; // TODO replace by indentSpaceNumber
 }
 
-interface BuilderOptions extends CommonOptions {}
-interface ParserOptions extends CommonOptions {}
-interface ValidatorOptions extends CommonOptions {}
+interface VastBuilderOptions extends CommonOptions {}
+interface VastParserOptions extends CommonOptions {}
+interface VastValidatorOptions extends CommonOptions {}

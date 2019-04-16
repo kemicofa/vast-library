@@ -1,6 +1,6 @@
 import flatten from "array-flatten";
 import convert, { ElementCompact } from "xml-js";
-import { stripCDATA } from "./utils/index";
+import { stripCDATA } from "./utils/checks";
 import { logError, logWarn } from "./utils/logs";
 
 const xmlDeclaration = {
@@ -26,7 +26,7 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   public attrs: AttributeObject;
   public childs: Array<VastElement<any>>;
   public infos: VastElementInfos;
-  public options: BuilderOptions;
+  public options: VastBuilderOptions;
   public cdataThisOne: boolean;
 
   constructor(
@@ -312,7 +312,7 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   }
 
   // undocumented
-  public parseOptions(options: BuilderOptions) {
+  public parseOptions(options: VastBuilderOptions) {
     this.options = Object.assign(
       {
         cdata: true,

@@ -1,11 +1,6 @@
-// TODO : faster version removing intellisense class ? or cheat the class tooling to intellisense one but exec others
-
-// TODO : voir pour ajouter les /* types */ pour typescript
 // BUG : intellisense .toXml() not availables in childs ???
 
 // IDEAS :
-// TODO manage type (url/string ...)
-// TODO : switch to typescript to manage VastElement<Parent> class
 // TODO : see if renaming VastElement to VE is worth in term of saved size
 
 // contain 2_0, 3_0, 4_0 or 4_1
@@ -51,8 +46,8 @@ const {
   attachMethodTemplate,
   addMethodTemplate,
   getApiMethodDoc,
-  getJsDoc,
-  getClassDoc,
+  // getJsDoc,
+  // getClassDoc,
   extractFirst,
   getArgsTemplate,
   getArgsDocTemplate,
@@ -145,21 +140,22 @@ const generateApiAndDoc = (
       }, []);
     }
     // for API
-    const apiArguments = getArgsTemplate(hasContent, hasAttrs);
+    const apiArguments = getArgsTemplate(hasContent, hasAttrs, currentAttrs);
     // for documentation
     const docArguments = getArgsDocTemplate(hasContent, hasAttrs, currentAttrs);
 
     methodsList.push(
       attachMethodTemplate(
         childName,
-        getJsDoc(
-          vastVersionString,
-          usedChildName,
-          isRequired,
-          hasContent,
-          hasAttrs,
-          currentAttrs
-        ),
+        "",
+        // getJsDoc(
+        //   vastVersionString,
+        //   usedChildName,
+        //   isRequired,
+        //   hasContent,
+        //   hasAttrs,
+        //   currentAttrs
+        // ),
         apiArguments,
         usedChildName,
         JSON.stringify(infos)
@@ -170,14 +166,15 @@ const generateApiAndDoc = (
       methodsList.push(
         addMethodTemplate(
           childName,
-          getJsDoc(
-            vastVersionString,
-            currentUsedName,
-            isRequired,
-            hasContent,
-            hasAttrs,
-            currentAttrs
-          ),
+          "",
+          // getJsDoc(
+          //   vastVersionString,
+          //   currentUsedName,
+          //   isRequired,
+          //   hasContent,
+          //   hasAttrs,
+          //   currentAttrs
+          // ),
           apiArguments
         )
       );
@@ -213,7 +210,9 @@ const generateApiAndDoc = (
   allClassList.push(
     classTemplate(
       currentUsedName,
-      getClassDoc(parentName || currentName),
+      parentName || currentName,
+      "",
+      // getClassDoc(parentName || currentName),
       methodsList.join(""),
       isFirst
     )
@@ -279,7 +278,7 @@ const validator = generateValidator(filteredDatas);
 
 // writing API
 fs.writeFileSync(
-  `./build/api/vast${vastVersionSnake}.js`,
+  `./build/api/vast${vastVersionSnake}.ts`,
   baseContentTemplate(vastVersionString, allClassList.join(""), validator)
 );
 

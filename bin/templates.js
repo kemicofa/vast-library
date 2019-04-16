@@ -6,64 +6,74 @@ const baseContentTemplate = (version, content, validator) => {
     `
 // this file is generated, dont edit it
 
-/*::
-type Infos = {
-  attrs?: Array<string>,
-  required?: boolean,
-  uniq?: boolean,
-  alo?: boolean,
-};
-*/
+/* tslint:disable: class-name */
+import VastElement from '../../src/vast-element';
 
-const VastElement = require('../../lib/vast-element');
+interface VastInfos {
+  attrs?: Array<string>;
+  required?: boolean;
+  uniq?: boolean;
+  alo?: boolean;
+};
+
 
 ${content}
 
-const validator = ${JSON.stringify(validator)};
+export const validator = ${JSON.stringify(validator)};
 
-module.exports = {
-  apiv${version},
-  validator
-};
+export apiv${version};
 `
   );
 };
 
-const classTemplate = (className, jsdoc, methods, isFirst) => {
-  const isFirstContent = isFirst ? " || this" : "";
-  return (
-    "" +
-    `class ${className} extends VastElement {
-  ${jsdoc}
-  constructor(n, p, ...args) {
-    super(n, p, ...args);
-    this.parent = p;
-  }${methods}
-  and() { return this.parent${isFirstContent}; }
-  back() { return this.and().and(); }
-}
+const classTemplate = (className, parentName, jsdoc, methods, isFirst) => {
+  // const isFirstContent = isFirst ? " || this" : "";
+  return methods
+    ? "" +
+        `class ${className} extends VastElement<${parentName}> {
+      ${methods}
+    }
 `
-  );
+    : `class ${className} extends VastElement<${parentName}> {}
+`;
+
+  // removed
+  // ${jsdoc}
+  // constructor(n, p, ...args) {
+  //   super(n, p, ...args);
+  //   this.parent = p;
+  // }${methods}
+  // and() { return this.parent${isFirstContent}; }
+  // back() { return this.and().and(); }
 };
 
 const attachMethodTemplate = (methodName, jsdoc, args, childClass, infos) => {
   const comma = args ? "," : "";
   return (
     "" +
-    `${jsdoc}
-  attach${methodName}(${args}) {
-    const newElem = new ${childClass}('${methodName}', this, ${infos} /*: Infos*/${comma} ${args});
+    `
+  public attach${methodName}(${args}): ${childClass} {
+    const newElem = new ${childClass}('${methodName}', this, ${infos} : VastInfos${comma} ${args});
     this.childs.push(newElem);
     return newElem;
   }`
   );
+  // return (
+  //   "" +
+  //   `${jsdoc}
+  // attach${methodName}(${args}) {
+  //   const newElem = new ${childClass}('${methodName}', this, ${infos} /*: Infos*/${comma} ${args});
+  //   this.childs.push(newElem);
+  //   return newElem;
+  // }`
+  // );
 };
 
 const addMethodTemplate = (methodName, jsdoc, args) => {
   return (
     "" +
     `${jsdoc}
-  add${methodName}(${args}) {
+  public add${methodName}(${args}): this {
     return this.attach${methodName}(${args}).and();
   }`
   );
@@ -94,37 +104,37 @@ ${methodName}(${parameters.join(", ")}): ${returnValue}
   return output + "\n";
 };
 
-const getJsDocLine = (type, name, props = "param") => {
-  return `
-   * @${props} {${getType(type)}} ${name}`;
-};
+// const getJsDocLine = (type, name, props = "param") => {
+//   return `
+//    * @${props} {${getType(type)}} ${name}`;
+// };
 
-const getJsDoc = (
-  vastversion,
-  returnType,
-  isRequired,
-  hasContent,
-  hasAttrs,
-  attrs
-) => {
-  let jsdoc = "";
-  if (returnType || isRequired || hasContent || hasAttrs) {
-    jsdoc = "\n  /** ";
-    jsdoc += isRequired ? `@description required in Vast ${vastversion}` : "";
-    jsdoc += hasContent ? getJsDocLine("string", "content") : "";
-    jsdoc += hasAttrs ? getJsDocLine(attrs, "attributes") : "";
-    jsdoc += returnType ? getJsDocLine(returnType, "", "returns") : "";
-    jsdoc += "\n   */";
-  }
-  return jsdoc;
-};
+// const getJsDoc = (
+//   vastversion,
+//   returnType,
+//   isRequired,
+//   hasContent,
+//   hasAttrs,
+//   attrs
+// ) => {
+//   let jsdoc = "";
+//   if (returnType || isRequired || hasContent || hasAttrs) {
+//     jsdoc = "\n  /** ";
+//     jsdoc += isRequired ? `@description required in Vast ${vastversion}` : "";
+//     jsdoc += hasContent ? getJsDocLine("string", "content") : "";
+//     jsdoc += hasAttrs ? getJsDocLine(attrs, "attributes") : "";
+//     jsdoc += returnType ? getJsDocLine(returnType, "", "returns") : "";
+//     jsdoc += "\n   */";
+//   }
+//   return jsdoc;
+// };
 
-const getClassDoc = parentClass => {
-  return `/**
-   * @param {string} n
-   * @param {${parentClass}} p
-   */`;
-};
+// const getClassDoc = parentClass => {
+//   return `/**
+//    * @param {string} n
+//    * @param {${parentClass}} p
+//    */`;
+// };
 
 const extractFirst = obj => {
   let content, name;
@@ -136,12 +146,12 @@ const extractFirst = obj => {
   return { name, content };
 };
 
-const getArgsTemplate = (hasContent, hasAttrs) => {
+const getArgsTemplate = (hasContent, hasAttrs, currentAttrs) => {
   let args = "";
   if (hasContent) {
-    args = "content";
+    args = "content: string";
     if (hasAttrs) {
-      args += ", attributes";
+      args += ", attributes :" + JSON.stringify(currentAttrs);
     }
   } else if (hasAttrs) {
     args = "attributes";
@@ -204,7 +214,7 @@ const getType = (type, withRequired = false, newLineForAttributes = false) => {
 const asyncGetVastElementDoc = callback => {
   const methods = [];
   const lineReader = require("readline").createInterface({
-    input: fs.createReadStream("./lib/vast-element.js")
+    input: fs.createReadStream("./src/vast-element.ts")
   });
   let commentsOpen = false;
   lineReader.on("line", function(line) {
@@ -285,8 +295,8 @@ module.exports = {
   attachMethodTemplate,
   addMethodTemplate,
   getApiMethodDoc,
-  getJsDoc,
-  getClassDoc,
+  // getJsDoc,
+  // getClassDoc,
   extractFirst,
   getArgsTemplate,
   getArgsDocTemplate,

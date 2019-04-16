@@ -16,7 +16,7 @@ const validators = {
   "4_1": vastValidator4_1
 };
 
-function parseVast(vastRawCode: string, options: ParserOptions = {}) {
+function parseVast(vastRawCode: string, options: VastParserOptions = {}) {
   options = {
     logWarn: false,
     ...options
@@ -41,8 +41,11 @@ function parseVast(vastRawCode: string, options: ParserOptions = {}) {
 
 export default class VastValidator {
   vastRoot: VastElement<null>;
-  constructor(vastRaw: string, options: ParserOptions);
-  constructor(vast: VastElement<any> | string, options: ParserOptions = {}) {
+  constructor(vastRaw: string, options: VastParserOptions);
+  constructor(
+    vast: VastElement<any> | string,
+    options: VastParserOptions = {}
+  ) {
     if (typeof vast === "string") {
       vast = parseVast(vast, options);
     }

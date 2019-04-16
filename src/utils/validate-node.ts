@@ -1,10 +1,12 @@
-const filterKeyword = e => {
+const filterKeyword = (keyword: string) => {
   return (
-    ["only", "required", "alo", "follow", "attrsRequired"].indexOf(e) === -1
+    ["only", "required", "alo", "follow", "attrsRequired"].indexOf(keyword) ===
+    -1
   );
 };
 
-export function validateNext(currentNode, currentValidator) {
+// TODO : should be able to remove this "any" types
+export function validateNext(currentNode: any, currentValidator: any) {
   let returnValue = true;
 
   // allow passing array to validateNext

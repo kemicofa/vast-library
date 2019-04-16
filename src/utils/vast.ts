@@ -1,23 +1,23 @@
+import fetch from "node-fetch";
 import convert, { Element } from "xml-js";
-import VastElement from "./vast-element";
-import flatten from "array-flatten";
+import VastElement from "../vast-element";
+
 import { isBrowser, isNode } from "browser-or-node";
 
-import { logError } from "./utils/logs";
-import { isNull } from "./utils/index";
+import { logError } from "./logs";
 
-function buildVast(current: Element, currentTag: VastElement) {
+export function buildVast(current: Element, currentTag: VastElement<any>) {
   /* istanbul ignore next */
   if (current && current.elements) {
     if (
-      current.elements.length == 1 &&
+      current.elements.length === 1 &&
       (current.elements[0].text || current.elements[0].cdata)
     ) {
       const currentTmp = current.elements[0];
       const currentText = String(currentTmp.text || currentTmp.cdata);
       currentTag.content = currentText;
     } else {
-      let currentChild: VastElement;
+      let currentChild: VastElement<any>;
       for (let i = 0; i < current.elements.length; i++) {
         const currentTmp: Element = current.elements[i];
         currentChild = currentTag.dangerouslyAttachCustomTag(
@@ -29,8 +29,6 @@ function buildVast(current: Element, currentTag: VastElement) {
     }
   }
 }
-
-// TODO move to utils
 
 interface FetchOptions {
   url: string;
@@ -70,7 +68,6 @@ function fetchUrl({
     }
     throw new Error(`${url} was not found`);
   } else if (isNode) {
-    const fetch = require("node-fetch");
     fetch(url)
       .then(res => {
         if (res.ok) {
@@ -85,18 +82,15 @@ function fetchUrl({
   }
 }
 
-function createVastWithBuilder(vastRawCode, options = {}) {
-  options = Object.assign(
-    {},
-    {
-      logWarn: false
-    },
-    options
-  );
+function createVastWithBuilder(vastRawCode, options: ParserOptions = {}) {
+  options = {
+    logWarn: false,
+    ...options
+  };
   let parsedXml;
   try {
     parsedXml = convert.xml2js(vastRawCode);
-  } catch (o_O) {
+  } catch (e) {
     if (options.logWarn) {
       logError(`Error during the vast parsing, it seems not valid XML`);
     }
@@ -106,16 +100,13 @@ function createVastWithBuilder(vastRawCode, options = {}) {
   return createVastFromJson(parsedXml);
 }
 
-function createVastFromJson(vastJsonCode, options = {}) {
-  options = Object.assign(
-    {},
-    {
-      logWarn: false
-    },
-    options
-  );
+function createVastFromJson(vastJsonCode, options: ParserOptions = {}) {
+  options = {
+    logWarn: false,
+    ...options
+  };
 
-  let root = new VastElement();
+  const root = new VastElement();
   root.parseOptions(options);
 
   buildVast(vastJsonCode, root);
@@ -123,30 +114,25 @@ function createVastFromJson(vastJsonCode, options = {}) {
   return root;
 }
 
-function getVastAndWrappers(vastUrl, options = {}) {
-  options = Object.assign(
-    {},
-    {
-      logWarn: false
-    },
-    options
-  );
+// TODO spread options in signature
+export function getVastAndWrappers(
+  vastUrl: string,
+  options: ParserOptions = {}
+) {
+  options = {
+    logWarn: false,
+    ...options
+  };
 
   const vastAndWrappers = [];
-  let currentVast;
+  let currentVast: VastElement<any>;
 
   do {
-    // TODO syncInBrowser should be a parameter
     const vastRawContent = fetchUrl({ url: vastUrl, syncInBrowser: true });
     currentVast = createVastWithBuilder(vastRawContent);
     vastAndWrappers.push(currentVast);
     if (currentVast.isWrapper()) {
-      const VASTAdTagURI = currentVast.get([
-        "VAST",
-        "Ad",
-        "Wrapper",
-        "VASTAdTagURI"
-      ])[0];
+      const VASTAdTagURI = currentVast.get(["VASTAdTagURI"])[0];
       if (VASTAdTagURI) {
         vastUrl = VASTAdTagURI.getContent(true);
       }
@@ -154,55 +140,4 @@ function getVastAndWrappers(vastUrl, options = {}) {
   } while (currentVast.isWrapper());
 
   return vastAndWrappers;
-
-  // if (vastAndWrappers.length > 1) {
-  //   // TODO their is a bit more of logic here to convert Wrapper to Inline
-  //   console.log(vastAndWrappers.map(v => v.getJson()));
-  //   const superVastJson = mergeJson(vastAndWrappers.map(v => v.getJson()));
-  //   console.log("superVastJson :");
-  //   console.dir(superVastJson, {
-  //     depth: null,
-  //     colors: true,
-  //     showHidden: false
-  //   });
-  //   const superVast = createVastFromJson(superVastJson);
-  //   return superVast;
-  // }
-
-  // return [currentVast];
 }
-
-// TODO expose separate API for VastParser and VastBuilder
-module.exports = class VastParser {
-  constructor(vastUrl, optionsOrCallback, optionsIfCallback = {}) {
-    this.vasts = getVastAndWrappers(vastUrl, optionsOrCallback);
-  }
-
-  getVasts() {
-    return this.vasts;
-  }
-
-  //> return an array all childs find at "arrayOfName" path in the hierarchy
-  //* getChilds(arrayOfName: Array<string>, details: 'content' | string): Array<VastElement>
-  get(arrayOfName, details) {
-    const vastElements = flatten(this.vasts.map(v => v.get(arrayOfName, true)));
-    if (details) {
-      return vastElements.map(vastElement => {
-        if (details === "content") {
-          if (isNull(vastElement.content)) {
-            // warn
-            console.log("warn");
-          }
-          return vastElement.content;
-        } else {
-          if (isNull(vastElement.attrs[details])) {
-            // warn
-            console.log("warn 2");
-          }
-          return vastElement.attrs[details];
-        }
-      });
-    }
-    return vastElements;
-  }
-};

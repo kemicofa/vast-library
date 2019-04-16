@@ -1,13 +1,13 @@
-import convert, { ElementCompact } from "xml-js";
 import flatten from "array-flatten";
-import { logError, logWarn } from "./utils/logs";
+import convert, { ElementCompact } from "xml-js";
 import { stripCDATA } from "./utils/index";
+import { logError, logWarn } from "./utils/logs";
 
 const xmlDeclaration = {
   _declaration: {
     _attributes: {
-      version: "1.0",
-      encoding: "utf-8"
+      encoding: "utf-8",
+      version: "1.0"
     }
   }
 };
@@ -19,33 +19,33 @@ interface VastElementInfos {
   attrs: string[] | "all";
 }
 
-export default class VastElement {
-  parent: VastElement;
-  name: string;
-  content: string;
-  attrs: AttributeObject;
-  childs: Array<VastElement>;
-  infos: VastElementInfos;
-  options: BuilderOptions;
-  cdataThisOne: boolean;
+export default class VastElement<VastElementParent extends VastElement<any>> {
+  public parent: VastElementParent;
+  public name: string;
+  public content: string;
+  public attrs: AttributeObject;
+  public childs: Array<VastElement<any>>;
+  public infos: VastElementInfos;
+  public options: BuilderOptions;
+  public cdataThisOne: boolean;
 
   constructor(
     name: string,
-    parent: VastElement,
+    parent: VastElementParent,
     baseInfos: VastElementInfos, // TODO convert baseInfos to baseAttributes
     content: string,
     attrs: AttributeObject
   );
   constructor(
     name: string,
-    parent: VastElement,
+    parent: VastElementParent,
     baseInfos: VastElementInfos, // TODO convert baseInfos to baseAttributes
     attrs: AttributeObject
   );
   constructor();
   constructor(
     name: string = "root",
-    parent: VastElement = null,
+    parent: VastElementParent = null,
     baseInfos: VastElementInfos = { attrs: [] },
     contentOrAttributes?: AttributeObject | string,
     attributesIfContent?: AttributeObject
@@ -70,21 +70,21 @@ export default class VastElement {
     }
   }
 
-  //> Get the node name
-  //* getName(): string
-  getName() {
+  // > Get the node name
+  // * getName(): string
+  public getName() {
     return this.name;
   }
 
-  //> alias for and()
-  //* getParent(): Object
-  getParent() {
+  // > alias for and()
+  // * getParent(): Object
+  public getParent() {
     return this.and();
   }
 
-  //> Get filtered attributes (only specs valids one will be returned)
-  //* getContent(): string
-  getContent(withoutCDATA = true) {
+  // > Get filtered attributes (only specs valids one will be returned)
+  // * getContent(): string
+  public getContent(withoutCDATA = true) {
     if (withoutCDATA) {
       return stripCDATA(this.content);
     } else {
@@ -92,14 +92,14 @@ export default class VastElement {
     }
   }
 
-  //> Get filtered attributes (only specs valids one will be returned)
-  //* getAttrs(): Object
-  getInfos() {
+  // > Get filtered attributes (only specs valids one will be returned)
+  // * getAttrs(): Object
+  public getInfos() {
     return this.infos;
   }
-  //> Get filtered attributes (only specs valids one will be returned)
-  //* getAttrs(): Object
-  getAttrs() {
+  // > Get filtered attributes (only specs valids one will be returned)
+  // * getAttrs(): Object
+  public getAttrs() {
     if (this.infos.attrs === "all") {
       return this.attrs;
     } else {
@@ -116,55 +116,22 @@ export default class VastElement {
       }, {});
     }
   }
-
-  // undocumented
-  parseOptions(options: BuilderOptions) {
-    this.options = Object.assign(
-      {
-        cdata: true,
-        logWarn: true,
-        validateOnBuild: false,
-        throwOnError: false,
-        spaces: 2
-      },
-      options
-    );
-  }
-
-  // undocumented
-  err(msg: string) {
-    this.warn(msg, true);
-  }
-
-  // undocumented
-  warn(msg: string, error: boolean = false) {
-    if (this.options.logWarn) {
-      if (error) {
-        logError(msg);
-      } else {
-        logWarn(msg);
-      }
-    }
-    if (error && this.options.throwOnError) {
-      throw new Error(msg);
-    }
-  }
-  //> return the parent element
-  //* and(): VastElement
-  and(): VastElement {
+  // > return the parent element
+  // * and(): VastElement
+  public and(): VastElementParent | this {
     /* child will overload this */
     return this.parent || this;
   }
-  //> alias for .and().and()
-  //* back(): VastElement
-  back(): VastElement {
+  // > alias for .and().and()
+  // * back(): VastElement
+  public back(): VastElementParent | this {
     /* child will overload this */
     return this.and().and();
   }
 
-  //> turn element content into cdata. return the current element
-  //* cdata(): VastElement
-  cdata(): VastElement {
+  // > turn element content into cdata. return the current element
+  // * cdata(): VastElement
+  public cdata(): this {
     this.cdataThisOne = true;
     this.childs.forEach(c => {
       c.cdata();
@@ -172,23 +139,23 @@ export default class VastElement {
     return this;
   }
 
-  //> Allow adding custom XML Tag, usefull for <Extensions>
-  //* dangerouslyAttachCustomTag(tagName: string, content: string, attributes: Object): VastElement
-  dangerouslyAttachCustomTag(
+  // > Allow adding custom XML Tag, usefull for <Extensions>
+  // * dangerouslyAttachCustomTag(tagName: string, content: string, attributes: Object): VastElement
+  public dangerouslyAttachCustomTag(
     tagName: string,
     content: string,
     attributes?: AttributeObject
-  ): VastElement;
-  dangerouslyAttachCustomTag(
+  ): VastElement<this>;
+  public dangerouslyAttachCustomTag(
     tagName: string,
     attributes: AttributeObject
-  ): VastElement;
-  dangerouslyAttachCustomTag(
+  ): VastElement<this>;
+  public dangerouslyAttachCustomTag(
     tagName: string,
     contentOrAttributes: AttributeObject | string,
     attributesIfContent?: AttributeObject
-  ): VastElement {
-    let newElem: VastElement;
+  ): VastElement<this> {
+    let newElem: VastElement<this>;
     if (typeof contentOrAttributes === "string") {
       newElem = new VastElement(
         tagName,
@@ -198,7 +165,7 @@ export default class VastElement {
         attributesIfContent
       );
     } else {
-      newElem = new VastElement(
+      newElem = new VastElement<this>(
         tagName,
         this,
         { attrs: "all" },
@@ -209,37 +176,37 @@ export default class VastElement {
     return newElem;
   }
 
-  //> Allow adding custom XML Tag and return his parent, usefull for <Extensions>
-  //* dangerouslyAddCustomTag(tagName: string, content: string, attributes: Object): VastElement
-  dangerouslyAddCustomTag(
+  // > Allow adding custom XML Tag and return his parent, usefull for <Extensions>
+  // * dangerouslyAddCustomTag(tagName: string, content: string, attributes: Object): VastElement
+  public dangerouslyAddCustomTag(
     tagName: string,
     content: string,
     attributes?: AttributeObject
-  ): VastElement;
-  dangerouslyAddCustomTag(
+  ): this;
+  public dangerouslyAddCustomTag(
     tagName: string,
     attributes: AttributeObject
-  ): VastElement;
-  dangerouslyAddCustomTag(
+  ): this;
+  public dangerouslyAddCustomTag(
     tagName: string,
     contentOrAttributes: AttributeObject | string,
     attributesIfContent?: AttributeObject
-  ): VastElement {
+  ): this {
     return this.dangerouslyAttachCustomTag(
       tagName,
       contentOrAttributes as string,
       attributesIfContent
-    ).and();
+    ).and() as this;
   }
 
   // undocumented
-  hasAttrs(): boolean {
+  public hasAttrs(): boolean {
     return Object.keys(this.attrs).length > 0;
   }
 
   // undocumented
   // return a JS object
-  getJson(): ElementCompact {
+  public getJson(): ElementCompact {
     const childCode = {};
     this.childs.forEach(child => {
       childCode[child.name] = childCode[child.name] || [];
@@ -265,17 +232,17 @@ export default class VastElement {
   }
 
   // undocumented
-  getRoot(): VastElement {
-    let parent: VastElement = this.parent || this;
+  public getRoot(): VastElement<null> {
+    let parent: any = this.parent || this;
     while (parent.parent) {
       parent = parent.parent;
     }
     return parent;
   }
 
-  //> Return the generated Vast string
-  //* toXml(): string
-  toXml(): string {
+  // > Return the generated Vast string
+  // * toXml(): string
+  public toXml(): string {
     // todo, manage this
     // if (this.options.validateOnBuild) {
     //   this.validate();
@@ -292,27 +259,22 @@ export default class VastElement {
     );
   }
 
-  // undocumented
-  getVersionRaw(): string {
-    return this.getRoot().getChilds("VAST")[0].attrs["version"];
-  }
-
-  //> return the current VAST api version
-  //* getVastVersion(): number
-  getVastVersion(): number {
+  // > return the current VAST api version
+  // * getVastVersion(): number
+  public getVastVersion(): number {
     return parseInt(this.getVersionRaw());
   }
 
-  //> return the current VAST api version in snake case
-  //* getVastSnakeVersion(): string
-  getVastSnakeVersion(): string {
+  // > return the current VAST api version in snake case
+  // * getVastSnakeVersion(): string
+  public getVastSnakeVersion(): string {
     return this.getVersionRaw().replace(".", "_");
   }
 
-  //> return an array all direct childs with "name"
-  //* getChilds(name: string): Array<VastElement>
-  getChilds(name): Array<VastElement> {
-    const childs: Array<VastElement> = [];
+  // > return an array all direct childs with "name"
+  // * getChilds(name: string): Array<VastElement>
+  public getChilds(name): Array<VastElement<this>> {
+    const childs: Array<VastElement<this>> = [];
     Object.keys(this.childs).forEach(key => {
       const child = this.childs[key];
       if (child.name === name) {
@@ -322,9 +284,9 @@ export default class VastElement {
     return childs;
   }
 
-  //> return an array all childs find at "arrayOfNames" path in the hierarchy
-  //* getChilds(arrayOfNames: Array<string>, fromRoot: boolean): Array<VastElement>
-  get(arrayOfNames = [], fromRoot = true): Array<VastElement> {
+  // > return an array all childs find at "arrayOfNames" path in the hierarchy
+  // * getChilds(arrayOfNames: Array<string>, fromRoot: boolean): Array<VastElement>
+  public get(arrayOfNames = [], fromRoot = true): Array<VastElement<any>> {
     if (arrayOfNames.length === 0) {
       return [this];
     }
@@ -345,7 +307,45 @@ export default class VastElement {
     return flatten(findedNodes);
   }
 
-  isWrapper(): boolean {
+  public isWrapper(): boolean {
     return this.get(["Wrapper"]).length > 0;
+  }
+
+  // undocumented
+  public parseOptions(options: BuilderOptions) {
+    this.options = Object.assign(
+      {
+        cdata: true,
+        logWarn: true,
+        spaces: 2,
+        throwOnError: false,
+        validateOnBuild: false
+      },
+      options
+    );
+  }
+
+  // undocumented
+  private getVersionRaw(): string {
+    return this.getRoot().getChilds("VAST")[0].attrs.version;
+  }
+
+  // undocumented
+  private err(msg: string) {
+    this.warn(msg, true);
+  }
+
+  // undocumented
+  private warn(msg: string, error: boolean = false) {
+    if (this.options.logWarn) {
+      if (error) {
+        logError(msg);
+      } else {
+        logWarn(msg);
+      }
+    }
+    if (error && this.options.throwOnError) {
+      throw new Error(msg);
+    }
   }
 }

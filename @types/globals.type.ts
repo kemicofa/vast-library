@@ -3,10 +3,12 @@ interface ErrorOptions {
   throwOnError?: boolean;
 }
 
-interface BuilderOptions extends ErrorOptions {
+interface CommonOptions extends ErrorOptions {
   cdata?: boolean;
   validateOnBuild?: boolean; // TODO check if it's a problem
   spaces?: number; // TODO replace by indentSpaceNumber
 }
 
-interface ParserOptions extends BuilderOptions {}
+interface BuilderOptions extends CommonOptions {}
+interface ParserOptions extends CommonOptions {}
+interface ValidatorOptions extends CommonOptions {}

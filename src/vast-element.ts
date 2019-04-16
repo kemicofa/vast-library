@@ -1,7 +1,7 @@
 import flatten from "array-flatten";
 import convert, { ElementCompact } from "xml-js";
-import { stripCDATA } from "./utils/checks";
 import { logError, logWarn } from "./utils/logs";
+import { stripCDATA } from "./utils/string";
 
 const xmlDeclaration = {
   _declaration: {
@@ -16,7 +16,11 @@ interface AttributeObject {
   [key: string]: string;
 }
 interface VastElementInfos {
-  attrs: string[] | "all";
+  attrs?: Array<string | any> | "all";
+  // TODO is it good ?
+  required?: boolean;
+  uniq?: boolean;
+  alo?: boolean;
 }
 
 export default class VastElement<VastElementParent extends VastElement<any>> {
@@ -32,15 +36,15 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   constructor(
     name: string,
     parent: VastElementParent,
-    baseInfos: VastElementInfos, // TODO convert baseInfos to baseAttributes
+    baseInfos: VastElementInfos,
     content: string,
     attrs: AttributeObject
   );
   constructor(
     name: string,
     parent: VastElementParent,
-    baseInfos: VastElementInfos, // TODO convert baseInfos to baseAttributes
-    attrs: AttributeObject
+    baseInfos: VastElementInfos,
+    attrs?: AttributeObject
   );
   constructor();
   constructor(
@@ -118,14 +122,12 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   }
   // > return the parent element
   // * and(): VastElement
-  public and(): VastElementParent | this {
-    /* child will overload this */
-    return this.parent || this;
+  public and(): VastElementParent {
+    return this.parent;
   }
   // > alias for .and().and()
   // * back(): VastElement
-  public back(): VastElementParent | this {
-    /* child will overload this */
+  public back(): VastElementParent {
     return this.and().and();
   }
 

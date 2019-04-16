@@ -3,25 +3,19 @@ const fs = require("fs-extra");
 const baseContentTemplate = (version, content, validator) => {
   return (
     "" +
-    `
-// this file is generated, dont edit it
+    `/* tslint:disable: class-name */
 
-/* tslint:disable: class-name */
+///////////////////////////////////////////////////////
+//  IMPORTANT: this file is generated, dont edit it
+/////////
+
 import VastElement from '../../src/vast-element';
-
-interface VastInfos {
-  attrs?: Array<string>;
-  required?: boolean;
-  uniq?: boolean;
-  alo?: boolean;
-};
-
 
 ${content}
 
 export const validator = ${JSON.stringify(validator)};
 
-export apiv${version};
+export { apiv${version} };
 `
   );
 };
@@ -30,9 +24,8 @@ const classTemplate = (className, parentName, jsdoc, methods, isFirst) => {
   // const isFirstContent = isFirst ? " || this" : "";
   return methods
     ? "" +
-        `class ${className} extends VastElement<${parentName}> {
-      ${methods}
-    }
+        `class ${className} extends VastElement<${parentName}> {${methods}
+}
 `
     : `class ${className} extends VastElement<${parentName}> {}
 `;
@@ -53,7 +46,7 @@ const attachMethodTemplate = (methodName, jsdoc, args, childClass, infos) => {
     "" +
     `
   public attach${methodName}(${args}): ${childClass} {
-    const newElem = new ${childClass}('${methodName}', this, ${infos} : VastInfos${comma} ${args});
+    const newElem = new ${childClass}('${methodName}', this, ${infos}${comma} ${args});
     this.childs.push(newElem);
     return newElem;
   }`
@@ -69,14 +62,21 @@ const attachMethodTemplate = (methodName, jsdoc, args, childClass, infos) => {
   // );
 };
 
-const addMethodTemplate = (methodName, jsdoc, args) => {
+const addMethodTemplate = (methodName, jsdoc, args, className) => {
   return (
     "" +
-    `${jsdoc}
-  public add${methodName}(${args}): this {
+    `
+  public add${methodName}(${args}): ${className} {
     return this.attach${methodName}(${args}).and();
   }`
   );
+  // return (
+  //   "" +
+  //   `${jsdoc}
+  // public add${methodName}(${args}): this {
+  //   return this.attach${methodName}(${args}).and();
+  // }`
+  // );
 };
 
 const getSimpleApiMethodDoc = (allContent, openCode) => {
@@ -146,15 +146,16 @@ const extractFirst = obj => {
   return { name, content };
 };
 
-const getArgsTemplate = (hasContent, hasAttrs, currentAttrs) => {
+const getArgsTemplate = (hasContent, hasAttrs, currentAttrs, withTypes) => {
   let args = "";
+  const attributesType = JSON.stringify(currentAttrs);
   if (hasContent) {
-    args = "content: string";
+    args = withTypes ? "content: string" : "content";
     if (hasAttrs) {
-      args += ", attributes :" + JSON.stringify(currentAttrs);
+      args += withTypes ? ", attributes:" + attributesType : ", attributes";
     }
   } else if (hasAttrs) {
-    args = "attributes";
+    args = "attributes:" + attributesType;
   }
   return args;
 };

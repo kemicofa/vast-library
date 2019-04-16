@@ -175,7 +175,8 @@ const generateApiAndDoc = (
           //   hasAttrs,
           //   currentAttrs
           // ),
-          apiArguments
+          apiArguments,
+          currentUsedName
         )
       );
       apiDocumentation[currentUsedName].methods.push(

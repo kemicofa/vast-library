@@ -36,9 +36,9 @@ import { VersionNumber } from "./utils/version";
 
 const vastVersion = new VersionNumber(process.argv[2]);
 
-console.log("=======================");
-console.log("=== build version", vastVersion.int(), "===");
-console.log("=======================");
+console.log("=========================");
+console.log("===> build version", vastVersion.int());
+console.log("=========================");
 
 let datas: any;
 try {
@@ -68,7 +68,7 @@ const apiDocumentation: any = {
 };
 
 // adjust to vast api number, just to intellisense beeing clean
-let classNumber = Math.floor(vastVersion.int());
+let classNumber = vastVersion.intFloor();
 
 const generateApiAndDoc = (
   isFirst: boolean,
@@ -263,7 +263,11 @@ const generateValidator = (dataObject: any) => {
 fs.writeFileSync(
   `./build/api/vast${vastVersion.floatSnake()}.ts`,
   prettier.format(
-    baseContentTemplate(vastVersion.intSnake(), allClassList.join("")),
+    baseContentTemplate(
+      vastVersion.intSnake(),
+      vastVersion.intFloor(),
+      allClassList.join("")
+    ),
     { parser: "typescript" }
   )
 );

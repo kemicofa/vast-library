@@ -1,6 +1,10 @@
 /* tslint:disable: no-console */
 
-export function baseContentTemplate(version: string, content: string) {
+export function baseContentTemplate(
+  version: string,
+  vastVersion: number,
+  content: string
+) {
   return (
     "" +
     `/* tslint:disable: class-name object-literal-sort-keys */
@@ -13,7 +17,7 @@ import VastElement from '../../src/vast-element';
 
 ${content}
 
-export { apiv${version} };
+export { apiv${version}, VAST_${vastVersion} };
 `
   );
 }

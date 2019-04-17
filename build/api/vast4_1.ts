@@ -2504,4 +2504,4 @@ class apiv4_1 extends VastElement<apiv4_1> {
   }
 }
 
-export { apiv4_1 };
+export { apiv4_1, VAST_4 };

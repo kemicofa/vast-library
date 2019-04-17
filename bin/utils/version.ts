@@ -11,6 +11,10 @@ export class VersionNumber {
   public int(): number {
     return Number(this.snakeVersion.replace("_", "."));
   }
+  // 2, 3, 4 or 4
+  public intFloor(): number {
+    return Number(Math.floor(this.int()));
+  }
   // 2, 3, 4 or 4_1
   public intSnake(): string {
     return String(this.int()).replace(".", "_");

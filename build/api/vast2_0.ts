@@ -1299,4 +1299,4 @@ class apiv2 extends VastElement<apiv2> {
   }
 }
 
-export { apiv2 };
+export { apiv2, VAST_2 };

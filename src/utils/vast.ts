@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import convert, { Element } from "xml-js";
+import { Element, xml2js } from "xml-js";
 import VastElement from "../vast-element";
 
 import { isBrowser, isNode } from "browser-or-node";
@@ -90,7 +90,7 @@ function createVastWithBuilder(vastRawCode, options: VastParserOptions = {}) {
   };
   let parsedXml;
   try {
-    parsedXml = convert.xml2js(vastRawCode);
+    parsedXml = xml2js(vastRawCode);
   } catch (e) {
     if (options.logWarn) {
       logError(`Error during the vast parsing, it seems not valid XML`);

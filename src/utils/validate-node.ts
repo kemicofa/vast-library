@@ -1,3 +1,5 @@
+import { isNull } from "./checks";
+
 const filterKeyword = (keyword: string) => {
   return (
     ["only", "required", "alo", "follow", "attrsRequired"].indexOf(keyword) ===
@@ -179,7 +181,7 @@ export function validateNext(currentNode: any, currentValidator: any) {
     Object.keys(currentValidator.attrsRequired).forEach(attrName => {
       const availableValues = currentValidator.attrsRequired[attrName];
       const currentValue = currentNode.getAttrs()[attrName];
-      if (typeof currentValue === "undefined" || currentValue === null) {
+      if (isNull(currentValue)) {
         currentNode.err(
           `Required attribute "${attrName}" not found in "${
             currentNode.name

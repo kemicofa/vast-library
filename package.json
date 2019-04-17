@@ -7,7 +7,7 @@
   "engines": {
     "node": ">= 8"
   },
-  "main": "builder.js",
+  "main": "lib/src/index.js",
   "scripts": {
     "start": "open ./coverage/lcov-report/index.html",
     "dev-build": "browserify ./test/mini-server/try.js -o ./test/mini-server/try-bundle.js",

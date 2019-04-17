@@ -4,58 +4,56 @@
 //  IMPORTANT: this file is generated, dont edit it
 /////////
 
-import VastElement from "../../src/vast-element";
+import V from "../../src/vast-element";
 
-class Error_5 extends VastElement<VAST_4> {}
-class AdSystem_8 extends VastElement<InLine_7> {}
-class AdTitle_9 extends VastElement<InLine_7> {}
-class Impression_10 extends VastElement<InLine_7> {}
-class AdServingID_11 extends VastElement<InLine_7> {}
-class Category_12 extends VastElement<InLine_7> {}
-class Description_13 extends VastElement<InLine_7> {}
-class Advertiser_14 extends VastElement<InLine_7> {}
-class Pricing_15 extends VastElement<InLine_7> {}
-class Survey_16 extends VastElement<InLine_7> {}
-class Error_17 extends VastElement<InLine_7> {}
-class Expires_18 extends VastElement<InLine_7> {}
-class Viewable_20 extends VastElement<ViewableImpression_19> {}
-class NotViewable_21 extends VastElement<ViewableImpression_19> {}
-class ViewUndetermined_22 extends VastElement<ViewableImpression_19> {}
-class ViewableImpression_19 extends VastElement<InLine_7> {
+function p<T extends V<any>>(newElem: T): T {
+  newElem.parent.childs.push(newElem);
+  return newElem;
+}
+
+class Error_5 extends V<VAST_4> {}
+class AdSystem_8 extends V<InLine_7> {}
+class AdTitle_9 extends V<InLine_7> {}
+class Impression_10 extends V<InLine_7> {}
+class AdServingID_11 extends V<InLine_7> {}
+class Category_12 extends V<InLine_7> {}
+class Description_13 extends V<InLine_7> {}
+class Advertiser_14 extends V<InLine_7> {}
+class Pricing_15 extends V<InLine_7> {}
+class Survey_16 extends V<InLine_7> {}
+class Error_17 extends V<InLine_7> {}
+class Expires_18 extends V<InLine_7> {}
+class Viewable_20 extends V<ViewableImpression_19> {}
+class NotViewable_21 extends V<ViewableImpression_19> {}
+class ViewUndetermined_22 extends V<ViewableImpression_19> {}
+class ViewableImpression_19 extends V<InLine_7> {
   public attachViewable(content: string): Viewable_20 {
-    const newElem = new Viewable_20("Viewable", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<Viewable_20>(new Viewable_20("Viewable", this, {}, content));
   }
   public addViewable(content: string): ViewableImpression_19 {
     return this.attachViewable(content).and();
   }
   public attachNotViewable(content: string): NotViewable_21 {
-    const newElem = new NotViewable_21("NotViewable", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<NotViewable_21>(
+      new NotViewable_21("NotViewable", this, {}, content)
+    );
   }
   public addNotViewable(content: string): ViewableImpression_19 {
     return this.attachNotViewable(content).and();
   }
   public attachViewUndetermined(content: string): ViewUndetermined_22 {
-    const newElem = new ViewUndetermined_22(
-      "ViewUndetermined",
-      this,
-      {},
-      content
+    return p<ViewUndetermined_22>(
+      new ViewUndetermined_22("ViewUndetermined", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addViewUndetermined(content: string): ViewableImpression_19 {
     return this.attachViewUndetermined(content).and();
   }
 }
-class JavaScriptResource_25 extends VastElement<Verification_24> {}
-class ExecutableResource_26 extends VastElement<Verification_24> {}
-class Tracking_28 extends VastElement<TrackingEvents_27> {}
-class TrackingEvents_27 extends VastElement<Verification_24> {
+class JavaScriptResource_25 extends V<Verification_24> {}
+class ExecutableResource_26 extends V<Verification_24> {}
+class Tracking_28 extends V<TrackingEvents_27> {}
+class TrackingEvents_27 extends V<Verification_24> {
   public attachTracking(
     content: string,
     attributes: {
@@ -63,15 +61,15 @@ class TrackingEvents_27 extends VastElement<Verification_24> {
       event: "verificationNotExecuted";
     }
   ): Tracking_28 {
-    const newElem = new Tracking_28(
-      "Tracking",
-      this,
-      { attrs: ["offset", "event"] },
-      content,
-      attributes
+    return p<Tracking_28>(
+      new Tracking_28(
+        "Tracking",
+        this,
+        { attrs: ["offset", "event"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addTracking(
     content: string,
@@ -83,8 +81,8 @@ class TrackingEvents_27 extends VastElement<Verification_24> {
     return this.attachTracking(content, attributes).and();
   }
 }
-class VerificationParameters_29 extends VastElement<Verification_24> {}
-class Verification_24 extends VastElement<AdVerifications_23> {
+class VerificationParameters_29 extends V<Verification_24> {}
+class Verification_24 extends V<AdVerifications_23> {
   public attachJavaScriptResource(
     content: string,
     attributes: {
@@ -92,15 +90,15 @@ class Verification_24 extends VastElement<AdVerifications_23> {
       browserOptional: string;
     } = {}
   ): JavaScriptResource_25 {
-    const newElem = new JavaScriptResource_25(
-      "JavaScriptResource",
-      this,
-      { attrs: ["apiFramework", "browserOptional"] },
-      content,
-      attributes
+    return p<JavaScriptResource_25>(
+      new JavaScriptResource_25(
+        "JavaScriptResource",
+        this,
+        { attrs: ["apiFramework", "browserOptional"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addJavaScriptResource(
     content: string,
@@ -119,15 +117,15 @@ class Verification_24 extends VastElement<AdVerifications_23> {
       type?: string;
     } = {}
   ): ExecutableResource_26 {
-    const newElem = new ExecutableResource_26(
-      "ExecutableResource",
-      this,
-      { attrs: ["apiFramework", "language", "type"] },
-      content,
-      attributes
+    return p<ExecutableResource_26>(
+      new ExecutableResource_26(
+        "ExecutableResource",
+        this,
+        { attrs: ["apiFramework", "language", "type"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addExecutableResource(
     content: string,
@@ -140,59 +138,54 @@ class Verification_24 extends VastElement<AdVerifications_23> {
     return this.attachExecutableResource(content, attributes).and();
   }
   public attachTrackingEvents(): TrackingEvents_27 {
-    const newElem = new TrackingEvents_27("TrackingEvents", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<TrackingEvents_27>(
+      new TrackingEvents_27("TrackingEvents", this, {})
+    );
   }
   public attachVerificationParameters(
     content: string
   ): VerificationParameters_29 {
-    const newElem = new VerificationParameters_29(
-      "VerificationParameters",
-      this,
-      {},
-      content
+    return p<VerificationParameters_29>(
+      new VerificationParameters_29("VerificationParameters", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addVerificationParameters(content: string): Verification_24 {
     return this.attachVerificationParameters(content).and();
   }
 }
-class AdVerifications_23 extends VastElement<InLine_7> {
+class AdVerifications_23 extends V<InLine_7> {
   public attachVerification(
     attributes: {
       vendor: string;
     } = {}
   ): Verification_24 {
-    const newElem = new Verification_24(
-      "Verification",
-      this,
-      { attrs: ["vendor"] },
-      attributes
+    return p<Verification_24>(
+      new Verification_24(
+        "Verification",
+        this,
+        { attrs: ["vendor"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class Extension_31 extends VastElement<Extensions_30> {}
-class Extensions_30 extends VastElement<InLine_7> {
+class Extension_31 extends V<Extensions_30> {}
+class Extensions_30 extends V<InLine_7> {
   public attachExtension(
     content: string,
     attributes: {
       type?: string;
     } = {}
   ): Extension_31 {
-    const newElem = new Extension_31(
-      "Extension",
-      this,
-      { attrs: ["type"] },
-      content,
-      attributes
+    return p<Extension_31>(
+      new Extension_31(
+        "Extension",
+        this,
+        { attrs: ["type"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addExtension(
     content: string,
@@ -203,24 +196,24 @@ class Extensions_30 extends VastElement<InLine_7> {
     return this.attachExtension(content, attributes).and();
   }
 }
-class UniversalAdId_34 extends VastElement<Creative_33> {}
-class CreativeExtension_36 extends VastElement<CreativeExtensions_35> {}
-class CreativeExtensions_35 extends VastElement<Creative_33> {
+class UniversalAdId_34 extends V<Creative_33> {}
+class CreativeExtension_36 extends V<CreativeExtensions_35> {}
+class CreativeExtensions_35 extends V<Creative_33> {
   public attachCreativeExtension(
     content: string,
     attributes: {
       type?: string;
     } = {}
   ): CreativeExtension_36 {
-    const newElem = new CreativeExtension_36(
-      "CreativeExtension",
-      this,
-      { attrs: ["type"] },
-      content,
-      attributes
+    return p<CreativeExtension_36>(
+      new CreativeExtension_36(
+        "CreativeExtension",
+        this,
+        { attrs: ["type"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addCreativeExtension(
     content: string,
@@ -231,13 +224,13 @@ class CreativeExtensions_35 extends VastElement<Creative_33> {
     return this.attachCreativeExtension(content, attributes).and();
   }
 }
-class Duration_38 extends VastElement<Linear_37> {}
-class AdParameters_39 extends VastElement<Linear_37> {}
-class Mezzanine_41 extends VastElement<MediaFiles_40> {}
-class MediaFile_42 extends VastElement<MediaFiles_40> {}
-class InteractiveCreativeFile_43 extends VastElement<MediaFiles_40> {}
-class ClosedCaptionFile_45 extends VastElement<ClosedCaptionFiles_44> {}
-class ClosedCaptionFiles_44 extends VastElement<MediaFiles_40> {
+class Duration_38 extends V<Linear_37> {}
+class AdParameters_39 extends V<Linear_37> {}
+class Mezzanine_41 extends V<MediaFiles_40> {}
+class MediaFile_42 extends V<MediaFiles_40> {}
+class InteractiveCreativeFile_43 extends V<MediaFiles_40> {}
+class ClosedCaptionFile_45 extends V<ClosedCaptionFiles_44> {}
+class ClosedCaptionFiles_44 extends V<MediaFiles_40> {
   public attachClosedCaptionFile(
     content: string,
     attributes: {
@@ -245,15 +238,15 @@ class ClosedCaptionFiles_44 extends VastElement<MediaFiles_40> {
       language?: string;
     } = {}
   ): ClosedCaptionFile_45 {
-    const newElem = new ClosedCaptionFile_45(
-      "ClosedCaptionFile",
-      this,
-      { attrs: ["type", "language"] },
-      content,
-      attributes
+    return p<ClosedCaptionFile_45>(
+      new ClosedCaptionFile_45(
+        "ClosedCaptionFile",
+        this,
+        { attrs: ["type", "language"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addClosedCaptionFile(
     content: string,
@@ -265,7 +258,7 @@ class ClosedCaptionFiles_44 extends VastElement<MediaFiles_40> {
     return this.attachClosedCaptionFile(content, attributes).and();
   }
 }
-class MediaFiles_40 extends VastElement<Linear_37> {
+class MediaFiles_40 extends V<Linear_37> {
   public attachMezzanine(
     content: string,
     attributes: {
@@ -279,26 +272,26 @@ class MediaFiles_40 extends VastElement<Linear_37> {
       mediaType?: string;
     }
   ): Mezzanine_41 {
-    const newElem = new Mezzanine_41(
-      "Mezzanine",
-      this,
-      {
-        attrs: [
-          "delivery",
-          "type",
-          "width",
-          "height",
-          "codec",
-          "id",
-          "fileSize",
-          "mediaType"
-        ]
-      },
-      content,
-      attributes
+    return p<Mezzanine_41>(
+      new Mezzanine_41(
+        "Mezzanine",
+        this,
+        {
+          attrs: [
+            "delivery",
+            "type",
+            "width",
+            "height",
+            "codec",
+            "id",
+            "fileSize",
+            "mediaType"
+          ]
+        },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addMezzanine(
     content: string,
@@ -334,32 +327,32 @@ class MediaFiles_40 extends VastElement<Linear_37> {
       mediaType?: string;
     }
   ): MediaFile_42 {
-    const newElem = new MediaFile_42(
-      "MediaFile",
-      this,
-      {
-        attrs: [
-          "delivery",
-          "type",
-          "width",
-          "height",
-          "codec",
-          "id",
-          "bitrate",
-          "minBitrate",
-          "maxBitrate",
-          "scalable",
-          "mantainAspectRatio",
-          "apiFramework",
-          "fileSize",
-          "mediaType"
-        ]
-      },
-      content,
-      attributes
+    return p<MediaFile_42>(
+      new MediaFile_42(
+        "MediaFile",
+        this,
+        {
+          attrs: [
+            "delivery",
+            "type",
+            "width",
+            "height",
+            "codec",
+            "id",
+            "bitrate",
+            "minBitrate",
+            "maxBitrate",
+            "scalable",
+            "mantainAspectRatio",
+            "apiFramework",
+            "fileSize",
+            "mediaType"
+          ]
+        },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addMediaFile(
     content: string,
@@ -390,15 +383,15 @@ class MediaFiles_40 extends VastElement<Linear_37> {
       variableDuration?: string;
     } = {}
   ): InteractiveCreativeFile_43 {
-    const newElem = new InteractiveCreativeFile_43(
-      "InteractiveCreativeFile",
-      this,
-      { attrs: ["type", "apiFramework", "variableDuration"] },
-      content,
-      attributes
+    return p<InteractiveCreativeFile_43>(
+      new InteractiveCreativeFile_43(
+        "InteractiveCreativeFile",
+        this,
+        { attrs: ["type", "apiFramework", "variableDuration"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addInteractiveCreativeFile(
     content: string,
@@ -411,30 +404,30 @@ class MediaFiles_40 extends VastElement<Linear_37> {
     return this.attachInteractiveCreativeFile(content, attributes).and();
   }
   public attachClosedCaptionFiles(): ClosedCaptionFiles_44 {
-    const newElem = new ClosedCaptionFiles_44("ClosedCaptionFiles", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<ClosedCaptionFiles_44>(
+      new ClosedCaptionFiles_44("ClosedCaptionFiles", this, {})
+    );
   }
 }
-class ClickThrough_47 extends VastElement<VideoClicks_46> {}
-class ClickTracking_48 extends VastElement<VideoClicks_46> {}
-class CustomClick_49 extends VastElement<VideoClicks_46> {}
-class VideoClicks_46 extends VastElement<Linear_37> {
+class ClickThrough_47 extends V<VideoClicks_46> {}
+class ClickTracking_48 extends V<VideoClicks_46> {}
+class CustomClick_49 extends V<VideoClicks_46> {}
+class VideoClicks_46 extends V<Linear_37> {
   public attachClickThrough(
     content: string,
     attributes: {
       id?: string;
     } = {}
   ): ClickThrough_47 {
-    const newElem = new ClickThrough_47(
-      "ClickThrough",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<ClickThrough_47>(
+      new ClickThrough_47(
+        "ClickThrough",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addClickThrough(
     content: string,
@@ -450,15 +443,15 @@ class VideoClicks_46 extends VastElement<Linear_37> {
       id?: string;
     } = {}
   ): ClickTracking_48 {
-    const newElem = new ClickTracking_48(
-      "ClickTracking",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<ClickTracking_48>(
+      new ClickTracking_48(
+        "ClickTracking",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addClickTracking(
     content: string,
@@ -474,15 +467,15 @@ class VideoClicks_46 extends VastElement<Linear_37> {
       id?: string;
     } = {}
   ): CustomClick_49 {
-    const newElem = new CustomClick_49(
-      "CustomClick",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<CustomClick_49>(
+      new CustomClick_49(
+        "CustomClick",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addCustomClick(
     content: string,
@@ -493,8 +486,8 @@ class VideoClicks_46 extends VastElement<Linear_37> {
     return this.attachCustomClick(content, attributes).and();
   }
 }
-class Tracking_51 extends VastElement<TrackingEvents_50> {}
-class TrackingEvents_50 extends VastElement<Linear_37> {
+class Tracking_51 extends V<TrackingEvents_50> {}
+class TrackingEvents_50 extends V<Linear_37> {
   public attachTracking(
     content: string,
     attributes: {
@@ -520,15 +513,15 @@ class TrackingEvents_50 extends VastElement<Linear_37> {
         | "notUsed";
     }
   ): Tracking_51 {
-    const newElem = new Tracking_51(
-      "Tracking",
-      this,
-      { attrs: ["offset", "event"] },
-      content,
-      attributes
+    return p<Tracking_51>(
+      new Tracking_51(
+        "Tracking",
+        this,
+        { attrs: ["offset", "event"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addTracking(
     content: string,
@@ -558,21 +551,16 @@ class TrackingEvents_50 extends VastElement<Linear_37> {
     return this.attachTracking(content, attributes).and();
   }
 }
-class StaticResource_54 extends VastElement<Icon_53> {}
-class IFrameResource_55 extends VastElement<Icon_53> {}
-class HTMLResource_56 extends VastElement<Icon_53> {}
-class IconClickThrough_58 extends VastElement<IconClicks_57> {}
-class IconClickTracking_59 extends VastElement<IconClicks_57> {}
-class IconClicks_57 extends VastElement<Icon_53> {
+class StaticResource_54 extends V<Icon_53> {}
+class IFrameResource_55 extends V<Icon_53> {}
+class HTMLResource_56 extends V<Icon_53> {}
+class IconClickThrough_58 extends V<IconClicks_57> {}
+class IconClickTracking_59 extends V<IconClicks_57> {}
+class IconClicks_57 extends V<Icon_53> {
   public attachIconClickThrough(content: string): IconClickThrough_58 {
-    const newElem = new IconClickThrough_58(
-      "IconClickThrough",
-      this,
-      {},
-      content
+    return p<IconClickThrough_58>(
+      new IconClickThrough_58("IconClickThrough", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addIconClickThrough(content: string): IconClicks_57 {
     return this.attachIconClickThrough(content).and();
@@ -583,15 +571,15 @@ class IconClicks_57 extends VastElement<Icon_53> {
       id?: string;
     } = {}
   ): IconClickTracking_59 {
-    const newElem = new IconClickTracking_59(
-      "IconClickTracking",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<IconClickTracking_59>(
+      new IconClickTracking_59(
+        "IconClickTracking",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addIconClickTracking(
     content: string,
@@ -602,8 +590,8 @@ class IconClicks_57 extends VastElement<Icon_53> {
     return this.attachIconClickTracking(content, attributes).and();
   }
 }
-class IconViewTracking_60 extends VastElement<Icon_53> {}
-class Icon_53 extends VastElement<Icons_52> {
+class IconViewTracking_60 extends V<Icon_53> {}
+class Icon_53 extends V<Icons_52> {
   public attachStaticResource(
     content: string,
     attributes: {
@@ -616,15 +604,15 @@ class Icon_53 extends VastElement<Icons_52> {
         | "application/x-shockwave-flash";
     }
   ): StaticResource_54 {
-    const newElem = new StaticResource_54(
-      "StaticResource",
-      this,
-      { attrs: ["creativeType"] },
-      content,
-      attributes
+    return p<StaticResource_54>(
+      new StaticResource_54(
+        "StaticResource",
+        this,
+        { attrs: ["creativeType"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addStaticResource(
     content: string,
@@ -641,41 +629,34 @@ class Icon_53 extends VastElement<Icons_52> {
     return this.attachStaticResource(content, attributes).and();
   }
   public attachIFrameResource(content: string): IFrameResource_55 {
-    const newElem = new IFrameResource_55("IFrameResource", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<IFrameResource_55>(
+      new IFrameResource_55("IFrameResource", this, {}, content)
+    );
   }
   public addIFrameResource(content: string): Icon_53 {
     return this.attachIFrameResource(content).and();
   }
   public attachHTMLResource(content: string): HTMLResource_56 {
-    const newElem = new HTMLResource_56("HTMLResource", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<HTMLResource_56>(
+      new HTMLResource_56("HTMLResource", this, {}, content)
+    );
   }
   public addHTMLResource(content: string): Icon_53 {
     return this.attachHTMLResource(content).and();
   }
   public attachIconClicks(): IconClicks_57 {
-    const newElem = new IconClicks_57("IconClicks", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<IconClicks_57>(new IconClicks_57("IconClicks", this, {}));
   }
   public attachIconViewTracking(content: string): IconViewTracking_60 {
-    const newElem = new IconViewTracking_60(
-      "IconViewTracking",
-      this,
-      {},
-      content
+    return p<IconViewTracking_60>(
+      new IconViewTracking_60("IconViewTracking", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addIconViewTracking(content: string): Icon_53 {
     return this.attachIconViewTracking(content).and();
   }
 }
-class Icons_52 extends VastElement<Linear_37> {
+class Icons_52 extends V<Linear_37> {
   public attachIcon(
     attributes: {
       program?: string;
@@ -689,33 +670,31 @@ class Icons_52 extends VastElement<Linear_37> {
       pxratio?: string;
     } = {}
   ): Icon_53 {
-    const newElem = new Icon_53(
-      "Icon",
-      this,
-      {
-        attrs: [
-          "program",
-          "width",
-          "height",
-          "xPosition",
-          "yPosition",
-          "duration",
-          "offset",
-          "apiFramework",
-          "pxratio"
-        ]
-      },
-      attributes
+    return p<Icon_53>(
+      new Icon_53(
+        "Icon",
+        this,
+        {
+          attrs: [
+            "program",
+            "width",
+            "height",
+            "xPosition",
+            "yPosition",
+            "duration",
+            "offset",
+            "apiFramework",
+            "pxratio"
+          ]
+        },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class Linear_37 extends VastElement<Creative_33> {
+class Linear_37 extends V<Creative_33> {
   public attachDuration(content: string): Duration_38 {
-    const newElem = new Duration_38("Duration", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<Duration_38>(new Duration_38("Duration", this, {}, content));
   }
   public addDuration(content: string): Linear_37 {
     return this.attachDuration(content).and();
@@ -726,15 +705,15 @@ class Linear_37 extends VastElement<Creative_33> {
       xmlEncoded?: string;
     } = {}
   ): AdParameters_39 {
-    const newElem = new AdParameters_39(
-      "AdParameters",
-      this,
-      { attrs: ["xmlEncoded"] },
-      content,
-      attributes
+    return p<AdParameters_39>(
+      new AdParameters_39(
+        "AdParameters",
+        this,
+        { attrs: ["xmlEncoded"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addAdParameters(
     content: string,
@@ -745,40 +724,29 @@ class Linear_37 extends VastElement<Creative_33> {
     return this.attachAdParameters(content, attributes).and();
   }
   public attachMediaFiles(): MediaFiles_40 {
-    const newElem = new MediaFiles_40("MediaFiles", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<MediaFiles_40>(new MediaFiles_40("MediaFiles", this, {}));
   }
   public attachVideoClicks(): VideoClicks_46 {
-    const newElem = new VideoClicks_46("VideoClicks", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<VideoClicks_46>(new VideoClicks_46("VideoClicks", this, {}));
   }
   public attachTrackingEvents(): TrackingEvents_50 {
-    const newElem = new TrackingEvents_50("TrackingEvents", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<TrackingEvents_50>(
+      new TrackingEvents_50("TrackingEvents", this, {})
+    );
   }
   public attachIcons(): Icons_52 {
-    const newElem = new Icons_52("Icons", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<Icons_52>(new Icons_52("Icons", this, {}));
   }
 }
-class NonLinearClickThrough_63 extends VastElement<NonLinear_62> {}
-class NonLinearClickTracking_64 extends VastElement<NonLinear_62> {}
-class NonLinear_62 extends VastElement<NonLinearAds_61> {
+class NonLinearClickThrough_63 extends V<NonLinear_62> {}
+class NonLinearClickTracking_64 extends V<NonLinear_62> {}
+class NonLinear_62 extends V<NonLinearAds_61> {
   public attachNonLinearClickThrough(
     content: string
   ): NonLinearClickThrough_63 {
-    const newElem = new NonLinearClickThrough_63(
-      "NonLinearClickThrough",
-      this,
-      {},
-      content
+    return p<NonLinearClickThrough_63>(
+      new NonLinearClickThrough_63("NonLinearClickThrough", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addNonLinearClickThrough(content: string): NonLinear_62 {
     return this.attachNonLinearClickThrough(content).and();
@@ -786,21 +754,16 @@ class NonLinear_62 extends VastElement<NonLinearAds_61> {
   public attachNonLinearClickTracking(
     content: string
   ): NonLinearClickTracking_64 {
-    const newElem = new NonLinearClickTracking_64(
-      "NonLinearClickTracking",
-      this,
-      {},
-      content
+    return p<NonLinearClickTracking_64>(
+      new NonLinearClickTracking_64("NonLinearClickTracking", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addNonLinearClickTracking(content: string): NonLinear_62 {
     return this.attachNonLinearClickTracking(content).and();
   }
 }
-class Tracking_66 extends VastElement<TrackingEvents_65> {}
-class TrackingEvents_65 extends VastElement<NonLinearAds_61> {
+class Tracking_66 extends V<TrackingEvents_65> {}
+class TrackingEvents_65 extends V<NonLinearAds_61> {
   public attachTracking(
     content: string,
     attributes: {
@@ -824,15 +787,15 @@ class TrackingEvents_65 extends VastElement<NonLinearAds_61> {
         | "notUsed";
     }
   ): Tracking_66 {
-    const newElem = new Tracking_66(
-      "Tracking",
-      this,
-      { attrs: ["event"] },
-      content,
-      attributes
+    return p<Tracking_66>(
+      new Tracking_66(
+        "Tracking",
+        this,
+        { attrs: ["event"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addTracking(
     content: string,
@@ -860,7 +823,7 @@ class TrackingEvents_65 extends VastElement<NonLinearAds_61> {
     return this.attachTracking(content, attributes).and();
   }
 }
-class NonLinearAds_61 extends VastElement<Creative_33> {
+class NonLinearAds_61 extends V<Creative_33> {
   public attachNonLinear(
     attributes: {
       id?: string;
@@ -874,57 +837,57 @@ class NonLinearAds_61 extends VastElement<Creative_33> {
       minSuggestedDuration?: string;
     } = {}
   ): NonLinear_62 {
-    const newElem = new NonLinear_62(
-      "NonLinear",
-      this,
-      {
-        attrs: [
-          "id",
-          "width",
-          "height",
-          "expandedWidth",
-          "expandedHeight",
-          "scalable",
-          "maintainAspectRatio",
-          "apiFramework",
-          "minSuggestedDuration"
-        ]
-      },
-      attributes
+    return p<NonLinear_62>(
+      new NonLinear_62(
+        "NonLinear",
+        this,
+        {
+          attrs: [
+            "id",
+            "width",
+            "height",
+            "expandedWidth",
+            "expandedHeight",
+            "scalable",
+            "maintainAspectRatio",
+            "apiFramework",
+            "minSuggestedDuration"
+          ]
+        },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public attachTrackingEvents(): TrackingEvents_65 {
-    const newElem = new TrackingEvents_65("TrackingEvents", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<TrackingEvents_65>(
+      new TrackingEvents_65("TrackingEvents", this, {})
+    );
   }
 }
-class StaticResource_69 extends VastElement<Companion_68> {}
-class IFrameResource_70 extends VastElement<Companion_68> {}
-class HTMLResource_71 extends VastElement<Companion_68> {}
-class AdParameters_72 extends VastElement<Companion_68> {}
-class AltText_73 extends VastElement<Companion_68> {}
-class CompanionClickThrough_74 extends VastElement<Companion_68> {}
-class CompanionClickTracking_75 extends VastElement<Companion_68> {}
-class Tracking_77 extends VastElement<TrackingEvents_76> {}
-class TrackingEvents_76 extends VastElement<Companion_68> {
+class StaticResource_69 extends V<Companion_68> {}
+class IFrameResource_70 extends V<Companion_68> {}
+class HTMLResource_71 extends V<Companion_68> {}
+class AdParameters_72 extends V<Companion_68> {}
+class AltText_73 extends V<Companion_68> {}
+class CompanionClickThrough_74 extends V<Companion_68> {}
+class CompanionClickTracking_75 extends V<Companion_68> {}
+class Tracking_77 extends V<TrackingEvents_76> {}
+class TrackingEvents_76 extends V<Companion_68> {
   public attachTracking(
     content: string,
     attributes: {
       event: "creativeView";
     }
   ): Tracking_77 {
-    const newElem = new Tracking_77(
-      "Tracking",
-      this,
-      { attrs: ["event"] },
-      content,
-      attributes
+    return p<Tracking_77>(
+      new Tracking_77(
+        "Tracking",
+        this,
+        { attrs: ["event"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addTracking(
     content: string,
@@ -935,7 +898,7 @@ class TrackingEvents_76 extends VastElement<Companion_68> {
     return this.attachTracking(content, attributes).and();
   }
 }
-class Companion_68 extends VastElement<CompanionAds_67> {
+class Companion_68 extends V<CompanionAds_67> {
   public attachStaticResource(
     content: string,
     attributes: {
@@ -948,15 +911,15 @@ class Companion_68 extends VastElement<CompanionAds_67> {
         | "application/x-shockwave-flash";
     }
   ): StaticResource_69 {
-    const newElem = new StaticResource_69(
-      "StaticResource",
-      this,
-      { attrs: ["creativeType"] },
-      content,
-      attributes
+    return p<StaticResource_69>(
+      new StaticResource_69(
+        "StaticResource",
+        this,
+        { attrs: ["creativeType"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addStaticResource(
     content: string,
@@ -973,17 +936,17 @@ class Companion_68 extends VastElement<CompanionAds_67> {
     return this.attachStaticResource(content, attributes).and();
   }
   public attachIFrameResource(content: string): IFrameResource_70 {
-    const newElem = new IFrameResource_70("IFrameResource", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<IFrameResource_70>(
+      new IFrameResource_70("IFrameResource", this, {}, content)
+    );
   }
   public addIFrameResource(content: string): Companion_68 {
     return this.attachIFrameResource(content).and();
   }
   public attachHTMLResource(content: string): HTMLResource_71 {
-    const newElem = new HTMLResource_71("HTMLResource", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<HTMLResource_71>(
+      new HTMLResource_71("HTMLResource", this, {}, content)
+    );
   }
   public addHTMLResource(content: string): Companion_68 {
     return this.attachHTMLResource(content).and();
@@ -994,15 +957,15 @@ class Companion_68 extends VastElement<CompanionAds_67> {
       xmlEncoded?: string;
     } = {}
   ): AdParameters_72 {
-    const newElem = new AdParameters_72(
-      "AdParameters",
-      this,
-      { attrs: ["xmlEncoded"] },
-      content,
-      attributes
+    return p<AdParameters_72>(
+      new AdParameters_72(
+        "AdParameters",
+        this,
+        { attrs: ["xmlEncoded"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addAdParameters(
     content: string,
@@ -1013,9 +976,7 @@ class Companion_68 extends VastElement<CompanionAds_67> {
     return this.attachAdParameters(content, attributes).and();
   }
   public attachAltText(content: string): AltText_73 {
-    const newElem = new AltText_73("AltText", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<AltText_73>(new AltText_73("AltText", this, {}, content));
   }
   public addAltText(content: string): Companion_68 {
     return this.attachAltText(content).and();
@@ -1023,14 +984,9 @@ class Companion_68 extends VastElement<CompanionAds_67> {
   public attachCompanionClickThrough(
     content: string
   ): CompanionClickThrough_74 {
-    const newElem = new CompanionClickThrough_74(
-      "CompanionClickThrough",
-      this,
-      {},
-      content
+    return p<CompanionClickThrough_74>(
+      new CompanionClickThrough_74("CompanionClickThrough", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addCompanionClickThrough(content: string): Companion_68 {
     return this.attachCompanionClickThrough(content).and();
@@ -1041,15 +997,15 @@ class Companion_68 extends VastElement<CompanionAds_67> {
       id?: string;
     } = {}
   ): CompanionClickTracking_75 {
-    const newElem = new CompanionClickTracking_75(
-      "CompanionClickTracking",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<CompanionClickTracking_75>(
+      new CompanionClickTracking_75(
+        "CompanionClickTracking",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addCompanionClickTracking(
     content: string,
@@ -1060,12 +1016,12 @@ class Companion_68 extends VastElement<CompanionAds_67> {
     return this.attachCompanionClickTracking(content, attributes).and();
   }
   public attachTrackingEvents(): TrackingEvents_76 {
-    const newElem = new TrackingEvents_76("TrackingEvents", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<TrackingEvents_76>(
+      new TrackingEvents_76("TrackingEvents", this, {})
+    );
   }
 }
-class CompanionAds_67 extends VastElement<Creative_33> {
+class CompanionAds_67 extends V<Creative_33> {
   public attachCompanion(
     attributes: {
       width: string;
@@ -1081,31 +1037,31 @@ class CompanionAds_67 extends VastElement<Creative_33> {
       renderingMode?: "default" | "end-card" | "concurrent";
     } = {}
   ): Companion_68 {
-    const newElem = new Companion_68(
-      "Companion",
-      this,
-      {
-        attrs: [
-          "width",
-          "height",
-          "id",
-          "assetWidth",
-          "assetHeight",
-          "expandedWidth",
-          "expandedHeight",
-          "apiFramework",
-          "adSlotID",
-          "pxratio",
-          "renderingMode"
-        ]
-      },
-      attributes
+    return p<Companion_68>(
+      new Companion_68(
+        "Companion",
+        this,
+        {
+          attrs: [
+            "width",
+            "height",
+            "id",
+            "assetWidth",
+            "assetHeight",
+            "expandedWidth",
+            "expandedHeight",
+            "apiFramework",
+            "adSlotID",
+            "pxratio",
+            "renderingMode"
+          ]
+        },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class Creative_33 extends VastElement<Creatives_32> {
+class Creative_33 extends V<Creatives_32> {
   public attachUniversalAdId(
     content: string,
     attributes: {
@@ -1113,15 +1069,15 @@ class Creative_33 extends VastElement<Creatives_32> {
       idValue?: string;
     } = {}
   ): UniversalAdId_34 {
-    const newElem = new UniversalAdId_34(
-      "UniversalAdId",
-      this,
-      { attrs: ["idRegistry", "idValue"] },
-      content,
-      attributes
+    return p<UniversalAdId_34>(
+      new UniversalAdId_34(
+        "UniversalAdId",
+        this,
+        { attrs: ["idRegistry", "idValue"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addUniversalAdId(
     content: string,
@@ -1133,43 +1089,36 @@ class Creative_33 extends VastElement<Creatives_32> {
     return this.attachUniversalAdId(content, attributes).and();
   }
   public attachCreativeExtensions(): CreativeExtensions_35 {
-    const newElem = new CreativeExtensions_35("CreativeExtensions", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<CreativeExtensions_35>(
+      new CreativeExtensions_35("CreativeExtensions", this, {})
+    );
   }
   public attachLinear(
     attributes: {
       skipoffset?: string;
     } = {}
   ): Linear_37 {
-    const newElem = new Linear_37(
-      "Linear",
-      this,
-      { attrs: ["skipoffset"] },
-      attributes
+    return p<Linear_37>(
+      new Linear_37("Linear", this, { attrs: ["skipoffset"] }, attributes)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public attachNonLinearAds(): NonLinearAds_61 {
-    const newElem = new NonLinearAds_61("NonLinearAds", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<NonLinearAds_61>(new NonLinearAds_61("NonLinearAds", this, {}));
   }
   public attachCompanionAds(attributes: {
     required: "all" | "any" | "none";
   }): CompanionAds_67 {
-    const newElem = new CompanionAds_67(
-      "CompanionAds",
-      this,
-      { attrs: ["required"] },
-      attributes
+    return p<CompanionAds_67>(
+      new CompanionAds_67(
+        "CompanionAds",
+        this,
+        { attrs: ["required"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class Creatives_32 extends VastElement<InLine_7> {
+class Creatives_32 extends V<InLine_7> {
   public attachCreative(
     attributes: {
       id?: string;
@@ -1178,32 +1127,32 @@ class Creatives_32 extends VastElement<InLine_7> {
       apiFramework?: string;
     } = {}
   ): Creative_33 {
-    const newElem = new Creative_33(
-      "Creative",
-      this,
-      { attrs: ["id", "sequence", "adId", "apiFramework"] },
-      attributes
+    return p<Creative_33>(
+      new Creative_33(
+        "Creative",
+        this,
+        { attrs: ["id", "sequence", "adId", "apiFramework"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class InLine_7 extends VastElement<Ad_6> {
+class InLine_7 extends V<Ad_6> {
   public attachAdSystem(
     content: string,
     attributes: {
       version?: string;
     } = {}
   ): AdSystem_8 {
-    const newElem = new AdSystem_8(
-      "AdSystem",
-      this,
-      { attrs: ["version"] },
-      content,
-      attributes
+    return p<AdSystem_8>(
+      new AdSystem_8(
+        "AdSystem",
+        this,
+        { attrs: ["version"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addAdSystem(
     content: string,
@@ -1214,9 +1163,7 @@ class InLine_7 extends VastElement<Ad_6> {
     return this.attachAdSystem(content, attributes).and();
   }
   public attachAdTitle(content: string): AdTitle_9 {
-    const newElem = new AdTitle_9("AdTitle", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<AdTitle_9>(new AdTitle_9("AdTitle", this, {}, content));
   }
   public addAdTitle(content: string): InLine_7 {
     return this.attachAdTitle(content).and();
@@ -1227,15 +1174,15 @@ class InLine_7 extends VastElement<Ad_6> {
       id?: string;
     } = {}
   ): Impression_10 {
-    const newElem = new Impression_10(
-      "Impression",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<Impression_10>(
+      new Impression_10(
+        "Impression",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addImpression(
     content: string,
@@ -1246,9 +1193,9 @@ class InLine_7 extends VastElement<Ad_6> {
     return this.attachImpression(content, attributes).and();
   }
   public attachAdServingID(content: string): AdServingID_11 {
-    const newElem = new AdServingID_11("AdServingID", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<AdServingID_11>(
+      new AdServingID_11("AdServingID", this, {}, content)
+    );
   }
   public addAdServingID(content: string): InLine_7 {
     return this.attachAdServingID(content).and();
@@ -1259,15 +1206,15 @@ class InLine_7 extends VastElement<Ad_6> {
       authority: string;
     } = {}
   ): Category_12 {
-    const newElem = new Category_12(
-      "Category",
-      this,
-      { attrs: ["authority"] },
-      content,
-      attributes
+    return p<Category_12>(
+      new Category_12(
+        "Category",
+        this,
+        { attrs: ["authority"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addCategory(
     content: string,
@@ -1278,9 +1225,9 @@ class InLine_7 extends VastElement<Ad_6> {
     return this.attachCategory(content, attributes).and();
   }
   public attachDescription(content: string): Description_13 {
-    const newElem = new Description_13("Description", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<Description_13>(
+      new Description_13("Description", this, {}, content)
+    );
   }
   public addDescription(content: string): InLine_7 {
     return this.attachDescription(content).and();
@@ -1291,15 +1238,15 @@ class InLine_7 extends VastElement<Ad_6> {
       id?: string;
     } = {}
   ): Advertiser_14 {
-    const newElem = new Advertiser_14(
-      "Advertiser",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<Advertiser_14>(
+      new Advertiser_14(
+        "Advertiser",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addAdvertiser(
     content: string,
@@ -1316,15 +1263,15 @@ class InLine_7 extends VastElement<Ad_6> {
       model: "CPM" | "CPC" | "CPE" | "CPV";
     }
   ): Pricing_15 {
-    const newElem = new Pricing_15(
-      "Pricing",
-      this,
-      { attrs: ["currency", "model"] },
-      content,
-      attributes
+    return p<Pricing_15>(
+      new Pricing_15(
+        "Pricing",
+        this,
+        { attrs: ["currency", "model"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addPricing(
     content: string,
@@ -1341,15 +1288,9 @@ class InLine_7 extends VastElement<Ad_6> {
       type?: string;
     } = {}
   ): Survey_16 {
-    const newElem = new Survey_16(
-      "Survey",
-      this,
-      { attrs: ["type"] },
-      content,
-      attributes
+    return p<Survey_16>(
+      new Survey_16("Survey", this, { attrs: ["type"] }, content, attributes)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addSurvey(
     content: string,
@@ -1360,17 +1301,13 @@ class InLine_7 extends VastElement<Ad_6> {
     return this.attachSurvey(content, attributes).and();
   }
   public attachError(content: string): Error_17 {
-    const newElem = new Error_17("Error", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<Error_17>(new Error_17("Error", this, {}, content));
   }
   public addError(content: string): InLine_7 {
     return this.attachError(content).and();
   }
   public attachExpires(content: string): Expires_18 {
-    const newElem = new Expires_18("Expires", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<Expires_18>(new Expires_18("Expires", this, {}, content));
   }
   public addExpires(content: string): InLine_7 {
     return this.attachExpires(content).and();
@@ -1380,74 +1317,63 @@ class InLine_7 extends VastElement<Ad_6> {
       id?: string;
     } = {}
   ): ViewableImpression_19 {
-    const newElem = new ViewableImpression_19(
-      "ViewableImpression",
-      this,
-      { attrs: ["id"] },
-      attributes
+    return p<ViewableImpression_19>(
+      new ViewableImpression_19(
+        "ViewableImpression",
+        this,
+        { attrs: ["id"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public attachAdVerifications(): AdVerifications_23 {
-    const newElem = new AdVerifications_23("AdVerifications", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<AdVerifications_23>(
+      new AdVerifications_23("AdVerifications", this, {})
+    );
   }
   public attachExtensions(): Extensions_30 {
-    const newElem = new Extensions_30("Extensions", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<Extensions_30>(new Extensions_30("Extensions", this, {}));
   }
   public attachCreatives(): Creatives_32 {
-    const newElem = new Creatives_32("Creatives", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<Creatives_32>(new Creatives_32("Creatives", this, {}));
   }
 }
-class Impression_79 extends VastElement<Wrapper_78> {}
-class VASTAdTagURI_80 extends VastElement<Wrapper_78> {}
-class AdSystem_81 extends VastElement<Wrapper_78> {}
-class Pricing_82 extends VastElement<Wrapper_78> {}
-class Error_83 extends VastElement<Wrapper_78> {}
-class Viewable_85 extends VastElement<ViewableImpression_84> {}
-class NotViewable_86 extends VastElement<ViewableImpression_84> {}
-class ViewUndetermined_87 extends VastElement<ViewableImpression_84> {}
-class ViewableImpression_84 extends VastElement<Wrapper_78> {
+class Impression_79 extends V<Wrapper_78> {}
+class VASTAdTagURI_80 extends V<Wrapper_78> {}
+class AdSystem_81 extends V<Wrapper_78> {}
+class Pricing_82 extends V<Wrapper_78> {}
+class Error_83 extends V<Wrapper_78> {}
+class Viewable_85 extends V<ViewableImpression_84> {}
+class NotViewable_86 extends V<ViewableImpression_84> {}
+class ViewUndetermined_87 extends V<ViewableImpression_84> {}
+class ViewableImpression_84 extends V<Wrapper_78> {
   public attachViewable(content: string): Viewable_85 {
-    const newElem = new Viewable_85("Viewable", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<Viewable_85>(new Viewable_85("Viewable", this, {}, content));
   }
   public addViewable(content: string): ViewableImpression_84 {
     return this.attachViewable(content).and();
   }
   public attachNotViewable(content: string): NotViewable_86 {
-    const newElem = new NotViewable_86("NotViewable", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<NotViewable_86>(
+      new NotViewable_86("NotViewable", this, {}, content)
+    );
   }
   public addNotViewable(content: string): ViewableImpression_84 {
     return this.attachNotViewable(content).and();
   }
   public attachViewUndetermined(content: string): ViewUndetermined_87 {
-    const newElem = new ViewUndetermined_87(
-      "ViewUndetermined",
-      this,
-      {},
-      content
+    return p<ViewUndetermined_87>(
+      new ViewUndetermined_87("ViewUndetermined", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addViewUndetermined(content: string): ViewableImpression_84 {
     return this.attachViewUndetermined(content).and();
   }
 }
-class JavaScriptResource_90 extends VastElement<Verification_89> {}
-class ExecutableResource_91 extends VastElement<Verification_89> {}
-class Tracking_93 extends VastElement<TrackingEvents_92> {}
-class TrackingEvents_92 extends VastElement<Verification_89> {
+class JavaScriptResource_90 extends V<Verification_89> {}
+class ExecutableResource_91 extends V<Verification_89> {}
+class Tracking_93 extends V<TrackingEvents_92> {}
+class TrackingEvents_92 extends V<Verification_89> {
   public attachTracking(
     content: string,
     attributes: {
@@ -1455,15 +1381,15 @@ class TrackingEvents_92 extends VastElement<Verification_89> {
       event: "verificationNotExecuted";
     }
   ): Tracking_93 {
-    const newElem = new Tracking_93(
-      "Tracking",
-      this,
-      { attrs: ["offset", "event"] },
-      content,
-      attributes
+    return p<Tracking_93>(
+      new Tracking_93(
+        "Tracking",
+        this,
+        { attrs: ["offset", "event"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addTracking(
     content: string,
@@ -1475,9 +1401,9 @@ class TrackingEvents_92 extends VastElement<Verification_89> {
     return this.attachTracking(content, attributes).and();
   }
 }
-class VerificationParameters_94 extends VastElement<Verification_89> {}
-class BlockedAdCategories_95 extends VastElement<Verification_89> {}
-class Verification_89 extends VastElement<AdVerifications_88> {
+class VerificationParameters_94 extends V<Verification_89> {}
+class BlockedAdCategories_95 extends V<Verification_89> {}
+class Verification_89 extends V<AdVerifications_88> {
   public attachJavaScriptResource(
     content: string,
     attributes: {
@@ -1485,15 +1411,15 @@ class Verification_89 extends VastElement<AdVerifications_88> {
       browserOptional: string;
     } = {}
   ): JavaScriptResource_90 {
-    const newElem = new JavaScriptResource_90(
-      "JavaScriptResource",
-      this,
-      { attrs: ["apiFramework", "browserOptional"] },
-      content,
-      attributes
+    return p<JavaScriptResource_90>(
+      new JavaScriptResource_90(
+        "JavaScriptResource",
+        this,
+        { attrs: ["apiFramework", "browserOptional"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addJavaScriptResource(
     content: string,
@@ -1512,15 +1438,15 @@ class Verification_89 extends VastElement<AdVerifications_88> {
       type?: string;
     } = {}
   ): ExecutableResource_91 {
-    const newElem = new ExecutableResource_91(
-      "ExecutableResource",
-      this,
-      { attrs: ["apiFramework", "language", "type"] },
-      content,
-      attributes
+    return p<ExecutableResource_91>(
+      new ExecutableResource_91(
+        "ExecutableResource",
+        this,
+        { attrs: ["apiFramework", "language", "type"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addExecutableResource(
     content: string,
@@ -1533,21 +1459,16 @@ class Verification_89 extends VastElement<AdVerifications_88> {
     return this.attachExecutableResource(content, attributes).and();
   }
   public attachTrackingEvents(): TrackingEvents_92 {
-    const newElem = new TrackingEvents_92("TrackingEvents", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<TrackingEvents_92>(
+      new TrackingEvents_92("TrackingEvents", this, {})
+    );
   }
   public attachVerificationParameters(
     content: string
   ): VerificationParameters_94 {
-    const newElem = new VerificationParameters_94(
-      "VerificationParameters",
-      this,
-      {},
-      content
+    return p<VerificationParameters_94>(
+      new VerificationParameters_94("VerificationParameters", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addVerificationParameters(content: string): Verification_89 {
     return this.attachVerificationParameters(content).and();
@@ -1558,15 +1479,15 @@ class Verification_89 extends VastElement<AdVerifications_88> {
       authority: string;
     } = {}
   ): BlockedAdCategories_95 {
-    const newElem = new BlockedAdCategories_95(
-      "BlockedAdCategories",
-      this,
-      { attrs: ["authority"] },
-      content,
-      attributes
+    return p<BlockedAdCategories_95>(
+      new BlockedAdCategories_95(
+        "BlockedAdCategories",
+        this,
+        { attrs: ["authority"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addBlockedAdCategories(
     content: string,
@@ -1577,39 +1498,39 @@ class Verification_89 extends VastElement<AdVerifications_88> {
     return this.attachBlockedAdCategories(content, attributes).and();
   }
 }
-class AdVerifications_88 extends VastElement<Wrapper_78> {
+class AdVerifications_88 extends V<Wrapper_78> {
   public attachVerification(
     attributes: {
       vendor: string;
     } = {}
   ): Verification_89 {
-    const newElem = new Verification_89(
-      "Verification",
-      this,
-      { attrs: ["vendor"] },
-      attributes
+    return p<Verification_89>(
+      new Verification_89(
+        "Verification",
+        this,
+        { attrs: ["vendor"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class Extension_97 extends VastElement<Extensions_96> {}
-class Extensions_96 extends VastElement<Wrapper_78> {
+class Extension_97 extends V<Extensions_96> {}
+class Extensions_96 extends V<Wrapper_78> {
   public attachExtension(
     content: string,
     attributes: {
       type?: string;
     } = {}
   ): Extension_97 {
-    const newElem = new Extension_97(
-      "Extension",
-      this,
-      { attrs: ["type"] },
-      content,
-      attributes
+    return p<Extension_97>(
+      new Extension_97(
+        "Extension",
+        this,
+        { attrs: ["type"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addExtension(
     content: string,
@@ -1620,8 +1541,8 @@ class Extensions_96 extends VastElement<Wrapper_78> {
     return this.attachExtension(content, attributes).and();
   }
 }
-class Tracking_102 extends VastElement<TrackingEvents_101> {}
-class TrackingEvents_101 extends VastElement<Linear_100> {
+class Tracking_102 extends V<TrackingEvents_101> {}
+class TrackingEvents_101 extends V<Linear_100> {
   public attachTracking(
     content: string,
     attributes: {
@@ -1647,15 +1568,15 @@ class TrackingEvents_101 extends VastElement<Linear_100> {
         | "notUsed";
     }
   ): Tracking_102 {
-    const newElem = new Tracking_102(
-      "Tracking",
-      this,
-      { attrs: ["offset", "event"] },
-      content,
-      attributes
+    return p<Tracking_102>(
+      new Tracking_102(
+        "Tracking",
+        this,
+        { attrs: ["offset", "event"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addTracking(
     content: string,
@@ -1685,24 +1606,24 @@ class TrackingEvents_101 extends VastElement<Linear_100> {
     return this.attachTracking(content, attributes).and();
   }
 }
-class ClickTracking_104 extends VastElement<VideoClicks_103> {}
-class CustomClick_105 extends VastElement<VideoClicks_103> {}
-class VideoClicks_103 extends VastElement<Linear_100> {
+class ClickTracking_104 extends V<VideoClicks_103> {}
+class CustomClick_105 extends V<VideoClicks_103> {}
+class VideoClicks_103 extends V<Linear_100> {
   public attachClickTracking(
     content: string,
     attributes: {
       id?: string;
     } = {}
   ): ClickTracking_104 {
-    const newElem = new ClickTracking_104(
-      "ClickTracking",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<ClickTracking_104>(
+      new ClickTracking_104(
+        "ClickTracking",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addClickTracking(
     content: string,
@@ -1718,15 +1639,15 @@ class VideoClicks_103 extends VastElement<Linear_100> {
       id?: string;
     } = {}
   ): CustomClick_105 {
-    const newElem = new CustomClick_105(
-      "CustomClick",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<CustomClick_105>(
+      new CustomClick_105(
+        "CustomClick",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addCustomClick(
     content: string,
@@ -1737,21 +1658,16 @@ class VideoClicks_103 extends VastElement<Linear_100> {
     return this.attachCustomClick(content, attributes).and();
   }
 }
-class StaticResource_108 extends VastElement<Icon_107> {}
-class IFrameResource_109 extends VastElement<Icon_107> {}
-class HTMLResource_110 extends VastElement<Icon_107> {}
-class IconClickThrough_112 extends VastElement<IconClicks_111> {}
-class IconClickTracking_113 extends VastElement<IconClicks_111> {}
-class IconClicks_111 extends VastElement<Icon_107> {
+class StaticResource_108 extends V<Icon_107> {}
+class IFrameResource_109 extends V<Icon_107> {}
+class HTMLResource_110 extends V<Icon_107> {}
+class IconClickThrough_112 extends V<IconClicks_111> {}
+class IconClickTracking_113 extends V<IconClicks_111> {}
+class IconClicks_111 extends V<Icon_107> {
   public attachIconClickThrough(content: string): IconClickThrough_112 {
-    const newElem = new IconClickThrough_112(
-      "IconClickThrough",
-      this,
-      {},
-      content
+    return p<IconClickThrough_112>(
+      new IconClickThrough_112("IconClickThrough", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addIconClickThrough(content: string): IconClicks_111 {
     return this.attachIconClickThrough(content).and();
@@ -1762,15 +1678,15 @@ class IconClicks_111 extends VastElement<Icon_107> {
       id?: string;
     } = {}
   ): IconClickTracking_113 {
-    const newElem = new IconClickTracking_113(
-      "IconClickTracking",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<IconClickTracking_113>(
+      new IconClickTracking_113(
+        "IconClickTracking",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addIconClickTracking(
     content: string,
@@ -1781,8 +1697,8 @@ class IconClicks_111 extends VastElement<Icon_107> {
     return this.attachIconClickTracking(content, attributes).and();
   }
 }
-class IconViewTracking_114 extends VastElement<Icon_107> {}
-class Icon_107 extends VastElement<Icons_106> {
+class IconViewTracking_114 extends V<Icon_107> {}
+class Icon_107 extends V<Icons_106> {
   public attachStaticResource(
     content: string,
     attributes: {
@@ -1795,15 +1711,15 @@ class Icon_107 extends VastElement<Icons_106> {
         | "application/x-shockwave-flash";
     }
   ): StaticResource_108 {
-    const newElem = new StaticResource_108(
-      "StaticResource",
-      this,
-      { attrs: ["creativeType"] },
-      content,
-      attributes
+    return p<StaticResource_108>(
+      new StaticResource_108(
+        "StaticResource",
+        this,
+        { attrs: ["creativeType"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addStaticResource(
     content: string,
@@ -1820,41 +1736,34 @@ class Icon_107 extends VastElement<Icons_106> {
     return this.attachStaticResource(content, attributes).and();
   }
   public attachIFrameResource(content: string): IFrameResource_109 {
-    const newElem = new IFrameResource_109("IFrameResource", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<IFrameResource_109>(
+      new IFrameResource_109("IFrameResource", this, {}, content)
+    );
   }
   public addIFrameResource(content: string): Icon_107 {
     return this.attachIFrameResource(content).and();
   }
   public attachHTMLResource(content: string): HTMLResource_110 {
-    const newElem = new HTMLResource_110("HTMLResource", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<HTMLResource_110>(
+      new HTMLResource_110("HTMLResource", this, {}, content)
+    );
   }
   public addHTMLResource(content: string): Icon_107 {
     return this.attachHTMLResource(content).and();
   }
   public attachIconClicks(): IconClicks_111 {
-    const newElem = new IconClicks_111("IconClicks", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<IconClicks_111>(new IconClicks_111("IconClicks", this, {}));
   }
   public attachIconViewTracking(content: string): IconViewTracking_114 {
-    const newElem = new IconViewTracking_114(
-      "IconViewTracking",
-      this,
-      {},
-      content
+    return p<IconViewTracking_114>(
+      new IconViewTracking_114("IconViewTracking", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addIconViewTracking(content: string): Icon_107 {
     return this.attachIconViewTracking(content).and();
   }
 }
-class Icons_106 extends VastElement<Linear_100> {
+class Icons_106 extends V<Linear_100> {
   public attachIcon(
     attributes: {
       program?: string;
@@ -1868,44 +1777,40 @@ class Icons_106 extends VastElement<Linear_100> {
       pxratio?: string;
     } = {}
   ): Icon_107 {
-    const newElem = new Icon_107(
-      "Icon",
-      this,
-      {
-        attrs: [
-          "program",
-          "width",
-          "height",
-          "xPosition",
-          "yPosition",
-          "duration",
-          "offset",
-          "apiFramework",
-          "pxratio"
-        ]
-      },
-      attributes
+    return p<Icon_107>(
+      new Icon_107(
+        "Icon",
+        this,
+        {
+          attrs: [
+            "program",
+            "width",
+            "height",
+            "xPosition",
+            "yPosition",
+            "duration",
+            "offset",
+            "apiFramework",
+            "pxratio"
+          ]
+        },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class InteractiveCreativeFile_115 extends VastElement<Linear_100> {}
-class Linear_100 extends VastElement<Creative_99> {
+class InteractiveCreativeFile_115 extends V<Linear_100> {}
+class Linear_100 extends V<Creative_99> {
   public attachTrackingEvents(): TrackingEvents_101 {
-    const newElem = new TrackingEvents_101("TrackingEvents", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<TrackingEvents_101>(
+      new TrackingEvents_101("TrackingEvents", this, {})
+    );
   }
   public attachVideoClicks(): VideoClicks_103 {
-    const newElem = new VideoClicks_103("VideoClicks", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<VideoClicks_103>(new VideoClicks_103("VideoClicks", this, {}));
   }
   public attachIcons(): Icons_106 {
-    const newElem = new Icons_106("Icons", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<Icons_106>(new Icons_106("Icons", this, {}));
   }
   public attachInteractiveCreativeFile(
     content: string,
@@ -1915,15 +1820,15 @@ class Linear_100 extends VastElement<Creative_99> {
       variableDuration?: string;
     } = {}
   ): InteractiveCreativeFile_115 {
-    const newElem = new InteractiveCreativeFile_115(
-      "InteractiveCreativeFile",
-      this,
-      { attrs: ["type", "apiFramework", "variableDuration"] },
-      content,
-      attributes
+    return p<InteractiveCreativeFile_115>(
+      new InteractiveCreativeFile_115(
+        "InteractiveCreativeFile",
+        this,
+        { attrs: ["type", "apiFramework", "variableDuration"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addInteractiveCreativeFile(
     content: string,
@@ -1936,20 +1841,15 @@ class Linear_100 extends VastElement<Creative_99> {
     return this.attachInteractiveCreativeFile(content, attributes).and();
   }
 }
-class NonLinearClickThrough_118 extends VastElement<NonLinear_117> {}
-class NonLinearClickTracking_119 extends VastElement<NonLinear_117> {}
-class NonLinear_117 extends VastElement<NonLinearAds_116> {
+class NonLinearClickThrough_118 extends V<NonLinear_117> {}
+class NonLinearClickTracking_119 extends V<NonLinear_117> {}
+class NonLinear_117 extends V<NonLinearAds_116> {
   public attachNonLinearClickThrough(
     content: string
   ): NonLinearClickThrough_118 {
-    const newElem = new NonLinearClickThrough_118(
-      "NonLinearClickThrough",
-      this,
-      {},
-      content
+    return p<NonLinearClickThrough_118>(
+      new NonLinearClickThrough_118("NonLinearClickThrough", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addNonLinearClickThrough(content: string): NonLinear_117 {
     return this.attachNonLinearClickThrough(content).and();
@@ -1957,21 +1857,21 @@ class NonLinear_117 extends VastElement<NonLinearAds_116> {
   public attachNonLinearClickTracking(
     content: string
   ): NonLinearClickTracking_119 {
-    const newElem = new NonLinearClickTracking_119(
-      "NonLinearClickTracking",
-      this,
-      {},
-      content
+    return p<NonLinearClickTracking_119>(
+      new NonLinearClickTracking_119(
+        "NonLinearClickTracking",
+        this,
+        {},
+        content
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addNonLinearClickTracking(content: string): NonLinear_117 {
     return this.attachNonLinearClickTracking(content).and();
   }
 }
-class Tracking_121 extends VastElement<TrackingEvents_120> {}
-class TrackingEvents_120 extends VastElement<NonLinearAds_116> {
+class Tracking_121 extends V<TrackingEvents_120> {}
+class TrackingEvents_120 extends V<NonLinearAds_116> {
   public attachTracking(
     content: string,
     attributes: {
@@ -1995,15 +1895,15 @@ class TrackingEvents_120 extends VastElement<NonLinearAds_116> {
         | "notUsed";
     }
   ): Tracking_121 {
-    const newElem = new Tracking_121(
-      "Tracking",
-      this,
-      { attrs: ["event"] },
-      content,
-      attributes
+    return p<Tracking_121>(
+      new Tracking_121(
+        "Tracking",
+        this,
+        { attrs: ["event"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addTracking(
     content: string,
@@ -2031,7 +1931,7 @@ class TrackingEvents_120 extends VastElement<NonLinearAds_116> {
     return this.attachTracking(content, attributes).and();
   }
 }
-class NonLinearAds_116 extends VastElement<Creative_99> {
+class NonLinearAds_116 extends V<Creative_99> {
   public attachNonLinear(
     attributes: {
       id?: string;
@@ -2045,57 +1945,57 @@ class NonLinearAds_116 extends VastElement<Creative_99> {
       minSuggestedDuration?: string;
     } = {}
   ): NonLinear_117 {
-    const newElem = new NonLinear_117(
-      "NonLinear",
-      this,
-      {
-        attrs: [
-          "id",
-          "width",
-          "height",
-          "expandedWidth",
-          "expandedHeight",
-          "scalable",
-          "maintainAspectRatio",
-          "apiFramework",
-          "minSuggestedDuration"
-        ]
-      },
-      attributes
+    return p<NonLinear_117>(
+      new NonLinear_117(
+        "NonLinear",
+        this,
+        {
+          attrs: [
+            "id",
+            "width",
+            "height",
+            "expandedWidth",
+            "expandedHeight",
+            "scalable",
+            "maintainAspectRatio",
+            "apiFramework",
+            "minSuggestedDuration"
+          ]
+        },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public attachTrackingEvents(): TrackingEvents_120 {
-    const newElem = new TrackingEvents_120("TrackingEvents", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<TrackingEvents_120>(
+      new TrackingEvents_120("TrackingEvents", this, {})
+    );
   }
 }
-class StaticResource_124 extends VastElement<Companion_123> {}
-class IFrameResource_125 extends VastElement<Companion_123> {}
-class HTMLResource_126 extends VastElement<Companion_123> {}
-class AdParameters_127 extends VastElement<Companion_123> {}
-class AltText_128 extends VastElement<Companion_123> {}
-class CompanionClickThrough_129 extends VastElement<Companion_123> {}
-class CompanionClickTracking_130 extends VastElement<Companion_123> {}
-class Tracking_132 extends VastElement<TrackingEvents_131> {}
-class TrackingEvents_131 extends VastElement<Companion_123> {
+class StaticResource_124 extends V<Companion_123> {}
+class IFrameResource_125 extends V<Companion_123> {}
+class HTMLResource_126 extends V<Companion_123> {}
+class AdParameters_127 extends V<Companion_123> {}
+class AltText_128 extends V<Companion_123> {}
+class CompanionClickThrough_129 extends V<Companion_123> {}
+class CompanionClickTracking_130 extends V<Companion_123> {}
+class Tracking_132 extends V<TrackingEvents_131> {}
+class TrackingEvents_131 extends V<Companion_123> {
   public attachTracking(
     content: string,
     attributes: {
       event: "creativeView";
     }
   ): Tracking_132 {
-    const newElem = new Tracking_132(
-      "Tracking",
-      this,
-      { attrs: ["event"] },
-      content,
-      attributes
+    return p<Tracking_132>(
+      new Tracking_132(
+        "Tracking",
+        this,
+        { attrs: ["event"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addTracking(
     content: string,
@@ -2106,7 +2006,7 @@ class TrackingEvents_131 extends VastElement<Companion_123> {
     return this.attachTracking(content, attributes).and();
   }
 }
-class Companion_123 extends VastElement<CompanionAds_122> {
+class Companion_123 extends V<CompanionAds_122> {
   public attachStaticResource(
     content: string,
     attributes: {
@@ -2119,15 +2019,15 @@ class Companion_123 extends VastElement<CompanionAds_122> {
         | "application/x-shockwave-flash";
     }
   ): StaticResource_124 {
-    const newElem = new StaticResource_124(
-      "StaticResource",
-      this,
-      { attrs: ["creativeType"] },
-      content,
-      attributes
+    return p<StaticResource_124>(
+      new StaticResource_124(
+        "StaticResource",
+        this,
+        { attrs: ["creativeType"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addStaticResource(
     content: string,
@@ -2144,17 +2044,17 @@ class Companion_123 extends VastElement<CompanionAds_122> {
     return this.attachStaticResource(content, attributes).and();
   }
   public attachIFrameResource(content: string): IFrameResource_125 {
-    const newElem = new IFrameResource_125("IFrameResource", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<IFrameResource_125>(
+      new IFrameResource_125("IFrameResource", this, {}, content)
+    );
   }
   public addIFrameResource(content: string): Companion_123 {
     return this.attachIFrameResource(content).and();
   }
   public attachHTMLResource(content: string): HTMLResource_126 {
-    const newElem = new HTMLResource_126("HTMLResource", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<HTMLResource_126>(
+      new HTMLResource_126("HTMLResource", this, {}, content)
+    );
   }
   public addHTMLResource(content: string): Companion_123 {
     return this.attachHTMLResource(content).and();
@@ -2165,15 +2065,15 @@ class Companion_123 extends VastElement<CompanionAds_122> {
       xmlEncoded?: string;
     } = {}
   ): AdParameters_127 {
-    const newElem = new AdParameters_127(
-      "AdParameters",
-      this,
-      { attrs: ["xmlEncoded"] },
-      content,
-      attributes
+    return p<AdParameters_127>(
+      new AdParameters_127(
+        "AdParameters",
+        this,
+        { attrs: ["xmlEncoded"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addAdParameters(
     content: string,
@@ -2184,9 +2084,7 @@ class Companion_123 extends VastElement<CompanionAds_122> {
     return this.attachAdParameters(content, attributes).and();
   }
   public attachAltText(content: string): AltText_128 {
-    const newElem = new AltText_128("AltText", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<AltText_128>(new AltText_128("AltText", this, {}, content));
   }
   public addAltText(content: string): Companion_123 {
     return this.attachAltText(content).and();
@@ -2194,14 +2092,9 @@ class Companion_123 extends VastElement<CompanionAds_122> {
   public attachCompanionClickThrough(
     content: string
   ): CompanionClickThrough_129 {
-    const newElem = new CompanionClickThrough_129(
-      "CompanionClickThrough",
-      this,
-      {},
-      content
+    return p<CompanionClickThrough_129>(
+      new CompanionClickThrough_129("CompanionClickThrough", this, {}, content)
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addCompanionClickThrough(content: string): Companion_123 {
     return this.attachCompanionClickThrough(content).and();
@@ -2212,15 +2105,15 @@ class Companion_123 extends VastElement<CompanionAds_122> {
       id?: string;
     } = {}
   ): CompanionClickTracking_130 {
-    const newElem = new CompanionClickTracking_130(
-      "CompanionClickTracking",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<CompanionClickTracking_130>(
+      new CompanionClickTracking_130(
+        "CompanionClickTracking",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addCompanionClickTracking(
     content: string,
@@ -2231,12 +2124,12 @@ class Companion_123 extends VastElement<CompanionAds_122> {
     return this.attachCompanionClickTracking(content, attributes).and();
   }
   public attachTrackingEvents(): TrackingEvents_131 {
-    const newElem = new TrackingEvents_131("TrackingEvents", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<TrackingEvents_131>(
+      new TrackingEvents_131("TrackingEvents", this, {})
+    );
   }
 }
-class CompanionAds_122 extends VastElement<Creative_99> {
+class CompanionAds_122 extends V<Creative_99> {
   public attachCompanion(
     attributes: {
       width: string;
@@ -2252,55 +2145,51 @@ class CompanionAds_122 extends VastElement<Creative_99> {
       renderingMode?: "default" | "end-card" | "concurrent";
     } = {}
   ): Companion_123 {
-    const newElem = new Companion_123(
-      "Companion",
-      this,
-      {
-        attrs: [
-          "width",
-          "height",
-          "id",
-          "assetWidth",
-          "assetHeight",
-          "expandedWidth",
-          "expandedHeight",
-          "apiFramework",
-          "adSlotID",
-          "pxratio",
-          "renderingMode"
-        ]
-      },
-      attributes
+    return p<Companion_123>(
+      new Companion_123(
+        "Companion",
+        this,
+        {
+          attrs: [
+            "width",
+            "height",
+            "id",
+            "assetWidth",
+            "assetHeight",
+            "expandedWidth",
+            "expandedHeight",
+            "apiFramework",
+            "adSlotID",
+            "pxratio",
+            "renderingMode"
+          ]
+        },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class Creative_99 extends VastElement<Creatives_98> {
+class Creative_99 extends V<Creatives_98> {
   public attachLinear(): Linear_100 {
-    const newElem = new Linear_100("Linear", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<Linear_100>(new Linear_100("Linear", this, {}));
   }
   public attachNonLinearAds(): NonLinearAds_116 {
-    const newElem = new NonLinearAds_116("NonLinearAds", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<NonLinearAds_116>(new NonLinearAds_116("NonLinearAds", this, {}));
   }
   public attachCompanionAds(attributes: {
     required: "all" | "any" | "none";
   }): CompanionAds_122 {
-    const newElem = new CompanionAds_122(
-      "CompanionAds",
-      this,
-      { attrs: ["required"] },
-      attributes
+    return p<CompanionAds_122>(
+      new CompanionAds_122(
+        "CompanionAds",
+        this,
+        { attrs: ["required"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class Creatives_98 extends VastElement<Wrapper_78> {
+class Creatives_98 extends V<Wrapper_78> {
   public attachCreative(
     attributes: {
       id?: string;
@@ -2308,32 +2197,32 @@ class Creatives_98 extends VastElement<Wrapper_78> {
       adId?: string;
     } = {}
   ): Creative_99 {
-    const newElem = new Creative_99(
-      "Creative",
-      this,
-      { attrs: ["id", "sequence", "adId"] },
-      attributes
+    return p<Creative_99>(
+      new Creative_99(
+        "Creative",
+        this,
+        { attrs: ["id", "sequence", "adId"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class Wrapper_78 extends VastElement<Ad_6> {
+class Wrapper_78 extends V<Ad_6> {
   public attachImpression(
     content: string,
     attributes: {
       id?: string;
     } = {}
   ): Impression_79 {
-    const newElem = new Impression_79(
-      "Impression",
-      this,
-      { attrs: ["id"] },
-      content,
-      attributes
+    return p<Impression_79>(
+      new Impression_79(
+        "Impression",
+        this,
+        { attrs: ["id"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addImpression(
     content: string,
@@ -2344,9 +2233,9 @@ class Wrapper_78 extends VastElement<Ad_6> {
     return this.attachImpression(content, attributes).and();
   }
   public attachVASTAdTagURI(content: string): VASTAdTagURI_80 {
-    const newElem = new VASTAdTagURI_80("VASTAdTagURI", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<VASTAdTagURI_80>(
+      new VASTAdTagURI_80("VASTAdTagURI", this, {}, content)
+    );
   }
   public addVASTAdTagURI(content: string): Wrapper_78 {
     return this.attachVASTAdTagURI(content).and();
@@ -2357,15 +2246,15 @@ class Wrapper_78 extends VastElement<Ad_6> {
       version?: string;
     } = {}
   ): AdSystem_81 {
-    const newElem = new AdSystem_81(
-      "AdSystem",
-      this,
-      { attrs: ["version"] },
-      content,
-      attributes
+    return p<AdSystem_81>(
+      new AdSystem_81(
+        "AdSystem",
+        this,
+        { attrs: ["version"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addAdSystem(
     content: string,
@@ -2382,15 +2271,15 @@ class Wrapper_78 extends VastElement<Ad_6> {
       model: "CPM" | "CPC" | "CPE" | "CPV";
     }
   ): Pricing_82 {
-    const newElem = new Pricing_82(
-      "Pricing",
-      this,
-      { attrs: ["currency", "model"] },
-      content,
-      attributes
+    return p<Pricing_82>(
+      new Pricing_82(
+        "Pricing",
+        this,
+        { attrs: ["currency", "model"] },
+        content,
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public addPricing(
     content: string,
@@ -2402,9 +2291,7 @@ class Wrapper_78 extends VastElement<Ad_6> {
     return this.attachPricing(content, attributes).and();
   }
   public attachError(content: string): Error_83 {
-    const newElem = new Error_83("Error", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<Error_83>(new Error_83("Error", this, {}, content));
   }
   public addError(content: string): Wrapper_78 {
     return this.attachError(content).and();
@@ -2414,36 +2301,30 @@ class Wrapper_78 extends VastElement<Ad_6> {
       id?: string;
     } = {}
   ): ViewableImpression_84 {
-    const newElem = new ViewableImpression_84(
-      "ViewableImpression",
-      this,
-      { attrs: ["id"] },
-      attributes
+    return p<ViewableImpression_84>(
+      new ViewableImpression_84(
+        "ViewableImpression",
+        this,
+        { attrs: ["id"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
   public attachAdVerifications(): AdVerifications_88 {
-    const newElem = new AdVerifications_88("AdVerifications", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<AdVerifications_88>(
+      new AdVerifications_88("AdVerifications", this, {})
+    );
   }
   public attachExtensions(): Extensions_96 {
-    const newElem = new Extensions_96("Extensions", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<Extensions_96>(new Extensions_96("Extensions", this, {}));
   }
   public attachCreatives(): Creatives_98 {
-    const newElem = new Creatives_98("Creatives", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<Creatives_98>(new Creatives_98("Creatives", this, {}));
   }
 }
-class Ad_6 extends VastElement<VAST_4> {
+class Ad_6 extends V<VAST_4> {
   public attachInLine(): InLine_7 {
-    const newElem = new InLine_7("InLine", this, {});
-    this.childs.push(newElem);
-    return newElem;
+    return p<InLine_7>(new InLine_7("InLine", this, {}));
   }
   public attachWrapper(
     attributes: {
@@ -2452,23 +2333,25 @@ class Ad_6 extends VastElement<VAST_4> {
       fallbackOnNoAd?: string;
     } = {}
   ): Wrapper_78 {
-    const newElem = new Wrapper_78(
-      "Wrapper",
-      this,
-      {
-        attrs: ["followAdditonalWrappers", "allowMultipleAds", "fallbackOnNoAd"]
-      },
-      attributes
+    return p<Wrapper_78>(
+      new Wrapper_78(
+        "Wrapper",
+        this,
+        {
+          attrs: [
+            "followAdditonalWrappers",
+            "allowMultipleAds",
+            "fallbackOnNoAd"
+          ]
+        },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class VAST_4 extends VastElement<apiv4_1> {
+class VAST_4 extends V<apiv4_1> {
   public attachError(content: string): Error_5 {
-    const newElem = new Error_5("Error", this, {}, content);
-    this.childs.push(newElem);
-    return newElem;
+    return p<Error_5>(new Error_5("Error", this, {}, content));
   }
   public addError(content: string): VAST_4 {
     return this.attachError(content).and();
@@ -2481,26 +2364,24 @@ class VAST_4 extends VastElement<apiv4_1> {
       adType?: string;
     } = {}
   ): Ad_6 {
-    const newElem = new Ad_6(
-      "Ad",
-      this,
-      { attrs: ["id", "sequence", "conditionalAd", "adType"] },
-      attributes
+    return p<Ad_6>(
+      new Ad_6(
+        "Ad",
+        this,
+        { attrs: ["id", "sequence", "conditionalAd", "adType"] },
+        attributes
+      )
     );
-    this.childs.push(newElem);
-    return newElem;
   }
 }
-class apiv4_1 extends VastElement<apiv4_1> {
+class apiv4_1 extends V<apiv4_1> {
   public attachVAST(attributes: { version: "4.1" }): VAST_4 {
-    const newElem = new VAST_4(
-      "VAST",
-      this,
-      { attrs: ["version"] },
-      attributes
+    return p<VAST_4>(
+      new VAST_4("VAST", this, { attrs: ["version"] }, attributes)
     );
-    this.childs.push(newElem);
-    return newElem;
+  }
+  public and() {
+    return this;
   }
 }
 

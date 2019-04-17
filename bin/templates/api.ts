@@ -12,7 +12,9 @@ export function templateAPIFile(
 //  IMPORTANT: this file is generated, dont edit it
 /////////
 
-import VastElement from '../../src/vast-element';
+import V from '../../src/vast-element';
+
+${templateHelpers()}
 
 ${content}
 
@@ -32,17 +34,30 @@ export const vastValidator${version} = ${JSON.stringify(validator)};
 `;
 }
 
+function templateHelpers() {
+  return `
+function p<T extends V<any>>(newElem: T): T {
+  newElem.parent.childs.push(newElem);
+  return newElem;
+}`;
+}
+
 export function templateClass(
   className: string,
   parentName: string,
   methods: string,
   isFirst: boolean
 ): string {
-  // TODO isFirst should return this on overload and()
-  // const isFirstContent = isFirst ? " || this" : "";
+  const isFirstContent = isFirst
+    ? `public and() {
+    return this;
+  }
+  `
+    : "";
   return `
-class ${className} extends VastElement<${parentName}> {
+class ${className} extends V<${parentName}> {
   ${methods}
+  ${isFirstContent}
 }`;
 }
 
@@ -56,9 +71,7 @@ export function templateAttachMethod(
   const comma = args ? "," : "";
   return `
 public attach${methodName}(${argsWithTypes}): ${childClass} {
-  const newElem = new ${childClass}('${methodName}', this, ${infos}${comma} ${args});
-  this.childs.push(newElem);
-  return newElem;
+  return p<${childClass}>(new ${childClass}('${methodName}', this, ${infos}${comma} ${args}));
 }`;
 }
 

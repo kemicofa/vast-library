@@ -86,6 +86,8 @@ export function isRequiredType(type: any) {
           if (!Array.isArray(object.content[0])) {
             hasRequiredFields = true;
           }
+        } else {
+          hasRequiredFields = true;
         }
       }
     }

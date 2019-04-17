@@ -1,7 +1,5 @@
 /* tslint:disable: no-console object-literal-sort-keys */
 
-// BUG : manage renderingMode and optionals in validator build
-
 // IDEAS :
 // TODO : see if renaming VastElement to VE is worth in term of saved size
 
@@ -222,6 +220,13 @@ const generateValidator = (dataObject: any) => {
           const attr = dataObject[childName][i];
           if (typeof attr === "object") {
             const object: any = extractFirst(attr);
+            // remove non required with accepted list of value [[]]
+            if (
+              Array.isArray(object.content) &&
+              Array.isArray(object.content[0])
+            ) {
+              continue;
+            }
             validatorType.attrsRequired[object.name] = object.content;
           }
         }

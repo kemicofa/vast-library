@@ -696,19 +696,17 @@ class TrackingEvents_59 extends V<NonLinearAds_55> {
   }
 }
 class NonLinearAds_55 extends V<Creative_29> {
-  public attachNonLinear(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      scalable?: string;
-      maintainAspectRatio?: string;
-      minSuggestedDuration?: string;
-      apiFramework?: string;
-    } = {}
-  ): NonLinear_56 {
+  public attachNonLinear(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    scalable?: string;
+    maintainAspectRatio?: string;
+    minSuggestedDuration?: string;
+    apiFramework?: string;
+  }): NonLinear_56 {
     return p<NonLinear_56>(
       new NonLinear_56(
         "NonLinear",
@@ -894,20 +892,18 @@ class Companion_62 extends V<CompanionAds_61> {
   }
 }
 class CompanionAds_61 extends V<Creative_29> {
-  public attachCompanion(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      assetWidth?: string;
-      assetHeight?: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      apiFramework?: string;
-      adSlotID?: string;
-      pxratio?: string;
-    } = {}
-  ): Companion_62 {
+  public attachCompanion(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    assetWidth?: string;
+    assetHeight?: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    apiFramework?: string;
+    adSlotID?: string;
+    pxratio?: string;
+  }): Companion_62 {
     return p<Companion_62>(
       new Companion_62(
         "Companion",
@@ -937,7 +933,7 @@ class Creative_29 extends V<Creatives_28> {
     attributes: {
       idRegistry: string;
       idValue: string;
-    } = {}
+    }
   ): UniversalAdId_30 {
     return p<UniversalAdId_30>(
       new UniversalAdId_30(
@@ -954,7 +950,7 @@ class Creative_29 extends V<Creatives_28> {
     attributes: {
       idRegistry: string;
       idValue: string;
-    } = {}
+    }
   ): Creative_29 {
     return this.attachUniversalAdId(content, attributes).and();
   }
@@ -1066,7 +1062,7 @@ class InLine_7 extends V<Ad_6> {
     content: string,
     attributes: {
       authority: string;
-    } = {}
+    }
   ): Category_11 {
     return p<Category_11>(
       new Category_11(
@@ -1082,7 +1078,7 @@ class InLine_7 extends V<Ad_6> {
     content: string,
     attributes: {
       authority: string;
-    } = {}
+    }
   ): InLine_7 {
     return this.attachCategory(content, attributes).and();
   }
@@ -1636,19 +1632,17 @@ class TrackingEvents_109 extends V<NonLinearAds_105> {
   }
 }
 class NonLinearAds_105 extends V<Creative_88> {
-  public attachNonLinear(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      scalable?: string;
-      maintainAspectRatio?: string;
-      minSuggestedDuration?: string;
-      apiFramework?: string;
-    } = {}
-  ): NonLinear_106 {
+  public attachNonLinear(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    scalable?: string;
+    maintainAspectRatio?: string;
+    minSuggestedDuration?: string;
+    apiFramework?: string;
+  }): NonLinear_106 {
     return p<NonLinear_106>(
       new NonLinear_106(
         "NonLinear",
@@ -1834,24 +1828,22 @@ class Companion_112 extends V<CompanionAds_111> {
   }
 }
 class CompanionAds_111 extends V<Creative_88> {
-  public attachCompanion(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      assetWidth?: string;
-      assetHeight?: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      apiFramework?: string;
-      adSlotID?: string;
-      logoTile?: string;
-      logoTitle?: string;
-      logoArtist?: string;
-      logoURL?: string;
-      pxratio?: string;
-    } = {}
-  ): Companion_112 {
+  public attachCompanion(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    assetWidth?: string;
+    assetHeight?: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    apiFramework?: string;
+    adSlotID?: string;
+    logoTile?: string;
+    logoTitle?: string;
+    logoArtist?: string;
+    logoURL?: string;
+    pxratio?: string;
+  }): Companion_112 {
     return p<Companion_112>(
       new Companion_112(
         "Companion",

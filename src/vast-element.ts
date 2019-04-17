@@ -38,7 +38,7 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
     parent: VastElementParent,
     baseInfos: VastElementInfos,
     content: string,
-    attrs: AttributeObject
+    attrs?: AttributeObject
   );
   constructor(
     name: string,

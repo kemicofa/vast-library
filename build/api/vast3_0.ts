@@ -347,18 +347,16 @@ class Icon_31 extends V<Icons_30> {
   }
 }
 class Icons_30 extends V<Linear_19> {
-  public attachIcon(
-    attributes: {
-      program: string;
-      width: string;
-      height: string;
-      xPosition: string;
-      yPosition: string;
-      duration?: string;
-      offset?: string;
-      apiFramework?: string;
-    } = {}
-  ): Icon_31 {
+  public attachIcon(attributes: {
+    program: string;
+    width: string;
+    height: string;
+    xPosition: string;
+    yPosition: string;
+    duration?: string;
+    offset?: string;
+    apiFramework?: string;
+  }): Icon_31 {
     return p<Icon_31>(
       new Icon_31(
         "Icon",
@@ -584,19 +582,17 @@ class Companion_40 extends V<CompanionAds_39> {
   }
 }
 class CompanionAds_39 extends V<Creative_16> {
-  public attachCompanion(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      assetWidth?: string;
-      assetHeight?: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      apiFramework?: string;
-      adSlotID?: string;
-    } = {}
-  ): Companion_40 {
+  public attachCompanion(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    assetWidth?: string;
+    assetHeight?: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    apiFramework?: string;
+    adSlotID?: string;
+  }): Companion_40 {
     return p<Companion_40>(
       new Companion_40(
         "Companion",
@@ -803,19 +799,17 @@ class TrackingEvents_58 extends V<NonLinearAds_50> {
   }
 }
 class NonLinearAds_50 extends V<Creative_16> {
-  public attachNonLinear(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      scalable?: string;
-      maintainAspectRatio?: string;
-      minSuggestedDuration?: string;
-      apiFramework?: string;
-    } = {}
-  ): NonLinear_51 {
+  public attachNonLinear(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    scalable?: string;
+    maintainAspectRatio?: string;
+    minSuggestedDuration?: string;
+    apiFramework?: string;
+  }): NonLinear_51 {
     return p<NonLinear_51>(
       new NonLinear_51(
         "NonLinear",
@@ -1247,18 +1241,16 @@ class Icon_76 extends V<Icons_75> {
   }
 }
 class Icons_75 extends V<Linear_69> {
-  public attachIcon(
-    attributes: {
-      program: string;
-      width: string;
-      height: string;
-      xPosition: string;
-      yPosition: string;
-      duration?: string;
-      offset?: string;
-      apiFramework?: string;
-    } = {}
-  ): Icon_76 {
+  public attachIcon(attributes: {
+    program: string;
+    width: string;
+    height: string;
+    xPosition: string;
+    yPosition: string;
+    duration?: string;
+    offset?: string;
+    apiFramework?: string;
+  }): Icon_76 {
     return p<Icon_76>(
       new Icon_76(
         "Icon",
@@ -1437,19 +1429,17 @@ class Companion_85 extends V<CompanionAds_84> {
   }
 }
 class CompanionAds_84 extends V<Creative_68> {
-  public attachCompanion(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      assetWidth?: string;
-      assetHeight?: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      apiFramework?: string;
-      adSlotID?: string;
-    } = {}
-  ): Companion_85 {
+  public attachCompanion(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    assetWidth?: string;
+    assetHeight?: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    apiFramework?: string;
+    adSlotID?: string;
+  }): Companion_85 {
     return p<Companion_85>(
       new Companion_85(
         "Companion",
@@ -1551,19 +1541,17 @@ class TrackingEvents_98 extends V<NonLinearAds_95> {
   }
 }
 class NonLinearAds_95 extends V<Creative_68> {
-  public attachNonLinear(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      scalable?: string;
-      maintainAspectRatio?: string;
-      minSuggestedDuration?: string;
-      apiFramework?: string;
-    } = {}
-  ): NonLinear_96 {
+  public attachNonLinear(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    scalable?: string;
+    maintainAspectRatio?: string;
+    minSuggestedDuration?: string;
+    apiFramework?: string;
+  }): NonLinear_96 {
     return p<NonLinear_96>(
       new NonLinear_96(
         "NonLinear",

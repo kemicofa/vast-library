@@ -192,13 +192,7 @@ export const vastValidator4_1 = {
                                   }
                                 }
                               },
-                              attrsRequired: {
-                                width: null,
-                                height: null,
-                                renderingMode: [
-                                  ["default", "end-card", "concurrent"]
-                                ]
-                              }
+                              attrsRequired: { width: null, height: null }
                             }
                           },
                           attrsRequired: { required: ["all", "any", "none"] }
@@ -456,13 +450,7 @@ export const vastValidator4_1 = {
                                   }
                                 }
                               },
-                              attrsRequired: {
-                                width: null,
-                                height: null,
-                                renderingMode: [
-                                  ["default", "end-card", "concurrent"]
-                                ]
-                              }
+                              attrsRequired: { width: null, height: null }
                             }
                           },
                           attrsRequired: { required: ["all", "any", "none"] }

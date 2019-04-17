@@ -88,7 +88,7 @@ class Verification_24 extends V<AdVerifications_23> {
     attributes: {
       apiFramework: string;
       browserOptional: string;
-    } = {}
+    }
   ): JavaScriptResource_25 {
     return p<JavaScriptResource_25>(
       new JavaScriptResource_25(
@@ -105,7 +105,7 @@ class Verification_24 extends V<AdVerifications_23> {
     attributes: {
       apiFramework: string;
       browserOptional: string;
-    } = {}
+    }
   ): Verification_24 {
     return this.attachJavaScriptResource(content, attributes).and();
   }
@@ -115,7 +115,7 @@ class Verification_24 extends V<AdVerifications_23> {
       apiFramework: string;
       language?: string;
       type?: string;
-    } = {}
+    }
   ): ExecutableResource_26 {
     return p<ExecutableResource_26>(
       new ExecutableResource_26(
@@ -133,7 +133,7 @@ class Verification_24 extends V<AdVerifications_23> {
       apiFramework: string;
       language?: string;
       type?: string;
-    } = {}
+    }
   ): Verification_24 {
     return this.attachExecutableResource(content, attributes).and();
   }
@@ -154,11 +154,7 @@ class Verification_24 extends V<AdVerifications_23> {
   }
 }
 class AdVerifications_23 extends V<InLine_7> {
-  public attachVerification(
-    attributes: {
-      vendor: string;
-    } = {}
-  ): Verification_24 {
+  public attachVerification(attributes: { vendor: string }): Verification_24 {
     return p<Verification_24>(
       new Verification_24(
         "Verification",
@@ -824,19 +820,17 @@ class TrackingEvents_65 extends V<NonLinearAds_61> {
   }
 }
 class NonLinearAds_61 extends V<Creative_33> {
-  public attachNonLinear(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      scalable?: string;
-      maintainAspectRatio?: string;
-      apiFramework?: string;
-      minSuggestedDuration?: string;
-    } = {}
-  ): NonLinear_62 {
+  public attachNonLinear(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    scalable?: string;
+    maintainAspectRatio?: string;
+    apiFramework?: string;
+    minSuggestedDuration?: string;
+  }): NonLinear_62 {
     return p<NonLinear_62>(
       new NonLinear_62(
         "NonLinear",
@@ -1022,21 +1016,19 @@ class Companion_68 extends V<CompanionAds_67> {
   }
 }
 class CompanionAds_67 extends V<Creative_33> {
-  public attachCompanion(
-    attributes: {
-      width: string;
-      height: string;
-      id?: string;
-      assetWidth?: string;
-      assetHeight?: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      apiFramework?: string;
-      adSlotID?: string;
-      pxratio?: string;
-      renderingMode?: "default" | "end-card" | "concurrent";
-    } = {}
-  ): Companion_68 {
+  public attachCompanion(attributes: {
+    width: string;
+    height: string;
+    id?: string;
+    assetWidth?: string;
+    assetHeight?: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    apiFramework?: string;
+    adSlotID?: string;
+    pxratio?: string;
+    renderingMode?: "default" | "end-card" | "concurrent";
+  }): Companion_68 {
     return p<Companion_68>(
       new Companion_68(
         "Companion",
@@ -1067,7 +1059,7 @@ class Creative_33 extends V<Creatives_32> {
     attributes: {
       idRegistry: string;
       idValue?: string;
-    } = {}
+    }
   ): UniversalAdId_34 {
     return p<UniversalAdId_34>(
       new UniversalAdId_34(
@@ -1084,7 +1076,7 @@ class Creative_33 extends V<Creatives_32> {
     attributes: {
       idRegistry: string;
       idValue?: string;
-    } = {}
+    }
   ): Creative_33 {
     return this.attachUniversalAdId(content, attributes).and();
   }
@@ -1204,7 +1196,7 @@ class InLine_7 extends V<Ad_6> {
     content: string,
     attributes: {
       authority: string;
-    } = {}
+    }
   ): Category_12 {
     return p<Category_12>(
       new Category_12(
@@ -1220,7 +1212,7 @@ class InLine_7 extends V<Ad_6> {
     content: string,
     attributes: {
       authority: string;
-    } = {}
+    }
   ): InLine_7 {
     return this.attachCategory(content, attributes).and();
   }
@@ -1409,7 +1401,7 @@ class Verification_89 extends V<AdVerifications_88> {
     attributes: {
       apiFramework: string;
       browserOptional: string;
-    } = {}
+    }
   ): JavaScriptResource_90 {
     return p<JavaScriptResource_90>(
       new JavaScriptResource_90(
@@ -1426,7 +1418,7 @@ class Verification_89 extends V<AdVerifications_88> {
     attributes: {
       apiFramework: string;
       browserOptional: string;
-    } = {}
+    }
   ): Verification_89 {
     return this.attachJavaScriptResource(content, attributes).and();
   }
@@ -1436,7 +1428,7 @@ class Verification_89 extends V<AdVerifications_88> {
       apiFramework: string;
       language?: string;
       type?: string;
-    } = {}
+    }
   ): ExecutableResource_91 {
     return p<ExecutableResource_91>(
       new ExecutableResource_91(
@@ -1454,7 +1446,7 @@ class Verification_89 extends V<AdVerifications_88> {
       apiFramework: string;
       language?: string;
       type?: string;
-    } = {}
+    }
   ): Verification_89 {
     return this.attachExecutableResource(content, attributes).and();
   }
@@ -1477,7 +1469,7 @@ class Verification_89 extends V<AdVerifications_88> {
     content: string,
     attributes: {
       authority: string;
-    } = {}
+    }
   ): BlockedAdCategories_95 {
     return p<BlockedAdCategories_95>(
       new BlockedAdCategories_95(
@@ -1493,17 +1485,13 @@ class Verification_89 extends V<AdVerifications_88> {
     content: string,
     attributes: {
       authority: string;
-    } = {}
+    }
   ): Verification_89 {
     return this.attachBlockedAdCategories(content, attributes).and();
   }
 }
 class AdVerifications_88 extends V<Wrapper_78> {
-  public attachVerification(
-    attributes: {
-      vendor: string;
-    } = {}
-  ): Verification_89 {
+  public attachVerification(attributes: { vendor: string }): Verification_89 {
     return p<Verification_89>(
       new Verification_89(
         "Verification",
@@ -1932,19 +1920,17 @@ class TrackingEvents_120 extends V<NonLinearAds_116> {
   }
 }
 class NonLinearAds_116 extends V<Creative_99> {
-  public attachNonLinear(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      scalable?: string;
-      maintainAspectRatio?: string;
-      apiFramework?: string;
-      minSuggestedDuration?: string;
-    } = {}
-  ): NonLinear_117 {
+  public attachNonLinear(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    scalable?: string;
+    maintainAspectRatio?: string;
+    apiFramework?: string;
+    minSuggestedDuration?: string;
+  }): NonLinear_117 {
     return p<NonLinear_117>(
       new NonLinear_117(
         "NonLinear",
@@ -2130,21 +2116,19 @@ class Companion_123 extends V<CompanionAds_122> {
   }
 }
 class CompanionAds_122 extends V<Creative_99> {
-  public attachCompanion(
-    attributes: {
-      width: string;
-      height: string;
-      id?: string;
-      assetWidth?: string;
-      assetHeight?: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      apiFramework?: string;
-      adSlotID?: string;
-      pxratio?: string;
-      renderingMode?: "default" | "end-card" | "concurrent";
-    } = {}
-  ): Companion_123 {
+  public attachCompanion(attributes: {
+    width: string;
+    height: string;
+    id?: string;
+    assetWidth?: string;
+    assetHeight?: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    apiFramework?: string;
+    adSlotID?: string;
+    pxratio?: string;
+    renderingMode?: "default" | "end-card" | "concurrent";
+  }): Companion_123 {
     return p<Companion_123>(
       new Companion_123(
         "Companion",

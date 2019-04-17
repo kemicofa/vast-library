@@ -322,16 +322,14 @@ class Companion_25 extends V<CompanionAds_24> {
   }
 }
 class CompanionAds_24 extends V<Creative_12> {
-  public attachCompanion(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      apiFramework?: string;
-    } = {}
-  ): Companion_25 {
+  public attachCompanion(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    apiFramework?: string;
+  }): Companion_25 {
     return p<Companion_25>(
       new Companion_25(
         "Companion",
@@ -470,19 +468,17 @@ class TrackingEvents_39 extends V<NonLinearAds_34> {
 class NonLinearClickThrough_41 extends V<NonLinearAds_34> {}
 class AdParameters_42 extends V<NonLinearAds_34> {}
 class NonLinearAds_34 extends V<Creative_12> {
-  public attachNonLinear(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      scalable?: string;
-      maintainAspectRatio?: string;
-      minSuggestedDuration?: string;
-      apiFramework?: string;
-    } = {}
-  ): NonLinear_35 {
+  public attachNonLinear(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    scalable?: string;
+    maintainAspectRatio?: string;
+    minSuggestedDuration?: string;
+    apiFramework?: string;
+  }): NonLinear_35 {
     return p<NonLinear_35>(
       new NonLinear_35(
         "NonLinear",
@@ -901,16 +897,14 @@ class Companion_60 extends V<CompanionAds_59> {
   }
 }
 class CompanionAds_59 extends V<Creative_51> {
-  public attachCompanion(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      apiFramework?: string;
-    } = {}
-  ): Companion_60 {
+  public attachCompanion(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    apiFramework?: string;
+  }): Companion_60 {
     return p<Companion_60>(
       new Companion_60(
         "Companion",
@@ -1047,19 +1041,17 @@ class TrackingEvents_74 extends V<NonLinearAds_69> {
   }
 }
 class NonLinearAds_69 extends V<Creative_51> {
-  public attachNonLinear(
-    attributes: {
-      id?: string;
-      width: string;
-      height: string;
-      expandedWidth?: string;
-      expandedHeight?: string;
-      scalable?: string;
-      maintainAspectRatio?: string;
-      minSuggestedDuration?: string;
-      apiFramework?: string;
-    } = {}
-  ): NonLinear_70 {
+  public attachNonLinear(attributes: {
+    id?: string;
+    width: string;
+    height: string;
+    expandedWidth?: string;
+    expandedHeight?: string;
+    scalable?: string;
+    maintainAspectRatio?: string;
+    minSuggestedDuration?: string;
+    apiFramework?: string;
+  }): NonLinear_70 {
     return p<NonLinear_70>(
       new NonLinear_70(
         "NonLinear",
@@ -1222,11 +1214,7 @@ class Ad_3 extends V<VAST_2> {
   }
 }
 class VAST_2 extends V<apiv2> {
-  public attachAd(
-    attributes: {
-      id: string;
-    } = {}
-  ): Ad_3 {
+  public attachAd(attributes: { id: string }): Ad_3 {
     return p<Ad_3>(new Ad_3("Ad", this, { attrs: ["id"] }, attributes));
   }
 }

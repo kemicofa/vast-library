@@ -1,12 +1,13 @@
 /* tslint:disable: no-console object-literal-sort-keys */
 
-// BUG : intellisense .toXml() not availables in childs ???
+// BUG : manage renderingMode and optionals in validator build
 
 // IDEAS :
 // TODO : see if renaming VastElement to VE is worth in term of saved size
 
 import * as fs from "fs-extra";
 import * as yaml from "js-yaml";
+import * as prettier from "prettier";
 
 import {
   addMethodTemplate,
@@ -14,7 +15,8 @@ import {
   baseContentTemplate,
   classTemplate,
   getArgsTemplate,
-  getArgsTemplateWithTypes
+  getArgsTemplateWithTypes,
+  validatorTemplate
 } from "./templates/api";
 
 import {
@@ -258,13 +260,21 @@ const generateValidator = (dataObject: any) => {
 };
 
 // writing API
-const validatorObject = generateValidator(filteredDatas);
 fs.writeFileSync(
   `./build/api/vast${vastVersion.floatSnake()}.ts`,
-  baseContentTemplate(
-    vastVersion.intSnake(),
-    allClassList.join(""),
-    validatorObject
+  prettier.format(
+    baseContentTemplate(vastVersion.intSnake(), allClassList.join("")),
+    { parser: "typescript" }
+  )
+);
+
+// writing validator
+const validatorObject = generateValidator(filteredDatas);
+fs.writeFileSync(
+  `./build/api/vast${vastVersion.floatSnake()}-validator.ts`,
+  prettier.format(
+    validatorTemplate(vastVersion.floatSnake(), validatorObject),
+    { parser: "typescript" }
   )
 );
 

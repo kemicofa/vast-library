@@ -1,11 +1,9 @@
 /* tslint:disable: no-console */
 
-import { getType } from "../utils/build";
-
-export function baseContentTemplate(version, content, validator) {
+export function baseContentTemplate(version: string, content: string) {
   return (
     "" +
-    `/* tslint:disable: class-name */
+    `/* tslint:disable: class-name object-literal-sort-keys */
 
 ///////////////////////////////////////////////////////
 //  IMPORTANT: this file is generated, dont edit it
@@ -15,9 +13,21 @@ import VastElement from '../../src/vast-element';
 
 ${content}
 
-export const validator = ${JSON.stringify(validator)};
-
 export { apiv${version} };
+`
+  );
+}
+
+export function validatorTemplate(version: string, validator: any) {
+  return (
+    "" +
+    `/* tslint:disable: variable-name object-literal-sort-keys */
+
+///////////////////////////////////////////////////////
+//  IMPORTANT: this file is generated, dont edit it
+/////////
+
+export const vastValidator${version} = ${JSON.stringify(validator)};
 `
   );
 }

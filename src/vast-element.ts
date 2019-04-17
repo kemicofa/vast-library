@@ -1,5 +1,5 @@
-import flatten from "array-flatten";
-import convert, { ElementCompact } from "xml-js";
+import * as flatten from "array-flatten";
+import { ElementCompact, js2xml } from "xml-js";
 import { logError, logWarn } from "./utils/logs";
 import { stripCDATA } from "./utils/string";
 
@@ -249,7 +249,7 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
     // if (this.options.validateOnBuild) {
     //   this.validate();
     // }
-    return convert.js2xml(
+    return js2xml(
       {
         ...xmlDeclaration,
         ...this.getRoot().getJson()

@@ -1,31 +1,47 @@
+/* tslint:disable: no-console object-literal-sort-keys */
+
 // BUG : intellisense .toXml() not availables in childs ???
 
 // IDEAS :
 // TODO : see if renaming VastElement to VE is worth in term of saved size
 
-// contain 2_0, 3_0, 4_0 or 4_1
-const vastVersionSnake = process.argv[2];
+import * as fs from "fs-extra";
+import * as yaml from "js-yaml";
 
-if (!vastVersionSnake) {
-  throw "this batch needs an arg with the vast version number";
-}
+import {
+  addMethodTemplate,
+  attachMethodTemplate,
+  baseContentTemplate,
+  classTemplate,
+  getArgsTemplate,
+  getArgsTemplateWithTypes
+} from "./templates/api";
 
-// contain 2, 3, 4 or 4.1
-const vastVersion = Number(vastVersionSnake.replace("_", "."));
-// contain 2, 3, 4 or 4_1
-const vastVersionString = String(vastVersion).replace(".", "_");
+import {
+  asyncGetVastElementDoc,
+  getApiDocumentationTemplate,
+  getApiMethodDoc,
+  getArgsDocTemplate
+} from "./templates/doc";
+
+import {
+  extractFirst,
+  getType,
+  isRequiredType,
+  isValidKeyWord
+} from "./utils/build";
+import { VersionNumber } from "./utils/version";
+
+const vastVersion = new VersionNumber(process.argv[2]);
 
 console.log("=======================");
-console.log("=== build version", vastVersion, "===");
+console.log("=== build version", vastVersion.int(), "===");
 console.log("=======================");
 
-const fs = require("fs-extra");
-
-let datas;
+let datas: any;
 try {
-  const yaml = require("js-yaml");
   datas = yaml.safeLoad(
-    fs.readFileSync(`./specs/vast${vastVersionSnake}.yml`, "utf8")
+    fs.readFileSync(`./specs/vast${vastVersion.floatSnake()}.yml`, "utf8")
   );
 } catch (error) {
   console.log("=> unable to load specs", error);
@@ -40,37 +56,8 @@ const filteredDatas = {
   VAST: datas.VAST
 };
 
-const {
-  baseContentTemplate,
-  classTemplate,
-  attachMethodTemplate,
-  addMethodTemplate,
-  getApiMethodDoc,
-  // getJsDoc,
-  // getClassDoc,
-  extractFirst,
-  getArgsTemplate,
-  getArgsDocTemplate,
-  asyncGetVastElementDoc,
-  getApiDocumentationTemplate
-} = require("./templates");
-
-const isValidKeyWord = key => {
-  return (
-    [
-      "attrs",
-      "only",
-      "required",
-      "uniq",
-      "alo",
-      // 'type', // maybe later for type validation
-      "follow"
-    ].indexOf(key) === -1
-  );
-};
-
-const allClassList = [];
-const apiDocumentation = {
+const allClassList: string[] = [];
+const apiDocumentation: any = {
   VastElement: {
     name: "VastElement",
     realName: "VastElement",
@@ -79,16 +66,16 @@ const apiDocumentation = {
 };
 
 // adjust to vast api number, just to intellisense beeing clean
-let j = Math.floor(vastVersion);
+let classNumber = Math.floor(vastVersion.int());
 
 const generateApiAndDoc = (
-  isFirst,
-  currentName,
-  dataObject,
-  overrideName = "",
-  parentName = ""
+  isFirst: boolean,
+  currentName: string,
+  dataObject: any,
+  overrideName: string = "",
+  parentName: string = ""
 ) => {
-  // prevent to hit reserved word like Error
+  // prevent to hit reserved word like "Error"
   const currentUsedName = overrideName ? overrideName : currentName;
 
   const currentDocName = currentUsedName.split("_")[0];
@@ -115,22 +102,22 @@ const generateApiAndDoc = (
       continue;
     }
     // allow unicity of class names
-    let usedChildName = childName + "_" + j++;
+    const usedChildName = childName + "_" + classNumber++;
     const child = dataObject[childName];
 
     // manage print content
-    const infos = {};
+    const infos: any = {};
     const hasContent =
       child === null || Object.keys(child).filter(isValidKeyWord).length === 0;
     const hasAttrs = (child && child.attrs && child.attrs.length > 0) || false;
-    const isRequired = (child && child.required) || false;
+    // const isRequired = (child && child.required) || false;
     const hasChild =
       (child && Object.keys(child).filter(isValidKeyWord).length !== 0) ||
       false;
     const currentAttrs = (child && child.attrs) || {};
 
     if (hasAttrs) {
-      infos.attrs = child.attrs.reduce((prev, next) => {
+      infos.attrs = child.attrs.reduce((prev: any, next: any) => {
         if (typeof next === "object") {
           prev.push(extractFirst(next).name);
         } else {
@@ -140,23 +127,21 @@ const generateApiAndDoc = (
       }, []);
     }
     // for API
-    const apiArguments = getArgsTemplate(hasContent, hasAttrs, currentAttrs);
+    const apiArguments = getArgsTemplate(hasContent, hasAttrs);
+    const apiArgumentsWithTypes = getArgsTemplateWithTypes(
+      hasContent,
+      hasAttrs,
+      getType(currentAttrs, true),
+      isRequiredType(currentAttrs)
+    );
     // for documentation
     const docArguments = getArgsDocTemplate(hasContent, hasAttrs, currentAttrs);
 
     methodsList.push(
       attachMethodTemplate(
         childName,
-        "",
-        // getJsDoc(
-        //   vastVersionString,
-        //   usedChildName,
-        //   isRequired,
-        //   hasContent,
-        //   hasAttrs,
-        //   currentAttrs
-        // ),
         apiArguments,
+        apiArgumentsWithTypes,
         usedChildName,
         JSON.stringify(infos)
       )
@@ -166,16 +151,8 @@ const generateApiAndDoc = (
       methodsList.push(
         addMethodTemplate(
           childName,
-          "",
-          // getJsDoc(
-          //   vastVersionString,
-          //   currentUsedName,
-          //   isRequired,
-          //   hasContent,
-          //   hasAttrs,
-          //   currentAttrs
-          // ),
           apiArguments,
+          apiArgumentsWithTypes,
           currentUsedName
         )
       );
@@ -212,20 +189,19 @@ const generateApiAndDoc = (
     classTemplate(
       currentUsedName,
       parentName || currentName,
-      "",
-      // getClassDoc(parentName || currentName),
       methodsList.join(""),
       isFirst
     )
   );
 };
 
-generateApiAndDoc(true, `apiv${vastVersionString}`, filteredDatas);
+generateApiAndDoc(true, `apiv${vastVersion.intSnake()}`, filteredDatas);
 
-const generateValidator = dataObject => {
-  const validator = {};
+// validator
+const generateValidator = (dataObject: any) => {
+  const validator: any = {};
 
-  const validatorType = {
+  const validatorType: any = {
     only: {},
     required: {},
     uniq: {},
@@ -234,13 +210,16 @@ const generateValidator = dataObject => {
     attrsRequired: {}
   };
   for (const childName in dataObject) {
+    if (!dataObject.hasOwnProperty(childName)) {
+      continue;
+    }
     if (!isValidKeyWord(childName)) {
       // managed required attributes
       if (childName === "attrs") {
         for (let i = 0; i < dataObject[childName].length; i++) {
           const attr = dataObject[childName][i];
           if (typeof attr === "object") {
-            const object = extractFirst(attr);
+            const object: any = extractFirst(attr);
             validatorType.attrsRequired[object.name] = object.content;
           }
         }
@@ -267,6 +246,9 @@ const generateValidator = dataObject => {
   }
   // add gathered element to validator
   for (const key in validatorType) {
+    if (!validatorType.hasOwnProperty(key)) {
+      continue;
+    }
     const element = validatorType[key];
     if (Object.keys(element).length > 0) {
       validator[key] = { ...element };
@@ -275,21 +257,24 @@ const generateValidator = dataObject => {
   return validator;
 };
 
-const validator = generateValidator(filteredDatas);
-
 // writing API
+const validatorObject = generateValidator(filteredDatas);
 fs.writeFileSync(
-  `./build/api/vast${vastVersionSnake}.ts`,
-  baseContentTemplate(vastVersionString, allClassList.join(""), validator)
+  `./build/api/vast${vastVersion.floatSnake()}.ts`,
+  baseContentTemplate(
+    vastVersion.intSnake(),
+    allClassList.join(""),
+    validatorObject
+  )
 );
 
-asyncGetVastElementDoc(methods => {
-  apiDocumentation["VastElement"].methods = methods;
+// writing documentation
+asyncGetVastElementDoc((methods: any) => {
+  apiDocumentation.VastElement.methods = methods;
 
-  // writing documentation
   fs.writeFileSync(
-    `./build/doc/vast${vastVersionSnake}.md`,
-    getApiDocumentationTemplate(vastVersionString, apiDocumentation)
+    `./build/doc/vast${vastVersion.floatSnake()}.md`,
+    getApiDocumentationTemplate(vastVersion.intSnake(), apiDocumentation)
   );
   console.log(" => build ok");
 });

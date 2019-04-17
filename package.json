@@ -12,16 +12,16 @@
     "start": "open ./coverage/lcov-report/index.html",
     "dev-build": "browserify ./test/mini-server/try.js -o ./test/mini-server/try-bundle.js",
     "dev-server": "http-server ./test/mini-server -p 1457",
-    "build": "yarn build-api",
+    "build": "yarn clean && yarn build-api && tsc",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "build-api": "yarn clean && yarn build-v2 && yarn build-v3 && yarn build-v4 && yarn build-v4_1",
-    "build-v2": "node ./bin/build.js 2_0",
-    "build-v3": "node ./bin/build.js 3_0",
-    "build-v4": "node ./bin/build.js 4_0",
-    "build-v4_1": "node ./bin/build.js 4_1",
+    "build-api": "yarn build-v2 && yarn build-v3 && yarn build-v4 && yarn build-v4_1",
+    "build-v2": "ts-node ./bin/build.ts 2_0",
+    "build-v3": "ts-node ./bin/build.ts 3_0",
+    "build-v4": "ts-node ./bin/build.ts 4_0",
+    "build-v4_1": "ts-node ./bin/build.ts 4_1",
     "clean-fixtures": "rm -rf ./test/**/fixtures/*.xml",
-    "clean": "rm -rf ./build",
+    "clean": "rm -rf ./build ./lib",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -43,11 +43,12 @@
     "global": "^4.3.2",
     "mergejson": "^1.1.0",
     "node-fetch": "^2.3.0",
-    "typescript": "^3.4.3",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "@airbnb/node-memwatch": "^1.0.2",
+    "@types/fs-extra": "^5.0.5",
+    "@types/js-yaml": "^3.12.1",
     "@types/node-fetch": "^2.3.2",
     "browserify": "^16.2.3",
     "chai": "^4.2.0",
@@ -62,8 +63,10 @@
     "sinon": "^7.3.1",
     "sinon-chai": "^3.3.0",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.15.0",
-    "tslint-config-prettier": "^1.18.0"
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.3"
   },
   "repository": {
     "type": "github",

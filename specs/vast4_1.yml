@@ -8,6 +8,8 @@
 #   - optionnal attr are noted as string
 #   - needed attr are noted as object and you can optionnaly list its values
 #  = search "Pricing" for an example
+#   - optionnal attr with listed values are in a double array
+#  = search "renderingMode" for an example
 # required: this Tag is required in a valid vast (can depend on fathers)
 # uniq: at this level, only one element can exists
 #   - uniq is shared by all the concerned childs of a tag
@@ -281,7 +283,8 @@ VAST:
                 - apiFramework
                 - adSlotID
                 - pxratio
-                - renderingMode # optionnal but possible values are : [default, end-card, concurrent]
+                # optionnal but possible values are : [default, end-card, concurrent]
+                - renderingMode: [[default, end-card, concurrent]]
                 # strange, here are some options missing comparing to wrapper
               StaticResource:
                 alo: true # at least one of this subitems

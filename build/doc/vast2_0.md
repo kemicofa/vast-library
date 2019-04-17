@@ -13,8 +13,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "VAST" child to current "apiv2". Return "VAST" to move on child level.
 attachVAST(attributes: {
-  version:("2.0") /* required */
-}): VAST
+    version: "2.0"
+  }): VAST
 ```
 
 ↘ _go to [VAST](#VAST_2)_
@@ -33,8 +33,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "Ad" child to current "VAST". Return "Ad" to move on child level.
 attachAd(attributes: {
-  id: string /* required */
-}): Ad
+    id: string
+  }): Ad
 ```
 
 ↘ _go to [Ad](#Ad_3)_
@@ -78,8 +78,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "AdSystem" child to current "InLine". Return "InLine" to stay on same current level.
 addAdSystem(content: string, attributes: {
-  version: string /* required */
-}): InLine
+    version?: string
+  }): InLine
 ```
 
 ↘ _go to [InLine](#InLine_4)_ _(current class)_
@@ -87,8 +87,8 @@ addAdSystem(content: string, attributes: {
 ```js
 // Attach a "AdSystem" child to current "InLine". Return "AdSystem" to move on child level.
 attachAdSystem(content: string, attributes: {
-  version: string /* required */
-}): AdSystem
+    version?: string
+  }): AdSystem
 ```
 
 ↘ _go to [AdSystem](#AdSystem_5)_ _(last level element)_
@@ -152,8 +152,8 @@ attachError(content: string): Error
 ```js
 // Add a "Impression" child to current "InLine". Return "InLine" to stay on same current level.
 addImpression(content: string, attributes: {
-  id: string /* required */
-}): InLine
+    id?: string
+  }): InLine
 ```
 
 ↘ _go to [InLine](#InLine_4)_ _(current class)_
@@ -161,8 +161,8 @@ addImpression(content: string, attributes: {
 ```js
 // Attach a "Impression" child to current "InLine". Return "Impression" to move on child level.
 attachImpression(content: string, attributes: {
-  id: string /* required */
-}): Impression
+    id?: string
+  }): Impression
 ```
 
 ↘ _go to [Impression](#Impression_10)_ _(last level element)_
@@ -237,10 +237,10 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "Creative" child to current "Creatives". Return "Creative" to move on child level.
 attachCreative(attributes: {
-  id: string /* required */, 
-  sequence: string /* required */, 
-  adID: string /* required */
-}): Creative
+    id?: string, 
+    sequence?: string, 
+    adID?: string
+  }): Creative
 ```
 
 ↘ _go to [Creative](#Creative_12)_
@@ -357,8 +357,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "Tracking" child to current "TrackingEvents". Return "TrackingEvents" to stay on same current level.
 addTracking(content: string, attributes: {
-  event:("creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close") /* required */
-}): TrackingEvents
+    event: "creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close"
+  }): TrackingEvents
 ```
 
 ↘ _go to [TrackingEvents](#TrackingEvents_15)_ _(current class)_
@@ -366,8 +366,8 @@ addTracking(content: string, attributes: {
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
 attachTracking(content: string, attributes: {
-  event:("creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close") /* required */
-}): Tracking
+    event: "creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close"
+  }): Tracking
 ```
 
 ↘ _go to [Tracking](#Tracking_16)_ _(last level element)_
@@ -424,8 +424,8 @@ attachClickTracking(content: string): ClickTracking
 ```js
 // Add a "CustomClick" child to current "VideoClicks". Return "VideoClicks" to stay on same current level.
 addCustomClick(content: string, attributes: {
-  id: string /* required */
-}): VideoClicks
+    id?: string
+  }): VideoClicks
 ```
 
 ↘ _go to [VideoClicks](#VideoClicks_18)_ _(current class)_
@@ -433,8 +433,8 @@ addCustomClick(content: string, attributes: {
 ```js
 // Attach a "CustomClick" child to current "VideoClicks". Return "CustomClick" to move on child level.
 attachCustomClick(content: string, attributes: {
-  id: string /* required */
-}): CustomClick
+    id?: string
+  }): CustomClick
 ```
 
 ↘ _go to [CustomClick](#CustomClick_21)_ _(last level element)_
@@ -471,16 +471,16 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "MediaFile" child to current "MediaFiles". Return "MediaFiles" to stay on same current level.
 addMediaFile(content: string, attributes: {
-  id: string /* required */, 
-  delivery:("progressive"|"streaming") /* required */, 
-  type: string /* required */, 
-  bitrate: string /* required */, 
-  width: string /* required */, 
-  height: string /* required */, 
-  scalable: string /* required */, 
-  mantainAspectRatio: string /* required */, 
-  apiFramework: string /* required */
-}): MediaFiles
+    id?: string, 
+    delivery: "progressive"|"streaming", 
+    type: string, 
+    bitrate?: string, 
+    width: string, 
+    height: string, 
+    scalable?: string, 
+    mantainAspectRatio?: string, 
+    apiFramework?: string
+  }): MediaFiles
 ```
 
 ↘ _go to [MediaFiles](#MediaFiles_22)_ _(current class)_
@@ -488,16 +488,16 @@ addMediaFile(content: string, attributes: {
 ```js
 // Attach a "MediaFile" child to current "MediaFiles". Return "MediaFile" to move on child level.
 attachMediaFile(content: string, attributes: {
-  id: string /* required */, 
-  delivery:("progressive"|"streaming") /* required */, 
-  type: string /* required */, 
-  bitrate: string /* required */, 
-  width: string /* required */, 
-  height: string /* required */, 
-  scalable: string /* required */, 
-  mantainAspectRatio: string /* required */, 
-  apiFramework: string /* required */
-}): MediaFile
+    id?: string, 
+    delivery: "progressive"|"streaming", 
+    type: string, 
+    bitrate?: string, 
+    width: string, 
+    height: string, 
+    scalable?: string, 
+    mantainAspectRatio?: string, 
+    apiFramework?: string
+  }): MediaFile
 ```
 
 ↘ _go to [MediaFile](#MediaFile_23)_ _(last level element)_
@@ -524,13 +524,13 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "Companion" child to current "CompanionAds". Return "Companion" to move on child level.
 attachCompanion(attributes: {
-  id: string /* required */, 
-  width: string /* required */, 
-  height: string /* required */, 
-  expandedWidth: string /* required */, 
-  expandedHeight: string /* required */, 
-  apiFramework: string /* required */
-}): Companion
+    id?: string, 
+    width: string, 
+    height: string, 
+    expandedWidth?: string, 
+    expandedHeight?: string, 
+    apiFramework?: string
+  }): Companion
 ```
 
 ↘ _go to [Companion](#Companion_25)_
@@ -547,8 +547,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "StaticResource" child to current "Companion". Return "Companion" to stay on same current level.
 addStaticResource(content: string, attributes: {
-  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
-}): Companion
+    creativeType: "image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash"
+  }): Companion
 ```
 
 ↘ _go to [Companion](#Companion_25)_ _(current class)_
@@ -556,8 +556,8 @@ addStaticResource(content: string, attributes: {
 ```js
 // Attach a "StaticResource" child to current "Companion". Return "StaticResource" to move on child level.
 attachStaticResource(content: string, attributes: {
-  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
-}): StaticResource
+    creativeType: "image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash"
+  }): StaticResource
 ```
 
 ↘ _go to [StaticResource](#StaticResource_26)_ _(last level element)_
@@ -675,8 +675,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "Tracking" child to current "TrackingEvents". Return "TrackingEvents" to stay on same current level.
 addTracking(content: string, attributes: {
-  event:("creativeView") /* required */
-}): TrackingEvents
+    event: "creativeView"
+  }): TrackingEvents
 ```
 
 ↘ _go to [TrackingEvents](#TrackingEvents_29)_ _(current class)_
@@ -684,8 +684,8 @@ addTracking(content: string, attributes: {
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
 attachTracking(content: string, attributes: {
-  event:("creativeView") /* required */
-}): Tracking
+    event: "creativeView"
+  }): Tracking
 ```
 
 ↘ _go to [Tracking](#Tracking_30)_ _(last level element)_
@@ -728,16 +728,16 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "NonLinear" child to current "NonLinearAds". Return "NonLinear" to move on child level.
 attachNonLinear(attributes: {
-  id: string /* required */, 
-  width: string /* required */, 
-  height: string /* required */, 
-  expandedWidth: string /* required */, 
-  expandedHeight: string /* required */, 
-  scalable: string /* required */, 
-  maintainAspectRatio: string /* required */, 
-  minSuggestedDuration: string /* required */, 
-  apiFramework: string /* required */
-}): NonLinear
+    id?: string, 
+    width: string, 
+    height: string, 
+    expandedWidth?: string, 
+    expandedHeight?: string, 
+    scalable?: string, 
+    maintainAspectRatio?: string, 
+    minSuggestedDuration?: string, 
+    apiFramework?: string
+  }): NonLinear
 ```
 
 ↘ _go to [NonLinear](#NonLinear_35)_
@@ -789,8 +789,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "StaticResource" child to current "NonLinear". Return "NonLinear" to stay on same current level.
 addStaticResource(content: string, attributes: {
-  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
-}): NonLinear
+    creativeType: "image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash"
+  }): NonLinear
 ```
 
 ↘ _go to [NonLinear](#NonLinear_35)_ _(current class)_
@@ -798,8 +798,8 @@ addStaticResource(content: string, attributes: {
 ```js
 // Attach a "StaticResource" child to current "NonLinear". Return "StaticResource" to move on child level.
 attachStaticResource(content: string, attributes: {
-  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
-}): StaticResource
+    creativeType: "image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash"
+  }): StaticResource
 ```
 
 ↘ _go to [StaticResource](#StaticResource_36)_ _(last level element)_
@@ -868,8 +868,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "Tracking" child to current "TrackingEvents". Return "TrackingEvents" to stay on same current level.
 addTracking(content: string, attributes: {
-  event:("creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close") /* required */
-}): TrackingEvents
+    event: "creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close"
+  }): TrackingEvents
 ```
 
 ↘ _go to [TrackingEvents](#TrackingEvents_39)_ _(current class)_
@@ -877,8 +877,8 @@ addTracking(content: string, attributes: {
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
 attachTracking(content: string, attributes: {
-  event:("creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close") /* required */
-}): Tracking
+    event: "creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close"
+  }): Tracking
 ```
 
 ↘ _go to [Tracking](#Tracking_40)_ _(last level element)_
@@ -913,8 +913,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "Extension" child to current "Extensions". Return "Extensions" to stay on same current level.
 addExtension(content: string, attributes: {
-  type: string /* required */
-}): Extensions
+    type?: string
+  }): Extensions
 ```
 
 ↘ _go to [Extensions](#Extensions_43)_ _(current class)_
@@ -922,8 +922,8 @@ addExtension(content: string, attributes: {
 ```js
 // Attach a "Extension" child to current "Extensions". Return "Extension" to move on child level.
 attachExtension(content: string, attributes: {
-  type: string /* required */
-}): Extension
+    type?: string
+  }): Extension
 ```
 
 ↘ _go to [Extension](#Extension_44)_ _(last level element)_
@@ -950,8 +950,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "AdSystem" child to current "Wrapper". Return "Wrapper" to stay on same current level.
 addAdSystem(content: string, attributes: {
-  version: string /* required */
-}): Wrapper
+    version?: string
+  }): Wrapper
 ```
 
 ↘ _go to [Wrapper](#Wrapper_45)_ _(current class)_
@@ -959,8 +959,8 @@ addAdSystem(content: string, attributes: {
 ```js
 // Attach a "AdSystem" child to current "Wrapper". Return "AdSystem" to move on child level.
 attachAdSystem(content: string, attributes: {
-  version: string /* required */
-}): AdSystem
+    version?: string
+  }): AdSystem
 ```
 
 ↘ _go to [AdSystem](#AdSystem_46)_ _(last level element)_
@@ -996,8 +996,8 @@ attachError(content: string): Error
 ```js
 // Add a "Impression" child to current "Wrapper". Return "Wrapper" to stay on same current level.
 addImpression(content: string, attributes: {
-  id: string /* required */
-}): Wrapper
+    id?: string
+  }): Wrapper
 ```
 
 ↘ _go to [Wrapper](#Wrapper_45)_ _(current class)_
@@ -1005,8 +1005,8 @@ addImpression(content: string, attributes: {
 ```js
 // Attach a "Impression" child to current "Wrapper". Return "Impression" to move on child level.
 attachImpression(content: string, attributes: {
-  id: string /* required */
-}): Impression
+    id?: string
+  }): Impression
 ```
 
 ↘ _go to [Impression](#Impression_49)_ _(last level element)_
@@ -1069,10 +1069,10 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "Creative" child to current "Creatives". Return "Creative" to move on child level.
 attachCreative(attributes: {
-  id: string /* required */, 
-  sequence: string /* required */, 
-  adID: string /* required */
-}): Creative
+    id?: string, 
+    sequence?: string, 
+    adID?: string
+  }): Creative
 ```
 
 ↘ _go to [Creative](#Creative_51)_
@@ -1144,8 +1144,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "Tracking" child to current "TrackingEvents". Return "TrackingEvents" to stay on same current level.
 addTracking(content: string, attributes: {
-  event:("creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close") /* required */
-}): TrackingEvents
+    event: "creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close"
+  }): TrackingEvents
 ```
 
 ↘ _go to [TrackingEvents](#TrackingEvents_53)_ _(current class)_
@@ -1153,8 +1153,8 @@ addTracking(content: string, attributes: {
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
 attachTracking(content: string, attributes: {
-  event:("creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close") /* required */
-}): Tracking
+    event: "creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close"
+  }): Tracking
 ```
 
 ↘ _go to [Tracking](#Tracking_54)_ _(last level element)_
@@ -1205,8 +1205,8 @@ attachClickTracking(content: string): ClickTracking
 ```js
 // Add a "CustomClick" child to current "VideoClicks". Return "VideoClicks" to stay on same current level.
 addCustomClick(content: string, attributes: {
-  id: string /* required */
-}): VideoClicks
+    id?: string
+  }): VideoClicks
 ```
 
 ↘ _go to [VideoClicks](#VideoClicks_55)_ _(current class)_
@@ -1214,8 +1214,8 @@ addCustomClick(content: string, attributes: {
 ```js
 // Attach a "CustomClick" child to current "VideoClicks". Return "CustomClick" to move on child level.
 attachCustomClick(content: string, attributes: {
-  id: string /* required */
-}): CustomClick
+    id?: string
+  }): CustomClick
 ```
 
 ↘ _go to [CustomClick](#CustomClick_58)_ _(last level element)_
@@ -1252,13 +1252,13 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "Companion" child to current "CompanionAds". Return "Companion" to move on child level.
 attachCompanion(attributes: {
-  id: string /* required */, 
-  width: string /* required */, 
-  height: string /* required */, 
-  expandedWidth: string /* required */, 
-  expandedHeight: string /* required */, 
-  apiFramework: string /* required */
-}): Companion
+    id?: string, 
+    width: string, 
+    height: string, 
+    expandedWidth?: string, 
+    expandedHeight?: string, 
+    apiFramework?: string
+  }): Companion
 ```
 
 ↘ _go to [Companion](#Companion_60)_
@@ -1275,8 +1275,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "StaticResource" child to current "Companion". Return "Companion" to stay on same current level.
 addStaticResource(content: string, attributes: {
-  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
-}): Companion
+    creativeType: "image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash"
+  }): Companion
 ```
 
 ↘ _go to [Companion](#Companion_60)_ _(current class)_
@@ -1284,8 +1284,8 @@ addStaticResource(content: string, attributes: {
 ```js
 // Attach a "StaticResource" child to current "Companion". Return "StaticResource" to move on child level.
 attachStaticResource(content: string, attributes: {
-  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
-}): StaticResource
+    creativeType: "image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash"
+  }): StaticResource
 ```
 
 ↘ _go to [StaticResource](#StaticResource_61)_ _(last level element)_
@@ -1403,8 +1403,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "Tracking" child to current "TrackingEvents". Return "TrackingEvents" to stay on same current level.
 addTracking(content: string, attributes: {
-  event:("creativeView") /* required */
-}): TrackingEvents
+    event: "creativeView"
+  }): TrackingEvents
 ```
 
 ↘ _go to [TrackingEvents](#TrackingEvents_64)_ _(current class)_
@@ -1412,8 +1412,8 @@ addTracking(content: string, attributes: {
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
 attachTracking(content: string, attributes: {
-  event:("creativeView") /* required */
-}): Tracking
+    event: "creativeView"
+  }): Tracking
 ```
 
 ↘ _go to [Tracking](#Tracking_65)_ _(last level element)_
@@ -1456,16 +1456,16 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Attach a "NonLinear" child to current "NonLinearAds". Return "NonLinear" to move on child level.
 attachNonLinear(attributes: {
-  id: string /* required */, 
-  width: string /* required */, 
-  height: string /* required */, 
-  expandedWidth: string /* required */, 
-  expandedHeight: string /* required */, 
-  scalable: string /* required */, 
-  maintainAspectRatio: string /* required */, 
-  minSuggestedDuration: string /* required */, 
-  apiFramework: string /* required */
-}): NonLinear
+    id?: string, 
+    width: string, 
+    height: string, 
+    expandedWidth?: string, 
+    expandedHeight?: string, 
+    scalable?: string, 
+    maintainAspectRatio?: string, 
+    minSuggestedDuration?: string, 
+    apiFramework?: string
+  }): NonLinear
 ```
 
 ↘ _go to [NonLinear](#NonLinear_70)_
@@ -1489,8 +1489,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "StaticResource" child to current "NonLinear". Return "NonLinear" to stay on same current level.
 addStaticResource(content: string, attributes: {
-  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
-}): NonLinear
+    creativeType: "image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash"
+  }): NonLinear
 ```
 
 ↘ _go to [NonLinear](#NonLinear_70)_ _(current class)_
@@ -1498,8 +1498,8 @@ addStaticResource(content: string, attributes: {
 ```js
 // Attach a "StaticResource" child to current "NonLinear". Return "StaticResource" to move on child level.
 attachStaticResource(content: string, attributes: {
-  creativeType:("image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash") /* required */
-}): StaticResource
+    creativeType: "image/gif"|"image/jpeg"|"image/jpg"|"image/png"|"application/x-javascript"|"application/x-shockwave-flash"
+  }): StaticResource
 ```
 
 ↘ _go to [StaticResource](#StaticResource_71)_ _(last level element)_
@@ -1568,8 +1568,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "Tracking" child to current "TrackingEvents". Return "TrackingEvents" to stay on same current level.
 addTracking(content: string, attributes: {
-  event:("creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close") /* required */
-}): TrackingEvents
+    event: "creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close"
+  }): TrackingEvents
 ```
 
 ↘ _go to [TrackingEvents](#TrackingEvents_74)_ _(current class)_
@@ -1577,8 +1577,8 @@ addTracking(content: string, attributes: {
 ```js
 // Attach a "Tracking" child to current "TrackingEvents". Return "Tracking" to move on child level.
 attachTracking(content: string, attributes: {
-  event:("creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close") /* required */
-}): Tracking
+    event: "creativeView"|"start"|"midpoint"|"firstQuartile"|"thirdQuartile"|"complete"|"mute"|"unmute"|"pause"|"rewind"|"resume"|"fullscreen"|"expand"|"collapse"|"acceptInvitation"|"close"
+  }): Tracking
 ```
 
 ↘ _go to [Tracking](#Tracking_75)_ _(last level element)_
@@ -1601,8 +1601,8 @@ _all herited from [VastElement](#VastElement)_ and :
 ```js
 // Add a "Extension" child to current "Extensions". Return "Extensions" to stay on same current level.
 addExtension(content: string, attributes: {
-  type: string /* required */
-}): Extensions
+    type?: string
+  }): Extensions
 ```
 
 ↘ _go to [Extensions](#Extensions_76)_ _(current class)_
@@ -1610,8 +1610,8 @@ addExtension(content: string, attributes: {
 ```js
 // Attach a "Extension" child to current "Extensions". Return "Extension" to move on child level.
 attachExtension(content: string, attributes: {
-  type: string /* required */
-}): Extension
+    type?: string
+  }): Extension
 ```
 
 ↘ _go to [Extension](#Extension_77)_ _(last level element)_

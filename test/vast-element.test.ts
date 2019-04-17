@@ -1,15 +1,14 @@
-// const { runFixture } = require('../helpers');
-const chai = require("chai");
-const assert = chai.assert;
-const sinonChai = require("sinon-chai");
+import chai, { assert } from "chai";
+import sinon from "sinon";
+import sinonChai from "sinon-chai";
+import { runFixture } from "../helpers";
 chai.use(sinonChai);
-const sinon = require("sinon");
 
-const VastElement = require("../lib/vast-element");
+import VastElement from "../lib/vast-element";
 
 const testOptions = {
-  throwOnError: true,
-  logWarn: false
+  logWarn: false,
+  throwOnError: true
 };
 
 // initialized just for autocomplete

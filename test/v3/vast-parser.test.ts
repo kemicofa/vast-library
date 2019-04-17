@@ -1,6 +1,6 @@
-const { assert } = require("chai");
-const { getFixtureContent } = require("../helpers");
-const parseVast = require("../../lib/vast-parser");
+import { assert } from "chai";
+import parseVast from "../../src/vast-parser";
+import { getFixtureContent } from "../helpers";
 
 describe("vast parser VAST2", () => {
   it("should validate a VAST v3 minimal vast", () => {

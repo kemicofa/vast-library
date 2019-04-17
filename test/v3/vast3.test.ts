@@ -1,10 +1,10 @@
-const { runFixture } = require("../helpers");
-const { assert } = require("chai");
-const createVast = require("../../lib/index");
+import { assert } from "chai";
+import createVast from "../../src/index";
+import { runFixture } from "../helpers";
 
 const testOptions = {
-  throwOnError: true,
-  logWarn: false
+  logWarn: false,
+  throwOnError: true
 };
 
 describe("VAST3", () => {

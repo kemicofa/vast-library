@@ -1,4 +1,4 @@
-import flatten from "array-flatten";
+import * as flatten from "array-flatten";
 import { isNull } from "./utils/checks";
 import { downloadVastAndWrappers } from "./utils/vast";
 import VastElement from "./vast-element";
@@ -14,7 +14,7 @@ export default class VastParser {
   constructor(
     vastUrl: string,
     callbackOrOptions: () => void | VastParserOptions,
-    optionsIfCallback?: VastParserOptions = {}
+    optionsIfCallback: VastParserOptions = {}
   ) {
     // TODO manage overload
     if (typeof callbackOrOptions === "function") {
@@ -32,7 +32,9 @@ export default class VastParser {
     arrayOfName: /* PossibleTag[] */ string[],
     details: "content" | string /* PossibleAttrs[] */
   ) {
-    const vastElements = flatten(this.vasts.map(v => v.get(arrayOfName, true)));
+    const vastElements = (flatten(
+      this.vasts.map(v => v.get(arrayOfName, true))
+    ) as unknown) as Array<VastElement<any>>;
     if (details) {
       return vastElements.map(vastElement => {
         if (details === "content") {

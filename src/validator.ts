@@ -34,14 +34,14 @@ function parseVast(vastRawCode: string, options: VastParserOptions = {}) {
   root.parseOptions(options);
 
   // this modify root
-  buildVast(parsedXml, root);
+  buildVast(parsedXml as any, root);
 
   return root;
 }
 
 export default class VastValidator {
   public vastRoot: VastElement<null>;
-  constructor(vastRaw: string, options: VastParserOptions);
+  constructor(vastRaw: string, options?: VastParserOptions);
   constructor(
     vast: VastElement<any> | string,
     options: VastParserOptions = {}

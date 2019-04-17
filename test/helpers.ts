@@ -1,8 +1,9 @@
-const fs = require("fs-extra");
-const path = require("path");
-const diff = require("jest-diff");
-const { NO_DIFF_MESSAGE } = require("jest-diff/build/constants");
-const createVast = require("../lib/index");
+/* tslint:disable: no-console */
+import * as fs from "fs-extra";
+import * as diff from "jest-diff";
+import { NO_DIFF_MESSAGE } from "jest-diff/build/constants";
+import * as path from "path";
+import createVast from "../lib/index";
 
 function assertEqual(base, expected) {
   const out = diff(base.trim(), expected.trim());
@@ -11,7 +12,7 @@ function assertEqual(base, expected) {
   }
 }
 
-function runFixture(toCompare, version, fixtureName) {
+export function runFixture(toCompare, version, fixtureName) {
   // return;
 
   const fixtureFile = path.join(
@@ -35,7 +36,7 @@ function runFixture(toCompare, version, fixtureName) {
   assertEqual(toCompare, expectedResponse);
 }
 
-function getFixtureContent(version, fixtureName) {
+export function getFixtureContent(version, fixtureName) {
   const fixtureFile = path.join(
     __dirname,
     version,
@@ -45,7 +46,7 @@ function getFixtureContent(version, fixtureName) {
   return fs.readFileSync(path.join(fixtureFile), "utf8");
 }
 
-function generateMinimalVast() {
+export function generateMinimalVast() {
   const vast = createVast
     .v2()
     .attachAd({ id: "identifier" })
@@ -60,15 +61,9 @@ function generateMinimalVast() {
     .attachMediaFiles()
     .attachMediaFile("my_video", {
       delivery: "streaming",
+      height: "400",
       type: "video/mp4",
-      width: "600",
-      height: "400"
+      width: "600"
     });
   return vast;
 }
-
-module.exports = {
-  runFixture,
-  getFixtureContent,
-  generateMinimalVast
-};

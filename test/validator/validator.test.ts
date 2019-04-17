@@ -1,16 +1,14 @@
-// const { runFixture } = require('../helpers');
-const chai = require("chai");
-const assert = chai.assert;
-const sinonChai = require("sinon-chai");
-chai.use(sinonChai);
-const sinon = require("sinon");
+import chai, { assert } from "chai";
+import sinon from "sinon";
+import sinonChai from "sinon-chai";
 
-const VastElement = require("../../lib/vast-element");
-const validateNext = require("../../lib/validate-node");
+import validateNext from "../../src/validate-node";
+import VastElement from "../../src/vast-element";
+chai.use(sinonChai);
 
 const testOptions = {
-  throwOnError: true,
-  logWarn: false
+  logWarn: false,
+  throwOnError: true
 };
 
 let root, validator, lastTag;

@@ -5,9 +5,8 @@ export function baseContentTemplate(
   vastVersion: number,
   content: string
 ) {
-  return (
-    "" +
-    `/* tslint:disable: class-name object-literal-sort-keys */
+  return `
+/* tslint:disable: class-name object-literal-sort-keys */
 
 ///////////////////////////////////////////////////////
 //  IMPORTANT: this file is generated, dont edit it
@@ -18,22 +17,19 @@ import VastElement from '../../src/vast-element';
 ${content}
 
 export { apiv${version}, VAST_${vastVersion} };
-`
-  );
+`;
 }
 
 export function validatorTemplate(version: string, validator: any) {
-  return (
-    "" +
-    `/* tslint:disable: variable-name object-literal-sort-keys */
+  return `
+/* tslint:disable: variable-name object-literal-sort-keys */
 
 ///////////////////////////////////////////////////////
 //  IMPORTANT: this file is generated, dont edit it
 /////////
 
 export const vastValidator${version} = ${JSON.stringify(validator)};
-`
-  );
+`;
 }
 
 export function classTemplate(
@@ -44,13 +40,10 @@ export function classTemplate(
 ): string {
   // TODO isFirst should return this on overload and()
   // const isFirstContent = isFirst ? " || this" : "";
-  return methods
-    ? "" +
-        `class ${className} extends VastElement<${parentName}> {${methods}
-}
-`
-    : `class ${className} extends VastElement<${parentName}> {}
-`;
+  return `
+class ${className} extends VastElement<${parentName}> {
+  ${methods}
+}`;
 }
 
 export function attachMethodTemplate(
@@ -61,17 +54,12 @@ export function attachMethodTemplate(
   infos: any
 ): string {
   const comma = args ? "," : "";
-  // console.log(infos);
-  // console.log(args);
-  return (
-    "" +
-    `
-  public attach${methodName}(${argsWithTypes}): ${childClass} {
-    const newElem = new ${childClass}('${methodName}', this, ${infos}${comma} ${args});
-    this.childs.push(newElem);
-    return newElem;
-  }`
-  );
+  return `
+public attach${methodName}(${argsWithTypes}): ${childClass} {
+  const newElem = new ${childClass}('${methodName}', this, ${infos}${comma} ${args});
+  this.childs.push(newElem);
+  return newElem;
+}`;
 }
 
 export function addMethodTemplate(
@@ -80,13 +68,10 @@ export function addMethodTemplate(
   argsWithTypes: string,
   className: string
 ): string {
-  return (
-    "" +
-    `
-  public add${methodName}(${argsWithTypes}): ${className} {
-    return this.attach${methodName}(${args}).and();
-  }`
-  );
+  return `
+public add${methodName}(${argsWithTypes}): ${className} {
+  return this.attach${methodName}(${args}).and();
+}`;
 }
 
 export function getArgsTemplate(
@@ -113,9 +98,8 @@ export function getArgsTemplateWithTypes(
   requiredAttribute: boolean
 ): string {
   let args = "";
-  const opt = requiredAttribute ? "" : ""; // "?";
+  const opt = requiredAttribute ? "" : ""; // "?"; deprecated
   const defaultValue = requiredAttribute ? "" : " = {}";
-  // const attributesType = JSON.stringify(currentAttrs);
   if (hasContent) {
     args = "content: string";
     if (hasAttrs) {

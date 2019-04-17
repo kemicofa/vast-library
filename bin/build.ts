@@ -10,13 +10,13 @@ import * as yaml from "js-yaml";
 import * as prettier from "prettier";
 
 import {
-  addMethodTemplate,
-  attachMethodTemplate,
-  baseContentTemplate,
-  classTemplate,
-  getArgsTemplate,
-  getArgsTemplateWithTypes,
-  validatorTemplate
+  templateAddMethod,
+  templateAPIFile,
+  templateAttachMethod,
+  templateClass,
+  templateGetArgs,
+  templateGetArgsWithTypes,
+  templateValidatorFile
 } from "./templates/api";
 
 import {
@@ -129,8 +129,8 @@ const generateApiAndDoc = (
       }, []);
     }
     // for API
-    const apiArguments = getArgsTemplate(hasContent, hasAttrs);
-    const apiArgumentsWithTypes = getArgsTemplateWithTypes(
+    const apiArguments = templateGetArgs(hasContent, hasAttrs);
+    const apiArgumentsWithTypes = templateGetArgsWithTypes(
       hasContent,
       hasAttrs,
       getType(currentAttrs, true),
@@ -140,7 +140,7 @@ const generateApiAndDoc = (
     const docArguments = getArgsDocTemplate(hasContent, hasAttrs, currentAttrs);
 
     methodsList.push(
-      attachMethodTemplate(
+      templateAttachMethod(
         childName,
         apiArguments,
         apiArgumentsWithTypes,
@@ -151,7 +151,7 @@ const generateApiAndDoc = (
 
     if (!hasChild) {
       methodsList.push(
-        addMethodTemplate(
+        templateAddMethod(
           childName,
           apiArguments,
           apiArgumentsWithTypes,
@@ -188,7 +188,7 @@ const generateApiAndDoc = (
     );
   }
   allClassList.push(
-    classTemplate(
+    templateClass(
       currentUsedName,
       parentName || currentName,
       methodsList.join(""),
@@ -263,7 +263,7 @@ const generateValidator = (dataObject: any) => {
 fs.writeFileSync(
   `./build/api/vast${vastVersion.floatSnake()}.ts`,
   prettier.format(
-    baseContentTemplate(
+    templateAPIFile(
       vastVersion.intSnake(),
       vastVersion.intFloor(),
       allClassList.join("")
@@ -277,7 +277,7 @@ const validatorObject = generateValidator(filteredDatas);
 fs.writeFileSync(
   `./build/api/vast${vastVersion.floatSnake()}-validator.ts`,
   prettier.format(
-    validatorTemplate(vastVersion.floatSnake(), validatorObject),
+    templateValidatorFile(vastVersion.floatSnake(), validatorObject),
     { parser: "typescript" }
   )
 );

@@ -1,6 +1,6 @@
 /* tslint:disable: no-console */
 
-export function baseContentTemplate(
+export function templateAPIFile(
   version: string,
   vastVersion: number,
   content: string
@@ -20,7 +20,7 @@ export { apiv${version}, VAST_${vastVersion} };
 `;
 }
 
-export function validatorTemplate(version: string, validator: any) {
+export function templateValidatorFile(version: string, validator: any) {
   return `
 /* tslint:disable: variable-name object-literal-sort-keys */
 
@@ -32,7 +32,7 @@ export const vastValidator${version} = ${JSON.stringify(validator)};
 `;
 }
 
-export function classTemplate(
+export function templateClass(
   className: string,
   parentName: string,
   methods: string,
@@ -46,7 +46,7 @@ class ${className} extends VastElement<${parentName}> {
 }`;
 }
 
-export function attachMethodTemplate(
+export function templateAttachMethod(
   methodName: string,
   args: string,
   argsWithTypes: string,
@@ -62,7 +62,7 @@ public attach${methodName}(${argsWithTypes}): ${childClass} {
 }`;
 }
 
-export function addMethodTemplate(
+export function templateAddMethod(
   methodName: string,
   args: string,
   argsWithTypes: string,
@@ -74,7 +74,7 @@ public add${methodName}(${argsWithTypes}): ${className} {
 }`;
 }
 
-export function getArgsTemplate(
+export function templateGetArgs(
   hasContent: boolean,
   hasAttrs: boolean
 ): string {
@@ -91,7 +91,7 @@ export function getArgsTemplate(
   return args;
 }
 
-export function getArgsTemplateWithTypes(
+export function templateGetArgsWithTypes(
   hasContent: boolean,
   hasAttrs: boolean,
   attrsTypes: string,

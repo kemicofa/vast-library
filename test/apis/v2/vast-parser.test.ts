@@ -1,6 +1,6 @@
 import { assert } from "chai";
+import { getFixtureContent } from "../../helpers";
 import parseVast from "../../src/vast-parser";
-import { getFixtureContent } from "../helpers";
 
 describe("vast parser VAST2", () => {
   it("should validate a VAST v2 minimal vast", () => {

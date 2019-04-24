@@ -1,6 +1,6 @@
 import { assert } from "chai";
-import createVast from "../../src/index";
-import { runFixture } from "../helpers";
+import createVast from "../../../src/index";
+import { runFixture } from "../../helpers";
 
 const testOptions = {
   throwOnError: true,

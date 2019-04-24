@@ -9,6 +9,5 @@ memwatch.on("leak", (info: string) => {
 
 while (true) {
   const vast = generateMinimalVast();
-  vast.validate();
   vast.toXml();
 }

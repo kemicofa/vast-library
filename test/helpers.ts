@@ -3,6 +3,7 @@ import * as fs from "fs-extra";
 import * as diff from "jest-diff";
 import { NO_DIFF_MESSAGE } from "jest-diff/build/constants";
 import * as path from "path";
+import "../@types/globals.type"; // do not compile without, don't ask me why
 import { v2 } from "../src/builder";
 
 function assertEqual(base, expected) {

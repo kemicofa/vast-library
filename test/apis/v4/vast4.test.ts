@@ -1,19 +1,19 @@
 import { assert } from "chai";
-import createVast from "../../src/index";
-import { runFixture } from "../helpers";
+import createVast from "../../../src/index";
+import { runFixture } from "../../helpers";
 
 const testOptions = {
-  logWarn: false,
-  throwOnError: true
+  throwOnError: true,
+  logWarn: false
 };
 
-describe("VAST3", () => {
+describe("VAST4", () => {
   it("should generate an empty vast", () => {
-    const vast = createVast.v3();
+    const vast = createVast.v4();
     assert(vast.toXml());
   });
   it("should generate a minimal valid VAST", () => {
-    const vast = createVast.v3(testOptions);
+    const vast = createVast.v4(testOptions);
     vast
       .attachAd()
       .attachInLine()
@@ -22,6 +22,10 @@ describe("VAST3", () => {
       .addImpression("impression url")
       .attachCreatives()
       .attachCreative()
+      .addUniversalAdId("universal adid", {
+        idRegistry: "unknown",
+        idValue: "unknown"
+      })
       .attachLinear()
       .addDuration("00:00:00")
       .attachMediaFiles()
@@ -33,10 +37,10 @@ describe("VAST3", () => {
       });
 
     assert.isTrue(vast.validate(), "vast is invalid");
-    runFixture(vast.toXml(), "v3", "minimal_vast");
+    runFixture(vast.toXml(), "v4", "minimal_vast");
   });
   it("should throw if missing elements", () => {
-    const vast = createVast.v3(testOptions);
+    const vast = createVast.v4(testOptions);
     assert.throws(
       () => vast.validate(),
       /At least one child of "Ad" is needed below "VAST"/
@@ -73,7 +77,24 @@ describe("VAST3", () => {
     const Creative = Creatives.attachCreative();
     assert.throws(
       () => vast.validate(),
-      /One child of "Linear,CompanionAds,NonLinearAds" is needed below "Creative"/
+      /Tag "UniversalAdId" not found below "Creative"/
+    );
+    const UniversalAdId = Creative.attachUniversalAdId();
+    assert.throws(() => vast.validate(), /No content found in "UniversalAdId"/);
+    UniversalAdId.content = "ok";
+    assert.throws(
+      () => vast.validate(),
+      /Required attribute "idRegistry" not found in "UniversalAdId" Tag/
+    );
+    UniversalAdId.attrs.idRegistry = "ok";
+    assert.throws(
+      () => vast.validate(),
+      /Required attribute "idValue" not found in "UniversalAdId" Tag/
+    );
+    UniversalAdId.attrs.idValue = "ok";
+    assert.throws(
+      () => vast.validate(),
+      /One child of "Linear,NonLinearAds,CompanionAds" is needed below "Creative"/
     );
     const Linear = Creative.attachLinear();
     assert.throws(

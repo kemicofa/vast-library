@@ -3,7 +3,7 @@ import * as fs from "fs-extra";
 import * as diff from "jest-diff";
 import { NO_DIFF_MESSAGE } from "jest-diff/build/constants";
 import * as path from "path";
-import createVast from "../lib/index";
+import { v2 } from "../src/builder";
 
 function assertEqual(base, expected) {
   const out = diff(base.trim(), expected.trim());
@@ -12,7 +12,13 @@ function assertEqual(base, expected) {
   }
 }
 
-export function runFixture(toCompare, version, fixtureName) {
+type AvailableVersion = "v2" | "v3" | "v4" | "v4.1";
+
+export function runFixture(
+  toCompare: string,
+  version: AvailableVersion,
+  fixtureName: string
+) {
   // return;
 
   const fixtureFile = path.join(
@@ -22,7 +28,7 @@ export function runFixture(toCompare, version, fixtureName) {
     fixtureName + ".xml"
   );
 
-  let expectedResponse;
+  let expectedResponse: string;
   try {
     expectedResponse = fs.readFileSync(path.join(fixtureFile), "utf8");
   } catch (e) {
@@ -36,7 +42,10 @@ export function runFixture(toCompare, version, fixtureName) {
   assertEqual(toCompare, expectedResponse);
 }
 
-export function getFixtureContent(version, fixtureName) {
+export function getFixtureContent(
+  version: AvailableVersion,
+  fixtureName: string
+) {
   const fixtureFile = path.join(
     __dirname,
     version,
@@ -47,8 +56,7 @@ export function getFixtureContent(version, fixtureName) {
 }
 
 export function generateMinimalVast() {
-  const vast = createVast
-    .v2()
+  const vast = v2()
     .attachAd({ id: "identifier" })
     .attachInLine()
     .addImpression("imp_link")
@@ -65,5 +73,5 @@ export function generateMinimalVast() {
       type: "video/mp4",
       width: "600"
     });
-  return vast;
+  return vast.getRoot();
 }

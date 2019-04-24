@@ -4,7 +4,7 @@ import VastElement from "../vast-element";
 
 import { isBrowser, isNode } from "browser-or-node";
 
-import { logError } from "./logs";
+import { warnOrThrow } from "./logs";
 
 export function buildVast(current: Element, currentTag: VastElement<any>) {
   /* istanbul ignore next */
@@ -21,6 +21,7 @@ export function buildVast(current: Element, currentTag: VastElement<any>) {
       for (let i = 0; i < current.elements.length; i++) {
         const currentTmp: Element = current.elements[i];
         // TODO refacto dangerouslyAttachCustomTag from real tag for better integration
+        // and fallback on dangerous
         currentChild = currentTag.dangerouslyAttachCustomTag(
           currentTmp.name,
           String(currentTmp.attributes)
@@ -83,25 +84,31 @@ function fetchUrl({
   }
 }
 
-function createVastWithBuilder(vastRawCode, options: VastParserOptions = {}) {
+function createVastWithBuilder(
+  vastRawCode: string,
+  options: VastParserOptions = {}
+) {
   options = {
     logWarn: false,
     ...options
   };
-  let parsedXml;
+  let parsedXml: Element;
   try {
-    parsedXml = xml2js(vastRawCode);
+    parsedXml = xml2js(vastRawCode) as Element;
   } catch (e) {
-    if (options.logWarn) {
-      logError(`Error during the vast parsing, it seems not valid XML`);
-    }
-    // TODO throw here ??
+    warnOrThrow(
+      `Error during the vast parsing, it seems not valid XML`,
+      options
+    );
   }
 
   return createVastFromJson(parsedXml);
 }
 
-function createVastFromJson(vastJsonCode, options: VastParserOptions = {}) {
+function createVastFromJson(
+  vastJsonCode: Element,
+  options: VastParserOptions = {}
+) {
   options = {
     logWarn: false,
     ...options
@@ -115,17 +122,13 @@ function createVastFromJson(vastJsonCode, options: VastParserOptions = {}) {
   return root;
 }
 
-// TODO spread options in signature
-export function downloadVastAndWrappers(
-  vastUrl: string,
-  options: VastParserOptions = {}
-) {
-  options = {
-    logWarn: false,
-    ...options
-  };
+type Vasts = Array<VastElement<any>>;
 
-  const vastAndWrappers = [];
+export function downloadVastAndWrappersSync(
+  vastUrl: string,
+  options: VastParserOptions
+): Vasts {
+  const vastAndWrappers: Vasts = [];
   let currentVast: VastElement<any>;
 
   do {
@@ -141,4 +144,37 @@ export function downloadVastAndWrappers(
   } while (currentVast.isWrapper());
 
   return vastAndWrappers;
+}
+
+export function downloadVastAndWrappersAsync(
+  vastUrl: string,
+  options: VastParserOptions,
+  callback: (vasts: Vasts) => void,
+  actualDownloadedVasts?: Vasts
+): void {
+  const vastAndWrappers: Vasts = actualDownloadedVasts || [];
+  let currentVast: VastElement<any>;
+
+  fetchUrl({
+    loadCallback: vastRawContent => {
+      currentVast = createVastWithBuilder(vastRawContent);
+      vastAndWrappers.push(currentVast);
+      if (currentVast.isWrapper()) {
+        const VASTAdTagURI = currentVast.get(["VASTAdTagURI"])[0];
+        if (VASTAdTagURI) {
+          vastUrl = VASTAdTagURI.getContent(true);
+        }
+        downloadVastAndWrappersAsync(
+          vastUrl,
+          options,
+          callback,
+          vastAndWrappers
+        );
+      } else {
+        callback(vastAndWrappers);
+      }
+    },
+    syncInBrowser: true,
+    url: vastUrl
+  });
 }

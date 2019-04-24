@@ -29,6 +29,7 @@
 
 {
   "compilerOptions": {
+    "paths": { "*": ["@types/*", "@types/modules/*"] },
     "declaration": true,
     "baseUrl": ".",
     // "skipLibCheck": true,

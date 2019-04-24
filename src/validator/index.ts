@@ -1,13 +1,13 @@
-import * as convert from "xml-js";
-import { logError } from "./utils/logs";
-import { validateNext } from "./utils/validate-node";
-import { buildVast } from "./utils/vast";
-import VastElement from "./vast-element";
+import { Element, xml2js } from "xml-js";
+import { logError } from "../utils/logs";
+import { validateNext } from "../utils/validate-node";
+import { buildVast } from "../utils/vast";
+import VastElement from "../vast-element";
 
-import { vastValidator2_0 } from "../build/api/vast2_0-validator";
-import { vastValidator3_0 } from "../build/api/vast3_0-validator";
-import { vastValidator4_0 } from "../build/api/vast4_0-validator";
-import { vastValidator4_1 } from "../build/api/vast4_1-validator";
+import { vastValidator2_0 } from "../../build/api/vast2_0-validator";
+import { vastValidator3_0 } from "../../build/api/vast3_0-validator";
+import { vastValidator4_0 } from "../../build/api/vast4_0-validator";
+import { vastValidator4_1 } from "../../build/api/vast4_1-validator";
 
 const validators = {
   "2_0": vastValidator2_0,
@@ -23,7 +23,7 @@ function parseVast(vastRawCode: string, options: VastParserOptions = {}) {
   };
   let parsedXml: Element;
   try {
-    parsedXml = convert.xml2js(vastRawCode) as Element;
+    parsedXml = xml2js(vastRawCode) as Element;
   } catch (error) {
     if (options.logWarn) {
       logError(`Error during the vast parsing, it seems not valid XML`);

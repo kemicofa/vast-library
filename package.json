@@ -22,7 +22,7 @@
     "build-v4": "ts-node ./bin/build.ts 4_0",
     "build-v4_1": "ts-node ./bin/build.ts 4_1",
     "clean-fixtures": "rm -rf ./test/**/fixtures/*.xml",
-    "clean": "rm -rf ./build ./lib",
+    "clean": "rm -rf ./build ./generated",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -36,9 +36,14 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/"
+    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/build/",
+      "/generated/",
       "/test/"
     ]
   },

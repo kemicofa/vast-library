@@ -9,7 +9,7 @@ node_js:
 
 script:
   - yarn tsc
-  - yarn test && codecov
+  - yarn test # && codecov
 
 before_deploy:
   - npm --no-git-tag-version version `git describe --tags` 2>/dev/null || true

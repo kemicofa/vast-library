@@ -84,7 +84,8 @@ function fetchUrl({
   }
 }
 
-function createVastWithBuilder(
+// TODO this is only exported for test, it should not be
+export function createVastWithBuilder(
   vastRawCode: string,
   options: VastParserOptions = {}
 ) {

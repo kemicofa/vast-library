@@ -8,10 +8,10 @@ import {
 } from "../utils/vast";
 import VastElement from "../vast-element";
 
-type Vasts = Array<VastElement<any>>;
+type VastElements = Array<VastElement<any>>;
 
 export default class VastParser {
-  public vasts: Vasts;
+  public vasts: VastElements;
   public parsed: boolean;
   public originalVastUrl: string;
   public options: VastParserOptions;
@@ -28,7 +28,7 @@ export default class VastParser {
     downloadVastAndWrappersAsync(
       this.originalVastUrl,
       this.options,
-      (vasts: Vasts) => {
+      (vasts: VastElements) => {
         this.vasts = vasts;
         this.parsed = true;
         callback(this);
@@ -36,7 +36,7 @@ export default class VastParser {
     );
   }
 
-  public parseSync() {
+  public parseSync(): this {
     if (isNode) {
       throw new Error("parseSync is only available in a browser context");
     }
@@ -51,13 +51,13 @@ export default class VastParser {
     return this;
   }
 
-  public getVasts() {
+  public getVasts(): VastElements {
     return this.vasts || [];
   }
 
   public getVastElements(
     arrayOfTagNames: /* PossibleTag[] */ string[]
-  ): Array<VastElement<any>> {
+  ): VastElements {
     return this.get(arrayOfTagNames);
   }
 
@@ -74,9 +74,7 @@ export default class VastParser {
 
   // > return an array all childs find at "arrayOfTagNames" path in the hierarchy
   // * getChilds(arrayOfTagNames: Array<string>, details: 'content' | string): Array<VastElement>
-  private get(
-    arrayOfTagNames: /* PossibleTag[] */ string[]
-  ): Array<VastElement<any>>;
+  private get(arrayOfTagNames: /* PossibleTag[] */ string[]): VastElements;
   private get(
     arrayOfTagNames: /* PossibleTag[] */ string[],
     details: "content" | /* "PossibleAttrs" */ string
@@ -87,7 +85,7 @@ export default class VastParser {
   ) {
     const vastElements = (flatten(
       this.vasts.map(v => v.get(arrayOfTagNames, true))
-    ) as unknown) as Array<VastElement<any>>;
+    ) as unknown) as VastElements;
     if (details) {
       return vastElements.map(vastElement => {
         if (details === "content") {

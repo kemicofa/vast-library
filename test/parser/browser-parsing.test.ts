@@ -1,7 +1,7 @@
 // tslint:disable:no-eval no-console
 import * as fs from "fs-extra";
 import * as path from "path";
-import { Request } from "puppeteer";
+import { Request as PuppeteerRequest } from "puppeteer";
 import {
   compileScript,
   evalCode,
@@ -14,7 +14,7 @@ function getFileContent(fixturePath: string) {
   return fs.readFileSync(fixtureFile, "utf8");
 }
 
-function answerVastFile(req: Request) {
+function answerVastFile(req: PuppeteerRequest) {
   const fileToLoad = req.url().split("http://vasts/")[1];
   const fileContent = getFileContent(fileToLoad);
   req.respond({

@@ -44,5 +44,6 @@
     // "noImplicitThis": true,
     // "alwaysStrict": true,
     // "strictNullChecks": true
-  }
+  },
+  "include": ["src", "generated", "@types"]
 }

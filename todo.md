@@ -6,5 +6,6 @@
 - assert travis deploy is working correctly
 - declare a PossibleTag[] in build
 - clean options ?
+- manage code coverage
 
 - check code TODO

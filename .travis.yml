@@ -8,8 +8,11 @@ node_js:
   - 12
 
 script:
+  - yarn circular-dependencies
+  - yarn outdated || true
+  - yarn depcheck
+  - yarn test # && codecov # TODO restore that
   - yarn tsc
-  - yarn test # && codecov
 
 before_deploy:
   - npm --no-git-tag-version version `git describe --tags` 2>/dev/null || true

@@ -112,7 +112,7 @@ export async function evalCode(
 
       function save() {
         const div = document.createElement('div');
-        div.id = 'test';
+        div.id = 'testValue';
         div.innerHTML = JSON.stringify(window.result);
         document.body.append(div);
       }
@@ -125,7 +125,9 @@ export async function evalCode(
     sync
   );
 
-  const result = await page.$eval("#test", el => JSON.parse(el.textContent));
+  const result = await page.$eval("#testValue", el =>
+    JSON.parse(el.textContent)
+  );
   return result;
 }
 

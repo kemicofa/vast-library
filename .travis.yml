@@ -2,7 +2,6 @@ language: node_js
 sudo: false
 node_js:
   - 8
-  - 9
   - 10
   - 11
   - 12
@@ -19,6 +18,7 @@ script:
 
 before_deploy:
   - npm --no-git-tag-version version `git describe --tags` 2>/dev/null || true
+  - yarn install --production --ignore-scripts --prefer-offline
 
 deploy:
   provider: npm

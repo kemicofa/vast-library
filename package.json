@@ -1,6 +1,6 @@
 {
   "name": "vast-builder",
-  "version": "0.0.0",
+  "version": "4.0.1-32-g6278b51",
   "description": "An intuitive standard IAB Vast XML generation API. Complient with specifications Vast 2.0 / 3.0 / 4.0 / 4.1",
   "author": "David Babel",
   "thanks": "https://www.paypal.me/devilhunter/4",
@@ -19,7 +19,7 @@
     "build-v3": "ts-node ./bin/build.ts 3_0",
     "build-v4": "ts-node ./bin/build.ts 4_0",
     "build-v4_1": "ts-node ./bin/build.ts 4_1",
-    "clean-fixtures": "rimraf ./test/**/fixtures/*.xml",
+    "clean-fixtures": "rimraf ./tests/**/fixtures/*.xml",
     "clean": "rimraf ./build ./generated",
     "depcheck": "depcheck . --ignores=\"@types/*,puppeteer,jest-puppeteer\" --ignore-bin-package=true --skip-missing=true",
     "circular-dependencies": "madge --circular ./src",
@@ -34,6 +34,9 @@
   },
   "jest": {
     "preset": "jest-puppeteer",
+    "testMatch": [
+      "**/tests/**/*test.ts?(x)"
+    ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
@@ -45,7 +48,7 @@
       "/node_modules/",
       "/build/",
       "/generated/",
-      "/test/"
+      "/tests/"
     ]
   },
   "dependencies": {

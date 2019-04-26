@@ -1,4 +1,5 @@
 - finish code
+- only include what is needed from xml2js
 - remove cdata on parse and add cdataThisOne
 - manage global types for options
 - Fix documentation VastElement documentation

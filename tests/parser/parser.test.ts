@@ -18,7 +18,7 @@ function getVasts() {
   ];
 }
 
-describe("Name of the group", () => {
+describe("VastParser", () => {
   let parser: VastParser;
   beforeEach(() => {
     parser = new VastParser("");

@@ -9,7 +9,7 @@ function getFileContent(fixturePath: string) {
   return fs.readFileSync(fixtureFile, "utf8");
 }
 
-describe("parser fetch / NODE.js", () => {
+describe("VastParser fetch / NODE.js", () => {
   beforeAll(() => {
     nock("http://vasts")
       .get("/minimal_vast.xml")

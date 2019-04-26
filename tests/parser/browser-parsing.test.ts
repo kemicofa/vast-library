@@ -30,7 +30,7 @@ function answerVastFile(req: PuppeteerRequest) {
 // this prevent jest extensions to become crazy
 // by loading infinite Chromium in background
 if (process.env.RUN_PUPPETEER_TESTS === "true") {
-  describe("parser fetch / browser", () => {
+  describe("VastParser fetch / browser", () => {
     let interceptedCalls: number = 0;
     let scriptToInject: string;
 

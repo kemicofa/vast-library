@@ -1,4 +1,4 @@
-import { generateMinimalVast } from "../helpers";
+import { generateMinimalVast } from "../test-helpers";
 
 describe("Stress test", () => {
   it("should generate 10000 VAST in less than 25s", () => {

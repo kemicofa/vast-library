@@ -5,7 +5,7 @@
       <AdSystem><![CDATA[test ad system]]></AdSystem>
       <Impression><![CDATA[impression url wrapper 3]]></Impression>
       <VASTAdTagURI>
-        <![CDATA[http://localhost:1457/vasts/minimal_vast.xml]]>
+        <![CDATA[http://vasts/minimal_vast.xml]]>
       </VASTAdTagURI>
     </Wrapper>
   </Ad>

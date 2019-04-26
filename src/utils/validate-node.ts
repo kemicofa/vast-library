@@ -180,7 +180,7 @@ export function validateNext(currentNode: any, currentValidator: any) {
   if (currentValidator.attrsRequired) {
     Object.keys(currentValidator.attrsRequired).forEach(attrName => {
       const availableValues = currentValidator.attrsRequired[attrName];
-      const currentValue = currentNode.getAttrs()[attrName];
+      const currentValue = currentNode.getValidAttrs()[attrName];
       if (isNull(currentValue)) {
         currentNode.err(
           `Required attribute "${attrName}" not found in "${

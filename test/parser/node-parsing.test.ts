@@ -1,0 +1,47 @@
+import * as fs from "fs-extra";
+import * as nock from "nock";
+import * as path from "path";
+
+import VastParser from "../../src/parser";
+
+function getFileContent(fixturePath: string) {
+  const fixtureFile = path.join(__dirname, "vasts", fixturePath);
+  return fs.readFileSync(fixtureFile, "utf8");
+}
+
+describe("parser fetch / NODE.js", () => {
+  beforeAll(() => {
+    nock("http://vasts")
+      .get("/minimal_vast.xml")
+      .reply(200, getFileContent("minimal_vast.xml"))
+      .get("/minimal_wrapper_1.xml")
+      .reply(200, getFileContent("minimal_wrapper_1.xml"))
+      .get("/minimal_wrapper_2.xml")
+      .reply(200, getFileContent("minimal_wrapper_2.xml"))
+      .get("/minimal_wrapper_3.xml")
+      .reply(200, getFileContent("minimal_wrapper_3.xml"));
+  });
+  afterAll(() => {
+    nock.restore();
+    nock.cleanAll();
+  });
+  test("should parse a vast and it's wrappers", done => {
+    const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
+    parser.parseAsync(p => {
+      // tslint:disable-next-line:no-console
+      expect(p.get(["Impression"], "content")).toEqual([
+        "impression url wrapper 1",
+        "impression url wrapper 2",
+        "impression url wrapper 3",
+        "impression url vast inline"
+      ]);
+      done();
+    });
+  });
+  test("should parse a vast and it's wrappers", () => {
+    const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
+    expect(() => {
+      parser.parseSync();
+    }).toThrow();
+  });
+});

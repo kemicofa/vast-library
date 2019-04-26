@@ -266,8 +266,8 @@ const stringContent = VastElement.content;
 // content: return the raw attributes object
 const attributes = VastElement.attrs;
 
-// getAttrs: return sanitized attributes object (invalid attributes are removed)
-const attrsObject = VastElement.getAttrs();
+// getValidAttrs: return sanitized attributes object (invalid attributes are removed)
+const attrsObject = VastElement.getValidAttrs();
 
 // getChilds: return an array with childs filtered by "name"
 const childs = VastElement.getChilds(name);

@@ -46,7 +46,7 @@ describe("VAST Element", () => {
   });
   test("should correctly return all attrs", () => {
     vast = new VastElement("name", null, { attrs: "all" }, { cool: "ok" });
-    expect(vast.getAttrs()).toEqual({ cool: "ok" });
+    expect(vast.getValidAttrs()).toEqual({ cool: "ok" });
   });
   test("should correctly return only valid attrs", () => {
     vast = new VastElement(
@@ -56,7 +56,7 @@ describe("VAST Element", () => {
       { bar: "33", cool: "ok" }
     );
     vast.parseOptions(testOptions);
-    expect(vast.getAttrs()).toEqual({ bar: "33" });
+    expect(vast.getValidAttrs()).toEqual({ bar: "33" });
   });
   test("should correctly return only valid attrs", () => {
     vast = new VastElement(
@@ -66,7 +66,7 @@ describe("VAST Element", () => {
       { bar: "33", cool: "ok" }
     );
     vast.parseOptions(testOptions);
-    expect(vast.getAttrs()).toEqual({ bar: "33" });
+    expect(vast.getValidAttrs()).toEqual({ bar: "33" });
   });
   test("should correctly return childs filtered by name", () => {
     vast = new VastElement(
@@ -76,7 +76,7 @@ describe("VAST Element", () => {
       { bar: "33", cool: "ok" }
     );
     vast.parseOptions(testOptions);
-    expect(vast.getAttrs()).toEqual({ bar: "33" });
+    expect(vast.getValidAttrs()).toEqual({ bar: "33" });
   });
   test("should correctly return itself", () => {
     vast = new VastElementRoot();

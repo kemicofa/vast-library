@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import * as request from "request";
 import { Element, xml2js } from "xml-js";
 import VastElement from "../vast-element";
 
@@ -64,21 +64,21 @@ function fetchUrl({
       fetchReq.open("GET", url, true);
       fetchReq.onerror = fail;
       fetchReq.onload = res => {
-        loadCallback(res.responseText);
+        // tslint:disable-next-line:no-console
+        console.log(res);
+        // loadCallback(res.responseText);
       };
       fetchReq.send();
     }
     throw new Error(`${url} was not found`);
   } else if (isNode) {
-    fetch(url)
-      .then(res => {
-        if (res.ok) {
-          return res;
-        }
+    // tslint:disable:no-console
+    request(url, (error, response, body) => {
+      if (error) {
         fail();
-      })
-      .then(res => loadCallback(res.text()))
-      .catch(fail);
+      }
+      loadCallback(body);
+    });
   } else {
     throw new Error("Not supported environment");
   }
@@ -138,7 +138,7 @@ export function downloadVastAndWrappersSync(
     if (currentVast.isWrapper()) {
       const VASTAdTagURI = currentVast.get(["VASTAdTagURI"])[0];
       if (VASTAdTagURI) {
-        vastUrl = VASTAdTagURI.getContent(true);
+        vastUrl = VASTAdTagURI.getContent();
       }
     }
   } while (currentVast.isWrapper());
@@ -162,7 +162,7 @@ export function downloadVastAndWrappersAsync(
       if (currentVast.isWrapper()) {
         const VASTAdTagURI = currentVast.get(["VASTAdTagURI"])[0];
         if (VASTAdTagURI) {
-          vastUrl = VASTAdTagURI.getContent(true);
+          vastUrl = VASTAdTagURI.getContent();
         }
         downloadVastAndWrappersAsync(
           vastUrl,

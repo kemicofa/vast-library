@@ -1,6 +1,7 @@
 import * as flatten from "array-flatten";
+import { isNode } from "browser-or-node";
 import { isNull } from "../utils/checks";
-import { logWarn, warnOrThrow } from "../utils/logs";
+import { warnOrThrow } from "../utils/logs";
 import {
   downloadVastAndWrappersAsync,
   downloadVastAndWrappersSync
@@ -12,31 +13,42 @@ type Vasts = Array<VastElement<any>>;
 export default class VastParser {
   public vasts: Vasts;
   public parsed: boolean;
-  public vastUrl: string;
+  public originalVastUrl: string;
   public options: VastParserOptions;
 
   constructor(vastUrl: string, options: VastParserOptions = {}) {
-    this.vastUrl = vastUrl;
+    this.originalVastUrl = vastUrl;
     this.options = options;
   }
 
-  public parseAsync(callback: (vasts: Vasts) => void) {
+  public parseAsync(callback: (self: this) => void) {
     if (this.parsed) {
-      callback(this.vasts);
+      callback(this);
     }
-    downloadVastAndWrappersAsync(this.vastUrl, this.options, (vasts: Vasts) => {
-      this.vasts = vasts;
-      callback(this.vasts);
-      this.parsed = true;
-    });
+    downloadVastAndWrappersAsync(
+      this.originalVastUrl,
+      this.options,
+      (vasts: Vasts) => {
+        this.vasts = vasts;
+        callback(this);
+        this.parsed = true;
+      }
+    );
   }
 
   public parseSync() {
-    if (this.parsed) {
-      return this.vasts;
+    if (isNode) {
+      throw new Error("parseSync is only available in a browser context");
     }
-    this.vasts = downloadVastAndWrappersSync(this.vastUrl, this.options);
+    if (this.parsed) {
+      return this;
+    }
+    this.vasts = downloadVastAndWrappersSync(
+      this.originalVastUrl,
+      this.options
+    );
     this.parsed = true;
+    return this;
   }
 
   public getVasts() {

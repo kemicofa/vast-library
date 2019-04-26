@@ -1,6 +1,6 @@
 import * as flatten from "array-flatten";
 import { ElementCompact, js2xml } from "xml-js";
-import { warnOrThrow } from "./utils/logs";
+import { logWarn, warnOrThrow } from "./utils/logs";
 import { hasCDATA, stripCDATA } from "./utils/string";
 
 const xmlDeclaration = {
@@ -97,8 +97,8 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   // > Get a specific attr, it's case insensitive (only specs valids one will be returned)
   // * getAttr(attributeName: string): string
   public getAttr(attributeName: string): string {
-    const baseAttrs = this.getAttrs();
-    const lowerCasedAttrs = Object.keys(this.getAttrs()).reduce(
+    const baseAttrs = this.getValidAttrs();
+    const lowerCasedAttrs = Object.keys(this.getValidAttrs()).reduce(
       (prev: object, next: string) => {
         prev[next.toLowerCase()] = baseAttrs[next];
         return prev;
@@ -109,8 +109,8 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   }
 
   // > Get filtered attributes (only specs valids one will be returned)
-  // * getAttrs(): Object
-  public getAttrs() {
+  // * getValidAttrs(): Object
+  public getValidAttrs() {
     if (this.infos.attrs === "all") {
       return this.attrs;
     } else {
@@ -122,7 +122,7 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
             `WARNING: the attribute "${next}" does not exists in "${
               this.name
             }" Tag. It was ignored.
-  Here is the allowed list: ${this.infos.attrs}`,
+            Here is the allowed list: ${this.infos.attrs}`,
             this.options
           );
           return prev;
@@ -130,6 +130,13 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
       }, {});
     }
   }
+
+  /** @deprecated “getAttrs()“ method is deprecated, use getValidAttrs() instead. */
+  public getAttrs() {
+    logWarn("“getAttrs()“ method is deprecated, use getValidAttrs() instead.");
+    return this.getValidAttrs();
+  }
+
   // > return the parent element
   // * and(): VastElement
   public and(): VastElementParent {
@@ -227,7 +234,7 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
     const jsonVast: ElementCompact = {};
 
     if (this.hasAttrs()) {
-      jsonVast._attributes = this.getAttrs();
+      jsonVast._attributes = this.getValidAttrs();
     }
 
     if (this.content) {
@@ -250,7 +257,7 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   // > Return the root VastElement
   // * getRoot(): VastElement
   public getRoot(): VastElement<null> {
-    let parent: any = this.parent || this;
+    let parent: VastElement<any> = this.parent || this;
     while (parent.parent) {
       parent = parent.parent;
     }

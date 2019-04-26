@@ -1,5 +1,5 @@
 import * as memwatch from "@airbnb/node-memwatch";
-import { generateMinimalVast } from "../helpers";
+import { generateMinimalVast } from "../test-helpers";
 
 memwatch.on("leak", (info: string) => {
   // tslint:disable-next-line:no-console

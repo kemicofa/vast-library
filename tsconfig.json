@@ -33,7 +33,7 @@
     "declaration": true,
     "baseUrl": ".",
     // "skipLibCheck": true,
-    "outDir": "lib/",
+    "outDir": "build/",
     "target": "es5",
     "sourceMap": true
     // "forceConsistentCasingInFileNames": true,

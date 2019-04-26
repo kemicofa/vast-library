@@ -5,9 +5,11 @@ node_js:
   - 9
   - 10
   - 11
+  - 12
 
 script:
-  - npm run test && codecov
+  - yarn tsc
+  - yarn test && codecov
 
 before_deploy:
   - npm --no-git-tag-version version `git describe --tags` 2>/dev/null || true

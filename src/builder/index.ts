@@ -1,7 +1,7 @@
-import { apiv2, VAST_2 } from "../../build/api/vast2_0";
-import { apiv3, VAST_3 } from "../../build/api/vast3_0";
-import { apiv4, VAST_4 } from "../../build/api/vast4_0";
-import { apiv4_1, VAST_4 as VAST4_1 } from "../../build/api/vast4_1";
+import { apiv2, VAST_2 } from "../../generated/api/vast2_0";
+import { apiv3, VAST_3 } from "../../generated/api/vast3_0";
+import { apiv4, VAST_4 } from "../../generated/api/vast4_0";
+import { apiv4_1, VAST_4 as VAST4_1 } from "../../generated/api/vast4_1";
 
 export function v2(options: VastBuilderOptions = {}): VAST_2 {
   const root = new apiv2();

@@ -4,10 +4,10 @@ import { validateNext } from "../utils/validate-node";
 import { buildVast } from "../utils/vast";
 import VastElement from "../vast-element";
 
-import { vastValidator2_0 } from "../../build/api/vast2_0-validator";
-import { vastValidator3_0 } from "../../build/api/vast3_0-validator";
-import { vastValidator4_0 } from "../../build/api/vast4_0-validator";
-import { vastValidator4_1 } from "../../build/api/vast4_1-validator";
+import { vastValidator2_0 } from "../../generated/api/vast2_0-validator";
+import { vastValidator3_0 } from "../../generated/api/vast3_0-validator";
+import { vastValidator4_0 } from "../../generated/api/vast4_0-validator";
+import { vastValidator4_1 } from "../../generated/api/vast4_1-validator";
 
 const validators = {
   "2_0": vastValidator2_0,

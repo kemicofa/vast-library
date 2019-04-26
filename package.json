@@ -7,14 +7,15 @@
   "engines": {
     "node": ">= 8"
   },
-  "main": "lib/src/index.js",
+  "main": "build/src/index.js",
   "scripts": {
     "start": "open ./coverage/lcov-report/index.html",
     "dev-build": "browserify ./test/mini-test-server/try.js -o ./test/mini-test-server/try-bundle.js",
     "dev-server": "http-server ./test/mini-test-server -p 1457",
-    "build": "yarn clean && yarn build-api && tsc",
+    "build": "yarn clean && yarn build-api && yarn tsc",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
+    "tsc": "tsc",
     "build-api": "yarn build-v2 && yarn build-v3 && yarn build-v4 && yarn build-v4_1",
     "build-v2": "ts-node ./bin/build.ts 2_0",
     "build-v3": "ts-node ./bin/build.ts 3_0",

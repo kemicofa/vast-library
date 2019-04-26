@@ -1,8 +1,5 @@
 /* tslint:disable: no-console object-literal-sort-keys */
 
-// IDEAS :
-// TODO : see if renaming VastElement to VE is worth in term of saved size
-
 import * as fs from "fs-extra";
 import * as yaml from "js-yaml";
 import * as prettier from "prettier";
@@ -48,8 +45,8 @@ try {
   process.exit(1);
 }
 
-fs.mkdirsSync("./build/api");
-fs.mkdirsSync("./build/doc");
+fs.mkdirsSync("./generated/api");
+fs.mkdirsSync("./generated/doc");
 
 // remove configs from data
 const filteredDatas = {
@@ -266,7 +263,7 @@ const generateValidator = (dataObject: any) => {
 
 // writing API
 fs.writeFileSync(
-  `./build/api/vast${vastVersion.floatSnake()}.ts`,
+  `./generated/api/vast${vastVersion.floatSnake()}.ts`,
   prettier.format(
     templateAPIFile(
       vastVersion.intSnake(),
@@ -280,7 +277,7 @@ fs.writeFileSync(
 // writing validator
 const validatorObject = generateValidator(filteredDatas);
 fs.writeFileSync(
-  `./build/api/vast${vastVersion.floatSnake()}-validator.ts`,
+  `./generated/api/vast${vastVersion.floatSnake()}-validator.ts`,
   prettier.format(
     templateValidatorFile(vastVersion.floatSnake(), validatorObject),
     { parser: "typescript" }
@@ -292,7 +289,7 @@ asyncGetVastElementDoc((methods: any) => {
   apiDocumentation.VastElement.methods = methods;
 
   fs.writeFileSync(
-    `./build/doc/vast${vastVersion.floatSnake()}.md`,
+    `./generated/doc/vast${vastVersion.floatSnake()}.md`,
     getApiDocumentationTemplate(vastVersion.intSnake(), apiDocumentation)
   );
   console.log(" => build ok");

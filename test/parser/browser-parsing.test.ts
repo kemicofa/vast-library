@@ -27,69 +27,79 @@ function answerVastFile(req: PuppeteerRequest) {
   });
 }
 
-describe("parser fetch / browser", () => {
-  let interceptedCalls: number = 0;
-  let scriptToInject: string;
+// this prevent jest extensions to become crazy
+// by loading infinite Chromium in background
+if (process.env.RUN_PUPPETEER_TESTS === "true") {
+  describe("parser fetch / browser", () => {
+    let interceptedCalls: number = 0;
+    let scriptToInject: string;
 
-  beforeAll(async () => {
-    jest.setTimeout(30000);
-    const scriptPath = path.join(__dirname, "../../src/parser/index.ts");
-    scriptToInject = await compileScript(scriptPath, ["VastParser"]);
-  });
+    beforeAll(async () => {
+      jest.setTimeout(30000);
+      const scriptPath = path.join(__dirname, "../../src/parser/index.ts");
+      scriptToInject = await compileScript(scriptPath, ["VastParser"]);
+    });
 
-  beforeEach(async () => {
-    await page.evaluate(script => {
-      eval(script);
-    }, scriptToInject);
+    beforeEach(async () => {
+      await page.evaluate(script => {
+        eval(script);
+      }, scriptToInject);
 
-    interceptedCalls = 0;
-    await page.setRequestInterception(true);
-    page.on("request", req => {
-      interceptedCalls++;
-      answerVastFile(req);
+      interceptedCalls = 0;
+      await page.setRequestInterception(true);
+      page.on("request", req => {
+        interceptedCalls++;
+        answerVastFile(req);
+      });
+    });
+
+    afterEach(async () => {
+      await jestPuppeteer.resetPage();
+    });
+
+    test("should parse a vast synchronously", async () => {
+      const result = await evalCode(`
+        const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
+        parser.parseSync();
+        window.result = parser.get(['Impression'], 'content');
+      `);
+
+      expect(interceptedCalls).toBe(4);
+      expect(result).toEqual([
+        "impression url wrapper 1",
+        "impression url wrapper 2",
+        "impression url wrapper 3",
+        "impression url vast inline"
+      ]);
+    });
+
+    test("should parse a vast asynchronously", async () => {
+      await evalCodeAsync(`
+        window.result;
+        const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
+        parser.parseAsync(() => {
+          window.result = parser.get(['Impression'], 'content');
+          save();
+        });
+      `);
+
+      await page.waitFor(2000);
+
+      const result = await evalGetResult();
+
+      expect(interceptedCalls).toBe(4);
+      expect(result).toEqual([
+        "impression url wrapper 1",
+        "impression url wrapper 2",
+        "impression url wrapper 3",
+        "impression url vast inline"
+      ]);
     });
   });
-
-  afterEach(async () => {
-    await jestPuppeteer.resetPage();
+} else {
+  describe("[IGNORED] parser fetch / browser", () => {
+    test("empty tests", () => {
+      // :)
+    });
   });
-
-  test("should parse a vast synchronously", async () => {
-    const result = await evalCode(`
-      const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
-      parser.parseSync();
-      window.result = parser.get(['Impression'], 'content');
-    `);
-
-    expect(interceptedCalls).toBe(4);
-    expect(result).toEqual([
-      "impression url wrapper 1",
-      "impression url wrapper 2",
-      "impression url wrapper 3",
-      "impression url vast inline"
-    ]);
-  });
-
-  test("should parse a vast asynchronously", async () => {
-    await evalCodeAsync(`
-      window.result;
-      const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
-      parser.parseAsync(() => {
-        window.result = parser.get(['Impression'], 'content');
-        save();
-      });
-    `);
-
-    await page.waitFor(2000);
-
-    const result = await evalGetResult();
-
-    expect(interceptedCalls).toBe(4);
-    expect(result).toEqual([
-      "impression url wrapper 1",
-      "impression url wrapper 2",
-      "impression url wrapper 3",
-      "impression url vast inline"
-    ]);
-  });
-});
+}

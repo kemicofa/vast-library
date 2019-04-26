@@ -11,7 +11,7 @@
   "scripts": {
     "start": "open ./coverage/lcov-report/index.html",
     "build": "yarn clean && yarn build-api && yarn tsc",
-    "test": "jest --coverage",
+    "test": "RUN_PUPPETEER_TESTS=true jest --coverage",
     "test:watch": "jest --watch",
     "tsc": "tsc",
     "build-api": "yarn build-v2 && yarn build-v3 && yarn build-v4 && yarn build-v4_1",

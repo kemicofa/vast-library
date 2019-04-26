@@ -48,6 +48,9 @@ try {
 fs.mkdirsSync("./generated/api");
 fs.mkdirsSync("./generated/doc");
 
+const typesTags = [];
+const typesAttrs = [];
+
 // remove configs from data
 const filteredDatas = {
   VAST: datas.VAST
@@ -72,6 +75,7 @@ const generateApiAndDoc = (
   overrideName: string = "",
   parentName: string = ""
 ) => {
+  typesTags.push(currentName);
   // prevent to hit reserved word like "Error"
   const currentUsedName = overrideName ? overrideName : currentName;
 

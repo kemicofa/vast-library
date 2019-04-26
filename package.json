@@ -23,7 +23,6 @@
     "clean": "rimraf ./build ./generated",
     "depcheck": "depcheck . --ignores=\"@types/*,puppeteer,jest-puppeteer\" --ignore-bin-package=true --skip-missing=true",
     "circular-dependencies": "madge --circular ./src",
-    "coverage": "open ./coverage/lcov-report/index.html",
     "precommit": "lint-staged"
   },
   "lint-staged": {

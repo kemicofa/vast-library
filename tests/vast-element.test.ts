@@ -98,13 +98,13 @@ describe("VAST Element", () => {
   test("should correctly get name", () => {
     vast = new VastElement("name");
     expect(vast.getName()).toEqual("name");
-    const test = vast.dangerouslyAttachCustomTag("test");
+    const test = vast.attachCustomTag("test");
     expect(test.getName()).toEqual("test");
   });
   test("should correctly get content", () => {
     vast = new VastElement("name");
     expect(vast.getContent()).toBeNull();
-    const test = vast.dangerouslyAttachCustomTag("test", "content");
+    const test = vast.attachCustomTag("test", "content");
     expect(test.getContent()).toBe("content");
   });
   test("should correctly get infos", () => {
@@ -112,7 +112,7 @@ describe("VAST Element", () => {
     expect(vast.getInfos()).toEqual({ attrs: [] });
   });
   test("should correctly get attribute with lowercase power", () => {
-    const test = vast.dangerouslyAttachCustomTag("test", {
+    const test = vast.attachCustomTag("test", {
       id: "20",
       myKey: "test1",
       myLastKey: "test3",
@@ -126,7 +126,7 @@ describe("VAST Element", () => {
   test("should correctly get parent", () => {
     vast = new VastElementRoot("name");
     expect(vast.getParent()).toEqual(vast);
-    const test = vast.dangerouslyAttachCustomTag("test");
+    const test = vast.attachCustomTag("test");
     expect(test.getParent()).toEqual(vast);
   });
   test("should correctly return root", () => {
@@ -140,9 +140,9 @@ describe("VAST Element", () => {
       cdata: false
     });
     vast
-      .dangerouslyAddCustomTag("test1")
-      .dangerouslyAddCustomTag("test2", { id: "22" })
-      .dangerouslyAddCustomTag("test3", "content3", { id: "33" });
+      .addCustomTag("test1")
+      .addCustomTag("test2", { id: "22" })
+      .addCustomTag("test3", "content3", { id: "33" });
 
     const expected = {
       test1: [],
@@ -164,14 +164,14 @@ describe("VAST Element", () => {
     };
     expect(vast.getJson()).toEqual(expected);
   });
-  test("should correctly return json trace on dangerouslyAttachCustomTag", () => {
+  test("should correctly return json trace on attachCustomTag", () => {
     vast.parseOptions({
       cdata: false
     });
     vast
-      .dangerouslyAttachCustomTag("test1")
-      .dangerouslyAttachCustomTag("test2", { id: "22" })
-      .dangerouslyAttachCustomTag("test3", "content3", { id: "33" });
+      .attachCustomTag("test1")
+      .attachCustomTag("test2", { id: "22" })
+      .attachCustomTag("test3", "content3", { id: "33" });
 
     const expected = {
       test1: [
@@ -202,9 +202,9 @@ describe("VAST Element", () => {
       cdata: false
     });
     vast
-      .dangerouslyAddCustomTag("test1", { id: "11" })
-      .dangerouslyAttachCustomTag("test2", "content2")
-      .dangerouslyAttachCustomTag("test3", "content3", { id: "33" })
+      .addCustomTag("test1", { id: "11" })
+      .attachCustomTag("test2", "content2")
+      .attachCustomTag("test3", "content3", { id: "33" })
       .cdata();
 
     const expected = {
@@ -232,50 +232,73 @@ describe("VAST Element", () => {
     expect(vast.getJson()).toEqual(expected);
   });
   test("should return the vast version", () => {
-    vast.dangerouslyAddCustomTag("VAST", { version: "44" });
+    vast.addCustomTag("VAST", { version: "44" });
     expect(vast.getVastVersion()).toBe(44);
   });
   test("should return the vast snake version", () => {
-    vast.dangerouslyAddCustomTag("VAST", { version: "4.4" });
+    vast.addCustomTag("VAST", { version: "4.4" });
     expect(vast.getVastSnakeVersion()).toBe("4_4");
   });
   test("should return the vast code", () => {
-    vast.dangerouslyAddCustomTag("VAST", "content", { version: "44" });
+    vast.addCustomTag("VAST", "content", { version: "44" });
     expect(vast.toXml()).toContain(
       '<VAST version="44"><![CDATA[content]]></VAST>'
     );
   });
   test("should return the vast code without cdata config", () => {
     vast.parseOptions({ cdata: false });
-    vast.dangerouslyAddCustomTag("VAST", "content", { version: "44" });
+    vast.addCustomTag("VAST", "content", { version: "44" });
     expect(vast.toXml()).toContain('<VAST version="44">content</VAST>');
   });
   test("should return the vast code with forced cdata by attribute", () => {
     vast.parseOptions({ cdata: false });
-    vast
-      .dangerouslyAttachCustomTag("VAST", "content", { version: "44" })
-      .cdata();
+    vast.attachCustomTag("VAST", "content", { version: "44" }).cdata();
+    vast.attachCustomTag("VAST", "content2", { version: "45" });
+    expect(vast.toXml()).toContain(
+      '<VAST version="44"><![CDATA[content]]></VAST>'
+    );
+    expect(vast.toXml()).toContain('<VAST version="45">content2</VAST>');
+  });
+  test("should return the vast code with cdata forced recursively", () => {
+    vast.parseOptions({ cdata: false });
+    vast.addCustomTag("VAST", "content", { version: "44" });
+    const child = vast.getChilds("VAST")[0].cdata();
+    expect(child.toXml()).toContain(
+      '<VAST version="44"><![CDATA[content]]></VAST>'
+    );
+  });
+  test("should return the vast code with forced cdata by attribute", () => {
+    vast.parseOptions({ cdata: true });
+    vast.attachCustomTag("VAST", "content", { version: "44" }).text();
+    vast.attachCustomTag("VAST", "content2", { version: "45" });
+    expect(vast.toXml()).toContain('<VAST version="44">content</VAST>');
+    expect(vast.toXml()).toContain(
+      '<VAST version="45"><![CDATA[content2]]></VAST>'
+    );
+  });
+  test("should construct an element with CDATA in content", () => {
+    vast.parseOptions({ cdata: false });
+    vast.attachCustomTag("VAST", "<![CDATA[content]]>", { version: "44" });
     expect(vast.toXml()).toContain(
       '<VAST version="44"><![CDATA[content]]></VAST>'
     );
   });
   test("should return the vast code with cdata forced recursively", () => {
-    vast.parseOptions({ cdata: false });
-    vast.dangerouslyAddCustomTag("VAST", "content", { version: "44" }).cdata();
-    expect(vast.toXml()).toContain(
-      '<VAST version="44"><![CDATA[content]]></VAST>'
-    );
+    vast.parseOptions({ cdata: true });
+    vast.addCustomTag("VAST", "content", { version: "44" });
+    const child = vast.getChilds("VAST")[0].text();
+    expect(child.toXml()).toContain('<VAST version="44">content</VAST>');
   });
   test("should detect wrappers", () => {
     expect(vast.isWrapper()).toBe(false);
-    vast.dangerouslyAddCustomTag("Wrapper");
+    vast.addCustomTag("Wrapper");
     expect(vast.isWrapper()).toBe(true);
   });
   test("should retreives childs searched by name", () => {
-    const test11 = vast.dangerouslyAttachCustomTag("test1", { id: "11" });
-    const test12 = vast.dangerouslyAttachCustomTag("test1", { id: "11" });
-    const test2 = vast.dangerouslyAttachCustomTag("test2", "content2");
-    const test3 = vast.dangerouslyAttachCustomTag("test3", "content3", {
+    const test11 = vast.attachCustomTag("test1", { id: "11" });
+    const test12 = vast.attachCustomTag("test1", { id: "11" });
+    const test2 = vast.attachCustomTag("test2", "content2");
+    const test3 = vast.attachCustomTag("test3", "content3", {
       id: "33"
     });
     expect(vast.getChilds("test1")).toEqual([test11, test12]);
@@ -290,23 +313,28 @@ describe("VAST Element", () => {
     // 4C 5D 6E 7B
     // | \
     // 8E 9D
-    const test1 = vast.dangerouslyAttachCustomTag("tagA", { id: "1" });
-    const test2 = test1.dangerouslyAttachCustomTag("tagB", { id: "2" });
-    const test3 = test1.dangerouslyAttachCustomTag("tagC", { id: "3" });
-    const test4 = test2.dangerouslyAttachCustomTag("tagC", { id: "4" });
-    const test5 = test2.dangerouslyAttachCustomTag("tagD", { id: "5" });
-    const test6 = test3.dangerouslyAttachCustomTag("tagE", { id: "6" });
-    const test7 = test3.dangerouslyAttachCustomTag("tagB", { id: "7" });
-    const test8 = test4.dangerouslyAttachCustomTag("tagE", "content 8", {
+    const test1 = vast.attachCustomTag("tagA", { id: "1" });
+    const test2 = test1.attachCustomTag("tagB", { id: "2" });
+    const test3 = test1.attachCustomTag("tagC", { id: "3" });
+    const test4 = test2.attachCustomTag("tagC", { id: "4" });
+    const test5 = test2.attachCustomTag("tagD", { id: "5" });
+    const test6 = test3.attachCustomTag("tagE", { id: "6" });
+    const test7 = test3.attachCustomTag("tagB", { id: "7" });
+    const test8 = test4.attachCustomTag("tagE", "content 8", {
       id: "8"
     });
-    const test9 = test4.dangerouslyAttachCustomTag("tagD", "content 9", {
+    const test9 = test4.attachCustomTag("tagD", "content 9", {
       id: "9"
     });
 
+    expect(vast.get()).toEqual([vast]);
+    expect(vast.get(undefined, true)).toEqual([vast]);
+    expect(vast.get(undefined, false)).toEqual([vast]);
+    expect(vast.get([])).toEqual([vast]);
     expect(vast.get(["tagA"])).toEqual([test1]);
     expect(vast.get(["tagE"])).toEqual([test8, test6]);
     expect(test2.get(["tagE"], false)).toEqual([test8]);
+    expect(vast.get(["tagC", "tagE"])).toEqual([test8, test6]);
     expect(test2.get(["tagE"])).toEqual([test8, test6]);
     expect(vast.get(["tagD"])).toEqual([test9, test5]);
     expect(test3.get(["tagB"], false)).toEqual([test7]);

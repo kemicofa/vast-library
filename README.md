@@ -238,16 +238,12 @@ VastElement.attachValidTag(content);
 VastElement.attachValidTag(attributes);
 VastElement.attachValidTag(content, attributes);
 
-// dangerouslyAttachCustomTag
-// dangerouslyAddCustomTag
+// attachCustomTag
+// addCustomTag
 // attach or add wathever Tag you need, usefull for <Extensions> childs
 // name is the <Tag> you want, cannot be validated
-const child = VastElement.dangerouslyAttachCustomTag(
-  tagName,
-  content,
-  attributes
-);
-const self = VastElement.dangerouslyAddCustomTag(tagName, content, attributes);
+const child = VastElement.attachCustomTag(tagName, content, attributes);
+const self = VastElement.addCustomTag(tagName, content, attributes);
 
 // and: can be called on every object to return the parent tag
 const father = VastElement.and();

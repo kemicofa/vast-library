@@ -28,7 +28,7 @@ describe("parser fetch / NODE.js", () => {
   test("should parse a vast and it's wrappers", done => {
     const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
     parser.parseAsync(p => {
-      expect(p.get(["Impression"], "content")).toEqual([
+      expect(p.getContents(["Impression"])).toEqual([
         "impression url wrapper 1",
         "impression url wrapper 2",
         "impression url wrapper 3",

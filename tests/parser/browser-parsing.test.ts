@@ -61,7 +61,7 @@ if (process.env.RUN_PUPPETEER_TESTS === "true") {
       const result = await evalCode(`
         const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
         parser.parseSync();
-        window.result = parser.get(['Impression'], 'content');
+        window.result = parser.getContents(['Impression']);
       `);
 
       expect(interceptedCalls).toBe(4);
@@ -78,7 +78,7 @@ if (process.env.RUN_PUPPETEER_TESTS === "true") {
         window.result;
         const parser = new VastParser("http://vasts/minimal_wrapper_1.xml");
         parser.parseAsync(() => {
-          window.result = parser.get(['Impression'], 'content');
+          window.result = parser.getContents(['Impression']);
           save();
         });
       `);

@@ -20,9 +20,9 @@ export function buildVast(current: Element, currentTag: VastElement<any>) {
       let currentChild: VastElement<any>;
       for (let i = 0; i < current.elements.length; i++) {
         const currentTmp: Element = current.elements[i];
-        // TODO refacto dangerouslyAttachCustomTag from real tag for better integration
+        // TODO refacto attachCustomTag from real tag for better integration
         // and fallback on dangerous
-        currentChild = currentTag.dangerouslyAttachCustomTag(
+        currentChild = currentTag.attachCustomTag(
           currentTmp.name,
           String(currentTmp.attributes)
         );

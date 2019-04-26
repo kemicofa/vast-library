@@ -163,19 +163,19 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   }
 
   // > Allow adding custom XML Tag and return it, usefull for <Extensions>
-  // * dangerouslyAttachCustomTag(tagName: string, content: string): VastElement
-  // * dangerouslyAttachCustomTag(tagName: string, attributes: Object): VastElement
-  // * dangerouslyAttachCustomTag(tagName: string, content: string, attributes: Object): VastElement
-  public dangerouslyAttachCustomTag(
+  // * attachCustomTag(tagName: string, content: string): VastElement
+  // * attachCustomTag(tagName: string, attributes: Object): VastElement
+  // * attachCustomTag(tagName: string, content: string, attributes: Object): VastElement
+  public attachCustomTag(
     tagName: string,
     content?: string,
     attributes?: AttributeObject
   ): VastElement<this>;
-  public dangerouslyAttachCustomTag(
+  public attachCustomTag(
     tagName: string,
     attributes?: AttributeObject
   ): VastElement<this>;
-  public dangerouslyAttachCustomTag(
+  public attachCustomTag(
     tagName: string,
     contentOrAttributes: AttributeObject | string,
     attributesIfContent?: AttributeObject
@@ -193,26 +193,23 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   }
 
   // > Allow adding custom XML Tag and return self, usefull for <Extensions>
-  // * dangerouslyAddCustomTag(tagName: string, content: string): VastElement
-  // * dangerouslyAddCustomTag(tagName: string, attributes: Object): VastElement
-  // * dangerouslyAddCustomTag(tagName: string, content: string, attributes: Object): VastElement
-  public dangerouslyAddCustomTag(
+  // * addCustomTag(tagName: string, content: string): VastElement
+  // * addCustomTag(tagName: string, attributes: Object): VastElement
+  // * addCustomTag(tagName: string, content: string, attributes: Object): VastElement
+  public addCustomTag(
     tagName: string,
     content: string,
     attributes?: AttributeObject
   ): this;
-  public dangerouslyAddCustomTag(
-    tagName: string,
-    attributes?: AttributeObject
-  ): this;
-  public dangerouslyAddCustomTag(
+  public addCustomTag(tagName: string, attributes?: AttributeObject): this;
+  public addCustomTag(
     tagName: string,
     contentOrAttributes?: AttributeObject | string,
     attributesIfContent?: AttributeObject
   ): this {
-    return this.dangerouslyAttachCustomTag(
+    return this.attachCustomTag(
       tagName,
-      // allow fallback on dangerouslyAttachCustomTag overload
+      // allow fallback on attachCustomTag overload
       contentOrAttributes as any,
       attributesIfContent
     ).and();
@@ -307,22 +304,25 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
 
   // > return an array of all childs find recursively at "arrayOfNames" path in the hierarchy
   // * getChilds(arrayOfNames: Array<string>, fromRoot: boolean = true): Array<VastElement>
-  public get(arrayOfNames = [], fromRoot = true): Array<VastElement<any>> {
-    if (arrayOfNames.length === 0) {
+  public get(
+    arrayOfTagNames: /* PossibleTags[] */ string[] = [],
+    fromRoot: boolean = true
+  ): Array<VastElement<any>> {
+    if (arrayOfTagNames.length === 0) {
       return [this];
     }
     const findedNodes: any[] = [];
     const node = fromRoot ? this.getRoot() : this;
     Object.keys(node.childs).forEach(key => {
       const child = node.childs[key];
-      if (child.name === arrayOfNames[0]) {
-        if (arrayOfNames.length === 1) {
+      if (child.name === arrayOfTagNames[0]) {
+        if (arrayOfTagNames.length === 1) {
           findedNodes.push(child);
         } else {
-          findedNodes.push(child.get(arrayOfNames.slice(1), false));
+          findedNodes.push(child.get(arrayOfTagNames.slice(1), false));
         }
       } else {
-        findedNodes.push(child.get(arrayOfNames, false));
+        findedNodes.push(child.get(arrayOfTagNames, false));
       }
     });
     return flatten(findedNodes);

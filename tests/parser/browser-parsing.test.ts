@@ -1,4 +1,4 @@
-// tslint:disable:no-eval no-console
+// tslint:disable:no-eval
 import * as fs from "fs-extra";
 import * as path from "path";
 import { Request as PuppeteerRequest } from "puppeteer";

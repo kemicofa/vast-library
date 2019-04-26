@@ -148,13 +148,17 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
     return this.and().and();
   }
 
-  // > turn element content into cdata. return the current element
+  // > force element content into cdata. return the current element
   // * cdata(): VastElement
   public cdata(): this {
     this.cdataThisOne = true;
-    this.childs.forEach(c => {
-      c.cdata();
-    });
+    return this;
+  }
+
+  // > force element content into text. return the current element
+  // * text(): VastElement
+  public text(): this {
+    this.cdataThisOne = false;
     return this;
   }
 

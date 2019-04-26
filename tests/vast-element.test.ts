@@ -46,6 +46,7 @@ describe("VAST Element", () => {
   });
   test("should correctly return all attrs", () => {
     vast = new VastElement("name", null, { attrs: "all" }, { cool: "ok" });
+    expect(vast.getAttrs()).toEqual({ cool: "ok" });
     expect(vast.getValidAttrs()).toEqual({ cool: "ok" });
   });
   test("should correctly return only valid attrs", () => {

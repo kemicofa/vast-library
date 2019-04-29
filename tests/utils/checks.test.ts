@@ -1,4 +1,4 @@
-import { isNull } from "../../src/utils/checks";
+import { isNull } from "../../common/utils/checks";
 
 describe("checks", () => {
   test("should find null or undefined elements", () => {

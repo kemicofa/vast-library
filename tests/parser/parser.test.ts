@@ -1,5 +1,5 @@
-import VastParser from "../../src/parser/index";
-import { createVastWithBuilder } from "../../src/utils/vast";
+import { createVastWithBuilder } from "../../common/utils/vast";
+import VastParser from "../../parser";
 
 import * as fs from "fs-extra";
 import * as path from "path";

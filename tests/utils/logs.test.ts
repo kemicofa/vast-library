@@ -1,5 +1,5 @@
 // tslint:disable:no-console
-import { logError, logWarn, warnOrThrow } from "../../src/utils/logs";
+import { logError, logWarn, warnOrThrow } from "../../common/utils/logs";
 
 describe("logs", () => {
   const logWarnMock = jest.fn();

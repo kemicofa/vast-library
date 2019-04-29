@@ -6,7 +6,6 @@ david/
 generated/
 ressources/
 specs/
-src/
 tests/
 .gitignore
 .travis.yml

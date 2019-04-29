@@ -12,7 +12,7 @@ export function templateAPIFile(
 //  IMPORTANT: this file is generated, dont edit it
 /////////
 
-import V from '../../src/vast-element';
+import V from '../../common/vast-element';
 
 ${templateHelpers()}
 

@@ -1,8 +1,8 @@
 import { Element, xml2js } from "xml-js";
-import { logError } from "../src/utils/logs";
-import { validateNext } from "../src/utils/validate-node";
-import { buildVast } from "../src/utils/vast";
-import VastElement from "../src/vast-element";
+import { logError } from "../common/utils/logs";
+import { validateNext } from "../common/utils/validate-node";
+import { buildVast } from "../common/utils/vast";
+import VastElement from "../common/vast-element";
 
 import { vastValidator2_0 } from "../generated/api/vast2_0-validator";
 import { vastValidator3_0 } from "../generated/api/vast3_0-validator";

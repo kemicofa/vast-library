@@ -41,7 +41,7 @@ export function getArgsDocTemplate(hasContent, hasAttrs, attrs) {
 export function asyncGetVastElementDoc(callback) {
   const methods = [];
   const lineReader = require("readline").createInterface({
-    input: fs.createReadStream("./src/vast-element.ts")
+    input: fs.createReadStream("./common/vast-element.ts")
   });
   let commentsOpen = false;
   lineReader.on("line", line => {

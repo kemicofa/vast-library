@@ -1,4 +1,4 @@
-import { hasCDATA, stripCDATA } from "../../src/utils/string";
+import { hasCDATA, stripCDATA } from "../../common/utils/string";
 
 describe("string", () => {
   test("should correctly handle string without CDATA", () => {

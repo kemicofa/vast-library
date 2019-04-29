@@ -1,4 +1,4 @@
-import VastElement, { VastElementRoot } from "../src/vast-element";
+import VastElement, { VastElementRoot } from "../common/vast-element";
 
 const testOptions = {
   logWarn: false,

@@ -6,7 +6,7 @@ import { NO_DIFF_MESSAGE } from "jest-diff/build/constants";
 import * as path from "path";
 import "tsify";
 import "../@types/globals.type"; // do not compile without, don't ask me why
-import { v2 } from "../src/builder";
+import { v2 } from "../builder";
 
 function assertEqual(base, expected) {
   const out = diff(base.trim(), expected.trim());

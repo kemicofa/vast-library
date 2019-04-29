@@ -46,5 +46,5 @@
     // "alwaysStrict": true,
     // "strictNullChecks": true, "builder", "validator", "parser"
   },
-  "include": ["src", "builder", "validator", "parser", "generated", "@types"]
+  "include": ["common", "builder", "validator", "parser", "generated", "@types"]
 }

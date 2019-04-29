@@ -7,8 +7,8 @@
   "engines": {
     "node": ">= 8"
   },
-  "main": "build/src/index.js",
-  "types": "build/@types/globals.type.d.ts",
+  "main": "common/index.js",
+  "types": "@types/globals.type.d.ts",
   "scripts": {
     "start": "open ./coverage/lcov-report/index.html",
     "build": "yarn build-api",
@@ -22,9 +22,9 @@
     "build-v4": "ts-node ./bin/build.ts 4_0",
     "build-v4_1": "ts-node ./bin/build.ts 4_1",
     "clean-fixtures": "rimraf ./tests/**/fixtures/*.xml",
-    "clean": "rimraf ./build ./generated && rimraf (common|builder|parser|validator)/**/*.(js*|d.ts)",
+    "clean": "rimraf ./build ./generated && tsc --build --clean",
     "depcheck": "depcheck . --ignores=\"@types/*,puppeteer,jest-puppeteer\" --ignore-bin-package=true --skip-missing=true",
-    "circular-dependencies": "madge --circular ./src",
+    "circular-dependencies": "madge --circular ./common ./builder ./parser ./validator",
     "precommit": "lint-staged"
   },
   "lint-staged": {

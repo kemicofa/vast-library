@@ -2,7 +2,7 @@ import * as fs from "fs-extra";
 import * as nock from "nock";
 import * as path from "path";
 
-import VastParser from "../../src/parser";
+import VastParser from "../../parser";
 
 function getFileContent(fixturePath: string) {
   const fixtureFile = path.join(__dirname, "vasts", fixturePath);

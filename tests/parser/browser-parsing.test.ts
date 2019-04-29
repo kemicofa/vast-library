@@ -36,7 +36,7 @@ if (process.env.RUN_PUPPETEER_TESTS === "true") {
 
     beforeAll(async () => {
       jest.setTimeout(30000);
-      const scriptPath = path.join(__dirname, "../../src/parser/index.ts");
+      const scriptPath = path.join(__dirname, "../../common/parser/index.ts");
       scriptToInject = await compileScript(scriptPath, ["VastParser"]);
     });
 

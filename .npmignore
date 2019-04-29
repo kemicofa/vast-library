@@ -1,18 +1,18 @@
-.vscode/
-@types/
-bin/
-coverage/
-david/
-generated/
-ressources/
-specs/
-src/
-tests/
-.gitignore
-.travis.yml
-.whitesource
-README.md
-tsconfig.json
-tslint.json
-try.*
-yarn.lock
+# .vscode/
+# @types/
+# bin/
+# coverage/
+# david/
+# generated/
+# ressources/
+# specs/
+# src/
+# tests/
+# .gitignore
+# .travis.yml
+# .whitesource
+# README.md
+# tsconfig.json
+# tslint.json
+# try.*
+# yarn.lock

@@ -1,19 +1,19 @@
-[![Build Status](https://travis-ci.org/DavidBabel/vast-builder.svg?branch=master)](https://travis-ci.org/DavidBabel/vast-builder)
-[![codecov](https://codecov.io/gh/DavidBabel/vast-builder/branch/master/graph/badge.svg)](https://codecov.io/gh/DavidBabel/vast-builder)
+[![Build Status](https://travis-ci.org/DavidBabel/vast-library.svg?branch=master)](https://travis-ci.org/DavidBabel/vast-library)
+[![codecov](https://codecov.io/gh/DavidBabel/vast-library/branch/master/graph/badge.svg)](https://codecov.io/gh/DavidBabel/vast-library)
 
-[![npm](http://img.shields.io/npm/v/vast-builder.svg)](https://www.npmjs.com/package/vast-builder)
-[![License](https://img.shields.io/npm/l/vast-builder.svg)](LICENSE)
-[![Downloads/month](https://img.shields.io/npm/dm/vast-builder.svg)](http://www.npmtrends.com/vast-builder)
+[![npm](http://img.shields.io/npm/v/vast-library.svg)](https://www.npmjs.com/package/vast-library)
+[![License](https://img.shields.io/npm/l/vast-library.svg)](LICENSE)
+[![Downloads/month](https://img.shields.io/npm/dm/vast-library.svg)](http://www.npmtrends.com/vast-library)
 
 <!-- [![Package Quality](http://npm.packagequality.com/badge/vast-project.png)](http://packagequality.com/#?package=vast-project) -->
 
-# vast-builder
+# vast-library
 
-<img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
+<img src="https://github.com/DavidBabel/vast-library/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
 
 An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3, VAST4 and VAST4.1
 
-<img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/vast-demo.gif?raw=true" alt="app demo" />
+<img src="https://github.com/DavidBabel/vast-library/blob/2.0.2/ressources/vast-demo.gif?raw=true" alt="app demo" />
 
 Main features are :
 
@@ -30,8 +30,8 @@ Why is it the best ? 😀 :
 - for both browser and node
 - can fetch sync or async
 - fully maintained
-- 100% test coverage, including stress test and memory leak test [see](https://codecov.io/github/DavidBabel/vast-builder/)
-- build directly on top of the VAST documentation [see](https://github.com/DavidBabel/vast-builder/tree/master/specs)
+- 100% test coverage, including stress test and memory leak test [see](https://codecov.io/github/DavidBabel/vast-library/)
+- build directly on top of the VAST documentation [see](https://github.com/DavidBabel/vast-library/tree/master/specs)
 - extermly fast, without any native dependancy
 - The parser beats the [dailymotion vast-client](https://www.npmjs.com/package/vast-client), because the code is not maintained manually, it's generated, so always up to date.
 - The builder and the validator are always up to date for the same reasons.
@@ -48,10 +48,10 @@ It requires node 8 or above.
 
 ```bash
 # with npm
-npm i vast-builder --save
+npm i vast-library --save
 
 # with yarn
-yarn add vast-builder
+yarn add vast-library
 ```
 
 ### Import what you need
@@ -59,18 +59,18 @@ yarn add vast-builder
 This library is compatible with both browser and node, so if you want to save some import size, it is split in three parts :
 
 ```bash
-import VastParser from "vast-builder/parser";
-import VastValidator from "vast-builder/validator";
-import * as VastBuilder from "vast-builder/builder";
+import VastParser from "vast-library/parser";
+import VastValidator from "vast-library/validator";
+import * as VastBuilder from "vast-library/builder";
 // or
-import { v2, v3, v4, v4_1 } from "vast-builder/builder";
+import { v2, v3, v4, v4_1 } from "vast-library/builder";
 // ( this implementation helps tree-shacking )
 ```
 
 ### Validate existing VAST
 
 ```js
-const { validate } = require("vast-builder");
+const { validate } = require("vast-library");
 
 // simply pass the vast string to validate
 const bool = validate(
@@ -91,7 +91,7 @@ const bool = validate(
 ### Create new VAST
 
 ```js
-const createVast = import "vast-builder/builder";
+const createVast = import "vast-library/builder";
 
 // vast1 is deprecated and not supported
 // options are optionnals
@@ -226,10 +226,10 @@ This package does no magic under the hood, the API is very redondant and always 
 
 Full APIs are availables here :
 
-- [APIv2](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast2_0.md)
-- [APIv3](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast3_0.md)
-- [APIv4](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast4_0.md)
-- [APIv4.1](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast4_1.md)
+- [APIv2](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast2_0.md)
+- [APIv3](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast3_0.md)
+- [APIv4](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast4_0.md)
+- [APIv4.1](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast4_1.md)
 
 ### Common Node API
 
@@ -347,7 +347,7 @@ Thinks to check in the next commit if the result is still valid.
 
 ### Stress test
 
-You can clone this project to compare performance between this package and a native based one (vast-xml) : https://github.com/DavidBabel/vast-builder-stress-test
+You can clone this project to compare performance between this package and a native based one (vast-xml) : https://github.com/DavidBabel/vast-library-stress-test
 
 Actual mesured speed test for 50000 generated VAST is :
 
@@ -364,7 +364,7 @@ MIT. Copyright (c) David Babel.
 
 Thanks for your gentle contribs :
 
-- [Arild](https://github.com/s1232) ( [#12](https://github.com/DavidBabel/vast-builder/pull/12) )
+- [Arild](https://github.com/s1232) ( [#12](https://github.com/DavidBabel/vast-library/pull/12) )
 
 **Donations:**
 

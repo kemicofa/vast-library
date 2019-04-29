@@ -1,4 +1,3 @@
-import * as request from "request";
 import { Element, xml2js } from "xml-js";
 import VastElement from "../vast-element";
 
@@ -73,12 +72,12 @@ function fetchUrl({
     throw new Error(`${url} was not found`);
   } else if (isNode) {
     // tslint:disable:no-console
-    request(url, (error, response, body) => {
-      if (error) {
-        fail();
-      }
-      loadCallback(body);
-    });
+    // request(url, (error, response, body) => {
+    //   if (error) {
+    //     fail();
+    //   }
+    //   loadCallback(body);
+    // });
   } else {
     throw new Error("Not supported environment");
   }

@@ -1,7 +1,9 @@
 import * as builder from "../builder";
+import * as parser from "../parser";
+import * as validator from "../validator";
 
-// TODO replace with librarie name
-// tslint:disable-next-line
-console.warn("DEPRECATION WARNING: please use the new import method, see doc.");
-
-export default builder;
+export default {
+  VastBuilder: builder,
+  VastParser: parser,
+  VastValidator: validator
+};

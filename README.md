@@ -27,6 +27,8 @@ Why is it the best ? 😀 :
 
 - written in typescript
 - made by developers for developers
+- for both browser and node
+- can fetch sync or async
 - fully maintained
 - 100% test coverage, including stress test and memory leak test [see](https://codecov.io/github/DavidBabel/vast-builder/)
 - build directly on top of the VAST documentation [see](https://github.com/DavidBabel/vast-builder/tree/master/specs)

@@ -35,7 +35,9 @@
     // "skipLibCheck": true,
     "outDir": "build/",
     "target": "es5",
-    "sourceMap": true
+    "sourceMap": true,
+    "module": "umd",
+    "moduleResolution": "node"
     // "forceConsistentCasingInFileNames": true,
     // "noImplicitReturns": true,
     // "strict": true,

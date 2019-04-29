@@ -19,20 +19,22 @@ Main features are :
 
 <!-- TODO add links to features -->
 
-- validate a VAST from string input
-- awesome API to create 100% iab valid VAST 2, 3, 4 & 4.1
-- validate created VAST
+- VAST Parser fully yp to date
+- VAST Builder: with an awesome API to create 100% iab valid VAST 2, 3, 4 & 4.1
+- VAST Validation
 
-Why is it the best ? :
+Why is it the best ? 😀 :
 
+- written in typescript
 - made by developers for developers
 - fully maintained
 - 100% test coverage, including stress test and memory leak test [see](https://codecov.io/github/DavidBabel/vast-builder/)
-- build directly on top of the documentation [see](https://github.com/DavidBabel/vast-builder/tree/master/specs)
+- build directly on top of the VAST documentation [see](https://github.com/DavidBabel/vast-builder/tree/master/specs)
 - extermly fast, without any native dependancy
-- full JSdoc for functionnal intellisense autocomplete (including params)
+- The parser beats the [dailymotion vast-client](https://www.npmjs.com/package/vast-client), because the code is not maintained manually, it's generated, so always up to date.
+- The builder and the validator are always up to date for the same reasons.
 
-with only **one** stand alone dependance.
+with only **one** stand alone dependancy.
 
 All APIs are directly generated on top of standard IAB specifications documents : https://www.iab.com/vast/
 
@@ -48,6 +50,19 @@ npm i vast-builder --save
 
 # with yarn
 yarn add vast-builder
+```
+
+### Import what you need
+
+This library is compatible with both browser and node, so if you want to save some import size, it is split in three parts :
+
+```bash
+import VastParser from "vast-builder/parser";
+import VastValidator from "vast-builder/validator";
+import * as VastBuilder from "vast-builder/builder";
+// or
+import { v2, v3, v4, v4_1 } from "vast-builder/builder";
+// ( this implementation helps tree-shacking )
 ```
 
 ### Validate existing VAST
@@ -74,7 +89,7 @@ const bool = validate(
 ### Create new VAST
 
 ```js
-const createVast = require("vast-builder");
+const createVast = import "vast-builder/builder";
 
 // vast1 is deprecated and not supported
 // options are optionnals

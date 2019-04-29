@@ -1,4 +1,4 @@
-import * as builder from "./builder";
+import * as builder from "../builder";
 
 // TODO replace with librarie name
 // tslint:disable-next-line

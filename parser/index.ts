@@ -1,12 +1,12 @@
 import * as flatten from "array-flatten";
 import { isNode } from "browser-or-node";
-import { isNull } from "../utils/checks";
-import { warnOrThrow } from "../utils/logs";
+import { isNull } from "../src/utils/checks";
+import { warnOrThrow } from "../src/utils/logs";
 import {
   downloadVastAndWrappersAsync,
   downloadVastAndWrappersSync
-} from "../utils/vast";
-import VastElement from "../vast-element";
+} from "../src/utils/vast";
+import VastElement from "../src/vast-element";
 
 type VastElements = Array<VastElement<any>>;
 

@@ -3,3 +3,15 @@ coverage/
 try*
 *.log
 build
+common/**/*.js
+common/**/*.js.map
+common/**/*.d.ts
+builder/**/*.js
+builder/**/*.js.map
+builder/**/*.d.ts
+parser/**/*.js
+parser/**/*.js.map
+parser/**/*.d.ts
+validator/**/*.js
+validator/**/*.js.map
+validator/**/*.d.ts

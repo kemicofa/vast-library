@@ -33,7 +33,6 @@
     "declaration": true,
     "baseUrl": ".",
     // "skipLibCheck": true,
-    "outDir": "build/",
     "target": "es5",
     "sourceMap": true,
     "module": "umd",
@@ -45,7 +44,7 @@
     // "noImplicitAny": true,
     // "noImplicitThis": true,
     // "alwaysStrict": true,
-    // "strictNullChecks": true
+    // "strictNullChecks": true, "builder", "validator", "parser"
   },
-  "include": ["src", "generated", "@types"]
+  "include": ["src", "builder", "validator", "parser", "generated", "@types"]
 }

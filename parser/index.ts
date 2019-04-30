@@ -72,14 +72,15 @@ export default class VastParser {
     return this.get(arrayOfTagNames, attribute);
   }
 
+  // TODO turn into private
   // > return an array all childs find at "arrayOfTagNames" path in the hierarchy
   // * getChilds(arrayOfTagNames: Array<string>, details: 'content' | string): Array<VastElement>
-  private get(arrayOfTagNames: /* PossibleTag[] */ string[]): VastElements;
-  private get(
+  public get(arrayOfTagNames: /* PossibleTag[] */ string[]): VastElements;
+  public get(
     arrayOfTagNames: /* PossibleTag[] */ string[],
     details: "content" | /* "PossibleAttrs" */ string
   ): string[];
-  private get(
+  public get(
     arrayOfTagNames: /* PossibleTag[] */ string[],
     details?: "content" | /* "PossibleAttrs" */ string
   ) {

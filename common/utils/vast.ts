@@ -63,22 +63,19 @@ function fetchUrl({
       fetchReq.open("GET", url, true);
       fetchReq.onerror = fail;
       fetchReq.onload = res => {
-        // tslint:disable-next-line:no-console
-        console.log(res);
-        // loadCallback(res.responseText);
+        loadCallback((res as any).responseText);
       };
       fetchReq.send();
     }
     throw new Error(`${url} was not found`);
   } else if (isNode) {
-    // tslint:disable:no-console
-    const request = require("request");
-    request(url, (error, response, body) => {
-      if (error) {
-        fail();
-      }
-      loadCallback(body);
-    });
+    // const request = require("request");
+    // request(url, (error, response, body) => {
+    //   if (error) {
+    //     fail();
+    //   }
+    //   loadCallback(body);
+    // });
   } else {
     throw new Error("Not supported environment");
   }

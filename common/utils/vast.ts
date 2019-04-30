@@ -72,12 +72,13 @@ function fetchUrl({
     throw new Error(`${url} was not found`);
   } else if (isNode) {
     // tslint:disable:no-console
-    // request(url, (error, response, body) => {
-    //   if (error) {
-    //     fail();
-    //   }
-    //   loadCallback(body);
-    // });
+    const request = require("request");
+    request(url, (error, response, body) => {
+      if (error) {
+        fail();
+      }
+      loadCallback(body);
+    });
   } else {
     throw new Error("Not supported environment");
   }

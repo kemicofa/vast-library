@@ -13,7 +13,7 @@ const xmlDeclaration = {
 };
 
 interface AttributeObject {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 interface VastElementInfos {
   attrs?: Array<string | any> | "all";
@@ -33,19 +33,6 @@ export default class VastElement<VastElementParent extends VastElement<any>> {
   public options: VastBuilderOptions;
   public cdataThisOne: boolean;
 
-  constructor(
-    name: string,
-    parent: VastElementParent,
-    baseInfos: VastElementInfos,
-    content: string,
-    attrs?: AttributeObject
-  );
-  constructor(
-    name?: string,
-    parent?: VastElementParent,
-    baseInfos?: VastElementInfos,
-    attrs?: AttributeObject
-  );
   constructor(
     name: string = "root",
     parent: VastElementParent = null,

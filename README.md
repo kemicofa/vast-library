@@ -1,19 +1,19 @@
-[![Build Status](https://travis-ci.org/DavidBabel/vast-builder.svg?branch=master)](https://travis-ci.org/DavidBabel/vast-builder)
-[![codecov](https://codecov.io/gh/DavidBabel/vast-builder/branch/master/graph/badge.svg)](https://codecov.io/gh/DavidBabel/vast-builder)
+[![Build Status](https://travis-ci.org/DavidBabel/vast-library.svg?branch=master)](https://travis-ci.org/DavidBabel/vast-library)
+[![codecov](https://codecov.io/gh/DavidBabel/vast-library/branch/master/graph/badge.svg)](https://codecov.io/gh/DavidBabel/vast-library)
 
+[![npm](http://img.shields.io/npm/v/vast-library.svg)](https://www.npmjs.com/package/vast-library)
+[![License](https://img.shields.io/npm/l/vast-library.svg)](LICENSE)
+[![Downloads/month](https://img.shields.io/npm/dm/vast-library.svg)](http://www.npmtrends.com/vast-library)
 
-[![npm](http://img.shields.io/npm/v/vast-builder.svg)](https://www.npmjs.com/package/vast-builder)
-[![License](https://img.shields.io/npm/l/vast-builder.svg)](LICENSE)
-[![Downloads/month](https://img.shields.io/npm/dm/vast-builder.svg)](http://www.npmtrends.com/vast-builder)
 <!-- [![Package Quality](http://npm.packagequality.com/badge/vast-project.png)](http://packagequality.com/#?package=vast-project) -->
 
-# vast-builder
+# vast-library
 
-<img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
+<img src="https://github.com/DavidBabel/vast-library/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
 
 An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4
 
-<img src="https://github.com/DavidBabel/vast-builder/blob/2.0.2/ressources/vast-demo.gif?raw=true" alt="app demo" />
+<img src="https://github.com/DavidBabel/vast-library/blob/2.0.2/ressources/vast-demo.gif?raw=true" alt="app demo" />
 
 Main features are :
 
@@ -25,8 +25,8 @@ Why is it the best ? :
 
 - made by developers for developers
 - fully maintained
-- 100% test coverage, including stress test and memory leak test [see](https://codecov.io/github/DavidBabel/vast-builder/)
-- build directly on top of the documentation [see](https://github.com/DavidBabel/vast-builder/tree/master/specs)
+- 100% test coverage, including stress test and memory leak test [see](https://codecov.io/github/DavidBabel/vast-library/)
+- build directly on top of the documentation [see](https://github.com/DavidBabel/vast-library/tree/master/specs)
 - extermly fast, without any native dependancy
 - full JSdoc for functionnal intellisense autocomplete (including params)
 
@@ -42,16 +42,16 @@ It requires node 8 or above.
 
 ```bash
 # with npm
-npm i vast-builder --save
+npm i vast-library --save
 
 # with yarn
-yarn add vast-builder
+yarn add vast-library
 ```
 
 ### Validate existing VAST
 
 ```js
-const { validate } = require('vast-builder');
+const { validate } = require("vast-library");
 
 // simply pass the vast string to validate
 const bool = validate(
@@ -64,15 +64,15 @@ const bool = validate(
 );
 ```
 
-| Option                | Default | Description |
-|:----------------------|:--------|:------------|
-| `logWarn`             | `false`  | Validation warning and error will be printed to stderr. |
-| `throwOnError`        | `false` | Validation errors will now throw an exception. |
+| Option         | Default | Description                                             |
+| :------------- | :------ | :------------------------------------------------------ |
+| `logWarn`      | `false` | Validation warning and error will be printed to stderr. |
+| `throwOnError` | `false` | Validation errors will now throw an exception.          |
 
 ### Create new VAST
 
 ```js
-const createVast = require('vast-builder');
+const createVast = require("vast-library");
 
 // vast1 is deprecated and not supported
 const vast2 = createVast.v2(options);
@@ -86,34 +86,36 @@ Here is a sample VAST3 Ad :
 
 ```js
 const vast3 = createVast.v3();
-vast3.attachAd()
+vast3
+  .attachAd()
   .attachInLine()
-  .addImpression('imp_link')
-  .addAdSystem('Society')
-  .addAdTitle('Title')
+  .addImpression("imp_link")
+  .addAdSystem("Society")
+  .addAdTitle("Title")
   .attachCreatives()
   .attachCreative()
   .attachLinear()
   .attachTrackingEvents()
-  .attachTracking('content',{event:'start'}).back()
-  .addDuration('00:30:00')
+  .attachTracking("content", { event: "start" })
+  .back()
+  .addDuration("00:30:00")
   .attachMediaFiles()
-  .attachMediaFile('my_video', {
-    delivery: 'streaming',
-    type: 'video/mp4',
-    width: '600',
-    height: '400'
+  .attachMediaFile("my_video", {
+    delivery: "streaming",
+    type: "video/mp4",
+    width: "600",
+    height: "400"
   })
   .back()
   .attachIcons()
   .attachIcon({
-    program: 'my_program',
-    width: '50',
-    height: '50',
-    xPosition: 'bottom',
-    yPosition: 'left'
+    program: "my_program",
+    width: "50",
+    height: "50",
+    xPosition: "bottom",
+    yPosition: "left"
   })
-  .attachStaticResource('ressource_link', {creativeType:'image/jpeg'})
+  .attachStaticResource("ressource_link", { creativeType: "image/jpeg" });
 
 const render = vast3.toXml();
 ```
@@ -157,9 +159,9 @@ You can also use intermediates objects, the result will be exactly the same :
 const vast3 = createVast.v3();
 const Ad = vast3.attachAd();
 const InLine = Ad.attachInLine();
-Inline.addImpression('imp_link');
-Inline.addAdSystem('Society');
-Inline.addAdTitle('Title');
+Inline.addImpression("imp_link");
+Inline.addAdSystem("Society");
+Inline.addAdTitle("Title");
 const Creatives = Inline.attachCreatives();
 // etc ...
 ```
@@ -176,21 +178,23 @@ As XML is a tree, in this API:
 Here is a demo with helping indentation :
 
 ```js
-  vast3.attachAd()                   // Ad
-    .attachInLine()                  //  Inline
-      .addImpression('imp_link')     //  Inline : add = same level
-      .addAdSystem('Society')        //  Inline
-      .attachCreatives()             //   Creatives : attach = lower level
-        .attachCreative()            //    Creative
-          .attachLinear()            //     Linear
-            .attachTrackingEvents()  //      TrackingEvents
-            .addTracking('s',        //       TrackingEvents
-              {event: 'start'}
-            )
-          .and()                     //     Linear : and = upper level
-          .addDuration('00:30:00')   //     Linear
-          .attachMediaFiles()        //      MediaFiles
-  // etc ...
+vast3
+  .attachAd() // Ad
+  .attachInLine() //  Inline
+  .addImpression("imp_link") //  Inline : add = same level
+  .addAdSystem("Society") //  Inline
+  .attachCreatives() //   Creatives : attach = lower level
+  .attachCreative() //    Creative
+  .attachLinear() //     Linear
+  .attachTrackingEvents() //      TrackingEvents
+  .addTracking(
+    "s", //       TrackingEvents
+    { event: "start" }
+  )
+  .and() //     Linear : and = upper level
+  .addDuration("00:30:00") //     Linear
+  .attachMediaFiles(); //      MediaFiles
+// etc ...
 ```
 
 ## API
@@ -201,9 +205,9 @@ This package does no magic under the hood, the API is very redondant and always 
 
 Full APIs are availables here :
 
-- [APIv2](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast2.md)
-- [APIv3](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast3.md)
-- [APIv4](https://github.com/DavidBabel/vast-builder/blob/master/build/doc/vast4.md)
+- [APIv2](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast2.md)
+- [APIv3](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast3.md)
+- [APIv4](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast4.md)
 
 ### Common Node API
 
@@ -233,8 +237,12 @@ VastElement.attachValidTag(content, attributes);
 // dangerouslyAddCustomTag
 // attach or add wathever Tag you need, usefull for <Extensions> childs
 // name is the <Tag> you want, cannot be validated
-const child = VastElement.dangerouslyAttachCustomTag(tagName, content, attributes);
-const self  = VastElement.dangerouslyAddCustomTag(tagName, content, attributes);
+const child = VastElement.dangerouslyAttachCustomTag(
+  tagName,
+  content,
+  attributes
+);
+const self = VastElement.dangerouslyAddCustomTag(tagName, content, attributes);
 
 // and: can be called on every object to return the parent tag
 const father = VastElement.and();
@@ -278,32 +286,32 @@ const xmlVast = VastElement.toXml();
 You can pass options to the `createVast.vX(options)` method.
 Availables options are :
 
-| Option                | Default | Description |
-|:----------------------|:--------|:------------|
-| `cdata`               | `true`  | Force all contents to use `<![CDATA[ ]]></a>` tags. |
-| `logWarn`             | `true`  | Validation warning and error will be printed to stderr. |
-| `throwOnError`        | `false` | Validation errors will now throw an exception. |
-| `validateOnBuild`     | `false` | Run a validation before build, usefull for development environment. |
-| `spaces`              | `2`     | Number of spaces to be used for indenting XML output. Passing characters like `' '` or `'\t'` are also accepted. |
+| Option            | Default | Description                                                                                                      |
+| :---------------- | :------ | :--------------------------------------------------------------------------------------------------------------- |
+| `cdata`           | `true`  | Force all contents to use `<![CDATA[ ]]></a>` tags.                                                              |
+| `logWarn`         | `true`  | Validation warning and error will be printed to stderr.                                                          |
+| `throwOnError`    | `false` | Validation errors will now throw an exception.                                                                   |
+| `validateOnBuild` | `false` | Run a validation before build, usefull for development environment.                                              |
+| `spaces`          | `2`     | Number of spaces to be used for indenting XML output. Passing characters like `' '` or `'\t'` are also accepted. |
 
 Following options are also available and inherited from awesome [xml-js](https://www.npmjs.com/package/xml-js) package :
 
-| Option                | Default | Description |
-|:----------------------|:--------|:------------|
-| `fullTagEmptyElement` | `false` | Whether to produce element without sub-elements as full tag pairs `<a></a>` rather than self closing tag `<a/>`. |
+| Option                | Default | Description                                                                                                                        |
+| :-------------------- | :------ | :--------------------------------------------------------------------------------------------------------------------------------- |
+| `fullTagEmptyElement` | `false` | Whether to produce element without sub-elements as full tag pairs `<a></a>` rather than self closing tag `<a/>`.                   |
 | `indentCdata`         | `false` | Whether to write CData in a new line and indent it. Will generate `<a>\n <![CDATA[foo]]></a>` instead of `<a><![CDATA[foo]]></a>`. |
-| `indentAttributes`    | `false` | Whether to print attributes across multiple lines and indent them (when `spaces` is not `0`). |
-| `ignoreDeclaration`   | `false` | Whether to ignore writing declaration directives of xml. For example, `<?xml?>` will be ignored. |
-| `ignoreInstruction`   | `false` | Whether to ignore writing processing instruction of xml. For example, `<?go there?>` will be ignored. |
-| `ignoreAttributes`    | `false` | Whether to ignore writing attributes of the elements. For example, `x="1"` in `<a x="1"></a>` will be ignored |
-| `ignoreComment`       | `false` | Whether to ignore writing comments of the elements. That is, no `<!--  -->` will be generated. |
-| `ignoreCdata`         | `false` | Whether to ignore writing CData of the elements. That is, no `<![CDATA[ ]]>` will be generated. |
-| `ignoreDoctype`       | `false` | Whether to ignore writing Doctype of the elements. That is, no `<!DOCTYPE >` will be generated. |
-| `ignoreText`          | `false` | Whether to ignore writing texts of the elements. For example, `hi` text in `<a>hi</a>` will be ignored. |
+| `indentAttributes`    | `false` | Whether to print attributes across multiple lines and indent them (when `spaces` is not `0`).                                      |
+| `ignoreDeclaration`   | `false` | Whether to ignore writing declaration directives of xml. For example, `<?xml?>` will be ignored.                                   |
+| `ignoreInstruction`   | `false` | Whether to ignore writing processing instruction of xml. For example, `<?go there?>` will be ignored.                              |
+| `ignoreAttributes`    | `false` | Whether to ignore writing attributes of the elements. For example, `x="1"` in `<a x="1"></a>` will be ignored                      |
+| `ignoreComment`       | `false` | Whether to ignore writing comments of the elements. That is, no `<!-- -->` will be generated.                                      |
+| `ignoreCdata`         | `false` | Whether to ignore writing CData of the elements. That is, no `<![CDATA[ ]]>` will be generated.                                    |
+| `ignoreDoctype`       | `false` | Whether to ignore writing Doctype of the elements. That is, no `<!DOCTYPE >` will be generated.                                    |
+| `ignoreText`          | `false` | Whether to ignore writing texts of the elements. For example, `hi` text in `<a>hi</a>` will be ignored.                            |
 
 ## Contribute
 
-All PR are welcome. This project and it's documentation are automatically generated from specs/*.yml files.
+All PR are welcome. This project and it's documentation are automatically generated from specs/\*.yml files.
 
 This command do all builds :
 
@@ -321,7 +329,7 @@ Thinks to check in the next commit if the result is still valid.
 
 ### Stress test
 
-You can clone this project to compare performance between this package and a native based one (vast-xml) : https://github.com/DavidBabel/vast-builder-stress-test
+You can clone this project to compare performance between this package and a native based one (vast-xml) : https://github.com/DavidBabel/vast-library-stress-test
 
 Actual mesured speed test for 50000 generated VAST is :
 
@@ -338,6 +346,6 @@ MIT. Copyright (c) David Babel.
 
 Thanks for your gentle contribs :
 
-- [Arild](https://github.com/s1232) ( [#12](https://github.com/DavidBabel/vast-builder/pull/12) )
+- [Arild](https://github.com/s1232) ( [#12](https://github.com/DavidBabel/vast-library/pull/12) )
 
 **Donations:** If you like this package, want it to be maintened and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.

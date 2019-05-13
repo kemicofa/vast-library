@@ -1,10 +1,10 @@
 {
-  "name": "vast-builder",
+  "name": "vast-library",
   "version": "0.0.0",
   "description": "An intuitive standard IAB Vast XML generation API. Complient with specifications Vast 2.0 / 3.0 / 4.0",
   "repository": {
     "type": "github",
-    "url": "https://github.com/DavidBabel/vast-builder"
+    "url": "https://github.com/DavidBabel/vast-library"
   },
   "keywords": [
     "ad",

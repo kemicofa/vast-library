@@ -26,7 +26,7 @@ describe('validate', () => {
     const yellow = '\x1b[33m';
     const red = '\x1b[31m';
     const reset = '\x1b[0m';
-    const intro = `${yellow}VAST-BUILDER ${red}ERROR${yellow}:${reset}`;
+    const intro = `${yellow}vast-library ${red}ERROR${yellow}:${reset}`;
 
     assert.isFalse(vastLib.validate(vastRaw, { logWarn: true }));
     expect(global.console.error).toHaveBeenCalledWith(

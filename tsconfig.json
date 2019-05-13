@@ -1,0 +1,50 @@
+// {
+//   "compilerOptions": {
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "baseUrl": ".",
+//     "jsx": "react",
+//     "module": "es2015",
+//     "moduleResolution": "node",
+//     "skipLibCheck": true,
+//     "outDir": "ts-build/",
+//     "paths": {
+//       "*": ["*", "node_modules/*"]
+//     },
+//     "target": "es5",
+//     "lib": ["dom", "es5", "scripthost", "es2018.promise"],
+//     "sourceMap": true,
+//     "importHelpers": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "noImplicitReturns": true,
+//     "strict": true,
+//     "noUnusedLocals": true,
+//     "noImplicitAny": true,
+//     "noImplicitThis": true,
+//     "alwaysStrict": true,
+//     "strictNullChecks": true
+//   },
+//   "include": ["formats", "common", "@types"]
+// }
+
+{
+  "compilerOptions": {
+    "paths": { "*": ["@types/*", "@types/modules/*"] },
+    "declaration": true,
+    "baseUrl": ".",
+    // "skipLibCheck": true,
+    "target": "es5",
+    "sourceMap": true,
+    // "module": "es6",
+    "moduleResolution": "node"
+    // "forceConsistentCasingInFileNames": true,
+    // "noImplicitReturns": true,
+    // "strict": true,
+    // "noUnusedLocals": true,
+    // "noImplicitAny": true,
+    // "noImplicitThis": true,
+    // "alwaysStrict": true,
+    // "strictNullChecks": true, "builder", "validator", "parser"
+  },
+  "include": ["common", "builder", "validator", "parser", "generated", "@types"]
+}

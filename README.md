@@ -14,30 +14,42 @@
 This library is in active development, but not stable (not fully tested yet).
 Until end of june 2019, please prefer use deprecated https://www.npmjs.com/package/vast-builder
 
+Status :
+
+- **Parser**: Working and ready for prod.
+- **Builder**: BETA, should work but still tests to do.
+- **Validator**: Not working yet.
+
 ## readme
 
 <img src="https://github.com/DavidBabel/vast-library/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
 
-An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4
+An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3, VAST4 and VAST4.1
 
 <img src="https://github.com/DavidBabel/vast-library/blob/2.0.2/ressources/vast-demo.gif?raw=true" alt="app demo" />
 
 Main features are :
 
-- validate a VAST from string input
-- awesome API to create 100% iab valid VAST 2, 3 & 4
-- validate created VAST
+<!-- TODO add links to features -->
 
-Why is it the best ? :
+- VAST Parser fully yp to date
+- VAST Builder: with an awesome API to create 100% iab valid VAST 2, 3, 4 & 4.1
+- VAST Validation
 
+Why is it the best ? 😀 :
+
+- written in typescript
 - made by developers for developers
+- for both browser and node
+- can fetch sync or async
 - fully maintained
 - 100% test coverage, including stress test and memory leak test [see](https://codecov.io/github/DavidBabel/vast-library/)
-- build directly on top of the documentation [see](https://github.com/DavidBabel/vast-library/tree/master/specs)
+- build directly on top of the VAST documentation [see](https://github.com/DavidBabel/vast-library/tree/master/specs)
 - extermly fast, without any native dependancy
-- full JSdoc for functionnal intellisense autocomplete (including params)
+- The parser beats the [dailymotion vast-client](https://www.npmjs.com/package/vast-client), because the code is not maintained manually, it's generated, so always up to date.
+- The builder and the validator are always up to date for the same reasons.
 
-with only **one** stand alone dependance.
+with only **one** stand alone dependancy.
 
 All APIs are directly generated on top of standard IAB specifications documents : https://www.iab.com/vast/
 
@@ -55,10 +67,25 @@ npm i vast-library --save
 yarn add vast-library
 ```
 
+### Import what you need
+
+This library is compatible with both browser and node, so if you want to save some import size, it is split in three parts :
+
+```bash
+import VastParser from "vast-library/parser";
+import VastValidator from "vast-library/validator";
+import * as VastBuilder from "vast-library/builder";
+// or
+import { v2, v3, v4, v4_1 } from "vast-library/builder";
+// ( this implementation helps tree-shacking )
+```
+
+A good treeshacking will save you some space.
+
 ### Validate existing VAST
 
 ```js
-const { validate } = require("vast-library");
+import VASTValidator from "vast-library/validator";
 
 // simply pass the vast string to validate
 const bool = validate(
@@ -79,12 +106,14 @@ const bool = validate(
 ### Create new VAST
 
 ```js
-const createVast = require("vast-library");
+import createVast from "vast-library/builder";
 
 // vast1 is deprecated and not supported
+// options are optionnals
 const vast2 = createVast.v2(options);
 const vast3 = createVast.v3(options);
 const vast4 = createVast.v4(options);
+const vast4_1 = createVast.v4_1(options);
 ```
 
 ### Sample
@@ -212,9 +241,16 @@ This package does no magic under the hood, the API is very redondant and always 
 
 Full APIs are availables here :
 
+<<<<<<< HEAD
+
+- [APIv2](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast2_0.md)
+- [APIv3](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast3_0.md)
+- [APIv4](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast4_0.md)
+- # [APIv4.1](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast4_1.md)
 - [APIv2](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast2.md)
 - [APIv3](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast3.md)
 - [APIv4](https://github.com/DavidBabel/vast-library/blob/master/build/doc/vast4.md)
+  > > > > > > > master
 
 ### Common Node API
 
@@ -240,16 +276,21 @@ VastElement.attachValidTag(content);
 VastElement.attachValidTag(attributes);
 VastElement.attachValidTag(content, attributes);
 
-// dangerouslyAttachCustomTag
-// dangerouslyAddCustomTag
+// attachCustomTag
+// addCustomTag
 // attach or add wathever Tag you need, usefull for <Extensions> childs
 // name is the <Tag> you want, cannot be validated
+<<<<<<< HEAD
+const child = VastElement.attachCustomTag(tagName, content, attributes);
+const self = VastElement.addCustomTag(tagName, content, attributes);
+=======
 const child = VastElement.dangerouslyAttachCustomTag(
   tagName,
   content,
   attributes
 );
 const self = VastElement.dangerouslyAddCustomTag(tagName, content, attributes);
+>>>>>>> master
 
 // and: can be called on every object to return the parent tag
 const father = VastElement.and();
@@ -268,8 +309,8 @@ const stringContent = VastElement.content;
 // content: return the raw attributes object
 const attributes = VastElement.attrs;
 
-// getAttrs: return sanitized attributes object (invalid attributes are removed)
-const attrsObject = VastElement.getAttrs();
+// getValidAttrs: return sanitized attributes object (invalid attributes are removed)
+const attrsObject = VastElement.getValidAttrs();
 
 // getChilds: return an array with childs filtered by "name"
 const childs = VastElement.getChilds(name);
@@ -354,5 +395,10 @@ MIT. Copyright (c) David Babel.
 Thanks for your gentle contribs :
 
 - [Arild](https://github.com/s1232) ( [#12](https://github.com/DavidBabel/vast-library/pull/12) )
+  <<<<<<< HEAD
 
-**Donations:** If you like this package, want it to be maintened and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.
+# **Donations:**
+
+> > > > > > > master
+
+If you like this package, want it to be maintened and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.

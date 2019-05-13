@@ -1,11 +1,103 @@
 {
   "name": "vast-library",
   "version": "0.0.0",
-  "description": "An intuitive standard IAB Vast XML generation API. Complient with specifications Vast 2.0 / 3.0 / 4.0",
+  "description": "An intuitive standard IAB Vast XML generation API. Complient with specifications Vast 2.0 / 3.0 / 4.0 / 4.1",
+  "author": "David Babel",
+  "thanks": "https://www.paypal.me/devilhunter/4",
+  "engines": {
+    "node": ">= 8"
+  },
+  "main": "common/index.js",
+  "browser": {
+    "./common/utils/fetch.js": "./common/utils/fetch.browser.js"
+  },
+  "types": "@types/globals.type.d.ts",
+  "scripts": {
+    "start": "open ./coverage/lcov-report/index.html",
+    "build": "npm-run-all clean build-api build-ts",
+    "clean": "npm-run-all clean-*",
+    "build-ts": "tsc",
+    "clean-ts": "tsc --build --clean",
+    "test": "RUN_PUPPETEER_TESTS=true jest --coverage",
+    "test:watch": "jest --watch",
+    "build-api": "npm-run-all build-v*",
+    "clean-api": "rimraf ./build ./generated",
+    "build-v2": "ts-node ./bin/build.ts 2_0",
+    "build-v3": "ts-node ./bin/build.ts 3_0",
+    "build-v4": "ts-node ./bin/build.ts 4_0",
+    "build-v4_1": "ts-node ./bin/build.ts 4_1",
+    "build-types": "ts-node ./bin/build-types.ts",
+    "delete-fixtures": "rimraf ./tests/**/fixtures/*.xml",
+    "depcheck": "depcheck . --ignores=\"@types/*,puppeteer,jest-puppeteer\" --ignore-bin-package=true --skip-missing=true",
+    "circular-dependencies": "madge --circular ./common ./builder ./parser ./validator",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "preset": "jest-puppeteer",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/generated/",
+      "/tests/"
+    ]
+  },
+  "dependencies": {
+    "array-flatten": "^2.1.2",
+    "browser-or-node": "^1.2.1",
+    "request": "^2.88.0",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "@airbnb/node-memwatch": "^1.0.2",
+    "@types/array-unique": "^0.3.0",
+    "@types/browserify": "^12.0.36",
+    "@types/expect-puppeteer": "^3.3.1",
+    "@types/fs-extra": "^5.1.0",
+    "@types/jest": "^24.0.12",
+    "@types/jest-environment-puppeteer": "^4.0.0",
+    "@types/js-yaml": "^3.12.1",
+    "@types/nock": "^10.0.2",
+    "@types/prettier": "^1.16.3",
+    "@types/puppeteer": "^1.12.4",
+    "@types/request": "^2.48.1",
+    "array-unique": "^0.3.2",
+    "browserify": "^16.2.3",
+    "codecov": "^3.4.0",
+    "depcheck": "^0.8.0",
+    "fs-extra": "^8.0.0",
+    "http-server": "^0.11.1",
+    "husky": "^2.2.0",
+    "jest": "^24.8.0",
+    "jest-puppeteer": "^4.1.1",
+    "js-yaml": "^3.13.1",
+    "lint-staged": "^8.1.6",
+    "madge": "^3.4.4",
+    "nock": "^10.0.6",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.17.0",
+    "puppeteer": "^1.15.0",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.1.0",
+    "tsify": "^4.0.1",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.5"
+  },
   "repository": {
     "type": "github",
     "url": "https://github.com/DavidBabel/vast-library"
   },
+  "license": "MIT",
   "keywords": [
     "ad",
     "ads",
@@ -29,54 +121,5 @@
     "wrapper",
     "standard",
     "api"
-  ],
-  "author": "David Babel",
-  "license": "MIT",
-  "thanks": "https://www.paypal.me/devilhunter/4",
-  "dependencies": {
-    "xml-js": "^1.6.7"
-  },
-  "engines": {
-    "node": ">= 8"
-  },
-  "main": "lib/index.js",
-  "scripts": {
-    "start": "open ./coverage/lcov-report/index.html",
-    "build": "yarn build-api",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
-    "build-api": "yarn clean && yarn build-v2 && yarn build-v3 && yarn build-v4",
-    "build-v2": "node ./bin/build.js 2",
-    "build-v3": "node ./bin/build.js 3",
-    "build-v4": "node ./bin/build.js 4",
-    "clean-fixtures": "rm -rf ./test/**/fixtures/*.xml",
-    "clean": "rm -rf ./build",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "**/*.{js,json}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "lib/*.{js}"
-    ]
-  },
-  "babel": {},
-  "devDependencies": {
-    "@airbnb/node-memwatch": "^1.0.2",
-    "@babel/core": "7.0.0-beta.40",
-    "@babel/preset-env": "^7.0.0-beta.40",
-    "chai": "^4.1.2",
-    "codecov": "latest",
-    "fs-extra": "^5.0.0",
-    "jest": "^22.2.2",
-    "js-yaml": "^3.10.0",
-    "lint-staged": "^7.2.0",
-    "prettier": "^1.14.0",
-    "sinon": "^4.3.0",
-    "sinon-chai": "^2.14.0"
-  }
+  ]
 }

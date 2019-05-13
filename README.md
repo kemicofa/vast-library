@@ -9,6 +9,13 @@
 
 # vast-library
 
+## notice
+
+This library is in active development, but not stable (not fully tested yet).
+Until end of june 2019, please prefer use deprecated https://www.npmjs.com/package/vast-builder
+
+## readme
+
 <img src="https://github.com/DavidBabel/vast-library/blob/2.0.2/ressources/iab-logo.png?raw=true" alt="IAB Logo" />
 
 An awesome library with great API which offer a complete support for IAB Video Ad Serving Template standard: VAST2, VAST3 and VAST4

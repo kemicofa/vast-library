@@ -145,7 +145,7 @@ describe("VastParser", () => {
     );
     mock.mockRestore();
   });
-  test.only("should trim spaces in CDATA fields", () => {
+  test("should trim spaces in CDATA fields", () => {
     parser = new VastParser();
     parser.addVastWithoutFetching(getFileContent("vast_with_spaces.xml"));
 

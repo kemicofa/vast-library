@@ -13,7 +13,7 @@ export function buildVast(current: Element, currentTag: VastElement<any>) {
     ) {
       const currentTmp = current.elements[0];
       const currentText = String(currentTmp.text || currentTmp.cdata);
-      currentTag.content = currentText;
+      currentTag.setContent(currentText);
     } else {
       let currentChild: VastElement<any>;
       for (let i = 0; i < current.elements.length; i++) {

@@ -17,7 +17,7 @@ interface FetchUrlAsyncOptions {
   retries?: number;
 }
 
-function fetchUrlSync({ url, retries = 3 }: FetchUrlSyncOptions) {
+function fetchUrlSync({ url, retries = 2 }: FetchUrlSyncOptions) {
   let attempts = 0;
 
   while (attempts++ < retries) {
@@ -35,7 +35,7 @@ function fetchUrlSync({ url, retries = 3 }: FetchUrlSyncOptions) {
   throw new Error(`${url} fetch failed after ${attempts} attempts`);
 }
 
-function fetchUrlAsync({ url, onError, onSuccess, retries = 3 }: FetchUrlAsyncOptions) {
+function fetchUrlAsync({ url, onError, onSuccess, retries = 2 }: FetchUrlAsyncOptions) {
   if (retries === 0) {
     onError(`${url} fetch failed after 3 attempts`);
     return;

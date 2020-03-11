@@ -93,6 +93,10 @@ export function downloadVastAndWrappersSync(
   return vastAndWrappers;
 }
 
+export function replaceMacros(vasturl: string, macrosToReplace: Macro[] = []): string{
+  return macrosToReplace.reduce((acc, {key, value})=>acc.replace(new RegExp( `(#{|\\[)${key}(}|\\])`), value), vasturl);
+}
+
 export function downloadVastAndWrappersAsync(
   vastUrl: string,
   options: VastParserOptions,
@@ -122,6 +126,6 @@ export function downloadVastAndWrappersAsync(
       }
     },
     syncInBrowser: true,
-    url: vastUrl
+    url: replaceMacros(vastUrl, options.macrosToReplace)
   });
 }

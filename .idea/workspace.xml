@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a88367ba-e136-4c98-9a2e-da6ea2ce2b67" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_1_with_macros.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_2_with_macros.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_3_with_macros.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/utils/vast.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/@types/globals.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/@types/globals.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/utils/vast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils/vast.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/parser/node-parsing.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/parser/node-parsing.test.ts" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/parser/node-parsing.test.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="22" column="82" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_vast.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_1_with_macros.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_2_with_macros.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="7" column="97" selection-start-line="7" selection-start-column="97" selection-end-line="7" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_3_with_macros.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/utils/vast.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-134">
+              <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/utils/vast.test.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="11" column="91" selection-start-line="11" selection-start-column="91" selection-end-line="11" selection-end-column="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/utils/string.test.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/vast-element.test.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parser/index.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="61">
+              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>array-flatten</find>
+      <find>test</find>
+      <find>parseASYNC</find>
+      <find>parseSYNC</find>
+      <find>'</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>&quot;</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/parser/index.ts" />
+        <option value="$PROJECT_DIR$/@types/globals.type.ts" />
+        <option value="$PROJECT_DIR$/tests/parser/parser.test.ts" />
+        <option value="$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_1_with_macros.xml" />
+        <option value="$PROJECT_DIR$/common/utils/vast.ts" />
+        <option value="$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_2_with_macros.xml" />
+        <option value="$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_3_with_macros.xml" />
+        <option value="$PROJECT_DIR$/tests/parser/node-parsing.test.ts" />
+        <option value="$PROJECT_DIR$/tests/utils/vast.test.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vast-library.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="1440" />
+    <option name="y" value="-86" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="vast-library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vast-library" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vast-library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vast-library" type="462c0819:PsiDirectoryNode" />
+              <item name="builder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vast-library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vast-library" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vast-library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vast-library" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vast-library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vast-library" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vast-library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vast-library" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vast-library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vast-library" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
+              <item name="vasts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vast-library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vast-library" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/parser/vasts" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/parser/vasts" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Jest.Vast Util">
+    <configuration name="Vast Util" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/utils/vast.test.ts" />
+      <test-names>
+        <test-name value="Vast Util" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Vast Util.replaceMacros" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/utils/vast.test.ts" />
+      <test-names>
+        <test-name value="Vast Util" />
+        <test-name value="replaceMacros" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/utils/vast.test.ts" />
+      <test-names>
+        <test-name value="Vast Util" />
+        <test-name value="replaceMacros" />
+        <test-name value="should not replace macros if there is nothing to replace" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="VastParser fetch / NODE.js.should replace vast url macros" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/parser/node-parsing.test.ts" />
+      <test-names>
+        <test-name value="VastParser fetch / NODE.js" />
+        <test-name value="should replace vast url macros" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.Vast Util" />
+        <item itemvalue="Jest.Vast Util.replaceMacros.should not replace macros if there is nothing to replace" />
+        <item itemvalue="Jest.Vast Util.replaceMacros" />
+        <item itemvalue="Jest.VastParser fetch / NODE.js.should replace vast url macros" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a88367ba-e136-4c98-9a2e-da6ea2ce2b67" name="Default Changelist" comment="" />
+      <created>1583916235356</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583916235356</updated>
+      <workItem from="1583916236699" duration="5952000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Vast_Util_replaceMacros_should_not_replace_macros_if_there_is_nothing_to_replace - 2020.03.11 at 11h 10m 45s.xml">
+      <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util_replaceMacros_should_not_replace_macros_if_there_is_nothing_to_replace - 2020.03.11 at 11h 11m 01s.xml">
+      <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util_replaceMacros - 2020.03.11 at 11h 12m 17s.xml">
+      <configuration name="Vast Util.replaceMacros" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util_replaceMacros_should_not_replace_macros_if_there_is_nothing_to_replace - 2020.03.11 at 11h 12m 53s.xml">
+      <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util_replaceMacros_should_not_replace_macros_if_there_is_nothing_to_replace - 2020.03.11 at 11h 13m 37s.xml">
+      <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util_replaceMacros_should_not_replace_macros_if_there_is_nothing_to_replace - 2020.03.11 at 11h 14m 13s.xml">
+      <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util_replaceMacros_should_not_replace_macros_if_there_is_nothing_to_replace - 2020.03.11 at 11h 15m 10s.xml">
+      <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util_replaceMacros_should_not_replace_macros_if_there_is_nothing_to_replace - 2020.03.11 at 11h 15m 48s.xml">
+      <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util_replaceMacros_should_not_replace_macros_if_there_is_nothing_to_replace - 2020.03.11 at 11h 16m 41s.xml">
+      <configuration name="Vast Util.replaceMacros.should not replace macros if there is nothing to replace" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Vast_Util - 2020.03.11 at 11h 34m 44s.xml">
+      <configuration name="Vast Util" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5952000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1440" y="-86" width="1920" height="1080" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="npm" side_tool="true" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info anchor="bottom" id="Docker" />
+      <window_info anchor="bottom" id="Job test results" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="GraphQL" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32997987" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993964" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Jenkins" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1">
+            <folding>
+              <element signature="n#!!doc" expanded="true" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/utils/fetch.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/builder/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generated/api/vast2_0.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25060">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/@types/globals.type.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/parser.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/browser-parsing.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_2.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_1.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/utils/checks.test.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/utils/logs.test.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/utils/string.test.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/vast-element.test.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/utils/vast.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_vast.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_3_with_macros.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_2_with_macros.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="97" selection-start-line="7" selection-start-column="97" selection-end-line="7" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/vasts/minimal_wrapper_1_with_macros.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/parser/node-parsing.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="22" column="82" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/utils/vast.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="11" column="91" selection-start-line="11" selection-start-column="91" selection-end-line="11" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -21,5 +21,15 @@ describe("Vast Util", () => {
             const res = replaceMacros("http://vast?test=value", [{key: 'HELLO', value: 'WORLD'}]);
             expect(res).toEqual("http://vast?test=value")
         });
+
+        it("should replace one macros that use #{}", () => {
+            const res = replaceMacros("http://vast?test=#{SOME_MACRO_KEY}", [{key: "SOME_MACRO_KEY", value: "SOME_MACRO_VALUE"}]);
+            expect(res).toEqual("http://vast?test=SOME_MACRO_VALUE")
+        });
+
+        it("should replace more than one macros that uses ${}",() => {
+            const res = replaceMacros("http://vast?test=#{SOME_MACRO_KEY}&test2=#{SOME_MACRO_KEY_2}", [{key: "SOME_MACRO_KEY", value: "SOME_MACRO_VALUE"}, {key: "SOME_MACRO_KEY_2", value: "SOME_MACRO_VALUE_2"}]);
+            expect(res).toEqual("http://vast?test=SOME_MACRO_VALUE&test2=SOME_MACRO_VALUE_2")
+        });
     });
 });

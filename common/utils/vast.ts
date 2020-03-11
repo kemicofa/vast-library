@@ -93,8 +93,8 @@ export function downloadVastAndWrappersSync(
   return vastAndWrappers;
 }
 
-export function replaceMacros(vasturl: string, macrosToReplace: Macro[] = []): string{
-  return macrosToReplace.reduce((acc, {key, value})=>acc.replace(new RegExp( `(#{|\\[)${key}(}|\\])`), value), vasturl);
+export function replaceMacros(vastUrl: string, macrosToReplace: Macro[] = []): string{
+  return macrosToReplace.reduce((acc, {key, value})=>acc.replace(new RegExp( `(#{|\\[)${key}(}|\\])`), value), vastUrl);
 }
 
 export function downloadVastAndWrappersAsync(

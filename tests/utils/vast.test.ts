@@ -18,7 +18,7 @@ describe("Vast Util", () => {
         });
 
         it("should not replace if there are no macros in the url",() => {
-            const res = replaceMacros("http://vast?test=value", [{key: 'HELLO', value: 'WORLD'}]);
+            const res = replaceMacros("http://vast?test=value", [{key: "HELLO", value: "WORLD"}]);
             expect(res).toEqual("http://vast?test=value")
         });
 

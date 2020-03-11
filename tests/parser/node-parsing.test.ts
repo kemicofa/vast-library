@@ -51,6 +51,7 @@ describe("VastParser fetch / NODE.js", () => {
       parser.parseSync("http://vasts/minimal_wrapper_1.xml?test=[SOME_MACRO_KEY]");
     }).toThrow();
   });
+
   test("should replace vast url macros", (done) => {
     const parser = new VastParser({macrosToReplace: [{key: "SOME_MACRO_KEY", value: "SOME_MACRO_VALUE"},{key: "SOME_MACRO_KEY_2", value: "SOME_MACRO_VALUE_2"},{key: "SOME_MACRO_KEY_3", value: "SOME_MACRO_VALUE_3"}]});
     parser.parseAsync("http://vasts/minimal_wrapper_1.xml?test=[SOME_MACRO_KEY]", p => {

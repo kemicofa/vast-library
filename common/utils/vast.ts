@@ -79,7 +79,7 @@ export function downloadVastAndWrappersSync(
   let currentVast: VastElement<any>;
 
   do {
-    const vastRawContent = fetchUrl({ url: vastUrl, syncInBrowser: true });
+    const vastRawContent = fetchUrl({ url: replaceMacros(vastUrl, options.macrosToReplace), syncInBrowser: true });
     currentVast = createVastWithBuilder(vastRawContent as any);
     vastAndWrappers.push(currentVast);
     if (currentVast.isWrapper()) {

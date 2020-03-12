@@ -86,8 +86,7 @@ A good treeshacking will save you some space.
 
 The vast parser handles parsing your VAST Url and VAST Content recursively.
 
-You can also specify a *custom* list of VAST Url macros to replace, which for every VAST Url found recursively
-will replace the macros with the given value.
+You can also specify a *custom* list of VAST Url macros to replace, which for every VAST Url found recursively will replace the macros with the given value.
 
 Currently supported Macro types are: `#{MY_MACRO_KEY}` and `[MY_MACRO_KEY]`.
 
